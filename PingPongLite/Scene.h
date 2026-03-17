@@ -9,12 +9,12 @@ class Scene
 	Scene();
 	~Scene();
 
-	void handleEvents();
 	void update(float deltaTime);
 	void render();
 
 	void init();
 	bool isRunning();
+	void close();
 
   private:
 	std::shared_ptr<Object> createObject(ObjectID object, std::string fileName, std::string& folderPath, int w, int h);

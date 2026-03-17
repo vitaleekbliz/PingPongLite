@@ -6,6 +6,7 @@
 
 int main()
 {
+
 	SDLHandler& sdlHandler = SDLHandler::get();
 	sdlHandler.init();
 
@@ -16,15 +17,18 @@ int main()
 
 	while (mainScene.isRunning())
 	{
-		// TODO move handling to SDLhandler )))
-		mainScene.handleEvents();
+		if (!sdlHandler.handleEvents())
+		{
+			mainScene.close();
+		}
 
 		// TODO write correct tick handling
 		// start tick handling
 		Uint64 nowTick = SDL_GetTicks();
 		Uint64 difference = nowTick - lastTick;
 		float deltaTime = 0;
-		if (difference > 5)
+		//---turned off---
+		if (true || difference > 5)
 		{
 			deltaTime = (float)(nowTick - lastTick) / 1000.f;
 			lastTick = nowTick;

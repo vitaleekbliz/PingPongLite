@@ -13,6 +13,8 @@ class Player : public Object
 	void moveBackToBounds();
 	void followMouse(float deltaTime);
 
+	void onTextureLoaded() override;
+
 	int offset;
 	int speed;
 	int maxHeight;

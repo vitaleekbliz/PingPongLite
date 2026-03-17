@@ -3,12 +3,17 @@
 Player::Player()
 {
 	offset = 50;
-	speed = 500;
+	speed = 1000;
 	minHeight = 100;
 	// TODO bug height was not initialized (height is init during texture loading)
 	// Crutch hardcoded value
 	maxHeight = SDLHandler::get().WINDOW_HEIGHT - (/*height*/ 120 / 2);
 	position = {SDLHandler::get().WINDOW_WIDTH - offset, 400};
+}
+
+void Player::onTextureLoaded()
+{
+	maxHeight = SDLHandler::get().WINDOW_HEIGHT - (height / 2);
 }
 
 void Player::update(float deltaTime)

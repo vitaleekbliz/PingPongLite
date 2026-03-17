@@ -10,21 +10,6 @@ Scene::~Scene()
 {
 }
 
-void Scene::handleEvents()
-{
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_EVENT_QUIT:
-		case SDL_EVENT_WINDOW_CLOSE_REQUESTED:
-			isActive = false;
-			break;
-		}
-	}
-}
-
 void Scene::update(float deltaTime)
 {
 	for (int i = 0; i < gameObjects.size(); i++)
@@ -62,11 +47,22 @@ void Scene::init()
 	{
 		compPtr->setBallReference(ball);
 	}
+
+	// recalculate values of boundaries after loading texture (initializing height and width of object)
+	if (auto compPtr = std::dynamic_pointer_cast<Computer>(computer))
+	{
+		compPtr->setBallReference(ball);
+	}
 }
 
 bool Scene::isRunning()
 {
 	return isActive;
+}
+
+void Scene::close()
+{
+	isActive = false;
 }
 
 std::shared_ptr<Object> Scene::createObject(ObjectID object, std::string fileName, std::string& folderPath, int w,

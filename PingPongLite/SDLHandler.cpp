@@ -6,6 +6,23 @@ SDLHandler& SDLHandler::get()
 	return instance;
 }
 
+bool SDLHandler::handleEvents()
+{
+	// return false if exit game
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type)
+		{
+		case SDL_EVENT_QUIT:
+		case SDL_EVENT_WINDOW_CLOSE_REQUESTED:
+			return false;
+			break;
+		}
+	}
+	return true;
+}
+
 bool SDLHandler::init()
 {
 

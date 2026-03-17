@@ -13,6 +13,7 @@ class SDLHandler
 	static SDLHandler& get();
 
 	bool init();
+	bool handleEvents();
 	void close();
 	SDL_Renderer* getRenderer();
 

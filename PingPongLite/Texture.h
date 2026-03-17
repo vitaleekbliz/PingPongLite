@@ -11,6 +11,8 @@ class Texture
 	bool loadMedia();
 
   protected:
+	virtual void onTextureLoaded() {};
+
 	int width;
 	int height;
 	std::string fileName;

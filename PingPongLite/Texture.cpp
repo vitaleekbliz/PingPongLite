@@ -29,5 +29,7 @@ bool Texture::loadMedia()
 		return false;
 	}
 
+	onTextureLoaded();
+
 	return true;
 }

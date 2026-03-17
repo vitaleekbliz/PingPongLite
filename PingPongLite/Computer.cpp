@@ -3,7 +3,7 @@
 Computer::Computer()
 {
 	offset = 50;
-	speed = 500;
+	speed = 1000;
 	minHeight = 100;
 	// TODO bug height was not initialized (height is init during texture loading)
 	// Crutch hardcoded value
