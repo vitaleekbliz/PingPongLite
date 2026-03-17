@@ -3,6 +3,7 @@
 Object::Object()
 {
 	position = {0, 0};
+	textureComponent = std::make_unique<TextureComponent>();
 }
 
 void Object::setPosition(std::pair<float, float> pos)

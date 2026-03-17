@@ -2,7 +2,6 @@
 
 Scene::Scene()
 {
-	folderPath = "assets\\arts\\";
 	isActive = true;
 }
 
@@ -35,17 +34,34 @@ void Scene::render()
 
 void Scene::init()
 {
+	populateScene();
+	setupInterfaces();
+}
+
+bool Scene::isRunning() const
+{
+	return isActive;
+}
+
+void Scene::close()
+{
+	isActive = false;
+}
+
+void Scene::populateScene()
+{
 	// Order matters (moving objects below will result drawing board over all other objects) : rendering objects as a
 	// list
 	// TODO change update and render function to render in order
+	board = spawnObject(ObjectID::BOARD);
+	ball = spawnObject(ObjectID::BALL);
+	computer = spawnObject(ObjectID::COMPUTER);
+	player = spawnObject(ObjectID::PLAYER);
+	scoreBar = spawnObject(ObjectID::SCORE_BAR);
+}
 
-	// Populate Scene
-	auto board = createObject(ObjectID::BOARD, "Board.png", folderPath, 1280, 680);
-	auto ball = createObject(ObjectID::BALL, "Ball.png", folderPath, 30, 30);
-	auto computer = createObject(ObjectID::COMPUTER, "Computer.png", folderPath, 17, 120);
-	auto player = createObject(ObjectID::PLAYER, "Player.png", folderPath, 17, 120);
-	auto scoreBar = createObject(ObjectID::SCORE_BAR, "ScoreBar.png", folderPath, 600, 40);
-
+void Scene::setupInterfaces()
+{
 	// Create reference for computer to follow the ball
 	if (auto compPtr = std::dynamic_pointer_cast<Computer>(computer))
 	{
@@ -62,22 +78,11 @@ void Scene::init()
 	}
 }
 
-bool Scene::isRunning() const
+std::shared_ptr<Object> Scene::spawnObject(ObjectID object)
 {
-	return isActive;
-}
+	std::shared_ptr<Object> newObject = factory->create(object);
 
-void Scene::close()
-{
-	isActive = false;
-}
-
-std::shared_ptr<Object> Scene::createObject(ObjectID object, std::string fileName, std::string& folderPath, int w,
-											int h)
-{
-	auto newObject = factory->create(object);
-	newObject->setMetaData(fileName, folderPath, w, h);
-	newObject->loadMedia();
 	gameObjects.push_back(newObject);
+
 	return newObject;
 }

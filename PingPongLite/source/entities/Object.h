@@ -1,6 +1,7 @@
 #pragma once
-#include "SDL3/SDL.h"
 #include "components/TextureComponent.h"
+#include <SDL3/SDL.h>
+#include <memory>
 #include <utility>
 
 enum class ObjectID : char
@@ -12,17 +13,19 @@ enum class ObjectID : char
 	BOARD
 };
 
-class Object : public TextureComponent
+class Object
 {
   public:
 	Object();
+	virtual ~Object() = default;
+
 	virtual void update() = 0;
 	virtual void render() = 0;
-	virtual ~Object() = default;
 
 	void setPosition(std::pair<float, float> pos);
 	std::pair<float, float> getPosition();
 
   protected:
 	std::pair<float, float> position;
+	std::unique_ptr<TextureComponent> textureComponent;
 };

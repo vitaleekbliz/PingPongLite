@@ -1,6 +1,6 @@
-#include "Creator.h"
+#include "objectCreator.h"
 
-std::shared_ptr<Object> Creator::create(ObjectID id)
+std::shared_ptr<Object> ObjectCreator::create(ObjectID id)
 {
 	switch (id)
 	{

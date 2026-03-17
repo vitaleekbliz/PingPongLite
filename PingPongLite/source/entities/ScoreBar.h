@@ -11,11 +11,17 @@ class ScoreBar : public Object, public BallSubscriber
 	void onBallEvent(BallEvent event) override;
 
   private:
+	void setupTexture();
+
 	void drawTopBar();
 
 	void changeScore(bool win);
 
-	int roundDurationSeconds;
-	int computerScore;
-	int playerScore;
+	int roundDurationSeconds = 0;
+	int computerScore = 0;
+	int playerScore = 0;
+
+	const std::string textureName = "ScoreBar.png";
+	const int width = 600;
+	const int height = 40;
 };

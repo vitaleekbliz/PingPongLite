@@ -1,9 +1,10 @@
 #pragma once
 #include "Object.h"
+#include "components/ColliderComponent.h"
 #include "interfaces/ballObserver/BallPublisher.h"
 #include <random>
 
-class Ball : public Object, public BallPublisher
+class Ball : public Object, public BallPublisher, public ColliderComponent
 {
   public:
 	Ball();
@@ -13,9 +14,13 @@ class Ball : public Object, public BallPublisher
 
   private:
 	void notify(BallEvent event) override;
-	void onTextureLoaded() override;
 
-	void reset();
+	void initVariables();
+	void setupTexture();
+
+	void drawBall();
+
+	void resetPos();
 	void setRandomDirection();
 
 	void applyMovement();
@@ -29,8 +34,12 @@ class Ball : public Object, public BallPublisher
 	// TODO increase ball speed using observer pattern when new minute comes ->
 	float acceleration = 0.1;
 
-	float minHeight;
-	float maxHeight;
-	float minWidth;
-	float maxWidth;
+	float leftBoundary;
+	float rightBoundary;
+	float topBoundary;
+	float bottomBoundary;
+
+	const std::string textureName = "Ball.png";
+	const int width = 30;
+	const int height = 30;
 };

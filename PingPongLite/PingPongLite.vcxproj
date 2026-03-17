@@ -141,6 +141,7 @@
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\components\ColliderComponent.cpp" />
     <ClCompile Include="source\components\TextureComponent.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
     <ClCompile Include="source\entities\Ball.cpp" />
@@ -153,9 +154,10 @@
     <ClCompile Include="source\interfaces\ballObserver\BallSubscriber.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\scenes\Scene.cpp" />
-    <ClCompile Include="source\utils\objectFactory\Creator.cpp" />
+    <ClCompile Include="source\utils\objectFactory\objectCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\components\ColliderComponent.h" />
     <ClInclude Include="source\components\TextureComponent.h" />
     <ClInclude Include="source\core\SDLHandler.h" />
     <ClInclude Include="source\entities\Ball.h" />
@@ -167,7 +169,7 @@
     <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h" />
     <ClInclude Include="source\scenes\Scene.h" />
-    <ClInclude Include="source\utils\objectFactory\Creator.h" />
+    <ClInclude Include="source\utils\objectFactory\objectCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

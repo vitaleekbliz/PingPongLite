@@ -2,16 +2,10 @@
 
 Ball::Ball()
 {
-	reset();
-
-	// TODO
-	// BUG height of texture is not inited
-	//--start
-	minHeight = 40 + 15; // ScoreBar + ballTextureHeight/2
-	maxHeight = SDLHandler::get().WINDOW_HEIGHT - /*height / 2*/ 15;
-	minWidth = 0;
-	maxWidth = 10000;
-	//--end
+	setupTexture();
+	resetPos();
+	setRandomDirection();
+	initVariables();
 }
 
 void Ball::notify(BallEvent event)
@@ -30,14 +24,32 @@ void Ball::notify(BallEvent event)
 	}
 }
 
-void Ball::onTextureLoaded()
+void Ball::initVariables()
 {
 	int halfHeight = height / 2;
 	int halfWidth = width / 2;
-	minHeight = 40 + halfHeight; // ScoreBar + ballTextureHeight/2
-	maxHeight = SDLHandler::get().WINDOW_HEIGHT - halfHeight;
-	minWidth = halfWidth;
-	maxWidth = SDLHandler::get().WINDOW_WIDTH - halfWidth;
+	leftBoundary = 40 + halfHeight;
+	rightBoundary = SDLHandler::get().WINDOW_HEIGHT - halfHeight;
+	topBoundary = halfWidth;
+	bottomBoundary = SDLHandler::get().WINDOW_WIDTH - halfWidth;
+}
+
+void Ball::setupTexture()
+{
+
+	textureComponent->setMetaData(textureName, width, height);
+	textureComponent->loadMedia();
+}
+
+void Ball::drawBall()
+{
+	SDL_FRect destination = SDL_FRect();
+	destination.x = position.first;
+	destination.y = position.second;
+	destination.h = height;
+	destination.w = width;
+
+	textureComponent->draw(destination, SDL_FLIP_NONE);
 }
 
 Ball::~Ball()
@@ -52,21 +64,12 @@ void Ball::update()
 
 void Ball::render()
 {
-	auto renderer = SDLHandler::get().getRenderer();
-
-	SDL_FRect destination = SDL_FRect();
-	destination.x = position.first - width / 2;
-	destination.y = position.second - height / 2;
-
-	destination.h = height;
-	destination.w = width;
-	SDL_RenderTexture(renderer, texture, NULL, &destination);
+	drawBall();
 }
 
-void Ball::reset()
+void Ball::resetPos()
 {
 	position = {SDLHandler::get().WINDOW_WIDTH / 2, SDLHandler::get().WINDOW_HEIGHT / 2};
-	setRandomDirection();
 }
 
 void Ball::setRandomDirection()
@@ -117,14 +120,14 @@ void Ball::checkBoundaries()
 
 void Ball::bounceTopBottom()
 {
-	if (position.second <= minHeight)
+	if (position.second <= leftBoundary)
 	{
-		position.second = minHeight;
+		position.second = leftBoundary;
 		direction.second *= -1.0f;
 	}
-	else if (position.second >= maxHeight)
+	else if (position.second >= rightBoundary)
 	{
-		position.second = maxHeight;
+		position.second = rightBoundary;
 		direction.second *= -1.0f;
 	}
 }
@@ -132,14 +135,16 @@ void Ball::bounceTopBottom()
 void Ball::bounceLeftRight()
 {
 	// TODO add notify Logic
-	if (position.first <= minWidth)
+	if (position.first <= topBoundary)
 	{
 		notify(BallEvent::GOAL_LEFT);
-		reset();
+		resetPos();
+		setRandomDirection();
 	}
-	else if (position.first >= maxWidth)
+	else if (position.first >= bottomBoundary)
 	{
 		notify(BallEvent::GOAL_RIGHT);
-		reset();
+		resetPos();
+		setRandomDirection();
 	}
 }

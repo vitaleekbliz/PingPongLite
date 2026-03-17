@@ -1,9 +1,10 @@
 #pragma once
 #include "Object.h"
+#include "components/ColliderComponent.h"
 #include "core/SDLHandler.h"
 #include <memory>
 
-class Computer : public Object
+class Computer : public Object, public ColliderComponent
 {
   public:
 	Computer();
@@ -13,15 +14,25 @@ class Computer : public Object
 	void setBallReference(std::weak_ptr<Object> ball);
 
   private:
+	void initVariables();
+	void setupTexture();
+
 	void keepInBounds();
 	void followBall();
 
-	void onTextureLoaded() override;
+	void drawPaddle();
 
-	int offset;
-	int speed;
-	int maxHeight;
-	int minHeight;
+	int currentSpeed;
+
+	const int screenEdgeOffset = 50;
+	const int baseSpeed = 1000;
+
+	int topBoundary;
+	const int bottomBoundary = 100;
 
 	std::weak_ptr<Object> ballReference;
+
+	const std::string textureName = "Computer.png";
+	const int width = 17;
+	const int height = 120;
 };

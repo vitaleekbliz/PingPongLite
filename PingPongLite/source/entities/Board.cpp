@@ -1,15 +1,29 @@
 #include "Board.h"
 
+Board::Board()
+{
+	textureComponent->setMetaData(textureName, width, height);
+	textureComponent->loadMedia();
+}
+
+Board::~Board()
+{
+}
+
 void Board::update()
 {
 }
 
 void Board::render()
 {
+	drawBoard();
+}
+
+void Board::drawBoard()
+{
 	SDL_FRect destination = SDL_FRect();
-	// Score Bar offset
-	destination.y = 40;
+	destination.y = topDrawOffset;
 	destination.h = height;
 	destination.w = width;
-	SDL_RenderTexture(SDLHandler::get().getRenderer(), texture, NULL, &destination);
+	textureComponent->draw(destination, SDL_FLIP_NONE, false);
 }

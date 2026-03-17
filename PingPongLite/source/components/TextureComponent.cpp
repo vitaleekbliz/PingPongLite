@@ -1,9 +1,8 @@
 #include "TextureComponent.h"
 
-void TextureComponent::setMetaData(const std::string& fileName, const std::string& baseFolder, int w, int h)
+void TextureComponent::setMetaData(const std::string& fileName, int w, int h)
 {
 	this->fileName = fileName;
-	this->baseFolder = baseFolder;
 	width = w;
 	height = h;
 }
@@ -29,7 +28,17 @@ bool TextureComponent::loadMedia()
 		return false;
 	}
 
-	onTextureLoaded();
-
 	return true;
+}
+
+void TextureComponent::draw(SDL_FRect destination, SDL_FlipMode flipMode, bool centerImage)
+{
+	// calculate texture offset
+	if (centerImage)
+	{
+		destination.x -= destination.w / 2;
+		destination.y -= destination.h / 2;
+	}
+
+	SDL_RenderTextureRotated(SDLHandler::get().getRenderer(), texture, NULL, &destination, 0, NULL, flipMode);
 }

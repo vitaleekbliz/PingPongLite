@@ -107,11 +107,14 @@
     <ClCompile Include="source\interfaces\ballObserver\BallSubscriber.cpp">
       <Filter>Source Files\source\interfaces\ballObserver</Filter>
     </ClCompile>
-    <ClCompile Include="source\utils\objectFactory\Creator.cpp">
+    <ClCompile Include="source\utils\objectFactory\objectCreator.cpp">
       <Filter>Source Files\source\utils\objectFactory</Filter>
     </ClCompile>
     <ClCompile Include="source\scenes\Scene.cpp">
       <Filter>Source Files\source\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\components\ColliderComponent.cpp">
+      <Filter>Source Files\source\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,11 +148,14 @@
     <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h">
       <Filter>Header Files\interfaces\ballObserver</Filter>
     </ClInclude>
-    <ClInclude Include="source\utils\objectFactory\Creator.h">
+    <ClInclude Include="source\utils\objectFactory\objectCreator.h">
       <Filter>Header Files\utils\objectFactory</Filter>
     </ClInclude>
     <ClInclude Include="source\scenes\Scene.h">
       <Filter>Header Files\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\components\ColliderComponent.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

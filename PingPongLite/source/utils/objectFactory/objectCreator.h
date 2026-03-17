@@ -7,7 +7,7 @@
 #include "entities/ScoreBar.h"
 #include <memory>
 
-class Creator
+class ObjectCreator
 {
   public:
 	std::shared_ptr<Object> create(ObjectID id);
