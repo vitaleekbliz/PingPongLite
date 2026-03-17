@@ -19,18 +19,20 @@ class Scene
   private:
 	void populateScene();
 	void setupInterfaces();
+	void setupComputerToBallRef();
+	void setupBallListeners();
 
 	std::shared_ptr<Object> spawnObject(ObjectID object);
+	void destroyObject(std::shared_ptr<Object> object);
 
 	std::vector<std::shared_ptr<Object>> gameObjects;
 	std::unique_ptr<ObjectCreator> factory;
 
-	std::string folderPath;
 	bool isActive;
 
-	std::shared_ptr<Object> board;
-	std::shared_ptr<Object> computer;
-	std::shared_ptr<Object> player;
-	std::shared_ptr<Object> ball;
-	std::shared_ptr<Object> scoreBar;
+	std::weak_ptr<Object> board;
+	std::weak_ptr<Object> computer;
+	std::weak_ptr<Object> player;
+	std::weak_ptr<Object> ball;
+	std::weak_ptr<Object> scoreBar;
 };

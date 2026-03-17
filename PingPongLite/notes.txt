@@ -1,3 +1,0 @@
-1. include dir
-2. lib dir
-1. sdl2 sdl2main and shell32

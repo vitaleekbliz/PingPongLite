@@ -62,20 +62,66 @@ void Scene::populateScene()
 
 void Scene::setupInterfaces()
 {
-	// Create reference for computer to follow the ball
-	if (auto compPtr = std::dynamic_pointer_cast<Computer>(computer))
-	{
-		compPtr->setBallReference(ball);
-	}
+	setupComputerToBallRef();
+	setupBallListeners();
+	setupBallListeners();
+}
 
-	// Subscribe Score to BallPublisher
-	if (auto ballPub = std::dynamic_pointer_cast<BallPublisher>(ball))
+void Scene::setupComputerToBallRef()
+{
+	// Create reference for computer to follow the ball
+	if (auto computerLock = computer.lock())
 	{
-		if (auto scoreSub = std::dynamic_pointer_cast<BallSubscriber>(scoreBar))
+		if (auto compPtr = std::dynamic_pointer_cast<Computer>(computerLock))
 		{
-			ballPub->addListener(scoreSub);
+			compPtr->setBallReference(ball);
 		}
 	}
+	else
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,
+					"Scene::setupInterfaces - Failed to lock Computer reference! The object may have been destroyed.");
+	}
+}
+
+void Scene::setupBallListeners()
+{
+	// 1. Validate Ball
+	auto ballLock = ball.lock();
+	if (!ballLock)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Ball reference is expired.", __FUNCTION__);
+		return;
+	}
+
+	auto ballPub = std::dynamic_pointer_cast<BallPublisher>(ballLock);
+	if (!ballPub)
+	{
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[%s] Ball exists but does not implement BallPublisher.",
+					 __FUNCTION__);
+		return;
+	}
+
+	// 2. Validate ScoreBar
+	auto scoreBarLock = scoreBar.lock();
+	if (!scoreBarLock)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] ScoreBar reference is expired.", __FUNCTION__);
+		return;
+	}
+
+	auto scoreSub = std::dynamic_pointer_cast<BallSubscriber>(scoreBarLock);
+	if (!scoreSub)
+	{
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[%s] ScoreBar exists but does not implement BallSubscriber.",
+					 __FUNCTION__);
+		return;
+	}
+
+	// 3. Final Wiring
+	ballPub->addListener(scoreSub);
+
+	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Successfully linked BallPublisher to ScoreBar (BallSubscriber).");
 }
 
 std::shared_ptr<Object> Scene::spawnObject(ObjectID object)
@@ -85,4 +131,9 @@ std::shared_ptr<Object> Scene::spawnObject(ObjectID object)
 	gameObjects.push_back(newObject);
 
 	return newObject;
+}
+
+void Scene::destroyObject(std::shared_ptr<Object> object)
+{
+	std::erase(gameObjects, object);
 }
