@@ -1,9 +1,12 @@
 #pragma once
 #include "Object.h"
-
-class Paddle : public Object
+class ScoreBar : public Object
 {
   public:
+	ScoreBar();
 	void update(float deltaTime) override;
 	void render() override;
+
+  private:
+	int roundDurationSeconds;
 };

@@ -1,27 +1,31 @@
 #include "Creator.h"
 #include "SDLHandler.h"
+#include "Scene.h"
+
 #include <vector>
 
 int main()
 {
 	SDLHandler& sdlHandler = SDLHandler::get();
-
 	sdlHandler.init();
 
-	std::vector<Object> gameObjects;
+	Scene mainScene = Scene();
 
-	bool gameRunning = true;
-	while (gameRunning)
+	mainScene.init();
+
+	Uint64 lastTick = SDL_GetTicks();
+
+	while (mainScene.isRunning())
 	{
-		for (int i = 0; i < gameObjects.size(); i++)
-		{
-			gameObjects[i].update();
-		}
+		mainScene.handleEvents();
 
-		for (int i = 0; i < gameObjects.size(); i++)
-		{
-			gameObjects[i].render();
-		}
+		Uint64 nowTick = SDL_GetTicks();
+		float deltaTime = (float)(nowTick - lastTick) / 1000.f;
+		lastTick = nowTick;
+
+		mainScene.update(deltaTime);
+
+		mainScene.render();
 	}
 
 	sdlHandler.close();

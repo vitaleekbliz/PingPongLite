@@ -16,13 +16,14 @@ class SDLHandler
 	void close();
 	SDL_Renderer* getRenderer();
 
+	const int WINDOW_WIDTH = 1280;
+	const int WINDOW_HEIGHT = 720;
+
   private:
 	SDLHandler();
 	~SDLHandler();
 
 	const char* WINDOW_TITLE = "Ping Pong Lite";
-	const int WINDOW_WIDTH = 1280;
-	const int WINDOW_HEIGHT = 720;
 
 	SDL_Window* gWindow = NULL;
 	SDL_Renderer* gRenderer = NULL;
