@@ -17,7 +17,7 @@ class Scene
 	bool isRunning();
 
   private:
-	std::weak_ptr<Object> createObject(ObjectID object, std::string fileName, std::string& folderPath, int w, int h);
+	std::shared_ptr<Object> createObject(ObjectID object, std::string fileName, std::string& folderPath, int w, int h);
 
 	std::vector<std::shared_ptr<Object>> gameObjects;
 	std::unique_ptr<Creator> factory;

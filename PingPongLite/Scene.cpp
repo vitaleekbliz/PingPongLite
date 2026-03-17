@@ -50,24 +50,18 @@ void Scene::render()
 
 void Scene::init()
 {
-	// Order matter rendering object as a list
+	// Order matters: rendering objects as a list
 	auto board = createObject(ObjectID::BOARD, "Board.png", folderPath, 1280, 680);
 	auto ball = createObject(ObjectID::BALL, "Ball.png", folderPath, 30, 30);
 	auto computer = createObject(ObjectID::COMPUTER, "Computer.png", folderPath, 17, 120);
-
-	// Create reference for computer to follow the ball
-	if (auto sharedObj = computer.lock())
-	{
-		auto compPtr = std::dynamic_pointer_cast<Computer>(sharedObj);
-
-		if (compPtr)
-		{
-			compPtr->setBallReference(ball);
-		}
-	}
-
 	auto player = createObject(ObjectID::PLAYER, "Player.png", folderPath, 17, 120);
 	auto scoreBar = createObject(ObjectID::SCORE_BAR, "ScoreBar.png", folderPath, 600, 40);
+
+	// Create reference for computer to follow the ball
+	if (auto compPtr = std::dynamic_pointer_cast<Computer>(computer))
+	{
+		compPtr->setBallReference(ball);
+	}
 }
 
 bool Scene::isRunning()
@@ -75,7 +69,8 @@ bool Scene::isRunning()
 	return isActive;
 }
 
-std::weak_ptr<Object> Scene::createObject(ObjectID object, std::string fileName, std::string& folderPath, int w, int h)
+std::shared_ptr<Object> Scene::createObject(ObjectID object, std::string fileName, std::string& folderPath, int w,
+											int h)
 {
 	auto newObject = factory->create(object);
 	newObject->setMetaData(fileName, folderPath, w, h);

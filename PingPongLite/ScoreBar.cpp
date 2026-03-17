@@ -12,6 +12,7 @@ void ScoreBar::update(float deltaTime)
 
 void ScoreBar::render()
 {
+	// TODO refactor this function
 	auto renderer = SDLHandler::get().getRenderer();
 
 	SDL_FRect destination = SDL_FRect();
