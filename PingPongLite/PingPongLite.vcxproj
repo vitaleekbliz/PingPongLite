@@ -138,6 +138,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="BallPublisher.cpp" />
+    <ClCompile Include="BallSubscriber.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Computer.cpp" />
     <ClCompile Include="Creator.cpp" />
@@ -147,10 +149,12 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="SDLHandler.cpp" />
-    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="BallPublisher.h" />
+    <ClInclude Include="BallSubscriber.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Computer.h" />
     <ClInclude Include="Creator.h" />
@@ -159,7 +163,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SDLHandler.h" />
-    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />

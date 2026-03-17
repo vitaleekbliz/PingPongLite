@@ -1,6 +1,6 @@
-#include "Texture.h"
+#include "TextureComponent.h"
 
-void Texture::setMetaData(const std::string& fileName, const std::string& baseFolder, int w, int h)
+void TextureComponent::setMetaData(const std::string& fileName, const std::string& baseFolder, int w, int h)
 {
 	this->fileName = fileName;
 	this->baseFolder = baseFolder;
@@ -8,7 +8,7 @@ void Texture::setMetaData(const std::string& fileName, const std::string& baseFo
 	height = h;
 }
 
-bool Texture::loadMedia()
+bool TextureComponent::loadMedia()
 {
 	std::string fullPath = SDL_GetBasePath();
 	fullPath += baseFolder;

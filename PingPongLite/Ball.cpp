@@ -2,21 +2,42 @@
 
 Ball::Ball()
 {
-	resetPos();
+	reset();
 
 	// TODO
 	// BUG height of texture is not inited
-	minHeight = 40 - 15; // ScoreBar + ballTextureHeight/2
+	//--start
+	minHeight = 40 + 15; // ScoreBar + ballTextureHeight/2
 	maxHeight = SDLHandler::get().WINDOW_HEIGHT - /*height / 2*/ 15;
-	minWidth;
-	maxWidth;
+	minWidth = 0;
+	maxWidth = 10000;
+	//--end
+}
+
+void Ball::notify(BallEvent event)
+{
+	for (auto it = subscribers.begin(); it != subscribers.end();)
+	{
+		if (auto observer = it->lock())
+		{
+			observer->onBallEvent(event);
+			it++;
+		}
+		else
+		{
+			it = subscribers.erase(it);
+		}
+	}
 }
 
 void Ball::onTextureLoaded()
 {
 	int halfHeight = height / 2;
+	int halfWidth = width / 2;
 	minHeight = 40 + halfHeight; // ScoreBar + ballTextureHeight/2
 	maxHeight = SDLHandler::get().WINDOW_HEIGHT - halfHeight;
+	minWidth = halfWidth;
+	maxWidth = SDLHandler::get().WINDOW_WIDTH - halfWidth;
 }
 
 Ball::~Ball()
@@ -25,17 +46,8 @@ Ball::~Ball()
 
 void Ball::update()
 {
-	//--start--TEMP
-	static float sum = 0;
-	sum += SDLHandler::get().getTick();
-	if (sum > 1)
-	{
-		resetPos();
-		sum = 0;
-	}
-	//--end--
-
 	applyMovement();
+	checkBoundaries();
 }
 
 void Ball::render()
@@ -51,10 +63,9 @@ void Ball::render()
 	SDL_RenderTexture(renderer, texture, NULL, &destination);
 }
 
-void Ball::resetPos()
+void Ball::reset()
 {
 	position = {SDLHandler::get().WINDOW_WIDTH / 2, SDLHandler::get().WINDOW_HEIGHT / 2};
-
 	setRandomDirection();
 }
 
@@ -101,32 +112,34 @@ void Ball::applyMovement()
 void Ball::checkBoundaries()
 {
 	bounceTopBottom();
-
-	// TODO
-	//  score and reset ball when boundaries reacheched left/right
-
-	// if (position.first <= minWidth)
-	//{
-	//	notifyScore(GameEvent::RIGHT_SCORE);
-	//	resetBall(); // Bring ball back to center
-	// }
-	// else if (position.first >= maxWidth)
-	//{
-	//	notifyScore(GameEvent::LEFT_SCORE);
-	//	resetBall();
-	// }
+	bounceLeftRight();
 }
 
 void Ball::bounceTopBottom()
 {
 	if (position.second <= minHeight)
 	{
-		position.second = minHeight; // Snap to boundary to prevent getting stuck
+		position.second = minHeight;
 		direction.second *= -1.0f;
 	}
 	else if (position.second >= maxHeight)
 	{
 		position.second = maxHeight;
 		direction.second *= -1.0f;
+	}
+}
+
+void Ball::bounceLeftRight()
+{
+	// TODO add notify Logic
+	if (position.first <= minWidth)
+	{
+		notify(BallEvent::GOAL_LEFT);
+		reset();
+	}
+	else if (position.first >= maxWidth)
+	{
+		notify(BallEvent::GOAL_RIGHT);
+		reset();
 	}
 }

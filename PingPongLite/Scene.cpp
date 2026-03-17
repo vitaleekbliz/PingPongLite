@@ -51,10 +51,13 @@ void Scene::init()
 		compPtr->setBallReference(ball);
 	}
 
-	// recalculate values of boundaries after loading texture (initializing height and width of object)
-	if (auto compPtr = std::dynamic_pointer_cast<Computer>(computer))
+	// Subscribe Score to BallPublisher
+	if (auto ballPub = std::dynamic_pointer_cast<BallPublisher>(ball))
 	{
-		compPtr->setBallReference(ball);
+		if (auto scoreSub = std::dynamic_pointer_cast<BallSubscriber>(scoreBar))
+		{
+			ballPub->addListener(scoreSub);
+		}
 	}
 }
 

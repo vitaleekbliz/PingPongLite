@@ -4,7 +4,7 @@
 #include "SDLHandler.h"
 #include <string>
 
-class Texture
+class TextureComponent
 {
   public:
 	void setMetaData(const std::string& fileName, const std::string& baseFolder, int w, int h);

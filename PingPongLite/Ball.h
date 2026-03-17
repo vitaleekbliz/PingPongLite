@@ -1,8 +1,9 @@
 #pragma once
+#include "BallPublisher.h"
 #include "Object.h"
 #include <random>
 
-class Ball : public Object
+class Ball : public Object, public BallPublisher
 {
   public:
 	Ball();
@@ -11,15 +12,17 @@ class Ball : public Object
 	void render() override;
 
   private:
+	void notify(BallEvent event) override;
 	void onTextureLoaded() override;
 
-	void resetPos();
+	void reset();
 	void setRandomDirection();
 
 	void applyMovement();
 
 	void checkBoundaries();
 	void bounceTopBottom();
+	void bounceLeftRight();
 
 	std::pair<float, float> direction;
 	float speed = 500.f;
