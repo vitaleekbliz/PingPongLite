@@ -8,7 +8,7 @@ SDLHandler& SDLHandler::get()
 
 bool SDLHandler::handleEvents()
 {
-	// return false if exit game
+	// returns false if exit game
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -21,6 +21,24 @@ bool SDLHandler::handleEvents()
 		}
 	}
 	return true;
+}
+
+void SDLHandler::handleTickRate()
+{
+	Uint64 nowTick = SDL_GetTicks();
+	Uint64 difference = nowTick - lastTick;
+
+	//---turned off---
+	if (true || difference > 5)
+	{
+		deltaTime = (float)(nowTick - lastTick) / 1000.f;
+		lastTick = nowTick;
+	}
+}
+
+float SDLHandler::getTick() const
+{
+	return deltaTime;
 }
 
 bool SDLHandler::init()
@@ -60,7 +78,8 @@ SDL_Renderer* SDLHandler::getRenderer()
 
 SDLHandler::SDLHandler()
 {
-	// std::fill(std::begin(textures), std::end(textures), NULL);
+	lastTick = SDL_GetTicks();
+	deltaTime = 0;
 }
 
 SDLHandler::~SDLHandler()

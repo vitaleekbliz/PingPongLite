@@ -4,6 +4,6 @@
 class Board : public Object
 {
   public:
-	void update(float deltaTime) override;
+	void update() override;
 	void render() override;
 };

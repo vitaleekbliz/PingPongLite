@@ -16,10 +16,10 @@ void Player::onTextureLoaded()
 	maxHeight = SDLHandler::get().WINDOW_HEIGHT - (height / 2);
 }
 
-void Player::update(float deltaTime)
+void Player::update()
 {
-	followMouse(deltaTime);
-	moveBackToBounds();
+	followMouse();
+	keepInBounds();
 }
 
 void Player::render()
@@ -35,7 +35,7 @@ void Player::render()
 	SDL_RenderTexture(renderer, texture, NULL, &destination);
 }
 
-void Player::moveBackToBounds()
+void Player::keepInBounds()
 {
 	if (position.second < minHeight)
 	{
@@ -47,8 +47,9 @@ void Player::moveBackToBounds()
 	}
 }
 
-void Player::followMouse(float deltaTime)
+void Player::followMouse()
 {
+	float deltaTime = SDLHandler::get().getTick();
 	float mouseX, mouseY;
 	SDL_GetMouseState(&mouseX, &mouseY);
 

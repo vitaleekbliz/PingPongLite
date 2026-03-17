@@ -5,16 +5,20 @@ Computer::Computer()
 	offset = 50;
 	speed = 1000;
 	minHeight = 100;
-	// TODO bug height was not initialized (height is init during texture loading)
-	// Crutch hardcoded value
+	// TODO bug (priority HIGH) height was not initialized (height is init during texture loading)
 	maxHeight = SDLHandler::get().WINDOW_HEIGHT - (/*height*/ 120 / 2);
 	position = {offset, 400};
 }
 
-void Computer::update(float deltaTime)
+void Computer::onTextureLoaded()
 {
-	followBall(deltaTime);
-	moveBackToBounds();
+	maxHeight = SDLHandler::get().WINDOW_HEIGHT - (height / 2);
+}
+
+void Computer::update()
+{
+	followBall();
+	keepInBounds();
 }
 
 void Computer::render()
@@ -35,7 +39,7 @@ void Computer::setBallReference(std::weak_ptr<Object> ball)
 	ballReference = ball;
 }
 
-void Computer::moveBackToBounds()
+void Computer::keepInBounds()
 {
 	if (position.second < minHeight)
 	{
@@ -47,8 +51,10 @@ void Computer::moveBackToBounds()
 	}
 }
 
-void Computer::followBall(float deltaTime)
+void Computer::followBall()
 {
+	float deltaTime = SDLHandler::get().getTick();
+
 	if (auto ball = ballReference.lock())
 	{
 		float ballY = ball->getPosition().second;
@@ -64,6 +70,15 @@ void Computer::followBall(float deltaTime)
 		else
 		{
 			position.second += (distanceToBall > 0 ? 1 : -1) * moveAmount;
+		}
+	}
+	else
+	{
+		static bool warnedOnce = false;
+		if (!warnedOnce)
+		{
+			SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "Computer AI: ballReference is null. AI is idling.");
+			warnedOnce = true;
 		}
 	}
 }

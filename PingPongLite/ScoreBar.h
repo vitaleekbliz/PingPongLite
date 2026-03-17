@@ -4,7 +4,7 @@ class ScoreBar : public Object
 {
   public:
 	ScoreBar();
-	void update(float deltaTime) override;
+	void update() override;
 	void render() override;
 
   private:

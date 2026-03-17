@@ -156,7 +156,6 @@
     <ClInclude Include="Creator.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="SDLHandler.h" />

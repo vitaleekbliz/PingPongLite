@@ -9,11 +9,11 @@ class Scene
 	Scene();
 	~Scene();
 
-	void update(float deltaTime);
+	void update();
 	void render();
 
 	void init();
-	bool isRunning();
+	bool isRunning() const;
 	void close();
 
   private:

@@ -23,11 +23,11 @@ Ball::~Ball()
 {
 }
 
-void Ball::update(float deltaTime)
+void Ball::update()
 {
 	//--start--TEMP
 	static float sum = 0;
-	sum += deltaTime;
+	sum += SDLHandler::get().getTick();
 	if (sum > 1)
 	{
 		resetPos();
@@ -35,7 +35,7 @@ void Ball::update(float deltaTime)
 	}
 	//--end--
 
-	applyMovement(deltaTime);
+	applyMovement();
 }
 
 void Ball::render()
@@ -90,8 +90,10 @@ void Ball::setRandomDirection()
 	}
 }
 
-void Ball::applyMovement(float deltaTime)
+void Ball::applyMovement()
 {
+	float deltaTime = SDLHandler::get().getTick();
+
 	position.first += deltaTime * speed * direction.first;
 	position.second += deltaTime * speed * direction.second;
 }

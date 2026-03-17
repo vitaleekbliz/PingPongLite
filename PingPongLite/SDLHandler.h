@@ -14,7 +14,10 @@ class SDLHandler
 
 	bool init();
 	bool handleEvents();
+	void handleTickRate();
+	float getTick() const;
 	void close();
+
 	SDL_Renderer* getRenderer();
 
 	const int WINDOW_WIDTH = 1280;
@@ -23,6 +26,9 @@ class SDLHandler
   private:
 	SDLHandler();
 	~SDLHandler();
+
+	Uint64 lastTick;
+	float deltaTime;
 
 	const char* WINDOW_TITLE = "Ping Pong Lite";
 

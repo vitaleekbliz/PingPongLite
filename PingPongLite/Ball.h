@@ -7,7 +7,7 @@ class Ball : public Object
   public:
 	Ball();
 	~Ball();
-	void update(float deltaTime) override;
+	void update() override;
 	void render() override;
 
   private:
@@ -16,7 +16,7 @@ class Ball : public Object
 	void resetPos();
 	void setRandomDirection();
 
-	void applyMovement(float deltaTime);
+	void applyMovement();
 
 	void checkBoundaries();
 	void bounceTopBottom();

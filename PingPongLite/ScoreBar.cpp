@@ -5,8 +5,9 @@ ScoreBar::ScoreBar()
 	roundDurationSeconds = 0;
 }
 
-void ScoreBar::update(float deltaTime)
+void ScoreBar::update()
 {
+	float deltaTime = SDLHandler::get().getTick();
 	roundDurationSeconds += deltaTime;
 }
 

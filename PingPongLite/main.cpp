@@ -2,8 +2,6 @@
 #include "SDLHandler.h"
 #include "Scene.h"
 
-#include <vector>
-
 int main()
 {
 
@@ -13,8 +11,6 @@ int main()
 	Scene mainScene = Scene();
 	mainScene.init();
 
-	Uint64 lastTick = SDL_GetTicks();
-
 	while (mainScene.isRunning())
 	{
 		if (!sdlHandler.handleEvents())
@@ -22,21 +18,9 @@ int main()
 			mainScene.close();
 		}
 
-		// TODO write correct tick handling
-		// start tick handling
-		Uint64 nowTick = SDL_GetTicks();
-		Uint64 difference = nowTick - lastTick;
-		float deltaTime = 0;
-		//---turned off---
-		if (true || difference > 5)
-		{
-			deltaTime = (float)(nowTick - lastTick) / 1000.f;
-			lastTick = nowTick;
-		}
+		sdlHandler.handleTickRate();
 
-		// end tick handling
-
-		mainScene.update(deltaTime);
+		mainScene.update();
 
 		mainScene.render();
 	}

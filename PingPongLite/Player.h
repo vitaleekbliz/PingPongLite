@@ -6,12 +6,12 @@ class Player : public Object
 {
   public:
 	Player();
-	void update(float deltaTime) override;
+	void update() override;
 	void render() override;
 
   private:
-	void moveBackToBounds();
-	void followMouse(float deltaTime);
+	void keepInBounds();
+	void followMouse();
 
 	void onTextureLoaded() override;
 

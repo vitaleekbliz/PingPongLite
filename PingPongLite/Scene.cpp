@@ -10,11 +10,11 @@ Scene::~Scene()
 {
 }
 
-void Scene::update(float deltaTime)
+void Scene::update()
 {
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
-		gameObjects[i]->update(deltaTime);
+		gameObjects[i]->update();
 	}
 }
 
@@ -36,6 +36,9 @@ void Scene::render()
 void Scene::init()
 {
 	// Order matters: rendering objects as a list
+	// TODO change update and render function to render in order
+
+	// Populate Scene
 	auto board = createObject(ObjectID::BOARD, "Board.png", folderPath, 1280, 680);
 	auto ball = createObject(ObjectID::BALL, "Ball.png", folderPath, 30, 30);
 	auto computer = createObject(ObjectID::COMPUTER, "Computer.png", folderPath, 17, 120);
@@ -55,7 +58,7 @@ void Scene::init()
 	}
 }
 
-bool Scene::isRunning()
+bool Scene::isRunning() const
 {
 	return isActive;
 }
