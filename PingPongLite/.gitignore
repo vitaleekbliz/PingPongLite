@@ -426,3 +426,15 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# 1. Allow Git to look into the x64 and Debug folders
+!x64/
+!x64/Debug/
+!x64/Debug/assets/
+!x64/Debug/assets/arts/
+
+# 2. But ignore everything else inside them (optional but cleaner)
+x64/*
+!x64/Debug/
+x64/Debug/*
+!x64/Debug/assets/
