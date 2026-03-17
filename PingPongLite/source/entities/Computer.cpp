@@ -8,6 +8,7 @@ Computer::Computer()
 
 void Computer::update()
 {
+	boxCollider->move(position.x, position.y);
 	followBall();
 	keepInBounds();
 }
@@ -22,27 +23,33 @@ void Computer::setBallReference(std::weak_ptr<Object> ball)
 	ballReference = ball;
 }
 
+std::weak_ptr<BoxColliderComponent> Computer::getBoxCollider()
+{
+	return boxCollider;
+}
+
 void Computer::initVariables()
 {
 	currentSpeed = baseSpeed;
 	topBoundary = SDLHandler::get().WINDOW_HEIGHT - (height / 2);
-	position = {screenEdgeOffset, 400};
+	position = {(float)screenEdgeOffset, 400};
 }
 
 void Computer::setupComponents()
 {
 	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
+	boxCollider = std::make_shared<BoxColliderComponent>(width, height);
 }
 
 void Computer::keepInBounds()
 {
-	if (position.second < bottomBoundary)
+	if (position.y < bottomBoundary)
 	{
-		position.second = bottomBoundary;
+		position.y = bottomBoundary;
 	}
-	else if (position.second > topBoundary)
+	else if (position.y > topBoundary)
 	{
-		position.second = topBoundary;
+		position.y = topBoundary;
 	}
 }
 
@@ -53,19 +60,19 @@ void Computer::followBall()
 
 	if (auto ball = ballReference.lock())
 	{
-		float ballY = ball->getPosition().second;
+		float ballY = ball->getPosition().y;
 
-		float deltaY = ballY - position.second;
+		float deltaY = ballY - position.y;
 
 		float moveAmount = deltaTime * currentSpeed;
 
 		if (moveAmount > std::abs(deltaY))
 		{
-			position.second = ball->getPosition().second;
+			position.y = ball->getPosition().y;
 		}
 		else
 		{
-			position.second += (deltaY > 0 ? 1 : -1) * moveAmount;
+			position.y += (deltaY > 0 ? 1 : -1) * moveAmount;
 		}
 	}
 	else
@@ -83,8 +90,8 @@ void Computer::drawPaddle()
 {
 
 	SDL_FRect destination = SDL_FRect();
-	destination.x = position.first;
-	destination.y = position.second;
+	destination.x = position.x;
+	destination.y = position.y;
 	destination.h = height;
 	destination.w = width;
 

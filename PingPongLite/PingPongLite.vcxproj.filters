@@ -113,7 +113,7 @@
     <ClCompile Include="source\scenes\Scene.cpp">
       <Filter>Source Files\source\scenes</Filter>
     </ClCompile>
-    <ClCompile Include="source\components\ColliderComponent.cpp">
+    <ClCompile Include="source\components\BoxColliderComponent.cpp">
       <Filter>Source Files\source\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -154,7 +154,7 @@
     <ClInclude Include="source\scenes\Scene.h">
       <Filter>Header Files\scenes</Filter>
     </ClInclude>
-    <ClInclude Include="source\components\ColliderComponent.h">
+    <ClInclude Include="source\components\BoxColliderComponent.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

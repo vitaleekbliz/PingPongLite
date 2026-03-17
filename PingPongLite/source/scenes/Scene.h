@@ -17,10 +17,11 @@ class Scene
 	void close();
 
   private:
-	void populateScene();
-	void setupInterfaces();
-	void setupComputerToBallRef();
-	void setupBallListeners();
+	void spawnEntities();
+	void bindDependencies();
+	void bindBallToComputer();
+	void registerBallObservers();
+	void resolvePaddleReferences();
 
 	std::shared_ptr<Object> spawnObject(ObjectID object);
 	void destroyObject(std::shared_ptr<Object> object);

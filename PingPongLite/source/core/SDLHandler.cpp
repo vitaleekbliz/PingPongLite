@@ -26,14 +26,8 @@ bool SDLHandler::handleEvents()
 void SDLHandler::handleTickRate()
 {
 	Uint64 nowTick = SDL_GetTicks();
-	Uint64 difference = nowTick - lastTick;
-
-	//---turned off---
-	if (true || difference > 5)
-	{
-		deltaTime = (float)(nowTick - lastTick) / 1000.f;
-		lastTick = nowTick;
-	}
+	deltaTime = (float)(nowTick - lastTick) / 1000.f;
+	lastTick = nowTick;
 }
 
 float SDLHandler::getTick() const

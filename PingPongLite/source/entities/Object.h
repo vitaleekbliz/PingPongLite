@@ -22,10 +22,10 @@ class Object
 	virtual void update() = 0;
 	virtual void render() = 0;
 
-	void setPosition(std::pair<float, float> pos);
-	std::pair<float, float> getPosition();
+	void setPosition(SDL_FPoint pos);
+	SDL_FPoint getPosition();
 
   protected:
-	std::pair<float, float> position;
+	SDL_FPoint position;
 	std::unique_ptr<TextureComponent> textureComponent;
 };

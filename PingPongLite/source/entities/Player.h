@@ -1,14 +1,16 @@
 #pragma once
 #include "Object.h"
-#include "components/ColliderComponent.h"
+#include "components/BoxColliderComponent.h"
 #include "core/SDLHandler.h"
 
-class Player : public Object, public ColliderComponent
+class Player : public Object
 {
   public:
 	Player();
 	void update() override;
 	void render() override;
+
+	std::weak_ptr<BoxColliderComponent> getBoxCollider();
 
   private:
 	void initVariables();
@@ -18,6 +20,8 @@ class Player : public Object, public ColliderComponent
 	void followMouse();
 
 	void drawPaddle();
+
+	std::shared_ptr<BoxColliderComponent> boxCollider;
 
 	int currentSpeed;
 	int topBoundary;

@@ -1,10 +1,12 @@
 #pragma once
 #include "Object.h"
-#include "components/ColliderComponent.h"
+#include "components/BoxColliderComponent.h"
 #include "interfaces/ballObserver/BallPublisher.h"
+#include <SDL3/SDL.h>
+#include <algorithm>
 #include <random>
 
-class Ball : public Object, public BallPublisher, public ColliderComponent
+class Ball : public Object, public BallPublisher
 {
   public:
 	Ball();
@@ -12,27 +14,43 @@ class Ball : public Object, public BallPublisher, public ColliderComponent
 	void update() override;
 	void render() override;
 
+	void setPlayerBoxCollider(std::weak_ptr<BoxColliderComponent> comp);
+	void setComputerBoxCollider(std::weak_ptr<BoxColliderComponent> comp);
+
   private:
 	void notify(BallEvent event) override;
 
+	// Constructor refactoring
 	void initVariables();
 	void setupComponents();
 
 	void drawBall();
 
-	void resetPos();
+	// resetBall
+	void reset();
 	void setRandomDirection();
 
+	// update Refactoring
+#pragma region update() Logic
 	void applyMovement();
 
-	void checkBoundaries();
 	void bounceTopBottom();
 	void bounceLeftRight();
 
-	std::pair<float, float> direction;
-	float speed = 500.f;
+	void resolvePaddleCollision(std::weak_ptr<BoxColliderComponent> collider, bool forComputer);
+	bool checkCollision(const SDL_FRect& rect);
+#pragma endregion
+	void accelerateOnImpact();
+
+	std::weak_ptr<BoxColliderComponent> playerBoxCollider;
+	std::weak_ptr<BoxColliderComponent> computerBoxCollider;
+
+	SDL_FPoint direction;
+
+	float currentSpeed;
+	const float baseSpeed = 500.f;
 	// TODO increase ball speed using observer pattern when new minute comes ->
-	float acceleration = 0.1;
+	float speedMultiplier = 0.1;
 
 	float leftBoundary;
 	float rightBoundary;

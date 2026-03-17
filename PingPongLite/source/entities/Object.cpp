@@ -5,12 +5,12 @@ Object::Object()
 	position = {0, 0};
 }
 
-void Object::setPosition(std::pair<float, float> pos)
+void Object::setPosition(SDL_FPoint pos)
 {
 	position = pos;
 }
 
-std::pair<float, float> Object::getPosition()
+SDL_FPoint Object::getPosition()
 {
 	return position;
 }

@@ -1,10 +1,10 @@
 #pragma once
 #include "Object.h"
-#include "components/ColliderComponent.h"
+#include "components/BoxColliderComponent.h"
 #include "core/SDLHandler.h"
 #include <memory>
 
-class Computer : public Object, public ColliderComponent
+class Computer : public Object
 {
   public:
 	Computer();
@@ -12,6 +12,8 @@ class Computer : public Object, public ColliderComponent
 	void update() override;
 	void render() override;
 	void setBallReference(std::weak_ptr<Object> ball);
+
+	std::weak_ptr<BoxColliderComponent> getBoxCollider();
 
   private:
 	void initVariables();
@@ -31,6 +33,7 @@ class Computer : public Object, public ColliderComponent
 	const int bottomBoundary = 100;
 
 	std::weak_ptr<Object> ballReference;
+	std::shared_ptr<BoxColliderComponent> boxCollider;
 
 	const std::string textureName = "Computer.png";
 	const int width = 17;

@@ -34,8 +34,8 @@ void Scene::render()
 
 void Scene::init()
 {
-	populateScene();
-	setupInterfaces();
+	spawnEntities();
+	bindDependencies();
 }
 
 bool Scene::isRunning() const
@@ -48,26 +48,27 @@ void Scene::close()
 	isActive = false;
 }
 
-void Scene::populateScene()
+void Scene::spawnEntities()
 {
 	// Order matters (moving objects below will result drawing board over all other objects) : rendering objects as a
 	// list
 	// TODO change update and render function to render in order
 	board = spawnObject(ObjectID::BOARD);
-	ball = spawnObject(ObjectID::BALL);
 	computer = spawnObject(ObjectID::COMPUTER);
 	player = spawnObject(ObjectID::PLAYER);
+	ball = spawnObject(ObjectID::BALL);
 	scoreBar = spawnObject(ObjectID::SCORE_BAR);
 }
 
-void Scene::setupInterfaces()
+void Scene::bindDependencies()
 {
-	setupComputerToBallRef();
-	setupBallListeners();
-	setupBallListeners();
+	bindBallToComputer();
+	registerBallObservers();
+	registerBallObservers();
+	resolvePaddleReferences();
 }
 
-void Scene::setupComputerToBallRef()
+void Scene::bindBallToComputer()
 {
 	// Create reference for computer to follow the ball
 	if (auto computerLock = computer.lock())
@@ -84,7 +85,7 @@ void Scene::setupComputerToBallRef()
 	}
 }
 
-void Scene::setupBallListeners()
+void Scene::registerBallObservers()
 {
 	// 1. Validate Ball
 	auto ballLock = ball.lock();
@@ -122,6 +123,62 @@ void Scene::setupBallListeners()
 	ballPub->addListener(scoreSub);
 
 	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Successfully linked BallPublisher to ScoreBar (BallSubscriber).");
+}
+
+void Scene::resolvePaddleReferences()
+{
+	// 1.Validate ball
+
+	auto playerLock = player.lock();
+	if (!playerLock)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Player reference is expired.", __FUNCTION__);
+		return;
+	}
+
+	auto playerObj = std::dynamic_pointer_cast<Player>(playerLock);
+	if (!playerObj)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Failed to cast Object player to Player pointer.", __FUNCTION__);
+		return;
+	}
+
+	// 2.Validate computer
+	auto computerLock = computer.lock();
+	if (!computerLock)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Computer reference is expired.", __FUNCTION__);
+		return;
+	}
+
+	auto computerObj = std::dynamic_pointer_cast<Computer>(computerLock);
+	if (!computerObj)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Failed to cast Object computer to Computer pointer.",
+					__FUNCTION__);
+		return;
+	}
+
+	// 3. Validate ball
+	auto ballLock = ball.lock();
+	if (!ballLock)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Ball reference is expired.", __FUNCTION__);
+		return;
+	}
+
+	auto ballObj = std::dynamic_pointer_cast<Ball>(ballLock);
+	if (!ballObj)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Failed to cast Object ball to Ball pointer.", __FUNCTION__);
+		return;
+	}
+
+	// 4. Set dependencies
+	ballObj->setComputerBoxCollider(computerObj->getBoxCollider());
+	ballObj->setPlayerBoxCollider(playerObj->getBoxCollider());
+
+	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Successfully linked Paddles to Ball.");
 }
 
 std::shared_ptr<Object> Scene::spawnObject(ObjectID object)

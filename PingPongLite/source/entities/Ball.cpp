@@ -3,8 +3,7 @@
 Ball::Ball()
 {
 	setupComponents();
-	resetPos();
-	setRandomDirection();
+	reset();
 	initVariables();
 }
 
@@ -26,6 +25,8 @@ void Ball::notify(BallEvent event)
 
 void Ball::initVariables()
 {
+	currentSpeed = baseSpeed;
+
 	int halfHeight = height / 2;
 	int halfWidth = width / 2;
 	leftBoundary = 40 + halfHeight;
@@ -42,8 +43,8 @@ void Ball::setupComponents()
 void Ball::drawBall()
 {
 	SDL_FRect destination = SDL_FRect();
-	destination.x = position.first;
-	destination.y = position.second;
+	destination.x = position.x;
+	destination.y = position.y;
 	destination.h = height;
 	destination.w = width;
 
@@ -57,7 +58,10 @@ Ball::~Ball()
 void Ball::update()
 {
 	applyMovement();
-	checkBoundaries();
+	bounceTopBottom();
+	bounceLeftRight();
+	resolvePaddleCollision(playerBoxCollider, false);
+	resolvePaddleCollision(computerBoxCollider, true);
 }
 
 void Ball::render()
@@ -65,15 +69,27 @@ void Ball::render()
 	drawBall();
 }
 
-void Ball::resetPos()
+void Ball::setPlayerBoxCollider(std::weak_ptr<BoxColliderComponent> comp)
 {
-	position = {SDLHandler::get().WINDOW_WIDTH / 2, SDLHandler::get().WINDOW_HEIGHT / 2};
+	playerBoxCollider = std::move(comp);
+}
+
+void Ball::setComputerBoxCollider(std::weak_ptr<BoxColliderComponent> comp)
+{
+	computerBoxCollider = std::move(comp);
+}
+
+void Ball::reset()
+{
+	position = {(float)SDLHandler::get().WINDOW_WIDTH / 2, (float)SDLHandler::get().WINDOW_HEIGHT / 2};
+	setRandomDirection();
+	currentSpeed = baseSpeed;
 }
 
 void Ball::setRandomDirection()
 {
-	float& x = direction.first;
-	float& y = direction.second;
+	float& x = direction.x;
+	float& y = direction.y;
 	x = (std::rand() % 3) / 1.f - 1.f;
 	y = (std::rand() % 3) / 1.f - 1.f;
 
@@ -106,43 +122,103 @@ void Ball::applyMovement()
 {
 	float deltaTime = SDLHandler::get().getTick();
 
-	position.first += deltaTime * speed * direction.first;
-	position.second += deltaTime * speed * direction.second;
-}
-
-void Ball::checkBoundaries()
-{
-	bounceTopBottom();
-	bounceLeftRight();
+	position.x += deltaTime * currentSpeed * direction.x;
+	position.y += deltaTime * currentSpeed * direction.y;
 }
 
 void Ball::bounceTopBottom()
 {
-	if (position.second <= leftBoundary)
+	if (position.y <= leftBoundary)
 	{
-		position.second = leftBoundary;
-		direction.second *= -1.0f;
+		position.y = leftBoundary;
+		direction.y *= -1.0f;
+		notify(BallEvent::WALL_HIT);
 	}
-	else if (position.second >= rightBoundary)
+	else if (position.y >= rightBoundary)
 	{
-		position.second = rightBoundary;
-		direction.second *= -1.0f;
+		position.y = rightBoundary;
+		direction.y *= -1.0f;
+		notify(BallEvent::WALL_HIT);
 	}
 }
 
 void Ball::bounceLeftRight()
 {
 	// TODO add notify Logic
-	if (position.first <= topBoundary)
+	if (position.x <= topBoundary)
 	{
 		notify(BallEvent::GOAL_LEFT);
-		resetPos();
-		setRandomDirection();
+		reset();
 	}
-	else if (position.first >= bottomBoundary)
+	else if (position.x >= bottomBoundary)
 	{
 		notify(BallEvent::GOAL_RIGHT);
-		resetPos();
-		setRandomDirection();
+		reset();
 	}
+}
+
+void Ball::resolvePaddleCollision(std::weak_ptr<BoxColliderComponent> collider, bool forComputer)
+{
+	auto colliderLock = collider.lock();
+
+	if (!colliderLock)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Player collider is expired or null.", __FUNCTION__);
+	}
+
+	if (colliderLock)
+	{
+		if (checkCollision(colliderLock->getRect()))
+		{
+			// swap only if ball moving to the left
+			if (forComputer)
+			{
+				if (direction.x < 0.f)
+				{
+					direction.x *= -1.f;
+				}
+			}
+			else
+			{
+				if (direction.x > 0.f)
+				{
+					direction.x *= -1.f;
+				}
+			}
+
+			notify(BallEvent::PADDLE_HIT);
+		}
+	}
+}
+
+bool Ball::checkCollision(const SDL_FRect& rect)
+{
+	SDL_FPoint start = position;
+
+	SDL_FPoint rectCenter = {rect.x + rect.w / 2, rect.y + rect.h / 2};
+
+	// calculate vector 2d to the center of the square
+	SDL_FPoint dirVector = {rectCenter.x - start.x, rectCenter.y - start.y};
+
+	// normalize vector
+	float length = sqrt(dirVector.x * dirVector.x + dirVector.y * dirVector.y);
+	dirVector.x /= length;
+	dirVector.y /= length;
+
+	// get end pos of line
+	float radius = height / 2;
+
+	dirVector.x *= radius;
+	dirVector.y *= radius;
+
+	SDL_FPoint end = {start.x + dirVector.x, start.y + dirVector.y};
+
+	// Draw a line to rectangle and get intersaction
+	// return checkLineRectIntersection()
+	return SDL_GetRectAndLineIntersectionFloat(&rect, &start.x, &start.y, &end.x, &end.y);
+}
+
+void Ball::accelerateOnImpact()
+{
+	currentSpeed *= speedMultiplier;
 }
