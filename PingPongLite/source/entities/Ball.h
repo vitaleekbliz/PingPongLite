@@ -1,6 +1,6 @@
 #pragma once
-#include "BallPublisher.h"
 #include "Object.h"
+#include "interfaces/ballObserver/BallPublisher.h"
 #include <random>
 
 class Ball : public Object, public BallPublisher

@@ -1,6 +1,6 @@
 #pragma once
-#include "BallSubscriber.h"
 #include "Object.h"
+#include "interfaces/ballObserver/BallSubscriber.h"
 
 class ScoreBar : public Object, public BallSubscriber
 {

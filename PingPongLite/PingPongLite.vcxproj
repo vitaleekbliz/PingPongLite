@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -137,37 +137,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="BallPublisher.cpp" />
-    <ClCompile Include="BallSubscriber.cpp" />
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Computer.cpp" />
-    <ClCompile Include="Creator.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="ScoreBar.cpp" />
-    <ClCompile Include="SDLHandler.cpp" />
-    <ClCompile Include="TextureComponent.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="BallPublisher.h" />
-    <ClInclude Include="BallSubscriber.h" />
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Computer.h" />
-    <ClInclude Include="Creator.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="ScoreBar.h" />
-    <ClInclude Include="SDLHandler.h" />
-    <ClInclude Include="TextureComponent.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include=".clang-format" />
     <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\components\TextureComponent.cpp" />
+    <ClCompile Include="source\core\SDLHandler.cpp" />
+    <ClCompile Include="source\entities\Ball.cpp" />
+    <ClCompile Include="source\entities\Board.cpp" />
+    <ClCompile Include="source\entities\Computer.cpp" />
+    <ClCompile Include="source\entities\Object.cpp" />
+    <ClCompile Include="source\entities\Player.cpp" />
+    <ClCompile Include="source\entities\ScoreBar.cpp" />
+    <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp" />
+    <ClCompile Include="source\interfaces\ballObserver\BallSubscriber.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\scenes\Scene.cpp" />
+    <ClCompile Include="source\utils\objectFactory\Creator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\components\TextureComponent.h" />
+    <ClInclude Include="source\core\SDLHandler.h" />
+    <ClInclude Include="source\entities\Ball.h" />
+    <ClInclude Include="source\entities\Board.h" />
+    <ClInclude Include="source\entities\Computer.h" />
+    <ClInclude Include="source\entities\Object.h" />
+    <ClInclude Include="source\entities\Player.h" />
+    <ClInclude Include="source\entities\ScoreBar.h" />
+    <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h" />
+    <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h" />
+    <ClInclude Include="source\scenes\Scene.h" />
+    <ClInclude Include="source\utils\objectFactory\Creator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

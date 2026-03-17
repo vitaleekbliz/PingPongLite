@@ -1,6 +1,6 @@
 #pragma once
 #include "SDL3/SDL.h"
-#include "TextureComponent.h"
+#include "components/TextureComponent.h"
 #include <utility>
 
 enum class ObjectID : char

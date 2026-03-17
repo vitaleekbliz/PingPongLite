@@ -1,7 +1,7 @@
 #pragma once
 #include "SDL3/SDL.h"
 #include "SDL3_image/SDL_image.h"
-#include "SDLHandler.h"
+#include "core/SDLHandler.h"
 #include <string>
 
 class TextureComponent

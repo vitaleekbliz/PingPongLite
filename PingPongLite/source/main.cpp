@@ -1,6 +1,5 @@
-#include "Creator.h"
-#include "SDLHandler.h"
-#include "Scene.h"
+#include "core/SDLHandler.h"
+#include "scenes/Scene.h"
 
 int main()
 {

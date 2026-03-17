@@ -13,85 +13,57 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Creator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Board.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreBar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Computer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BallPublisher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BallSubscriber.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="SDLHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Creator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreBar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Computer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BallPublisher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BallSubscriber.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Filter Include="Source Files\source">
+      <UniqueIdentifier>{b20d15d2-3d26-4bda-9946-47bdc7e8218f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities">
+      <UniqueIdentifier>{4418114e-5991-4d61-8e67-ec552a95e278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities">
+      <UniqueIdentifier>{b667756c-b119-4136-aa14-e3b5a51444a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\components">
+      <UniqueIdentifier>{5866207b-6c19-417b-a3cf-32a56b240eb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{6d8009cd-e3aa-4657-ae7c-218d29161eff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\core">
+      <UniqueIdentifier>{cd1e70e1-d377-41e5-94e8-9f7caeb6e74f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\interfaces">
+      <UniqueIdentifier>{8f4176d4-07c7-4692-9252-fc31d8075272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\interfaces\ballObserver">
+      <UniqueIdentifier>{ab4b82e0-dab1-4341-a767-43ff37f19ba3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\interfaces">
+      <UniqueIdentifier>{c9e4cdf5-0462-47e2-9c5e-1593fd419f97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\interfaces\ballObserver">
+      <UniqueIdentifier>{a2f1b5af-3d0b-4763-95a3-e9fd32713ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scenes">
+      <UniqueIdentifier>{4735be72-5bfd-4d27-a481-d5e2878eec1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes">
+      <UniqueIdentifier>{b2f36d9f-4815-425a-b5db-4f33a4f6e0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\utils">
+      <UniqueIdentifier>{10fa18a0-57c8-42d7-b0b1-f78994761db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\utils\objectFactory">
+      <UniqueIdentifier>{1fd0c412-72de-45ac-9b5a-ae2f09286919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils">
+      <UniqueIdentifier>{f953c713-63a7-48f2-b168-38b7192052ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\objectFactory">
+      <UniqueIdentifier>{503cd834-30ce-4d4d-8473-eb408bc6575d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{d2d01fe7-9117-4d8d-8667-e9d51df4a958}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -100,5 +72,84 @@
     <None Include=".gitignore">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Ball.cpp">
+      <Filter>Source Files\source\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Board.cpp">
+      <Filter>Source Files\source\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Computer.cpp">
+      <Filter>Source Files\source\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Object.cpp">
+      <Filter>Source Files\source\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Player.cpp">
+      <Filter>Source Files\source\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\ScoreBar.cpp">
+      <Filter>Source Files\source\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\components\TextureComponent.cpp">
+      <Filter>Source Files\source\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\SDLHandler.cpp">
+      <Filter>Source Files\source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp">
+      <Filter>Source Files\source\interfaces\ballObserver</Filter>
+    </ClCompile>
+    <ClCompile Include="source\interfaces\ballObserver\BallSubscriber.cpp">
+      <Filter>Source Files\source\interfaces\ballObserver</Filter>
+    </ClCompile>
+    <ClCompile Include="source\utils\objectFactory\Creator.cpp">
+      <Filter>Source Files\source\utils\objectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\Scene.cpp">
+      <Filter>Source Files\source\scenes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\entities\Ball.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Board.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Computer.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Object.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Player.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\ScoreBar.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\components\TextureComponent.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\SDLHandler.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h">
+      <Filter>Header Files\interfaces\ballObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h">
+      <Filter>Header Files\interfaces\ballObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\utils\objectFactory\Creator.h">
+      <Filter>Header Files\utils\objectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\Scene.h">
+      <Filter>Header Files\scenes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -35,7 +35,8 @@ void Scene::render()
 
 void Scene::init()
 {
-	// Order matters: rendering objects as a list
+	// Order matters (moving objects below will result drawing board over all other objects) : rendering objects as a
+	// list
 	// TODO change update and render function to render in order
 
 	// Populate Scene

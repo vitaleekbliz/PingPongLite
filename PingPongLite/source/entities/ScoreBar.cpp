@@ -23,16 +23,14 @@ void ScoreBar::onBallEvent(BallEvent event)
 	switch (event)
 	{
 	case BallEvent::GOAL_LEFT:
-		changeScore(false);
+		changeScore(true);
 		break;
 	case BallEvent::GOAL_RIGHT:
-		changeScore(true);
+		changeScore(false);
 		break;
 	default:
 		break;
 	}
-	// TODO DEBUG remove
-	SDL_Log("Score update -> P1: %d | P2: %d", computerScore, playerScore);
 }
 
 void ScoreBar::drawTopBar()

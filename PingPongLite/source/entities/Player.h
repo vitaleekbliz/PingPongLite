@@ -1,20 +1,17 @@
 #pragma once
 #include "Object.h"
-#include "SDLHandler.h"
-#include <memory>
+#include "core/SDLHandler.h"
 
-class Computer : public Object
+class Player : public Object
 {
   public:
-	Computer();
-
+	Player();
 	void update() override;
 	void render() override;
-	void setBallReference(std::weak_ptr<Object> ball);
 
   private:
 	void keepInBounds();
-	void followBall();
+	void followMouse();
 
 	void onTextureLoaded() override;
 
@@ -22,6 +19,4 @@ class Computer : public Object
 	int speed;
 	int maxHeight;
 	int minHeight;
-
-	std::weak_ptr<Object> ballReference;
 };
