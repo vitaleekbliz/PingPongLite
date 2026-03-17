@@ -11,7 +11,7 @@ class ScoreBar : public Object, public BallSubscriber
 	void onBallEvent(BallEvent event) override;
 
   private:
-	void setupTexture();
+	void setupComponents();
 
 	void drawTopBar();
 

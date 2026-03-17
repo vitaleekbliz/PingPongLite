@@ -2,7 +2,7 @@
 
 ScoreBar::ScoreBar()
 {
-	setupTexture();
+	setupComponents();
 }
 
 void ScoreBar::update()
@@ -31,10 +31,9 @@ void ScoreBar::onBallEvent(BallEvent event)
 	}
 }
 
-void ScoreBar::setupTexture()
+void ScoreBar::setupComponents()
 {
-	textureComponent->setMetaData(textureName, width, height);
-	textureComponent->loadMedia();
+	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
 }
 
 void ScoreBar::drawTopBar()

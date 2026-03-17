@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-	setupTexture();
+	setupComponents();
 	initVariables();
 }
 
@@ -24,10 +24,9 @@ void Player::initVariables()
 	position = {SDLHandler::get().WINDOW_WIDTH - screenEdgeOffset, 400};
 }
 
-void Player::setupTexture()
+void Player::setupComponents()
 {
-	textureComponent->setMetaData(textureName, width, height);
-	textureComponent->loadMedia();
+	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
 }
 
 void Player::keepInBounds()

@@ -2,7 +2,7 @@
 
 Ball::Ball()
 {
-	setupTexture();
+	setupComponents();
 	resetPos();
 	setRandomDirection();
 	initVariables();
@@ -34,11 +34,9 @@ void Ball::initVariables()
 	bottomBoundary = SDLHandler::get().WINDOW_WIDTH - halfWidth;
 }
 
-void Ball::setupTexture()
+void Ball::setupComponents()
 {
-
-	textureComponent->setMetaData(textureName, width, height);
-	textureComponent->loadMedia();
+	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
 }
 
 void Ball::drawBall()

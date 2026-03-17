@@ -16,7 +16,7 @@ class Ball : public Object, public BallPublisher, public ColliderComponent
 	void notify(BallEvent event) override;
 
 	void initVariables();
-	void setupTexture();
+	void setupComponents();
 
 	void drawBall();
 

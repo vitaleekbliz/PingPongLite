@@ -2,8 +2,7 @@
 
 Board::Board()
 {
-	textureComponent->setMetaData(textureName, width, height);
-	textureComponent->loadMedia();
+	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
 }
 
 Board::~Board()

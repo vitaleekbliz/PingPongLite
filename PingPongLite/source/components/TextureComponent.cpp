@@ -1,10 +1,17 @@
 #include "TextureComponent.h"
 
-void TextureComponent::setMetaData(const std::string& fileName, int w, int h)
+TextureComponent::TextureComponent(const std::string& fileName, int w, int h)
 {
 	this->fileName = fileName;
 	width = w;
 	height = h;
+
+	loadMedia();
+}
+
+TextureComponent::~TextureComponent()
+{
+	SDL_DestroyTexture(texture);
 }
 
 bool TextureComponent::loadMedia()

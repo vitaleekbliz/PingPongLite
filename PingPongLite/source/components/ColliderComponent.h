@@ -4,7 +4,7 @@
 class ColliderComponent
 {
   public:
-	// float width, height;
+	float width, height;
 
 	SDL_FRect getRect(float x, float y) const;
 

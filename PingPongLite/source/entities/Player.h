@@ -12,7 +12,7 @@ class Player : public Object, public ColliderComponent
 
   private:
 	void initVariables();
-	void setupTexture();
+	void setupComponents();
 
 	void keepInBounds();
 	void followMouse();

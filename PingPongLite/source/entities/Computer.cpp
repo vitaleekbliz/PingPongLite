@@ -2,7 +2,7 @@
 
 Computer::Computer()
 {
-	setupTexture();
+	setupComponents();
 	initVariables();
 }
 
@@ -29,10 +29,9 @@ void Computer::initVariables()
 	position = {screenEdgeOffset, 400};
 }
 
-void Computer::setupTexture()
+void Computer::setupComponents()
 {
-	textureComponent->setMetaData(textureName, width, height);
-	textureComponent->loadMedia();
+	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
 }
 
 void Computer::keepInBounds()
