@@ -29,11 +29,7 @@ void Ball::update()
 	applyMovement();
 	bounceTopBottom();
 	bounceLeftRight();
-	resolvePaddleCollision(playerObject, false);
-	resolvePaddleCollision(computerObject, true);
-
-	// TODO remove crutch
-	colisionElapsed += SDLHandler::get().getTick();
+	resolvePaddleCollision();
 }
 
 void Ball::render()
@@ -57,6 +53,7 @@ void Ball::reset()
 	position = {640, (float)SDLHandler::get().WINDOW_HEIGHT / 2};
 	setRandomDirection();
 	currentSpeed = baseSpeed;
+	isCollidingPaddle = false;
 }
 
 void Ball::setRandomDirection()
@@ -125,26 +122,39 @@ void Ball::bounceLeftRight()
 	}
 }
 
-void Ball::resolvePaddleCollision(std::weak_ptr<Object> object, bool forComputer)
+void Ball::resolvePaddleCollision()
 {
-	if (auto objectLock = object.lock())
+	// Player collision
+	bool playerCollision = false;
+	if (auto playerLock = playerObject.lock())
 	{
-		if (checkCollision(objectLock->getCollider()))
-		{
-			direction.x = forComputer ? std::abs(direction.x) : -std::abs(direction.x);
-
-			accelerateOnImpact();
-			notify(BallEvent::PADDLE_HIT);
-		}
+		playerCollision = checkCollision(playerLock->getCollider());
 	}
-	else
+
+	// Computer collision
+	bool computerCollision = false;
+	if (auto computerLock = playerObject.lock())
 	{
-		static bool warnedOnce = false;
-		if (!warnedOnce)
-		{
-			warnedOnce = true;
-			SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Player collider is expired or null.", __FUNCTION__);
-		}
+		computerCollision = checkCollision(computerLock->getCollider());
+	}
+
+	// if not colliding with both -> change state
+	if (!playerCollision && !computerCollision)
+	{
+		isCollidingPaddle = false;
+	}
+
+	// if touching any paddle
+	else if ((playerCollision || computerCollision) && isCollidingPaddle)
+	{
+		// Points to direction it should be moving
+		direction.x = computerCollision ? std::abs(direction.x) : -std::abs(direction.x);
+
+		accelerateOnImpact();
+		notify(BallEvent::PADDLE_HIT);
+
+		// ready to collider again
+		isCollidingPaddle = true;
 	}
 }
 
@@ -177,12 +187,6 @@ bool Ball::checkCollision(const SDL_FRect rect)
 
 void Ball::accelerateOnImpact()
 {
-	// TODO remove crutch cooldown for accelaration
-	// start
-	if (colisionElapsed < 0.2)
-		return;
-	colisionElapsed = 0.f;
-	// end
 	currentSpeed *= speedMultiplier;
 	if (currentSpeed > maxSpeed)
 		currentSpeed = maxSpeed;

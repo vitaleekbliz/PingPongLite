@@ -29,17 +29,13 @@ class Ball : public Object, public BallPublisher
 	void bounceTopBottom();
 	void bounceLeftRight();
 
-	void resolvePaddleCollision(std::weak_ptr<Object> object, bool forComputer);
+	void resolvePaddleCollision();
 	bool checkCollision(const SDL_FRect rect);
 #pragma endregion
 
 	void accelerateOnImpact();
 
-	enum class BallState : char
-	{
-		MOVING,
-		COLLIDING
-	} state;
+	bool isCollidingPaddle = false;
 
 	std::weak_ptr<Object> playerObject;
 	std::weak_ptr<Object> computerObject;
@@ -51,10 +47,6 @@ class Ball : public Object, public BallPublisher
 	float currentSpeed = baseSpeed;
 	const float speedMultiplier = 1.2;
 	const float maxSpeed = 1600.f;
-
-	// TODO remove crutch
-	//  ball accelerating multiple times on colision -> add cooldown
-	float colisionElapsed = 0.f;
 
 	float leftBoundary = 15;
 	float rightBoundary = 1280 - 15;
