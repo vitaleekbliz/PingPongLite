@@ -69,7 +69,7 @@
     <None Include=".clang-format">
       <Filter>Source Files</Filter>
     </None>
-    <None Include=".gitignore">
+    <None Include="..\.gitignore">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
