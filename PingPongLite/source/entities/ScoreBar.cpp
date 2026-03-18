@@ -1,10 +1,5 @@
 #include "ScoreBar.h"
 
-ScoreBar::ScoreBar()
-{
-	setupComponents();
-}
-
 void ScoreBar::update()
 {
 	float deltaTime = SDLHandler::get().getTick();
@@ -13,7 +8,9 @@ void ScoreBar::update()
 
 void ScoreBar::render()
 {
-	drawTopBar();
+	requestDraw(TEXTURE::SCORE_BAR, UI.leftBar, SDL_FLIP_NONE);
+	requestDraw(TEXTURE::SCORE_BAR, UI.rightBar, SDL_FLIP_HORIZONTAL);
+
 	drawTime();
 
 	drawScore(300, 20, computerScore);
@@ -33,28 +30,6 @@ void ScoreBar::onBallEvent(BallEvent event)
 	default:
 		break;
 	}
-}
-
-void ScoreBar::setupComponents()
-{
-	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
-}
-
-void ScoreBar::drawTopBar()
-{
-
-	SDL_FRect destination = SDL_FRect();
-	destination.x = 0;
-	destination.y = 0;
-	destination.h = height;
-	destination.w = width;
-	textureComponent->draw(destination, SDL_FLIP_NONE, false);
-
-	destination.x = 680;
-	destination.y = 0;
-	destination.h = height;
-	destination.w = width;
-	textureComponent->draw(destination, SDL_FLIP_HORIZONTAL, false);
 }
 
 void ScoreBar::drawTime()

@@ -137,8 +137,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\components\BoxColliderComponent.cpp" />
-    <ClCompile Include="source\components\TextureComponent.cpp" />
     <ClCompile Include="source\core\AudioHandler.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
     <ClCompile Include="source\core\TextureHandler.cpp" />
@@ -156,8 +154,6 @@
     <ClCompile Include="source\utils\objectFactory\objectCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\components\BoxColliderComponent.h" />
-    <ClInclude Include="source\components\TextureComponent.h" />
     <ClInclude Include="source\core\AudioHandler.h" />
     <ClInclude Include="source\core\SDLHandler.h" />
     <ClInclude Include="source\core\TextureHandler.h" />

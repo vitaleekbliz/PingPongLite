@@ -1,8 +1,11 @@
 #include "Object.h"
 
-Object::Object()
+void Object::requestDraw(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isRectCentered)
 {
-	position = {0, 0};
+	if (auto sharedSub = subscriber.lock())
+	{
+		sharedSub->onDrawRequest(texture, destination, flip, isRectCentered);
+	}
 }
 
 void Object::setPosition(SDL_FPoint pos)
@@ -13,6 +16,16 @@ void Object::setPosition(SDL_FPoint pos)
 SDL_FPoint Object::getPosition() const
 {
 	return position;
+}
+
+void Object::setSize(SDL_FPoint size)
+{
+	this->size = size;
+}
+
+SDL_FPoint Object::getSize() const
+{
+	return size;
 }
 
 SDL_FRect Object::getCollider() const

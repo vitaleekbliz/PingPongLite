@@ -22,9 +22,6 @@
     <Filter Include="Header Files\entities">
       <UniqueIdentifier>{b667756c-b119-4136-aa14-e3b5a51444a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\source\components">
-      <UniqueIdentifier>{5866207b-6c19-417b-a3cf-32a56b240eb1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\core">
       <UniqueIdentifier>{6d8009cd-e3aa-4657-ae7c-218d29161eff}</UniqueIdentifier>
     </Filter>
@@ -61,11 +58,11 @@
     <Filter Include="Header Files\utils\objectFactory">
       <UniqueIdentifier>{503cd834-30ce-4d4d-8473-eb408bc6575d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\components">
-      <UniqueIdentifier>{d2d01fe7-9117-4d8d-8667-e9d51df4a958}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\interfaces\textureObserver">
       <UniqueIdentifier>{891ef262-06d8-4ce6-92c7-5ef5234190dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\interfaces\textureObserver">
+      <UniqueIdentifier>{3ac7f5aa-050a-42a5-b3c7-8b5b0dbf526c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +95,6 @@
     <ClCompile Include="source\entities\ScoreBar.cpp">
       <Filter>Source Files\source\entities</Filter>
     </ClCompile>
-    <ClCompile Include="source\components\TextureComponent.cpp">
-      <Filter>Source Files\source\components</Filter>
-    </ClCompile>
     <ClCompile Include="source\core\SDLHandler.cpp">
       <Filter>Source Files\source\core</Filter>
     </ClCompile>
@@ -113,9 +107,6 @@
     <ClCompile Include="source\scenes\MainScene.cpp">
       <Filter>Source Files\source\scenes</Filter>
     </ClCompile>
-    <ClCompile Include="source\components\BoxColliderComponent.cpp">
-      <Filter>Source Files\source\components</Filter>
-    </ClCompile>
     <ClCompile Include="source\core\AudioHandler.cpp">
       <Filter>Source Files\source\core</Filter>
     </ClCompile>
@@ -124,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="source\core\TextureHandler.cpp">
       <Filter>Source Files\source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp">
+      <Filter>Source Files\source\interfaces\textureObserver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,9 +139,6 @@
     <ClInclude Include="source\entities\ScoreBar.h">
       <Filter>Header Files\entities</Filter>
     </ClInclude>
-    <ClInclude Include="source\components\TextureComponent.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="source\core\SDLHandler.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
@@ -163,9 +154,6 @@
     <ClInclude Include="source\scenes\MainScene.h">
       <Filter>Header Files\scenes</Filter>
     </ClInclude>
-    <ClInclude Include="source\components\BoxColliderComponent.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="source\core\AudioHandler.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
@@ -174,6 +162,12 @@
     </ClInclude>
     <ClInclude Include="source\core\TextureHandler.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\interfaces\textureObserver\TextureSubscriber.h">
+      <Filter>Header Files\interfaces\textureObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\interfaces\textureObserver\TexturePublisher.h">
+      <Filter>Header Files\interfaces\textureObserver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
