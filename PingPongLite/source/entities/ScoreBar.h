@@ -1,18 +1,21 @@
 #pragma once
 #include "Object.h"
-#include "core/SDLHandler.h";
 #include "interfaces/ballObserver/BallSubscriber.h"
 
 class ScoreBar : public Object, public BallSubscriber
 {
   public:
+	ScoreBar();
 	void update() override;
 	void render() override;
 	void onBallEvent(BallEvent event) override;
 
   private:
-	void drawScore(int x, int y, int score);
+	void setupComponents();
+
+	void drawTopBar();
 	void drawTime();
+	void drawScore(int x, int y, int score);
 
 	void changeScore(bool win);
 
@@ -20,10 +23,7 @@ class ScoreBar : public Object, public BallSubscriber
 	int computerScore = 0;
 	int playerScore = 0;
 
-	struct UI
-	{
-	  public:
-		SDL_FRect leftBar = {0, 0, 600, 40};
-		SDL_FRect rightBar = {680, 2, 600, 40};
-	} UI;
+	const std::string textureName = "ScoreBar.png";
+	const int width = 600;
+	const int height = 40;
 };

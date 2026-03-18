@@ -18,11 +18,8 @@ class MainScene : public Scene
 	virtual void close() override;
 
   private:
-#pragma region MainScene::init() refactoring
-	void populateScene(ObjectID id);
-	void setupBallObserver();
-	void setupTextureObserver();
-#pragma endregion
+	void bindBallToComputer();
+	void resolvePaddleReferences();
 
 	std::shared_ptr<ObjectCreator> factory;
 	std::shared_ptr<AudioHandler> audioHandler;

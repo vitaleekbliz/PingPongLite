@@ -25,17 +25,9 @@ void TextureHandler::close()
 		SDL_DestroyTexture(scoreBar);
 }
 
-void TextureHandler::onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isRectCentered) const
+void TextureHandler::onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip) const
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
-
-	// center picture
-	if (isRectCentered)
-	{
-		destination.x -= destination.w / 2;
-		destination.y -= destination.h / 2;
-	}
-
 	switch (texture)
 	{
 	case TEXTURE::BOARD:
@@ -48,11 +40,11 @@ void TextureHandler::onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_F
 		SDL_RenderTextureRotated(renderer, computer, NULL, &destination, 0, NULL, flip);
 		break;
 	case TEXTURE::PLAYER:
+		break;
 		SDL_RenderTextureRotated(renderer, player, NULL, &destination, 0, NULL, flip);
-		break;
 	case TEXTURE::SCORE_BAR:
-		SDL_RenderTextureRotated(renderer, scoreBar, NULL, &destination, 0, NULL, flip);
 		break;
+		SDL_RenderTextureRotated(renderer, scoreBar, NULL, &destination, 0, NULL, flip);
 	default:
 		break;
 	}

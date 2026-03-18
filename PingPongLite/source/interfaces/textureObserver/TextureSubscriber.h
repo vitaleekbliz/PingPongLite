@@ -1,5 +1,4 @@
 #pragma once
-#include <SDL3/SDL.h>
 
 enum class TEXTURE : char
 {
@@ -14,6 +13,5 @@ class TextureSubscriber
 {
   public:
 	virtual ~TextureSubscriber() = default;
-	virtual void onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-							   bool isRectCentered) const = 0;
+	virtual void onDrawRequest() const = 0;
 };

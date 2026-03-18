@@ -5,6 +5,7 @@ Ball::Ball()
 	size.x = 30;
 	size.y = 30;
 
+	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
 	reset();
 }
 
@@ -38,8 +39,13 @@ void Ball::update()
 
 void Ball::render()
 {
-	SDL_FRect destination = getCollider();
-	requestDraw(TEXTURE::BALL, destination, SDL_FLIP_NONE);
+	SDL_FRect destination = SDL_FRect();
+	destination.x = position.x;
+	destination.y = position.y;
+	destination.h = size.x;
+	destination.w = size.y;
+
+	textureComponent->draw(destination, SDL_FLIP_NONE);
 }
 
 void Ball::setPlayerReference(std::weak_ptr<Object> player)
@@ -54,7 +60,7 @@ void Ball::setComputerReference(std::weak_ptr<Object> computer)
 
 void Ball::reset()
 {
-	position = {640, (float)SDLHandler::get().WINDOW_HEIGHT / 2};
+	position = {(float)SDLHandler::get().WINDOW_WIDTH / 2, (float)SDLHandler::get().WINDOW_HEIGHT / 2};
 	setRandomDirection();
 	currentSpeed = baseSpeed;
 }
@@ -139,12 +145,7 @@ void Ball::resolvePaddleCollision(std::weak_ptr<Object> object, bool forComputer
 	}
 	else
 	{
-		static bool warnedOnce = false;
-		if (!warnedOnce)
-		{
-			warnedOnce = true;
-			SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Player collider is expired or null.", __FUNCTION__);
-		}
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Player collider is expired or null.", __FUNCTION__);
 	}
 }
 
@@ -163,7 +164,7 @@ bool Ball::checkCollision(const SDL_FRect rect)
 	dirVector.y /= length;
 
 	// get end pos of line
-	float radius = size.x / 2;
+	float radius = height / 2;
 
 	dirVector.x *= radius;
 	dirVector.y *= radius;

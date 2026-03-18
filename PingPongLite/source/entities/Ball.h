@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "core/Texturehandler.h"
 #include "interfaces/ballObserver/BallPublisher.h"
+#include <SDL3/SDL.h>
 #include <algorithm>
 #include <random>
 
@@ -9,6 +10,7 @@ class Ball : public Object, public BallPublisher
 {
   public:
 	Ball();
+	~Ball() = default;
 	void update() override;
 	void render() override;
 
@@ -16,7 +18,7 @@ class Ball : public Object, public BallPublisher
 	void setComputerReference(std::weak_ptr<Object> computer);
 
   private:
-	virtual void notify(BallEvent event) override;
+	void notify(BallEvent event) override;
 
 	// resetBall
 	void reset();
@@ -35,29 +37,26 @@ class Ball : public Object, public BallPublisher
 
 	void accelerateOnImpact();
 
-	enum class BallState : char
-	{
-		MOVING,
-		COLLIDING
-	} state;
-
 	std::weak_ptr<Object> playerObject;
 	std::weak_ptr<Object> computerObject;
 
 	SDL_FPoint direction = {0.f, 0.f};
-	SDL_FPoint basePosition = {640, 360};
+
+	const std::string textureName = "Ball.png";
+	const int width = 30;
+	const int height = 30;
 
 	const float baseSpeed = 500.f;
 	float currentSpeed = baseSpeed;
-	const float speedMultiplier = 1.2;
+	float speedMultiplier = 1.2;
 	const float maxSpeed = 1600.f;
 
 	// TODO remove crutch
 	//  ball accelerating multiple times on colision -> add cooldown
 	float colisionElapsed = 0.f;
 
-	float leftBoundary = 15;
-	float rightBoundary = 1280 - 15;
-	float topBoundary = 15 + 40;
-	float bottomBoundary = 720 - 15;
+	float leftBoundary = width / 2;
+	float rightBoundary = SDLHandler::get().WINDOW_WIDTH - width / 2;
+	float topBoundary = height / 2 + 40;
+	float bottomBoundary = SDLHandler::get().WINDOW_HEIGHT - height / 2;
 };

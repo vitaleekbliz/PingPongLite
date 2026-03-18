@@ -11,9 +11,7 @@ class TextureHandler : public TextureSubscriber
 	void init();
 	void close();
 
-	virtual void onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-							   bool isRectCentered = true) const;
-
+	virtual void onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip) const;
   private:
 	SDL_Texture* load(std::string fileName, SDL_Renderer* renderer) const;
 

@@ -4,13 +4,12 @@
 #include <memory>
 
 class TexturePublisher
-{
-  public:
+{ 
+	public:
 	void addListener(std::weak_ptr<TextureSubscriber> listener);
-	void removeListener();
+	 void removeListener();
 
-  protected:
-	virtual void requestDraw(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-							 bool isRectCentered = false) = 0;
-	std::weak_ptr<TextureSubscriber> subscriber;
+  private:
+	  virtual void requestDraw() = 0;
+	  std::weak_ptr<TextureSubscriber> subscriber;
 };
