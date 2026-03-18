@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(SolutionDir)\dep\SDL3_ttf-3.2.2\include;$(SolutionDir)\dep\SDL3_mixer-3.2.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3_ttf-3.2.2\lib\x64;$(SolutionDir)\dep\SDL3_mixer-3.2.0\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(SolutionDir)\dep\SDL3_ttf-3.2.2\include;$(SolutionDir)\dep\SDL3_mixer-3.2.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3_ttf-3.2.2\lib\x64;$(SolutionDir)\dep\SDL3_mixer-3.2.0\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,7 +117,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;SDL3_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL3.lib;SDL3_image.lib;SDL3_ttf.lib;SDL3_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,7 +133,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;SDL3_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL3.lib;SDL3_image.lib;SDL3_ttf.lib;SDL3_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -141,6 +141,7 @@
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AudioHandler.cpp" />
     <ClCompile Include="source\components\BoxColliderComponent.cpp" />
     <ClCompile Include="source\components\TextureComponent.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="source\utils\objectFactory\objectCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioHandler.h" />
     <ClInclude Include="source\components\BoxColliderComponent.h" />
     <ClInclude Include="source\components\TextureComponent.h" />
     <ClInclude Include="source\core\SDLHandler.h" />

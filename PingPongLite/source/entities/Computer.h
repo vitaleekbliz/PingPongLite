@@ -27,7 +27,7 @@ class Computer : public Object
 	int currentSpeed;
 
 	const int screenEdgeOffset = 50;
-	const int baseSpeed = 1000;
+	const int baseSpeed = 200;
 
 	int topBoundary;
 	const int bottomBoundary = 100;

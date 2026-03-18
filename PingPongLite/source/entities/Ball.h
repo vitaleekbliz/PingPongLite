@@ -49,8 +49,12 @@ class Ball : public Object, public BallPublisher
 
 	float currentSpeed;
 	const float baseSpeed = 500.f;
-	// TODO increase ball speed using observer pattern when new minute comes ->
-	float speedMultiplier = 0.1;
+	float speedMultiplier = 1.2;
+	const float maxSpeed = 1600.f;
+
+	// TODO remove crutch
+	//  ball accelerating multiple times on colision -> add cooldown
+	float colisionElapsed = 0.f;
 
 	float leftBoundary;
 	float rightBoundary;

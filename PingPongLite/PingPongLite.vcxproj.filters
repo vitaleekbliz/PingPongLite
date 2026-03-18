@@ -116,6 +116,9 @@
     <ClCompile Include="source\components\BoxColliderComponent.cpp">
       <Filter>Source Files\source\components</Filter>
     </ClCompile>
+    <ClCompile Include="AudioHandler.cpp">
+      <Filter>Source Files\source\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\entities\Ball.h">
@@ -156,6 +159,9 @@
     </ClInclude>
     <ClInclude Include="source\components\BoxColliderComponent.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioHandler.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

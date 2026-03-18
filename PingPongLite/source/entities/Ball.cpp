@@ -29,10 +29,10 @@ void Ball::initVariables()
 
 	int halfHeight = height / 2;
 	int halfWidth = width / 2;
-	leftBoundary = 40 + halfHeight;
-	rightBoundary = SDLHandler::get().WINDOW_HEIGHT - halfHeight;
-	topBoundary = halfWidth;
-	bottomBoundary = SDLHandler::get().WINDOW_WIDTH - halfWidth;
+	leftBoundary = halfWidth;
+	rightBoundary = SDLHandler::get().WINDOW_WIDTH - halfWidth;
+	topBoundary = halfHeight + 40;
+	bottomBoundary = SDLHandler::get().WINDOW_HEIGHT - halfHeight;
 }
 
 void Ball::setupComponents()
@@ -62,6 +62,9 @@ void Ball::update()
 	bounceLeftRight();
 	resolvePaddleCollision(playerBoxCollider, false);
 	resolvePaddleCollision(computerBoxCollider, true);
+
+	// TODO remove crutch
+	colisionElapsed += SDLHandler::get().getTick();
 }
 
 void Ball::render()
@@ -108,11 +111,6 @@ void Ball::setRandomDirection()
 	}
 	else
 	{
-
-		// TODO
-		//  BUG: priority LOW: length of vector is 0 -> vector is NOT normalized; possible solution: generate direction
-		//  with minimal value
-		// Crutch (Emergency fallback) : just launch the ball to the computer
 		x = -1;
 		y = 0;
 	}
@@ -128,15 +126,15 @@ void Ball::applyMovement()
 
 void Ball::bounceTopBottom()
 {
-	if (position.y <= leftBoundary)
+	if (position.y <= topBoundary)
 	{
-		position.y = leftBoundary;
+		position.y = topBoundary;
 		direction.y *= -1.0f;
 		notify(BallEvent::WALL_HIT);
 	}
-	else if (position.y >= rightBoundary)
+	else if (position.y >= bottomBoundary)
 	{
-		position.y = rightBoundary;
+		position.y = bottomBoundary;
 		direction.y *= -1.0f;
 		notify(BallEvent::WALL_HIT);
 	}
@@ -145,12 +143,12 @@ void Ball::bounceTopBottom()
 void Ball::bounceLeftRight()
 {
 	// TODO add notify Logic
-	if (position.x <= topBoundary)
+	if (position.x <= leftBoundary)
 	{
 		notify(BallEvent::GOAL_LEFT);
 		reset();
 	}
-	else if (position.x >= bottomBoundary)
+	else if (position.x >= rightBoundary)
 	{
 		notify(BallEvent::GOAL_RIGHT);
 		reset();
@@ -170,22 +168,9 @@ void Ball::resolvePaddleCollision(std::weak_ptr<BoxColliderComponent> collider, 
 	{
 		if (checkCollision(colliderLock->getRect()))
 		{
-			// swap only if ball moving to the left
-			if (forComputer)
-			{
-				if (direction.x < 0.f)
-				{
-					direction.x *= -1.f;
-				}
-			}
-			else
-			{
-				if (direction.x > 0.f)
-				{
-					direction.x *= -1.f;
-				}
-			}
+			direction.x = forComputer ? std::abs(direction.x) : -std::abs(direction.x);
 
+			accelerateOnImpact();
 			notify(BallEvent::PADDLE_HIT);
 		}
 	}
@@ -220,5 +205,13 @@ bool Ball::checkCollision(const SDL_FRect& rect)
 
 void Ball::accelerateOnImpact()
 {
+	// TODO remove crutch cooldown for accelaration
+	// start
+	if (colisionElapsed < 0.2)
+		return;
+	colisionElapsed = 0.f;
+	// end
 	currentSpeed *= speedMultiplier;
+	if (currentSpeed > maxSpeed)
+		currentSpeed = maxSpeed;
 }

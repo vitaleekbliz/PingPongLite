@@ -1,6 +1,7 @@
 #pragma once
 #include "core/SDLHandler.h"
 #include <SDL3/SDL.h>
+#include <memory>
 
 class BoxColliderComponent
 {

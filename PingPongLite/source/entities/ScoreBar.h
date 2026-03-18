@@ -14,10 +14,12 @@ class ScoreBar : public Object, public BallSubscriber
 	void setupComponents();
 
 	void drawTopBar();
+	void drawTime();
+	void drawScore(int x, int y, int score);
 
 	void changeScore(bool win);
 
-	int roundDurationSeconds = 0;
+	float roundDurationSeconds = 0;
 	int computerScore = 0;
 	int playerScore = 0;
 

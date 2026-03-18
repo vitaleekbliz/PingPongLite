@@ -3,6 +3,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <SDL3_image/SDL_image.h>
+#include <SDL3_mixer/SDL_mixer.h>
+// #include <SDL3_ttf/SDL_ttf.h>
 #include <string>
 
 class SDLHandler
@@ -19,6 +21,7 @@ class SDLHandler
 	void close();
 
 	SDL_Renderer* getRenderer();
+	MIX_Mixer* getMixer();
 
 	const int WINDOW_WIDTH = 1280;
 	const int WINDOW_HEIGHT = 720;
@@ -32,6 +35,7 @@ class SDLHandler
 
 	const char* WINDOW_TITLE = "Ping Pong Lite";
 
-	SDL_Window* gWindow = NULL;
-	SDL_Renderer* gRenderer = NULL;
+	SDL_Window* window = NULL;
+	SDL_Renderer* renderer = NULL;
+	MIX_Mixer* mixer = NULL;
 };

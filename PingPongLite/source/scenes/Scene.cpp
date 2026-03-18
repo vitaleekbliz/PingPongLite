@@ -11,6 +11,8 @@ Scene::~Scene()
 
 void Scene::update()
 {
+	handlerCollisions();
+
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
 		gameObjects[i]->update();
@@ -63,7 +65,6 @@ void Scene::spawnEntities()
 void Scene::bindDependencies()
 {
 	bindBallToComputer();
-	registerBallObservers();
 	registerBallObservers();
 	resolvePaddleReferences();
 }
@@ -179,6 +180,19 @@ void Scene::resolvePaddleReferences()
 	ballObj->setPlayerBoxCollider(playerObj->getBoxCollider());
 
 	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Successfully linked Paddles to Ball.");
+}
+
+void Scene::handlerCollisions()
+{
+	auto ballLock = ball.lock();
+	if (!ballLock)
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Ball reference is expired.", __FUNCTION__);
+		return;
+	}
+
+	ballLock->getPosition();
+	// TODO handle Colisions outside the ball class
 }
 
 std::shared_ptr<Object> Scene::spawnObject(ObjectID object)

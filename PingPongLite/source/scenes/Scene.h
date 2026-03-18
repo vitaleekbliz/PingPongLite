@@ -23,6 +23,8 @@ class Scene
 	void registerBallObservers();
 	void resolvePaddleReferences();
 
+	void handlerCollisions();
+
 	std::shared_ptr<Object> spawnObject(ObjectID object);
 	void destroyObject(std::shared_ptr<Object> object);
 
