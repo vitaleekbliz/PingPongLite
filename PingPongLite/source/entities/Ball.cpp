@@ -133,19 +133,19 @@ void Ball::resolvePaddleCollision()
 
 	// Computer collision
 	bool computerCollision = false;
-	if (auto computerLock = playerObject.lock())
+	if (auto computerLock = computerObject.lock())
 	{
 		computerCollision = checkCollision(computerLock->getCollider());
 	}
 
-	// if not colliding with both -> change state
+	// if not colliding with both exited collision zone
 	if (!playerCollision && !computerCollision)
 	{
 		isCollidingPaddle = false;
 	}
 
 	// if touching any paddle
-	else if ((playerCollision || computerCollision) && isCollidingPaddle)
+	else if ((playerCollision || computerCollision) && !isCollidingPaddle)
 	{
 		// Points to direction it should be moving
 		direction.x = computerCollision ? std::abs(direction.x) : -std::abs(direction.x);
@@ -153,7 +153,7 @@ void Ball::resolvePaddleCollision()
 		accelerateOnImpact();
 		notify(BallEvent::PADDLE_HIT);
 
-		// ready to collider again
+		// blocks logic untill exiting collision zone
 		isCollidingPaddle = true;
 	}
 }
