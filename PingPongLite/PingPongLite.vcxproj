@@ -137,10 +137,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\.gitignore" />
-    <None Include=".clang-format" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="source\components\BoxColliderComponent.cpp" />
     <ClCompile Include="source\components\TextureComponent.cpp" />
     <ClCompile Include="source\core\AudioHandler.cpp" />
@@ -153,6 +149,7 @@
     <ClCompile Include="source\entities\Player.cpp" />
     <ClCompile Include="source\entities\ScoreBar.cpp" />
     <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp" />
+    <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\scenes\MainScene.cpp" />
     <ClCompile Include="source\scenes\Scene.cpp" />
@@ -172,9 +169,15 @@
     <ClInclude Include="source\entities\ScoreBar.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h" />
+    <ClInclude Include="source\interfaces\textureObserver\TextureSubscriber.h" />
+    <ClInclude Include="source\interfaces\textureObserver\TexturePublisher.h" />
     <ClInclude Include="source\scenes\MainScene.h" />
     <ClInclude Include="source\scenes\Scene.h" />
     <ClInclude Include="source\utils\objectFactory\objectCreator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.gitignore" />
+    <None Include=".clang-format" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,16 +1,8 @@
 #pragma once
 #include "core/SDLHandler.h"
+#include "interfaces/textureObserver/TextureSubscriber.h"
 
-enum class TEXTURE : char
-{
-	BOARD,
-	BALL,
-	COMPUTER,
-	PLAYER,
-	SCORE_BAR
-};
-
-class TextureHandler
+class TextureHandler : public TextureSubscriber
 {
   public:
 	TextureHandler() = default;
@@ -19,9 +11,7 @@ class TextureHandler
 	void init();
 	void close();
 
-	void draw(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip) const;
-
-  protected:
+	virtual void onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip) const;
   private:
 	SDL_Texture* load(std::string fileName, SDL_Renderer* renderer) const;
 

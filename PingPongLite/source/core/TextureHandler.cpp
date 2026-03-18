@@ -25,7 +25,7 @@ void TextureHandler::close()
 		SDL_DestroyTexture(scoreBar);
 }
 
-void TextureHandler::draw(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip) const
+void TextureHandler::onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip) const
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
 	switch (texture)
