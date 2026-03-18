@@ -1,5 +1,5 @@
 #include "core/SDLHandler.h"
-#include "scenes/Scene.h"
+#include "scenes/MainScene.h"
 
 int main()
 {
@@ -7,7 +7,7 @@ int main()
 	SDLHandler& sdlHandler = SDLHandler::get();
 	sdlHandler.init();
 
-	Scene mainScene = Scene();
+	MainScene mainScene = MainScene();
 	mainScene.init();
 
 	while (mainScene.isRunning())

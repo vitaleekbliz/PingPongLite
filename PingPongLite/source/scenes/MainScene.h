@@ -1,13 +1,14 @@
 #pragma once
+#include "core/AudioHandler.h"
 #include "utils/objectFactory/objectCreator.h"
 #include <memory>
 #include <vector>
 
-class Scene
+class MainScene
 {
   public:
-	Scene();
-	~Scene();
+	MainScene();
+	~MainScene();
 
 	void update();
 	void render();
@@ -30,12 +31,13 @@ class Scene
 
 	std::vector<std::shared_ptr<Object>> gameObjects;
 	std::unique_ptr<ObjectCreator> factory;
+	std::shared_ptr<AudioHandler> audioHandler;
 
 	bool isActive;
 
-	std::weak_ptr<Object> board;
-	std::weak_ptr<Object> computer;
-	std::weak_ptr<Object> player;
-	std::weak_ptr<Object> ball;
-	std::weak_ptr<Object> scoreBar;
+	std::shared_ptr<Board> board;
+	std::shared_ptr<Computer> computer;
+	std::shared_ptr<Player> player;
+	std::shared_ptr<Ball> ball;
+	std::shared_ptr<ScoreBar> scoreBar;
 };

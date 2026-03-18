@@ -110,13 +110,13 @@
     <ClCompile Include="source\utils\objectFactory\objectCreator.cpp">
       <Filter>Source Files\source\utils\objectFactory</Filter>
     </ClCompile>
-    <ClCompile Include="source\scenes\Scene.cpp">
+    <ClCompile Include="source\scenes\MainScene.cpp">
       <Filter>Source Files\source\scenes</Filter>
     </ClCompile>
     <ClCompile Include="source\components\BoxColliderComponent.cpp">
       <Filter>Source Files\source\components</Filter>
     </ClCompile>
-    <ClCompile Include="AudioHandler.cpp">
+    <ClCompile Include="source\core\AudioHandler.cpp">
       <Filter>Source Files\source\core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -154,13 +154,13 @@
     <ClInclude Include="source\utils\objectFactory\objectCreator.h">
       <Filter>Header Files\utils\objectFactory</Filter>
     </ClInclude>
-    <ClInclude Include="source\scenes\Scene.h">
+    <ClInclude Include="source\scenes\MainScene.h">
       <Filter>Header Files\scenes</Filter>
     </ClInclude>
     <ClInclude Include="source\components\BoxColliderComponent.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="AudioHandler.h">
+    <ClInclude Include="source\core\AudioHandler.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>

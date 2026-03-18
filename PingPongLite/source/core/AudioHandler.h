@@ -17,10 +17,17 @@ class AudioHandler : public BallSubscriber
 	~AudioHandler() = default;
 
 	void init();
+	void onBallEvent(BallEvent event) override;
 
   protected:
   private:
-	void onBallEvent(BallEvent event) override;
+	MIX_Audio* loadAudio(std::string fileName, MIX_Mixer* mixer) const;
+	void startMusic();
 
-	std::string audioAssetFolder = " assets/arts/";
+	MIX_Track* music = NULL;
+	MIX_Track* win = NULL;
+	MIX_Track* lose = NULL;
+	MIX_Track* hit = NULL;
+
+	std::string audioAssetFolder = "assets\\sounds\\";
 };
