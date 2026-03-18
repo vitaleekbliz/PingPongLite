@@ -75,6 +75,14 @@ bool SDLHandler::init()
 
 void SDLHandler::close()
 {
+	if (mixer)
+		MIX_DestroyMixer(mixer);
+
+	if (renderer)
+		SDL_DestroyRenderer(renderer);
+
+	if (window)
+		SDL_DestroyWindow(window);
 }
 
 SDL_Renderer* SDLHandler::getRenderer()
@@ -91,8 +99,4 @@ SDLHandler::SDLHandler()
 {
 	lastTick = SDL_GetTicks();
 	deltaTime = 0;
-}
-
-SDLHandler::~SDLHandler()
-{
 }

@@ -1,39 +1,29 @@
 #pragma once
 #include "core/AudioHandler.h"
+#include "scenes/Scene.h"
 #include "utils/objectFactory/objectCreator.h"
 #include <memory>
 #include <vector>
 
-class MainScene
+class MainScene : public Scene
 {
   public:
-	MainScene();
-	~MainScene();
+	MainScene() = default;
+	~MainScene() = default;
 
-	void update();
-	void render();
+	virtual void update() override;
+	virtual void render() override;
 
-	void init();
-	bool isRunning() const;
-	void close();
+	virtual void init() override;
+	virtual void close() override;
 
   private:
-	void spawnEntities();
-	void bindDependencies();
 	void bindBallToComputer();
-	void registerBallObservers();
 	void resolvePaddleReferences();
 
-	void handlerCollisions();
-
-	std::shared_ptr<Object> spawnObject(ObjectID object);
-	void destroyObject(std::shared_ptr<Object> object);
-
-	std::vector<std::shared_ptr<Object>> gameObjects;
-	std::unique_ptr<ObjectCreator> factory;
+	std::shared_ptr<ObjectCreator> factory;
 	std::shared_ptr<AudioHandler> audioHandler;
-
-	bool isActive;
+	std::shared_ptr<TextureHandler> textureHandler;
 
 	std::shared_ptr<Board> board;
 	std::shared_ptr<Computer> computer;

@@ -9,26 +9,10 @@ void AudioHandler::init()
 
 	MIX_Mixer* mixer = SDLHandler::get().getMixer();
 
-	musicAudio = loadAudio("music.mp3", mixer);
-	winAudio = loadAudio("win.mp3", mixer);
-	loseAudio = loadAudio("lose.mp3", mixer);
-	hitAudio = loadAudio("hit.mp3", mixer);
-
-	music = MIX_CreateTrack(mixer);
-	win = MIX_CreateTrack(mixer);
-	lose = MIX_CreateTrack(mixer);
-	hit = MIX_CreateTrack(mixer);
-
-	MIX_SetTrackAudio(music, musicAudio);
-	MIX_SetTrackAudio(win, winAudio);
-	MIX_SetTrackAudio(lose, loseAudio);
-	MIX_SetTrackAudio(hit, hitAudio);
-
-	if (!music || !win || !lose || !hit)
-	{
-		SDL_Log("Couldn't create track : %s", SDL_GetError());
-		return;
-	}
+	load("music.mp3", mixer, &music);
+	load("win.mp3", mixer, &win);
+	load("lose.mp3", mixer, &lose);
+	load("hit.mp3", mixer, &hit);
 
 	startMusic();
 }
@@ -54,19 +38,43 @@ void AudioHandler::onBallEvent(BallEvent event)
 	}
 }
 
-MIX_Audio* AudioHandler::loadAudio(std::string fileName, MIX_Mixer* mixer) const
+void AudioHandler::close()
+{
+	if (music)
+		MIX_DestroyTrack(music);
+	if (win)
+		MIX_DestroyTrack(win);
+	if (lose)
+		MIX_DestroyTrack(lose);
+	if (hit)
+		MIX_DestroyTrack(hit);
+}
+
+void AudioHandler::load(std::string fileName, MIX_Mixer* mixer, MIX_Track** track) const
 {
 	std::string basePath = SDL_GetBasePath();
 	std::string fullPath = basePath + audioAssetFolder + fileName;
 
-	MIX_Audio* audio;
-	audio = MIX_LoadAudio(mixer, fullPath.c_str(), false);
+	*track = MIX_CreateTrack(mixer);
+	if (!*track)
+	{
+		SDL_Log("Couldn't create track: %s", SDL_GetError());
+		return;
+	}
+
+	MIX_Audio* audio = MIX_LoadAudio(mixer, fullPath.c_str(), false);
 	if (!audio)
 	{
 		SDL_Log("Couldn't load %s: %s", fullPath.c_str(), SDL_GetError());
+		return;
 	}
 
-	return audio;
+	if (!MIX_SetTrackAudio(*track, audio))
+	{
+		SDL_Log("Couldn't set audio to track: %s", SDL_GetError());
+	}
+
+	MIX_DestroyAudio(audio);
 }
 
 void AudioHandler::startMusic()

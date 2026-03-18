@@ -17,8 +17,9 @@ class SDLHandler
 	bool init();
 	bool handleEvents();
 	void handleTickRate();
-	float getTick() const;
 	void close();
+
+	float getTick() const;
 
 	SDL_Renderer* getRenderer();
 	MIX_Mixer* getMixer();
@@ -28,7 +29,7 @@ class SDLHandler
 
   private:
 	SDLHandler();
-	~SDLHandler();
+	~SDLHandler() = default;
 
 	Uint64 lastTick;
 	float deltaTime;

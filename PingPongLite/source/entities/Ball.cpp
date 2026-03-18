@@ -2,9 +2,11 @@
 
 Ball::Ball()
 {
-	setupComponents();
+	size.x = 30;
+	size.y = 30;
+
+	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
 	reset();
-	initVariables();
 }
 
 void Ball::notify(BallEvent event)
@@ -23,45 +25,13 @@ void Ball::notify(BallEvent event)
 	}
 }
 
-void Ball::initVariables()
-{
-	currentSpeed = baseSpeed;
-
-	int halfHeight = height / 2;
-	int halfWidth = width / 2;
-	leftBoundary = halfWidth;
-	rightBoundary = SDLHandler::get().WINDOW_WIDTH - halfWidth;
-	topBoundary = halfHeight + 40;
-	bottomBoundary = SDLHandler::get().WINDOW_HEIGHT - halfHeight;
-}
-
-void Ball::setupComponents()
-{
-	textureComponent = std::make_unique<TextureComponent>(textureName, width, height);
-}
-
-void Ball::drawBall()
-{
-	SDL_FRect destination = SDL_FRect();
-	destination.x = position.x;
-	destination.y = position.y;
-	destination.h = height;
-	destination.w = width;
-
-	textureComponent->draw(destination, SDL_FLIP_NONE);
-}
-
-Ball::~Ball()
-{
-}
-
 void Ball::update()
 {
 	applyMovement();
 	bounceTopBottom();
 	bounceLeftRight();
-	resolvePaddleCollision(playerBoxCollider, false);
-	resolvePaddleCollision(computerBoxCollider, true);
+	resolvePaddleCollision(playerObject, false);
+	resolvePaddleCollision(computerObject, true);
 
 	// TODO remove crutch
 	colisionElapsed += SDLHandler::get().getTick();
@@ -69,17 +39,23 @@ void Ball::update()
 
 void Ball::render()
 {
-	drawBall();
+	SDL_FRect destination = SDL_FRect();
+	destination.x = position.x;
+	destination.y = position.y;
+	destination.h = size.x;
+	destination.w = size.y;
+
+	textureComponent->draw(destination, SDL_FLIP_NONE);
 }
 
-void Ball::setPlayerBoxCollider(std::weak_ptr<BoxColliderComponent> comp)
+void Ball::setPlayerReference(std::weak_ptr<Object> player)
 {
-	playerBoxCollider = std::move(comp);
+	playerObject = player;
 }
 
-void Ball::setComputerBoxCollider(std::weak_ptr<BoxColliderComponent> comp)
+void Ball::setComputerReference(std::weak_ptr<Object> computer)
 {
-	computerBoxCollider = std::move(comp);
+	computerObject = computer;
 }
 
 void Ball::reset()
@@ -155,18 +131,11 @@ void Ball::bounceLeftRight()
 	}
 }
 
-void Ball::resolvePaddleCollision(std::weak_ptr<BoxColliderComponent> collider, bool forComputer)
+void Ball::resolvePaddleCollision(std::weak_ptr<Object> object, bool forComputer)
 {
-	auto colliderLock = collider.lock();
-
-	if (!colliderLock)
+	if (auto objectLock = object.lock())
 	{
-		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Player collider is expired or null.", __FUNCTION__);
-	}
-
-	if (colliderLock)
-	{
-		if (checkCollision(colliderLock->getRect()))
+		if (checkCollision(objectLock->getCollider()))
 		{
 			direction.x = forComputer ? std::abs(direction.x) : -std::abs(direction.x);
 
@@ -174,9 +143,13 @@ void Ball::resolvePaddleCollision(std::weak_ptr<BoxColliderComponent> collider, 
 			notify(BallEvent::PADDLE_HIT);
 		}
 	}
+	else
+	{
+		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[%s] Player collider is expired or null.", __FUNCTION__);
+	}
 }
 
-bool Ball::checkCollision(const SDL_FRect& rect)
+bool Ball::checkCollision(const SDL_FRect rect)
 {
 	SDL_FPoint start = position;
 

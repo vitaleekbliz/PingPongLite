@@ -64,6 +64,9 @@
     <Filter Include="Header Files\components">
       <UniqueIdentifier>{d2d01fe7-9117-4d8d-8667-e9d51df4a958}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\interfaces\textureObserver">
+      <UniqueIdentifier>{891ef262-06d8-4ce6-92c7-5ef5234190dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -104,9 +107,6 @@
     <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp">
       <Filter>Source Files\source\interfaces\ballObserver</Filter>
     </ClCompile>
-    <ClCompile Include="source\interfaces\ballObserver\BallSubscriber.cpp">
-      <Filter>Source Files\source\interfaces\ballObserver</Filter>
-    </ClCompile>
     <ClCompile Include="source\utils\objectFactory\objectCreator.cpp">
       <Filter>Source Files\source\utils\objectFactory</Filter>
     </ClCompile>
@@ -117,6 +117,12 @@
       <Filter>Source Files\source\components</Filter>
     </ClCompile>
     <ClCompile Include="source\core\AudioHandler.cpp">
+      <Filter>Source Files\source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\Scene.cpp">
+      <Filter>Source Files\source\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\TextureHandler.cpp">
       <Filter>Source Files\source\core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,6 +167,12 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="source\core\AudioHandler.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\Scene.h">
+      <Filter>Header Files\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\TextureHandler.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>

@@ -18,10 +18,11 @@ class AudioHandler : public BallSubscriber
 
 	void init();
 	void onBallEvent(BallEvent event) override;
+	void close();
 
   protected:
   private:
-	MIX_Audio* loadAudio(std::string fileName, MIX_Mixer* mixer) const;
+	void load(std::string fileName, MIX_Mixer* mixer, MIX_Track** track) const;
 	void startMusic();
 
 	MIX_Track* music = NULL;

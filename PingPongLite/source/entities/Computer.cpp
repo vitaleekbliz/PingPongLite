@@ -2,6 +2,8 @@
 
 Computer::Computer()
 {
+	size.x = width;
+	size.y = height;
 	setupComponents();
 	initVariables();
 }
