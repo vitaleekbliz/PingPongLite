@@ -160,6 +160,12 @@ void Ball::resolvePaddleCollision()
 
 bool Ball::checkCollision(const SDL_FRect rect)
 {
+	// return true if ball center is inside the rectagle or line is intersecting rectengle
+	if (SDL_PointInRectFloat(&position, &rect))
+	{
+		return true;
+	}
+
 	// TODO use boost library for clean code
 	SDL_FPoint start = position;
 

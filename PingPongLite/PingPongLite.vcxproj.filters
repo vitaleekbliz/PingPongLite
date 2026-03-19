@@ -46,23 +46,26 @@
     <Filter Include="Source Files\source\scenes">
       <UniqueIdentifier>{b2f36d9f-4815-425a-b5db-4f33a4f6e0cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\source\utils">
-      <UniqueIdentifier>{10fa18a0-57c8-42d7-b0b1-f78994761db1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\utils\objectFactory">
-      <UniqueIdentifier>{1fd0c412-72de-45ac-9b5a-ae2f09286919}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\utils">
-      <UniqueIdentifier>{f953c713-63a7-48f2-b168-38b7192052ae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\utils\objectFactory">
-      <UniqueIdentifier>{503cd834-30ce-4d4d-8473-eb408bc6575d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\interfaces\textureObserver">
       <UniqueIdentifier>{891ef262-06d8-4ce6-92c7-5ef5234190dd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\source\interfaces\textureObserver">
       <UniqueIdentifier>{3ac7f5aa-050a-42a5-b3c7-8b5b0dbf526c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\BallComponents">
+      <UniqueIdentifier>{1310e2b6-7350-4d50-984b-cc26c9d559b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scenes\components">
+      <UniqueIdentifier>{74f060a8-403e-4c8c-8958-0685b98525aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes\components">
+      <UniqueIdentifier>{8367157a-4f40-4f02-9e3b-b17160307ef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scenes\components\objectFactory">
+      <UniqueIdentifier>{27f30038-c3a8-470e-9a3a-b9ab757a7d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes\components\objectFactory">
+      <UniqueIdentifier>{7d308943-4df3-4628-9f8f-2bae6becfad3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +107,6 @@
     <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp">
       <Filter>Source Files\source\interfaces\ballObserver</Filter>
     </ClCompile>
-    <ClCompile Include="source\utils\objectFactory\objectCreator.cpp">
-      <Filter>Source Files\source\utils\objectFactory</Filter>
-    </ClCompile>
     <ClCompile Include="source\scenes\MainScene.cpp">
       <Filter>Source Files\source\scenes</Filter>
     </ClCompile>
@@ -121,6 +121,15 @@
     </ClCompile>
     <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp">
       <Filter>Source Files\source\interfaces\textureObserver</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\objectFactory\Creator.cpp">
+      <Filter>Source Files\source\scenes\components\objectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\objectFactory\objectFactory.cpp">
+      <Filter>Source Files\source\scenes\components\objectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\objectFactory\Product.cpp">
+      <Filter>Source Files\source\scenes\components\objectFactory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,9 +160,6 @@
     <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h">
       <Filter>Header Files\interfaces\ballObserver</Filter>
     </ClInclude>
-    <ClInclude Include="source\utils\objectFactory\objectCreator.h">
-      <Filter>Header Files\utils\objectFactory</Filter>
-    </ClInclude>
     <ClInclude Include="source\scenes\MainScene.h">
       <Filter>Header Files\scenes</Filter>
     </ClInclude>
@@ -171,6 +177,15 @@
     </ClInclude>
     <ClInclude Include="source\interfaces\textureObserver\TexturePublisher.h">
       <Filter>Header Files\interfaces\textureObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\objectFactory\Creator.h">
+      <Filter>Header Files\scenes\components\objectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\objectFactory\objectFactory.h">
+      <Filter>Header Files\scenes\components\objectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\objectFactory\Product.h">
+      <Filter>Header Files\scenes\components\objectFactory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

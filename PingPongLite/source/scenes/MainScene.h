@@ -1,7 +1,7 @@
 #pragma once
+#include "components/objectFactory/Creator.h"
 #include "core/AudioHandler.h"
 #include "scenes/Scene.h"
-#include "utils/objectFactory/objectCreator.h"
 #include <memory>
 #include <vector>
 
@@ -18,11 +18,11 @@ class MainScene : public Scene
 	virtual void close() override;
 
   private:
-#pragma region MainScene::init() refactoring
-	void populateScene(ObjectID id);
-	void setupBallObserver();
-	void setupTextureObserver();
-#pragma endregion
+	void spawnObject(ObjectID id);
+
+	void linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std::shared_ptr<BallPublisher> publisher);
+	void linkTextureObserver(std::shared_ptr<TextureSubscriber> subscriber,
+							 std::shared_ptr<TexturePublisher> publisher);
 
 	std::unique_ptr<ObjectCreator> factory;
 	std::shared_ptr<AudioHandler> audioHandler;

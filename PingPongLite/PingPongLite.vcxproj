@@ -149,9 +149,11 @@
     <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp" />
     <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\scenes\components\objectFactory\Product.cpp" />
+    <ClCompile Include="source\scenes\components\objectFactory\Creator.cpp" />
+    <ClCompile Include="source\scenes\components\objectFactory\objectFactory.cpp" />
     <ClCompile Include="source\scenes\MainScene.cpp" />
     <ClCompile Include="source\scenes\Scene.cpp" />
-    <ClCompile Include="source\utils\objectFactory\objectCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\AudioHandler.h" />
@@ -167,9 +169,11 @@
     <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h" />
     <ClInclude Include="source\interfaces\textureObserver\TextureSubscriber.h" />
     <ClInclude Include="source\interfaces\textureObserver\TexturePublisher.h" />
+    <ClInclude Include="source\scenes\components\objectFactory\Product.h" />
+    <ClInclude Include="source\scenes\components\objectFactory\Creator.h" />
+    <ClInclude Include="source\scenes\components\objectFactory\objectFactory.h" />
     <ClInclude Include="source\scenes\MainScene.h" />
     <ClInclude Include="source\scenes\Scene.h" />
-    <ClInclude Include="source\utils\objectFactory\objectCreator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore" />

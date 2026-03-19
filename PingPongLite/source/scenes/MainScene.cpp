@@ -5,6 +5,13 @@ MainScene::~MainScene()
 	close();
 }
 
+void MainScene::close()
+{
+	audioHandler->close();
+	textureHandler->close();
+	isActive = false;
+}
+
 void MainScene::update()
 {
 	board->update();
@@ -41,15 +48,20 @@ void MainScene::init()
 
 	factory = std::make_unique<ObjectCreator>();
 
-	populateScene(ObjectID::BALL);
-	populateScene(ObjectID::BOARD);
-	populateScene(ObjectID::COMPUTER);
-	populateScene(ObjectID::PLAYER);
-	populateScene(ObjectID::SCORE_BAR);
+	spawnObject(ObjectID::BALL);
+	spawnObject(ObjectID::BOARD);
+	spawnObject(ObjectID::COMPUTER);
+	spawnObject(ObjectID::PLAYER);
+	spawnObject(ObjectID::SCORE_BAR);
 
-	setupBallObserver();
+	linkBallObserver(audioHandler, ball);
+	linkBallObserver(scoreBar, ball);
 
-	setupTextureObserver();
+	linkTextureObserver(textureHandler, ball);
+	linkTextureObserver(textureHandler, board);
+	linkTextureObserver(textureHandler, scoreBar);
+	linkTextureObserver(textureHandler, player);
+	linkTextureObserver(textureHandler, computer);
 
 	// Check colisions inside ball
 	ball->setComputerReference(computer);
@@ -61,12 +73,18 @@ void MainScene::init()
 	isActive = true;
 }
 
-void MainScene::close()
+void MainScene::linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std::shared_ptr<BallPublisher> publisher)
 {
-	isActive = false;
+	publisher->addListener(subscriber);
 }
 
-void MainScene::populateScene(ObjectID id)
+void MainScene::linkTextureObserver(std::shared_ptr<TextureSubscriber> subscriber,
+									std::shared_ptr<TexturePublisher> publisher)
+{
+	publisher->addListener(subscriber);
+}
+
+void MainScene::spawnObject(ObjectID id)
 {
 	std::shared_ptr<Object> newObj = factory->create(id);
 	if (!newObj)
@@ -113,47 +131,4 @@ void MainScene::populateScene(ObjectID id)
 		SDL_Log("Scene::populateScene - Failed to cast Objects to their class.");
 		return;
 	}
-}
-
-void MainScene::setupBallObserver()
-{
-	std::weak_ptr<BallSubscriber> audioHandlerSubscriber = std::dynamic_pointer_cast<BallSubscriber>(audioHandler);
-	std::weak_ptr<BallSubscriber> scoreBarSubscriber = std::dynamic_pointer_cast<BallSubscriber>(scoreBar);
-	std::weak_ptr<BallPublisher> ballPublisher = std::dynamic_pointer_cast<BallPublisher>(ball);
-
-	if (!audioHandlerSubscriber.lock() || !scoreBarSubscriber.lock() || !ballPublisher.lock())
-	{
-		SDL_Log("Scene::setupBallObserver - Failed to setup BallObserver.");
-		return;
-	}
-
-	ballPublisher.lock()->addListener(audioHandlerSubscriber.lock());
-	ballPublisher.lock()->addListener(scoreBarSubscriber.lock());
-}
-
-void MainScene::setupTextureObserver()
-{
-	std::shared_ptr<TextureSubscriber> textureSubscriber = std::dynamic_pointer_cast<TextureSubscriber>(textureHandler);
-	if (!textureSubscriber)
-	{
-		SDL_Log("Scene::setupTextureObserver - Failed to cast texture handler to texture subscriber.");
-		return;
-	}
-
-	std::shared_ptr<TexturePublisher> ballPublisher = std::dynamic_pointer_cast<TexturePublisher>(ball);
-	std::shared_ptr<TexturePublisher> boardPublisher = std::dynamic_pointer_cast<TexturePublisher>(board);
-	std::shared_ptr<TexturePublisher> computerPublisher = std::dynamic_pointer_cast<TexturePublisher>(computer);
-	std::shared_ptr<TexturePublisher> playerPublisher = std::dynamic_pointer_cast<TexturePublisher>(player);
-	std::shared_ptr<TexturePublisher> scoreBarPublisher = std::dynamic_pointer_cast<TexturePublisher>(scoreBar);
-	if (!boardPublisher || !computerPublisher || !playerPublisher || !ballPublisher || !scoreBarPublisher)
-	{
-		SDL_Log("Scene::setupTextureObserver - Failed to cast Objects to texture builder.");
-		return;
-	}
-
-	ballPublisher->addListener(textureSubscriber);
-	boardPublisher->addListener(textureSubscriber);
-	computerPublisher->addListener(textureSubscriber);
-	playerPublisher->addListener(textureSubscriber);
-	scoreBarPublisher->addListener(textureSubscriber);
 }

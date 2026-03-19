@@ -47,19 +47,20 @@ assets
         win.mp3
 ```
 
-### 🛠️ Build
 
-Place build exe file into $(SolutionDir)/app folder and run the program
+### 🚀 Launch
+
+1.Go to x64/Release/ dir  
+2.Run program and enjoy
 
 ### ⚙️ Debug/Development
 
 1. Clone repositry and open solution in VS
 2. If encountered any asset loading or dll errors - copy $(SolutionDir)/app/ to x64/Debug/
 
-### 🚀 Release 
+### 🛠️ Linking dependencies
 
-1.Go to x64/Release/ dir  
-2.Run program and enjoy
+Place build exe file into $(SolutionDir)/app folder and run the program
 
 ## 📋 Technical Task list
 
@@ -86,12 +87,13 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 ✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
 
 * *Abstract Factory* :  
-✅ ObjectCreator - handles creation of game Objects (ones that are placed on Scene)  
-($(ProjectDir)/source/utils/).  
-Ps. MainScene is Factory.  
-Ps. instead of using interface, used Object parent class of all game objects. (All game objects have position and size properties, interface would be extra)  
-❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
-❌ TextCreator : component of ScoreBar object  
+- ✅ ObjectCreator - handles creation of game Objects (ones that are placed on Scene)  
+($(ProjectDir)/source/scenes/MainScene).  
+MainScene is Builder.  
+Ps. instead of using interface, used Object parent class of all game objects. (All game objects have position and size properties)  
+
+- ❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
+- ❌ TextCreator : component of ScoreBar object  
 
 * *ByteCode*  
 ✅ TextureHandler for centrilized drawing loaded textures  
@@ -99,7 +101,7 @@ Ps. instead of using interface, used Object parent class of all game objects. (A
 ✅ MainScene for object creation  
 
 * *Builder* :  
-[✅/❌] MainScene is builder  
+[✅] MainScene is builder  
 Ps. Now I am using clean object creation, however hardcoded dependancies setup. I want to make dependencies fucntions for cleaner code and set Position/Size inside Object Creation.  
 
 * *Decorator* :  
