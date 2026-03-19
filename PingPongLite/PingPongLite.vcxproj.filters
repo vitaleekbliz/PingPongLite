@@ -67,6 +67,15 @@
     <Filter Include="Source Files\source\scenes\components\objectFactory">
       <UniqueIdentifier>{7d308943-4df3-4628-9f8f-2bae6becfad3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source\entities\BallComponents">
+      <UniqueIdentifier>{0aa90723-87c8-4b3a-92b7-f351731b79f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\BallComponents\movement">
+      <UniqueIdentifier>{4bd0238d-6fd7-4b21-8ad0-fa4c1f773a7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\BallComponents\movement">
+      <UniqueIdentifier>{fdaf77a1-3a26-4861-8a48-2a0c639ed86b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -131,6 +140,9 @@
     <ClCompile Include="source\scenes\components\objectFactory\Product.cpp">
       <Filter>Source Files\source\scenes\components\objectFactory</Filter>
     </ClCompile>
+    <ClCompile Include="source\entities\BallComponents\Movement.cpp">
+      <Filter>Source Files\source\entities\BallComponents\movement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\entities\Ball.h">
@@ -186,6 +198,9 @@
     </ClInclude>
     <ClInclude Include="source\scenes\components\objectFactory\Product.h">
       <Filter>Header Files\scenes\components\objectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\BallComponents\Movement.h">
+      <Filter>Header Files\entities\BallComponents\movement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

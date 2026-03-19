@@ -141,6 +141,7 @@
     <ClCompile Include="source\core\SDLHandler.cpp" />
     <ClCompile Include="source\core\TextureHandler.cpp" />
     <ClCompile Include="source\entities\Ball.cpp" />
+    <ClCompile Include="source\entities\BallComponents\Movement.cpp" />
     <ClCompile Include="source\entities\Board.cpp" />
     <ClCompile Include="source\entities\Computer.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="source\core\SDLHandler.h" />
     <ClInclude Include="source\core\TextureHandler.h" />
     <ClInclude Include="source\entities\Ball.h" />
+    <ClInclude Include="source\entities\BallComponents\Movement.h" />
     <ClInclude Include="source\entities\Board.h" />
     <ClInclude Include="source\entities\Computer.h" />
     <ClInclude Include="source\entities\Object.h" />
