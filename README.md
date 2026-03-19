@@ -143,34 +143,34 @@ while (mainScene.isRunning())
 
 3. ✅ **Design Patterns**:  
 * *Singleton* :  
-✅SDLHandler  
- * ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
+  * ✅SDLHandler  
+($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
 
 * *Observer* :  
- * ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
+  * ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
 ($(ProjectDir)/source/interfaces/BallObserver)  
- * ✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
+  * ✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
 
 * *Abstract Factory* :  
- * [✅/❌] MainScene is abstract factory - handles creation/linking of game Objects (ones that are placed on Scene)  
+  * [✅/❌] MainScene is abstract factory - handles creation/linking of game Objects (ones that are placed on Scene)  
 ($(ProjectDir)/source/scenes/MainScene).  
 MainScene is Builder.  
 
- * ❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
- * ❌ TextCreator : component of ScoreBar object  
+  * ❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
+  * ❌ TextCreator : component of ScoreBar object  
 
 * *ByteCode*  
-✅ TextureHandler for centrilized drawing loaded textures  
-✅ AudioHandler for centrilized playing loaded audio files  
-✅ MainScene for object creation  
+  * ✅ TextureHandler for centrilized drawing loaded textures  
+  * ✅ AudioHandler for centrilized playing loaded audio files  
+  * ✅ MainScene for object creation  
 
 * *Builder* :  
-[✅] MainScene is builder  
+  * [✅] MainScene is builder  
 Ps. Now I am using clean object creation, however hardcoded dependancies setup. I want to make dependencies fucntions for cleaner code and set Position/Size inside Object Creation.  
 
 * *Decorator* :  
-✅ Ball movement  
-✅ Ball collisionComponent  
+  * ✅ Ball movement  
+  * ✅ Ball collisionComponent  
 
 * *Strategy* :  
 ❌ Computer/Player follow mechanic (have code dublicate in both classes)  
@@ -247,8 +247,8 @@ source
 * Problem: Deterministic Physics Traps  
 The ball would occasionally enter infinite horizontal or vertical loops due to perfect reflection math, stalling gameplay.
 * **Solution:** 
- * Vertically : clamping velocity Y axes
- * Horizontally : pushing ball away from paddle center
+  * Vertically : clamping velocity Y axes
+  * Horizontally : pushing ball away from paddle center
 
 
 ## 🚀 Technical Highlights
