@@ -71,17 +71,17 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago   
 2. ❗**OOP**❗ :  
 * *Ball and MainScene* class have the most implemented features. Recommend checking them out, along with their component folder : 
-- $(ProjectDir)/source/scenes/MainScene
-- $(ProjectDir)/source/scenes/Components
-- $(ProjectDir)/source/enities/Ball{.h, .cpp}
-- $(ProjectDir)/source/enities/BallComponents  
+ * $(ProjectDir)/source/scenes/MainScene
+ * $(ProjectDir)/source/scenes/Components
+ * $(ProjectDir)/source/enities/Ball{.h, .cpp}
+ * $(ProjectDir)/source/enities/BallComponents  
 
 * *General*  
-- Structured class inheritence
+ * Structured class inheritence
 MainScene(Child) -> , and MainMenu(Child) -> Scene(Parent)
 Entities : Ball, Computer, Player, ScoreBar -> Object(Scene placble objects)
 
-- Prioritizing using private and protected visibility in Classes
+ * Prioritizing using private and protected visibility in Classes
 
 * *Implementation*  
 Use OOP in pattern designs implementation
@@ -134,30 +134,30 @@ while (mainScene.isRunning())
 1. ❌ **Animations** - not yet😔  
 
 2. ✅ **External libraries**:  
-✅ *SDL3_mixer* in AudioHandler   
+* ✅ *SDL3_mixer* in AudioHandler   
 ($(ProjectDir)/source/core/).  
-❌ *SDL3_ttf* in TextureHandler   
+* ❌ *SDL3_ttf* in TextureHandler   
 ($(ProjectDir)/source/core/).  
-✅ *SDL3_image* in TextureHandler   
+* ✅ *SDL3_image* in TextureHandler   
 ($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
 * *Singleton* :  
 ✅SDLHandler  
-($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
+ * ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
 
 * *Observer* :  
-✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
+ * ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
 ($(ProjectDir)/source/interfaces/BallObserver)  
-✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
+ * ✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
 
 * *Abstract Factory* :  
-- [✅/❌] MainScene is abstract factory - handles creation/linking of game Objects (ones that are placed on Scene)  
+ * [✅/❌] MainScene is abstract factory - handles creation/linking of game Objects (ones that are placed on Scene)  
 ($(ProjectDir)/source/scenes/MainScene).  
 MainScene is Builder.  
 
-- ❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
-- ❌ TextCreator : component of ScoreBar object  
+ * ❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
+ * ❌ TextCreator : component of ScoreBar object  
 
 * *ByteCode*  
 ✅ TextureHandler for centrilized drawing loaded textures  
@@ -246,9 +246,9 @@ source
 **Challenge: Eliminating Deterministic Physics Traps**  
 * Problem: Deterministic Physics Traps  
 The ball would occasionally enter infinite horizontal or vertical loops due to perfect reflection math, stalling gameplay.
-* **Solution:**  
-- Vertically : clamping velocity Y axes
-- Horizontally : pushing ball away from paddle center
+* **Solution:** 
+ * Vertically : clamping velocity Y axes
+ * Horizontally : pushing ball away from paddle center
 
 
 ## 🚀 Technical Highlights
