@@ -79,39 +79,39 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 
 3. ✅ **Design Patterns**:  
 * *Singleton* :  
-**SDLHandler ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
+SDLHandler ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
 * *Observer* :  
-**✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal
-***($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})
+✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
+($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})  
 
-**✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)
+✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
 
 * *Abstract Factory* :  
-**✅ ObjectCreator - handles creation of game Objects (ones that are placed on Scene)  
-***($(ProjectDir)/source/utils/).  
-***Ps. MainScene is Factory. 
-***Ps. instead of using interface, used Object parent class of all game objects. (All game objects have position and size properties, interface would be extra)  
-**❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
-**❌ TextCreator : component of ScoreBar object  
+✅ ObjectCreator - handles creation of game Objects (ones that are placed on Scene)  
+($(ProjectDir)/source/utils/).  
+Ps. MainScene is Factory.  
+Ps. instead of using interface, used Object parent class of all game objects. (All game objects have position and size properties, interface would be extra)  
+❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
+❌ TextCreator : component of ScoreBar object  
 
 * *ByteCode*-
-**✅ TextureHandler for centrilized drawing loaded textures  
-**✅ AudioHandler for centrilized playing loaded audio files  
-**✅ MainScene for object creation
+✅ TextureHandler for centrilized drawing loaded textures  
+✅ AudioHandler for centrilized playing loaded audio files  
+✅ MainScene for object creation  
 
 * *Builder* :  
-**[+/-] MainScene is builder  
+[+/-] MainScene is builder  
 Ps. Now I am using clean object creation, however hardcoded dependancies setup. I want to make dependencies fucntions for cleaner code and set Position/Size inside Object Creation.  
 
 * *Decorator* :  
-**❌ Ball movement  
-**❌ Ball collisionComponent  
+❌ Ball movement  
+❌ Ball collisionComponent  
 
 * *Strategy* :  
-**❌ Computer/Player follow mechanic (have code dublicate in both classes)
+❌ Computer/Player follow mechanic (have code dublicate in both classes)  
 
 * *State Machine* :  
-**❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.
+❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
 
 ### 🤩 Main Tasks
 1. ❗**Demonstrate C++ knowledge**. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
