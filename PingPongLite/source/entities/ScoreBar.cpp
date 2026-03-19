@@ -22,10 +22,10 @@ void ScoreBar::onBallEvent(BallEvent event)
 	switch (event)
 	{
 	case BallEvent::GOAL_LEFT:
-		changeScore(true);
+		changeScore(false);
 		break;
 	case BallEvent::GOAL_RIGHT:
-		changeScore(false);
+		changeScore(true);
 		break;
 	default:
 		break;

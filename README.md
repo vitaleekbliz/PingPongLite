@@ -68,36 +68,18 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
 2. ❗**OOP**❗ :  
 
-*General*  
-  * Structured class inheritence
-    - MainScene(Child) -> , and MainMenu(Child) -> Scene(Parent)
-    - Entities : Ball, Computer, Player, ScoreBar -> Object(Scene placble objects)
+* *General*  
+- Structured class inheritence
+MainScene(Child) -> , and MainMenu(Child) -> Scene(Parent)
+Entities : Ball, Computer, Player, ScoreBar -> Object(Scene placble objects)
 
-  * Prioritizing using private and protected visibility in Classes
+- Prioritizing using private and protected visibility in Classes
 
-*Implementation* 
-  * Use OOP in pattern designs implementation
+* *Implementation* 
+Use OOP in pattern designs implementation
 
 3. ❗**STL**❗
-  * Use weak_ptr for weak dependancies:
-
-computer and player referencies :
-```cpp
-    std::weak_ptr<Object> playerObject;
-    std::weak_ptr<Object> computerObject;
-```
-MainScene
-```cpp
-	std::unique_ptr<ObjectCreator> factory;
-	std::shared_ptr<AudioHandler> audioHandler;
-	std::shared_ptr<TextureHandler> textureHandler;
-
-	std::shared_ptr<Board> board;
-	std::shared_ptr<Computer> computer;
-    ...
-```
-
-  * containers:
+* containers:
 Din't really use much, however I am active leetcode user (1200+ solved problems)
 
 ```cpp
@@ -124,6 +106,24 @@ void Ball::notify(BallEvent event)
 	}
 }
 
+```
+
+* Use weak_ptr for weak dependancies:
+
+computer and player referencies :
+```cpp
+    std::weak_ptr<Object> playerObject;
+    std::weak_ptr<Object> computerObject;
+```
+MainScene
+```cpp
+	std::unique_ptr<ObjectCreator> factory;
+	std::shared_ptr<AudioHandler> audioHandler;
+	std::shared_ptr<TextureHandler> textureHandler;
+
+	std::shared_ptr<Board> board;
+	std::shared_ptr<Computer> computer;
+    ...
 ```
 
 4. ❗**clang-format**❗: using Format on save plugin
@@ -241,10 +241,6 @@ source
 |       Scene.cpp
 |       Scene.h
 |       
-\---utils
-    \---objectFactory
-            objectCreator.cpp
-            objectCreator.h
 ```
 
 
