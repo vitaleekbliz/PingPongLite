@@ -1,23 +1,23 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
-PingPongLite is a high-performance, object-oriented 2D game developed from scratch using C++ and the SDL3 library.   
+PingPongLite is a high-performance, object-oriented 2D game developed from scratch using C++ and the SDL3 library.
 This project serves as a demonstration of clean architecture, real-time physics simulation, and the implementation of common game design patterns.   
 
 ## 🛠️ Tech Stack
 
-*Language: C++20  
-*Graphics/Input: SDL3-3.4.0 (Simple DirectMedia Layer)  
-*Font Rendering: SDL3_ttf-3.2.2  
-*Texture Rendering: SDL3_image-3.4.0  
-*Audio: SDL3_mixer-3.2.0  
+Language: C++20  
+Graphics/Input: SDL3-3.4.0 (Simple DirectMedia Layer)  
+Font Rendering: SDL3_ttf-3.2.2  
+Texture Rendering: SDL3_image-3.4.0  
+Audio: SDL3_mixer-3.2.0  
 
 ## 💻 System Specifications
 
-*Platform: Windows 10 / 11 (x64-based PC)  
-*Architecture: x64 (64-bit)  
-*Visual Studio: 2026  
-*MSVC Version: 1950  
-*Compiler: C/C++ Optimizing Compiler Version 19.50.35727  
+Platform: Windows 10 / 11 (x64-based PC)  
+Architecture: x64 (64-bit)  
+Visual Studio: 2026  
+MSVC Version: 1950  
+Compiler: C/C++ Optimizing Compiler Version 19.50.35727  
 
 ## Usage 📖 
 
@@ -114,8 +114,8 @@ Ps. Now I am using clean object creation, however hardcoded dependancies setup. 
 **❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.
 
 ### 🤩 Main Tasks
-1. **Demonstrate C++ knowledge**. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
-2. **OOP** :  
+1. ❗**Demonstrate C++ knowledge**. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
+2. ❗**OOP** :  
 
 *General*  
   * Structured class inheritence
@@ -127,7 +127,7 @@ Ps. Now I am using clean object creation, however hardcoded dependancies setup. 
 *Implementation* 
   * Use OOP in pattern designs implementation
 
-3. **STL**
+3. ❗**STL**
   * Use weak_ptr for weak dependancies:
 
 computer and player referencies :
@@ -175,9 +175,9 @@ void Ball::notify(BallEvent event)
 
 ```
 
-4. **clang-format**: using Format on save plugin
-5. **external librarires**: details in Tech Stack segment
-6. **Game architecture**
+4. ❗**clang-format**: using Format on save plugin
+5. ❗**external librarires**: details in Tech Stack segment
+6. ❗**Game architecture**
   * Game Loop:  
 using temporery solution, cause I have only 1 Scene, however Ready to deploy. Each game object that is on scene also has update and render methods. To get tickRate use SDLHandler Singleton.
 ```cpp
@@ -194,8 +194,8 @@ while (mainScene.isRunning())
 		mainScene.render();
 	}
 ```
-7. **Design Patterns** : details in Bonus Task section
-8. **Compile code** : tested running on several devices. Check Usage section for more details
+7. ❗**Design Patterns** : details in Bonus Task section
+8. ❗**Compile code** : tested running on several devices. Check Usage section for more details
 
 
 ## Architecture
