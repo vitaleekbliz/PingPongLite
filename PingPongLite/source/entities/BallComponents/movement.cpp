@@ -5,8 +5,8 @@ void Movement::setRandomDirection()
 	// TODO use boost libary
 	float& x = direction.x;
 	float& y = direction.y;
-	x = (std::rand() % 3) / 1.f - 1.f;
-	y = (std::rand() % 3) / 1.f - 1.f;
+	x = ((std::rand() % 100) - 50.f) / 50.f;
+	y = ((std::rand() % 100) - 50.f) / 50.f;
 
 	// Fixed length < 0 bug
 	if (std::abs(x) < 0.5f)
@@ -28,7 +28,7 @@ void Movement::setRandomDirection()
 	}
 }
 
-void Movement::applyMovement(SDL_FPoint* pos)
+void Movement::applyMovement(SDL_FPoint* pos) const
 {
 	float deltaTime = SDLHandler::get().getTick();
 
@@ -36,11 +36,34 @@ void Movement::applyMovement(SDL_FPoint* pos)
 	pos->y += deltaTime * currentSpeed * direction.y;
 }
 
-void Movement::onPaddleHit(bool player)
+void Movement::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* paddleRect)
 {
+	// push ball from player
+	SDL_FPoint paddleCenter = SDL_FPoint();
+	paddleCenter.x = paddleRect->x + paddleRect->w / 2;
+	paddleCenter.y = paddleRect->y + paddleRect->h / 2;
+
+	// TODO use qvm library for vector rotation
+	//---segment start
+	SDL_FPoint newDirection = SDL_FPoint();
+	newDirection.x = ballPos->x - paddleCenter.x;
+	newDirection.y = ballPos->y - paddleCenter.y;
+
+	// normilize vector
+	float length = std::sqrt(newDirection.x * newDirection.x + newDirection.y * newDirection.y);
+	newDirection.x /= length;
+	newDirection.y /= length;
+	//---segment end
+
 	// Points to direction it should be moving
-	direction.x = player ? -std::abs(direction.x) : std::abs(direction.x);
+	direction = newDirection;
+
 	accelerate();
+}
+
+void Movement::onWallHit()
+{
+	clampVerticalVelocity();
 }
 
 BOUNDARY Movement::checkBoundaries(SDL_FPoint* pos)
@@ -76,4 +99,14 @@ void Movement::accelerate()
 	currentSpeed *= speedMultiplier;
 	if (currentSpeed > maxSpeed)
 		currentSpeed = maxSpeed;
+}
+
+void Movement::clampVerticalVelocity()
+{
+	direction.y /= verticalClampingFactor;
+
+	// normalize vector
+	float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+	direction.x /= length;
+	direction.y /= length;
 }

@@ -1,6 +1,6 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
-⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN OUTDATED*.⚠️⚠️⚠️  
+⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
 
 
 PingPongLite is a high-performance, object-oriented 2D game developed from scratch using C++ and the SDL3 library.
@@ -68,7 +68,7 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 ## 📋 Technical Task list
 
 ### 🤩 Main Tasks
-1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago https://leetcode.com/u/BiTaJIb41K/  
+1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago   
 2. ❗**OOP**❗ :  
 * *Ball and MainScene* class have the most implemented features. Recommend checking them out, along with their component folder : 
 - $(ProjectDir)/source/scenes/MainScene
@@ -83,12 +83,12 @@ Entities : Ball, Computer, Player, ScoreBar -> Object(Scene placble objects)
 
 - Prioritizing using private and protected visibility in Classes
 
-* *Implementation* 
+* *Implementation*  
 Use OOP in pattern designs implementation
 
 3. ❗**STL**❗
 * containers:
-Din't really use much, however I am active leetcode user (1200+ solved problems)
+Din't really use much, however I am active leetcode user (1200+ solved problems) https://leetcode.com/u/BiTaJIb41K/  
 
 * Use weak_ptr for weak dependancies:
 
@@ -240,6 +240,12 @@ source
 
 
 ## 🏆 Challenges
+
+### 🧩 Key Challenges & Solutions
+
+**Challenge: Eliminating Deterministic Physics Traps**  
+* **Issue:** The ball occasionally entered infinite vertical or horizontal loops due to perfect reflection math, leading to "stuck" gameplay states.  
+* **Solution:** Implemented **Stochastic Vector Perturbation**. By introducing a controlled `m_maxAngularDeviation` during collision resolution, I ensured the ball maintains high entropy in its trajectory. This prevents infinite loops and introduces a more organic, "pro-feel" to the ball physics.  
 
 ## 🚀 Technical Highlights
 

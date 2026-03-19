@@ -4,6 +4,7 @@
 #include "interfaces/ballObserver/BallPublisher.h"
 #include <cmath>
 #include <memory>
+#include <numbers>
 
 enum class BOUNDARY : char
 {
@@ -18,9 +19,10 @@ class Movement
 {
   protected:
 	void setRandomDirection();
-	void applyMovement(SDL_FPoint* pos);
+	void applyMovement(SDL_FPoint* pos) const;
 
-	void onPaddleHit(bool player);
+	void onPaddleHit(bool player, SDL_FPoint* ballPos, SDL_FRect* paddleRect);
+	void onWallHit();
 
 	BOUNDARY checkBoundaries(SDL_FPoint* pos);
 
@@ -30,8 +32,10 @@ class Movement
 
   private:
 	void accelerate();
+	void clampVerticalVelocity();
 
 	SDL_FPoint direction = {0.f, 0.f};
+	const float verticalClampingFactor = 1.2;
 
 	const float speedMultiplier = 1.3;
 	const float maxSpeed = 1600.f;

@@ -32,10 +32,12 @@ void Ball::update()
 	{
 	case BOUNDARY::TOP:
 		notify(BallEvent::WALL_HIT);
+		onWallHit();
 		break;
 
 	case BOUNDARY::BOTTOM:
 		notify(BallEvent::WALL_HIT);
+		onWallHit();
 		break;
 
 	case BOUNDARY::LEFT:
@@ -49,19 +51,16 @@ void Ball::update()
 		break;
 	}
 
-	switch (checkForCollisions(&position, &size))
+	SDL_FRect collidingWith = SDL_FRect();
+	switch (checkForCollisions(&position, &size, collidingWith))
 	{
 	case COLLITION::PLAYER:
 		notify(BallEvent::PADDLE_HIT);
-		onPaddleHit(true);
+		onPaddleHit(true, &position, &collidingWith);
 		break;
 	case COLLITION::COMPUTER:
 		notify(BallEvent::PADDLE_HIT);
-		onPaddleHit(false);
-		break;
-	case COLLITION::NONE:
-		break;
-	default:
+		onPaddleHit(false, &position, &collidingWith);
 		break;
 	}
 }

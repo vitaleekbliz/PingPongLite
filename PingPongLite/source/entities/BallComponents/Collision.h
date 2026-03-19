@@ -16,7 +16,7 @@ class Collision
 	void setComputerReference(std::weak_ptr<Object> computer);
 
   protected:
-	COLLITION checkForCollisions(SDL_FPoint* pos, SDL_FPoint* size);
+	COLLITION checkForCollisions(SDL_FPoint* ballPos, SDL_FPoint* ballSize, SDL_FRect& colidingWith);
 
 	bool isCollidingPaddle = false;
 

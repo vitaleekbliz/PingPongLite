@@ -10,20 +10,31 @@ void Collision::setComputerReference(std::weak_ptr<Object> computer)
 	computerObject = computer;
 }
 
-COLLITION Collision::checkForCollisions(SDL_FPoint* pos, SDL_FPoint* size)
+COLLITION Collision::checkForCollisions(SDL_FPoint* ballPos, SDL_FPoint* ballSize, SDL_FRect& colidingWith)
 {
 	// Player collision
 	bool playerCollision = false;
 	if (auto playerLock = playerObject.lock())
 	{
-		playerCollision = checkCircleInsideBox(pos, size, playerLock->getCollider());
+		SDL_FRect playerCollider = playerLock->getCollider();
+		if (checkCircleInsideBox(ballPos, ballSize, playerCollider))
+		{
+
+			playerCollision = true;
+			colidingWith = playerCollider;
+		}
 	}
 
 	// Computer collision
 	bool computerCollision = false;
 	if (auto computerLock = computerObject.lock())
 	{
-		computerCollision = checkCircleInsideBox(pos, size, computerLock->getCollider());
+		SDL_FRect computerCollider = computerLock->getCollider();
+		if (checkCircleInsideBox(ballPos, ballSize, computerCollider))
+		{
+			computerCollision = true;
+			colidingWith = computerCollider;
+		}
 	}
 
 	// if not colliding with both exited collision zone
