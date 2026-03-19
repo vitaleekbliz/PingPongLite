@@ -20,12 +20,12 @@ class Movement
 	void setRandomDirection();
 	void applyMovement(SDL_FPoint* pos);
 
-	void paddleHit(bool player);
+	void onPaddleHit(bool player);
 
 	BOUNDARY checkBoundaries(SDL_FPoint* pos);
 
 	const float baseSpeed = 500.f;
-	float currentSpeed = 500.f;
+	float currentSpeed = baseSpeed;
 	SDL_FPoint basePosition = {640, 360};
 
   private:

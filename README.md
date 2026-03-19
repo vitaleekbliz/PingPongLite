@@ -1,7 +1,7 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
-⚠️⚠️⚠️**Disclaimer**: *This project is a work-in-progress. Documentation is updated regularly but may not always reflect the most recent commits during active development cycles*.⚠️⚠️⚠️  
-Project is in active development, some README props can be not up-to-date
+⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN OUTDATED*.⚠️⚠️⚠️  
+
 
 PingPongLite is a high-performance, object-oriented 2D game developed from scratch using C++ and the SDL3 library.
 This project serves as a demonstration of clean architecture, real-time physics simulation, and the implementation of common game design patterns.   
@@ -68,8 +68,13 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 ## 📋 Technical Task list
 
 ### 🤩 Main Tasks
-1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
+1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago https://leetcode.com/u/BiTaJIb41K/  
 2. ❗**OOP**❗ :  
+* *Ball and MainScene* class have the most implemented features. Recommend checking them out, along with their component folder : 
+- $(ProjectDir)/source/scenes/MainScene
+- $(ProjectDir)/source/scenes/Components
+- $(ProjectDir)/source/enities/Ball{.h, .cpp}
+- $(ProjectDir)/source/enities/BallComponents  
 
 * *General*  
 - Structured class inheritence
@@ -84,32 +89,6 @@ Use OOP in pattern designs implementation
 3. ❗**STL**❗
 * containers:
 Din't really use much, however I am active leetcode user (1200+ solved problems)
-
-```cpp
-//BallPublisher.cpp (($(ProjectDir)/source/interfaces/ballObserver/)  
-class BallPublisher
-{
-	std::vector<std::weak_ptr<BallSubscriber>> subscribers;
-};
-
-//Ball.cpp (($(ProjectDir)/source/entities/)  
-void Ball::notify(BallEvent event)
-{
-	for (auto it = subscribers.begin(); it != subscribers.end();)
-	{
-		if (auto observer = it->lock())
-		{
-			observer->onBallEvent(event);
-			it++;
-		}
-		else
-		{
-			it = subscribers.erase(it);
-		}
-	}
-}
-
-```
 
 * Use weak_ptr for weak dependancies:
 
@@ -190,8 +169,8 @@ MainScene is Builder.
 Ps. Now I am using clean object creation, however hardcoded dependancies setup. I want to make dependencies fucntions for cleaner code and set Position/Size inside Object Creation.  
 
 * *Decorator* :  
-❌ Ball movement  
-❌ Ball collisionComponent  
+✅ Ball movement  
+✅ Ball collisionComponent  
 
 * *Strategy* :  
 ❌ Computer/Player follow mechanic (have code dublicate in both classes)  
@@ -204,7 +183,6 @@ Ps. Now I am using clean object creation, however hardcoded dependancies setup. 
 source
 |   main.cpp
 |   
-+---components
 +---core
 |       AudioHandler.cpp
 |       AudioHandler.h
@@ -214,19 +192,25 @@ source
 |       TextureHandler.h
 |       
 +---entities
-|       Ball.cpp
-|       Ball.h
-|       Board.cpp
-|       Board.h
-|       Computer.cpp
-|       Computer.h
-|       Object.cpp
-|       Object.h
-|       Player.cpp
-|       Player.h
-|       ScoreBar.cpp
-|       ScoreBar.h
-|       
+|   |   Ball.cpp
+|   |   Ball.h
+|   |   Board.cpp
+|   |   Board.h
+|   |   Computer.cpp
+|   |   Computer.h
+|   |   Object.cpp
+|   |   Object.h
+|   |   Player.cpp
+|   |   Player.h
+|   |   ScoreBar.cpp
+|   |   ScoreBar.h
+|   |   
+|   \---BallComponents
+|           Collision.cpp
+|           Collision.h
+|           Movement.cpp
+|           Movement.h
+|           
 +---interfaces
 |   +---ballObserver
 |   |       BallPublisher.cpp
@@ -238,12 +222,20 @@ source
 |           TexturePublisher.h
 |           TextureSubscriber.h
 |           
-+---scenes
-|       MainScene.cpp
-|       MainScene.h
-|       Scene.cpp
-|       Scene.h
-|       
+\---scenes
+    |   MainScene.cpp
+    |   MainScene.h
+    |   Scene.cpp
+    |   Scene.h
+    |   
+    \---components
+        \---objectFactory
+                Creator.cpp
+                Creator.h
+                objectFactory.cpp
+                objectFactory.h
+                Product.cpp
+                Product.h
 ```
 
 

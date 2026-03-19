@@ -10,7 +10,7 @@ void Collision::setComputerReference(std::weak_ptr<Object> computer)
 	computerObject = computer;
 }
 
-COLLITION Collision::isTouchingPaddles(SDL_FPoint* pos, SDL_FPoint* size)
+COLLITION Collision::checkForCollisions(SDL_FPoint* pos, SDL_FPoint* size)
 {
 	// Player collision
 	bool playerCollision = false;

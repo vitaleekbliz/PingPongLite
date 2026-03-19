@@ -36,7 +36,7 @@ void Movement::applyMovement(SDL_FPoint* pos)
 	pos->y += deltaTime * currentSpeed * direction.y;
 }
 
-void Movement::paddleHit(bool player)
+void Movement::onPaddleHit(bool player)
 {
 	// Points to direction it should be moving
 	direction.x = player ? -std::abs(direction.x) : std::abs(direction.x);

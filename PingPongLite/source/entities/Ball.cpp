@@ -49,15 +49,15 @@ void Ball::update()
 		break;
 	}
 
-	switch (isTouchingPaddles(&position, &size))
+	switch (checkForCollisions(&position, &size))
 	{
 	case COLLITION::PLAYER:
 		notify(BallEvent::PADDLE_HIT);
-		paddleHit(true);
+		onPaddleHit(true);
 		break;
 	case COLLITION::COMPUTER:
 		notify(BallEvent::PADDLE_HIT);
-		paddleHit(false);
+		onPaddleHit(false);
 		break;
 	case COLLITION::NONE:
 		break;
