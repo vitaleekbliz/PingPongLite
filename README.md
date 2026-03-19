@@ -68,7 +68,7 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 
 2. ✅ **External libraries**:  
 
-✅ *SDL3_mixer* in AudioHandler   
+*** ✅ *SDL3_mixer* in AudioHandler   
     ($(ProjectDir)/source/core/).  
 
 ❌ *SDL3_ttf* in TextureHandler   
