@@ -67,20 +67,22 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 1. ❌ **Animations** - not yet😔  
 
 2. ✅ **External libraries**:  
-
-* ✅ *SDL3_mixer* in AudioHandler   
+✅ *SDL3_mixer* in AudioHandler   
 ($(ProjectDir)/source/core/).  
-* ❌ *SDL3_ttf* in TextureHandler   
+❌ *SDL3_ttf* in TextureHandler   
 ($(ProjectDir)/source/core/).  
-* ✅ *SDL3_image* in TextureHandler  
+✅ *SDL3_image* in TextureHandler   
 ($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
 * *Singleton* :  
-✅SDLHandler ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
+✅SDLHandler  
+($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
+
 * *Observer* :  
 ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
-($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})  
+
+* ($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})  
 ✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
 
 * *Abstract Factory* :  
@@ -91,13 +93,13 @@ Ps. instead of using interface, used Object parent class of all game objects. (A
 ❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
 ❌ TextCreator : component of ScoreBar object  
 
-* *ByteCode*-
+* *ByteCode*  
 ✅ TextureHandler for centrilized drawing loaded textures  
 ✅ AudioHandler for centrilized playing loaded audio files  
 ✅ MainScene for object creation  
 
 * *Builder* :  
-[+/-] MainScene is builder  
+[✅/❌] MainScene is builder  
 Ps. Now I am using clean object creation, however hardcoded dependancies setup. I want to make dependencies fucntions for cleaner code and set Position/Size inside Object Creation.  
 
 * *Decorator* :  
@@ -111,8 +113,8 @@ Ps. Now I am using clean object creation, however hardcoded dependancies setup. 
 ❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
 
 ### 🤩 Main Tasks
-1. ❗**Demonstrate C++ knowledge**. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
-2. ❗**OOP** :  
+1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
+2. ❗**OOP**❗ :  
 
 *General*  
   * Structured class inheritence
@@ -124,7 +126,7 @@ Ps. Now I am using clean object creation, however hardcoded dependancies setup. 
 *Implementation* 
   * Use OOP in pattern designs implementation
 
-3. ❗**STL**
+3. ❗**STL**❗
   * Use weak_ptr for weak dependancies:
 
 computer and player referencies :
@@ -172,9 +174,9 @@ void Ball::notify(BallEvent event)
 
 ```
 
-4. ❗**clang-format**: using Format on save plugin
-5. ❗**external librarires**: details in Tech Stack segment
-6. ❗**Game architecture**
+4. ❗**clang-format**❗: using Format on save plugin
+5. ❗**external librarires**❗: details in Tech Stack segment
+6. ❗**Game architecture**❗
   * Game Loop:  
 using temporery solution, cause I have only 1 Scene, however Ready to deploy. Each game object that is on scene also has update and render methods. To get tickRate use SDLHandler Singleton.
 ```cpp
@@ -191,8 +193,8 @@ while (mainScene.isRunning())
 		mainScene.render();
 	}
 ```
-7. ❗**Design Patterns** : details in Bonus Task section
-8. ❗**Compile code** : tested running on several devices. Check Usage section for more details
+7. ❗**Design Patterns**❗ : details in Bonus Task section
+8. ❗**Compile code**❗ : tested running on several devices. Check Usage section for more details
 
 
 ## Architecture
