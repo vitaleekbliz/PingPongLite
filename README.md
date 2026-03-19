@@ -1,5 +1,8 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
+⚠️⚠️⚠️**Disclaimer**: *This project is a work-in-progress. Documentation is updated regularly but may not always reflect the most recent commits during active development cycles*.⚠️⚠️⚠️  
+Project is in active development, some README props can be not up-to-date
+
 PingPongLite is a high-performance, object-oriented 2D game developed from scratch using C++ and the SDL3 library.
 This project serves as a demonstration of clean architecture, real-time physics simulation, and the implementation of common game design patterns.   
 
