@@ -68,14 +68,12 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 
 2. ✅ **External libraries**:  
 
-** ✅ *SDL3_mixer* in AudioHandler   
-** ($(ProjectDir)/source/core/).  
-
-** ❌ *SDL3_ttf* in TextureHandler   
-** ($(ProjectDir)/source/core/).  
-
-**✅ *SDL3_image* in TextureHandler  
-**($(ProjectDir)/source/core/)  
+* ✅ *SDL3_mixer* in AudioHandler   
+($(ProjectDir)/source/core/).  
+* ❌ *SDL3_ttf* in TextureHandler   
+($(ProjectDir)/source/core/).  
+* ✅ *SDL3_image* in TextureHandler  
+($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
 * *Singleton* :  
@@ -83,7 +81,6 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 * *Observer* :  
 ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
 ($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})  
-
 ✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
 
 * *Abstract Factory* :  
