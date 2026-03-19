@@ -244,8 +244,12 @@ source
 ### 🧩 Key Challenges & Solutions
 
 **Challenge: Eliminating Deterministic Physics Traps**  
-* **Issue:** The ball occasionally entered infinite vertical or horizontal loops due to perfect reflection math, leading to "stuck" gameplay states.  
-* **Solution:** Implemented **Stochastic Vector Perturbation**. By introducing a controlled `m_maxAngularDeviation` during collision resolution, I ensured the ball maintains high entropy in its trajectory. This prevents infinite loops and introduces a more organic, "pro-feel" to the ball physics.  
+* Problem: Deterministic Physics Traps  
+The ball would occasionally enter infinite horizontal or vertical loops due to perfect reflection math, stalling gameplay.
+* **Solution:**  
+- Vertically : clamping velocity Y axes
+- Horizontally : pushing ball away from paddle center
+
 
 ## 🚀 Technical Highlights
 
