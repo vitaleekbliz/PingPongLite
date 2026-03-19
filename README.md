@@ -56,7 +56,7 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 
 ### 🚀 Release 
 
-1.Go to x64/Release/ dir
+1.Go to x64/Release/ dir  
 2.Run program and enjoy
 
 ## 📋 Technical Task list
@@ -65,6 +65,7 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 1. [-] **Animations** - not yet😔  
 
 2. [+] **External libraries**:  
+
 [+] *SDL3_mixer* in AudioHandler   
     ($(ProjectDir)/source/core/).  
 
@@ -75,9 +76,9 @@ Place build exe file into $(SolutionDir)/app folder and run the program
    ($(ProjectDir)/source/core/)  
 
 3. [+] **Design Patterns**:  
--*Singleton* : SDLHandler ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
-
--*Observer* :  
+* *Singleton* :  
+**SDLHandler ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
+* *Observer* :  
   [+] BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal
     ($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})
 
