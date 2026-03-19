@@ -134,6 +134,7 @@ while (mainScene.isRunning())
 1. ❌ **Animations** - not yet😔  
 
 2. ✅ **External libraries**:  
+
   * ✅ *SDL3_mixer* in AudioHandler   
 ($(ProjectDir)/source/core/).  
   * ❌ *SDL3_ttf* in TextureHandler   
