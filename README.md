@@ -71,20 +71,10 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago   
 2. ❗**OOP**❗ :  
 * *Ball and MainScene* class have the most implemented features. Recommend checking them out, along with their component folder : 
- * $(ProjectDir)/source/scenes/MainScene
- * $(ProjectDir)/source/scenes/Components
- * $(ProjectDir)/source/enities/Ball{.h, .cpp}
- * $(ProjectDir)/source/enities/BallComponents  
-
-* *General*  
- * Structured class inheritence
-MainScene(Child) -> , and MainMenu(Child) -> Scene(Parent)
-Entities : Ball, Computer, Player, ScoreBar -> Object(Scene placble objects)
-
- * Prioritizing using private and protected visibility in Classes
-
-* *Implementation*  
-Use OOP in pattern designs implementation
+  * $(ProjectDir)/source/scenes/MainScene
+  * $(ProjectDir)/source/scenes/Components
+  * $(ProjectDir)/source/enities/Ball{.h, .cpp}
+  * $(ProjectDir)/source/enities/BallComponents  
 
 3. ❗**STL**❗
 * containers:
@@ -102,9 +92,6 @@ MainScene
 	std::unique_ptr<ObjectCreator> factory;
 	std::shared_ptr<AudioHandler> audioHandler;
 	std::shared_ptr<TextureHandler> textureHandler;
-
-	std::shared_ptr<Board> board;
-	std::shared_ptr<Computer> computer;
     ...
 ```
 
@@ -245,12 +232,20 @@ source
 ### 🧩 Key Challenges & Solutions
 
 **Challenge: Eliminating Deterministic Physics Traps**  
+https://youtu.be/fDKUqmMbjVc
 * Problem: Deterministic Physics Traps  
 The ball would occasionally enter infinite horizontal or vertical loops due to perfect reflection math, stalling gameplay.
 * **Solution:** 
   * Vertically : clamping velocity Y axes
   * Horizontally : pushing ball away from paddle center
+  * 
 
+**Challenge: Collision Overlap** 
+https://youtu.be/brq7M2zOXg4
+* Problem: Deterministic Physics Traps  
+If the ball didn't exit the paddle's collision volume in a single frame, the physics engine would re-trigger the bounce, causing the ball to jitter or become "glued" inside the paddle.
+* **Solution:** 
+Implemented a isReadyForCollision flag. This state-gate prevents the physics solver from processing a new hit until the ball has safely exited the current interaction zone
 
 ## 🚀 Technical Highlights
 
