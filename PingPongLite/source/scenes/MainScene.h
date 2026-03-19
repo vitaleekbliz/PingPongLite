@@ -9,7 +9,7 @@ class MainScene : public Scene
 {
   public:
 	MainScene() = default;
-	~MainScene() = default;
+	~MainScene();
 
 	virtual void update() override;
 	virtual void render() override;
@@ -24,7 +24,7 @@ class MainScene : public Scene
 	void setupTextureObserver();
 #pragma endregion
 
-	std::shared_ptr<ObjectCreator> factory;
+	std::unique_ptr<ObjectCreator> factory;
 	std::shared_ptr<AudioHandler> audioHandler;
 	std::shared_ptr<TextureHandler> textureHandler;
 

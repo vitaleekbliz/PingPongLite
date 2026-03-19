@@ -22,7 +22,7 @@ class Ball : public Object, public BallPublisher
 	void reset();
 	void setRandomDirection();
 
-	// update Refactoring
+	// TODO move some logic to decorator class
 #pragma region update() Logic
 	void applyMovement();
 
@@ -45,7 +45,7 @@ class Ball : public Object, public BallPublisher
 
 	const float baseSpeed = 500.f;
 	float currentSpeed = baseSpeed;
-	const float speedMultiplier = 1.2;
+	const float speedMultiplier = 1.3;
 	const float maxSpeed = 1600.f;
 
 	float leftBoundary = 15;

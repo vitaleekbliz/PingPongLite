@@ -58,6 +58,7 @@ void Ball::reset()
 
 void Ball::setRandomDirection()
 {
+	// TODO use boost libary
 	float& x = direction.x;
 	float& y = direction.y;
 	x = (std::rand() % 3) / 1.f - 1.f;
@@ -109,7 +110,6 @@ void Ball::bounceTopBottom()
 
 void Ball::bounceLeftRight()
 {
-	// TODO add notify Logic
 	if (position.x <= leftBoundary)
 	{
 		notify(BallEvent::GOAL_LEFT);
@@ -160,6 +160,7 @@ void Ball::resolvePaddleCollision()
 
 bool Ball::checkCollision(const SDL_FRect rect)
 {
+	// TODO use boost library for clean code
 	SDL_FPoint start = position;
 
 	SDL_FPoint rectCenter = {rect.x + rect.w / 2, rect.y + rect.h / 2};
@@ -181,7 +182,6 @@ bool Ball::checkCollision(const SDL_FRect rect)
 	SDL_FPoint end = {start.x + dirVector.x, start.y + dirVector.y};
 
 	// Draw a line to rectangle and get intersaction
-	// return checkLineRectIntersection()
 	return SDL_GetRectAndLineIntersectionFloat(&rect, &start.x, &start.y, &end.x, &end.y);
 }
 
