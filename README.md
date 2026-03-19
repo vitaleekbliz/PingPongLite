@@ -135,11 +135,11 @@ while (mainScene.isRunning())
 
 2. ✅ **External libraries**:  
 
-  * ✅ *SDL3_mixer* in AudioHandler   
+    * ✅ *SDL3_mixer* in AudioHandler   
 ($(ProjectDir)/source/core/).  
-  * ❌ *SDL3_ttf* in TextureHandler   
+    * ❌ *SDL3_ttf* in TextureHandler   
 ($(ProjectDir)/source/core/).  
-  * ✅ *SDL3_image* in TextureHandler   
+    * ✅ *SDL3_image* in TextureHandler   
 ($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
@@ -255,6 +255,5 @@ The ball would occasionally enter infinite horizontal or vertical loops due to p
 ## 🚀 Technical Highlights
 
 ## 🎮 Gameplay Features
-
 
 ## 💡 Key Features

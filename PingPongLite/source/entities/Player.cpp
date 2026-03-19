@@ -47,4 +47,10 @@ void Player::followMouse()
 	{
 		position.y += (distanceToMouse > 0 ? 1 : -1) * moveAmount;
 	}
+
+// TODO remove debug
+#if defined(_DEBUG) && 0
+	position.x = mouseX;
+	position.y = mouseY;
+#endif // _DEBUG
 }

@@ -19,7 +19,7 @@ class Movement
 {
   protected:
 	void setRandomDirection();
-	void applyMovement(SDL_FPoint* pos) const;
+	void applyMovement(SDL_FPoint* pos);
 
 	void onPaddleHit(bool player, SDL_FPoint* ballPos, SDL_FRect* paddleRect);
 	void onWallHit();
@@ -35,7 +35,7 @@ class Movement
 	void clampVerticalVelocity();
 
 	SDL_FPoint direction = {0.f, 0.f};
-	const float verticalClampingFactor = 1.2;
+	const float verticalClampingFactor = 1.13;
 
 	const float speedMultiplier = 1.3;
 	const float maxSpeed = 1600.f;

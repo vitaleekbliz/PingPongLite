@@ -28,7 +28,7 @@ void Movement::setRandomDirection()
 	}
 }
 
-void Movement::applyMovement(SDL_FPoint* pos) const
+void Movement::applyMovement(SDL_FPoint* pos)
 {
 	float deltaTime = SDLHandler::get().getTick();
 
@@ -104,6 +104,7 @@ void Movement::accelerate()
 void Movement::clampVerticalVelocity()
 {
 	direction.y /= verticalClampingFactor;
+	direction.x *= verticalClampingFactor;
 
 	// normalize vector
 	float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
