@@ -1,5 +1,10 @@
 #include "MainScene.h"
 
+MainScene::~MainScene()
+{
+	close();
+}
+
 void MainScene::update()
 {
 	board->update();
@@ -34,7 +39,7 @@ void MainScene::init()
 	textureHandler = std::make_shared<TextureHandler>();
 	textureHandler->init();
 
-	factory = std::make_shared<ObjectCreator>();
+	factory = std::make_unique<ObjectCreator>();
 
 	populateScene(ObjectID::BALL);
 	populateScene(ObjectID::BOARD);

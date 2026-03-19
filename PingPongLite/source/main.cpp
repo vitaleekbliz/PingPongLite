@@ -3,7 +3,6 @@
 
 int main()
 {
-
 	SDLHandler& sdlHandler = SDLHandler::get();
 	sdlHandler.init();
 
