@@ -4,18 +4,20 @@ PingPongLite is a high-performance, object-oriented 2D game developed from scrat
 This project serves as a demonstration of clean architecture, real-time physics simulation, and the implementation of common game design patterns.   
 
 ## 🛠️ Tech Stack
-Language: C++20
-Graphics/Input: SDL3-3.4.0 (Simple DirectMedia Layer)
-Font Rendering: SDL3_ttf-3.2.2
-Texture Rendering: SDL3_image-3.4.0
-Audio: SDL3_mixer-3.2.0
+
+*Language: C++20  
+*Graphics/Input: SDL3-3.4.0 (Simple DirectMedia Layer)  
+*Font Rendering: SDL3_ttf-3.2.2  
+*Texture Rendering: SDL3_image-3.4.0  
+*Audio: SDL3_mixer-3.2.0  
 
 ## 💻 System Specifications
-Platform: Windows 10 / 11 (x64-based PC)
-Architecture: x64 (64-bit)
-Visual Studio: 2026
-MSVC Version: 1950
-Compiler: C/C++ Optimizing Compiler Version 19.50.35727
+
+*Platform: Windows 10 / 11 (x64-based PC)  
+*Architecture: x64 (64-bit)  
+*Visual Studio: 2026  
+*MSVC Version: 1950  
+*Compiler: C/C++ Optimizing Compiler Version 19.50.35727  
 
 ## Usage 📖 
 
@@ -62,54 +64,54 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 ## 📋 Technical Task list
 
 ### 😱 Bonus Tasks
-1. [-] **Animations** - not yet😔  
+1. ❌ **Animations** - not yet😔  
 
-2. [+] **External libraries**:  
+2. ✅ **External libraries**:  
 
-[+] *SDL3_mixer* in AudioHandler   
+✅ *SDL3_mixer* in AudioHandler   
     ($(ProjectDir)/source/core/).  
 
-[-] *SDL3_ttf* in TextureHandler   
+❌ *SDL3_ttf* in TextureHandler   
     ($(ProjectDir)/source/core/).  
 
-[+] *SDL3_image* in TextureHandler  
+✅ *SDL3_image* in TextureHandler  
    ($(ProjectDir)/source/core/)  
 
-3. [+] **Design Patterns**:  
+3. ✅ **Design Patterns**:  
 * *Singleton* :  
 **SDLHandler ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
 * *Observer* :  
-  [+] BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal
-    ($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})
+**✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal
+***($(ProjectDir)/source/interfaces/AudioHandler{.h/.cpp})
 
-  [+] TextureObserver - handles draw requests ([+] drawTexture, [-] drawText)
+**✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)
 
--*Abstract Factory* :  
-  [+] ObjectCreator - handles creation of game Objects (ones that are placed on Scene)  
-    ($(ProjectDir)/source/utils/).  
-Ps. MainScene is Factory. 
-Ps. instead of using interface, used Object parent class of all game objects. (All game objects have position and size properties, interface would be extra)  
-  [-] ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
-  [-] TextCreator : component of ScoreBar object  
+* *Abstract Factory* :  
+**✅ ObjectCreator - handles creation of game Objects (ones that are placed on Scene)  
+***($(ProjectDir)/source/utils/).  
+***Ps. MainScene is Factory. 
+***Ps. instead of using interface, used Object parent class of all game objects. (All game objects have position and size properties, interface would be extra)  
+**❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
+**❌ TextCreator : component of ScoreBar object  
 
--*ByteCode*-
-  [+] TextureHandler for centrilized drawing loaded textures  
-  [+] AudioHandler for centrilized playing loaded audio files  
-  [+] MainScene for object creation
+* *ByteCode*-
+**✅ TextureHandler for centrilized drawing loaded textures  
+**✅ AudioHandler for centrilized playing loaded audio files  
+**✅ MainScene for object creation
 
--*Builder* :  
-  [+/-] MainScene is builder  
+* *Builder* :  
+**[+/-] MainScene is builder  
 Ps. Now I am using clean object creation, however hardcoded dependancies setup. I want to make dependencies fucntions for cleaner code and set Position/Size inside Object Creation.  
 
--*Decorator* :  
-  [-] Ball movement  
-  [-] Ball collisionComponent  
+* *Decorator* :  
+**❌ Ball movement  
+**❌ Ball collisionComponent  
 
--*Strategy* :  
-  [-] Computer/Player follow mechanic (have code dublicate in both classes)
+* *Strategy* :  
+**❌ Computer/Player follow mechanic (have code dublicate in both classes)
 
--*State Machine* :  
-  [-] BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.
+* *State Machine* :  
+**❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.
 
 ### 🤩 Main Tasks
 1. **Demonstrate C++ knowledge**. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago  
