@@ -76,7 +76,7 @@ void Paddle::DEBUG_printWarning()
 {
 	if (timer < 5.f)
 	{
-		std::string messeage = "Switching places in ";
+		std::string messeage = "Changing Paddle strategy in ";
 		messeage += std::to_string(timer);
 		SDL_FPoint pos = {640, 360};
 		SDL_Color color = SDL_Color();

@@ -243,7 +243,7 @@ The ball would occasionally enter infinite horizontal or vertical loops due to p
   * Horizontally : pushing ball away from paddle center
   * 
 
-**Challenge: Collision Overlap** 
+**Challenge: Collision Overlap**  
 https://youtu.be/brq7M2zOXg4
 * Problem: Deterministic Physics Traps  
 If the ball didn't exit the paddle's collision volume in a single frame, the physics engine would re-trigger the bounce, causing the ball to jitter or become "glued" inside the paddle.
