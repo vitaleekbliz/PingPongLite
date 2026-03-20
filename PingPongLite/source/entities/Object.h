@@ -11,7 +11,8 @@ enum class ObjectID : char
 	COMPUTER,
 	PLAYER,
 	SCORE_BAR,
-	BOARD
+	BOARD,
+	PADDLE
 };
 
 class Object : public TexturePublisher, public FontPublisher
@@ -24,16 +25,16 @@ class Object : public TexturePublisher, public FontPublisher
 	virtual void render() = 0;
 
 	void setPosition(SDL_FPoint pos);
-	SDL_FPoint getPosition() const;
+	const SDL_FPoint* getPosition();
 
 	void setSize(SDL_FPoint size);
-	SDL_FPoint getSize() const;
+	const SDL_FPoint* getSize();
 
 	SDL_FRect getCollider() const;
 
   protected:
 	virtual void requestDrawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-									bool isRectCentered = false) override;
+									bool isDestinationCentered = false) override;
 	virtual void requestDrawText(FONT id, std::string text, SDL_FPoint* position, int size, SDL_Color color) override;
 
 	SDL_FPoint size = {0.f, 0.f};

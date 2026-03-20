@@ -45,7 +45,7 @@ void Computer::followBall()
 
 	if (auto ball = ballReference.lock())
 	{
-		float ballY = ball->getPosition().y;
+		float ballY = ball->getPosition()->y;
 
 		float deltaY = ballY - position.y;
 
@@ -53,7 +53,7 @@ void Computer::followBall()
 
 		if (moveAmount > std::abs(deltaY))
 		{
-			position.y = ball->getPosition().y;
+			position.y = ball->getPosition()->y;
 		}
 		else
 		{

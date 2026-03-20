@@ -69,12 +69,7 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 
 ### 🤩 Main Tasks
 1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago   
-2. ❗**OOP**❗ :  
-* *Ball and MainScene* class have the most implemented features. Recommend checking them out, along with their component folder : 
-  * $(ProjectDir)/source/scenes/MainScene
-  * $(ProjectDir)/source/scenes/Components
-  * $(ProjectDir)/source/enities/Ball{.h, .cpp}
-  * $(ProjectDir)/source/enities/BallComponents  
+2. ❗**OOP**❗ :  "source\entities\PaddleComponents\." and "source\entities\Paddle{.h, .cpp}"
 
 3. ❗**STL**❗
 * containers:
@@ -130,6 +125,10 @@ while (mainScene.isRunning())
 ($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
+* *Strategy* :  
+  *✅ Computer/Player follow same mechanic
+    *($(ProjectDir)/source/core/SDLHandler{.h/.cpp}) 
+
 * *Singleton* :  
   * ✅SDLHandler  
 ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
@@ -142,101 +141,90 @@ while (mainScene.isRunning())
   * ✅ FontObserver - handles draw requests  
     * ($(ProjectDir)/source/interfaces/FontObserver)
 
-* *Abstract Factory* :  
-  * [✅/❌] MainScene is abstract factory - handles creation/linking of game Objects (ones that are placed on Scene)  
-($(ProjectDir)/source/scenes/MainScene).  
-MainScene is Builder.  
-
-  * ❌ ButtonCreator : EUREKE I can create buttons with different texts and background images for main menu using Builder class  
-  * ❌ TextCreator : component of ScoreBar object  
-
-* *ByteCode*  
-  * ✅ TextureHandler for centrilized drawing loaded textures  
-  * ✅ AudioHandler for centrilized playing loaded audio files  
-  * ✅ MainScene for object creation  
-
-* *Builder* :  
-  * ✅ MainScene is builder    
-
 * *Decorator* :  
   * ✅ Ball movement  
   * ✅ Ball collisionComponent  
 
-* *Strategy* :  
-❌ Computer/Player follow mechanic (have code dublicate in both classes)  
+
 
 * *State Machine* :  
 ❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
 
 ## Architecture
 ``` bash
-+---source
-|   |   main.cpp
+source
+|   main.cpp
+|   
++---core
+|       AudioHandler.cpp
+|       AudioHandler.h
+|       FontHandler.cpp
+|       FontHandler.h
+|       SDLHandler.cpp
+|       SDLHandler.h
+|       TextureHandler.cpp
+|       TextureHandler.h
+|       
++---entities
+|   |   Ball.cpp
+|   |   Ball.h
+|   |   Board.cpp
+|   |   Board.h
+|   |   Computer.cpp
+|   |   Computer.h
+|   |   Object.cpp
+|   |   Object.h
+|   |   Paddle.cpp
+|   |   Paddle.h
+|   |   Player.cpp
+|   |   Player.h
+|   |   ScoreBar.cpp
+|   |   ScoreBar.h
 |   |   
-|   +---core
-|   |       AudioHandler.cpp
-|   |       AudioHandler.h
-|   |       FontHandler.cpp
-|   |       FontHandler.h
-|   |       SDLHandler.cpp
-|   |       SDLHandler.h
-|   |       TextureHandler.cpp
-|   |       TextureHandler.h
+|   +---BallComponents
+|   |       BallCollisionDecorator.cpp
+|   |       BallCollisionDecorator.h
+|   |       BallMovementDecorator.cpp
+|   |       BallMovementDecorator.h
 |   |       
-|   +---entities
-|   |   |   Ball.cpp
-|   |   |   Ball.h
-|   |   |   Board.cpp
-|   |   |   Board.h
-|   |   |   Computer.cpp
-|   |   |   Computer.h
-|   |   |   Object.cpp
-|   |   |   Object.h
-|   |   |   Player.cpp
-|   |   |   Player.h
-|   |   |   ScoreBar.cpp
-|   |   |   ScoreBar.h
-|   |   |   
-|   |   +---BallComponents
-|   |   |       BallCollision.cpp
-|   |   |       BallCollision.h
-|   |   |       BallMovement.cpp
-|   |   |       BallMovement.h
-|   |   |       
-|   |   \---PaddleComponents
-|   |           PaddleMovement.cpp
-|   |           PaddleMovement.h
-|   |           
-|   +---interfaces
-|   |   +---ballObserver
-|   |   |       BallPublisher.cpp
-|   |   |       BallPublisher.h
-|   |   |       BallSubscriber.h
-|   |   |       
-|   |   +---fontObserver
-|   |   |       FontPublisher.cpp
-|   |   |       FontPublisher.h
-|   |   |       FontSubscriber.h
-|   |   |       
-|   |   \---textureObserver
-|   |           TexturePublisher.cpp
-|   |           TexturePublisher.h
-|   |           TextureSubscriber.h
-|   |           
-|   \---scenes
-|       |   MainScene.cpp
-|       |   MainScene.h
-|       |   Scene.cpp
-|       |   Scene.h
-|       |   
-|       \---components
-|           \---objectFactory
-|                   Creator.cpp
-|                   Creator.h
-|                   objectFactory.cpp
-|                   objectFactory.h
-|                   Product.cpp
-|                   Product.h
+|   \---PaddleComponents
+|           PaddleComputerStrategy.cpp
+|           PaddleComputerStrategy.h
+|           PaddlePlayerStrategy.cpp
+|           PaddlePlayerStrategy.h
+|           PaddleStrategy.cpp
+|           PaddleStrategy.h
+|           
++---interfaces
+|   +---ballObserver
+|   |       BallPublisher.cpp
+|   |       BallPublisher.h
+|   |       BallSubscriber.h
+|   |       
+|   +---fontObserver
+|   |       FontPublisher.cpp
+|   |       FontPublisher.h
+|   |       FontSubscriber.h
+|   |       
+|   \---textureObserver
+|           TexturePublisher.cpp
+|           TexturePublisher.h
+|           TextureSubscriber.h
+|           
+\---scenes
+    |   MainScene.cpp
+    |   MainScene.h
+    |   Scene.cpp
+    |   Scene.h
+    |   
+    \---components
+        \---objectFactory
+                Creator.cpp
+                Creator.h
+                objectFactory.cpp
+                objectFactory.h
+                Product.cpp
+                Product.h
 ```
 
 

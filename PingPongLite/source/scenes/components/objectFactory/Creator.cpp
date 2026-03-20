@@ -19,6 +19,8 @@ std::shared_ptr<Object> ObjectCreator::create(ObjectID id)
 	case ObjectID::BOARD:
 		return std::make_shared<Board>();
 		break;
+	case ObjectID::PADDLE:
+		return std::make_shared<Paddle>();
 	default:
 		break;
 	}

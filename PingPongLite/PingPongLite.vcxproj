@@ -137,7 +137,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ScoreComponent.cpp" />
     <ClCompile Include="source\core\AudioHandler.cpp" />
     <ClCompile Include="source\core\FontHandler.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
@@ -148,7 +147,10 @@
     <ClCompile Include="source\entities\Board.cpp" />
     <ClCompile Include="source\entities\Computer.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
-    <ClCompile Include="source\entities\PaddleComponents\PaddleMovement.cpp" />
+    <ClCompile Include="source\entities\Paddle.cpp" />
+    <ClCompile Include="source\entities\PaddleComponents\PaddleComputerStrategy.cpp" />
+    <ClCompile Include="source\entities\PaddleComponents\PaddlePlayerStrategy.cpp" />
+    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy.cpp" />
     <ClCompile Include="source\entities\Player.cpp" />
     <ClCompile Include="source\entities\ScoreBar.cpp" />
     <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp" />
@@ -162,7 +164,6 @@
     <ClCompile Include="source\scenes\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ScoreComponent.h" />
     <ClInclude Include="source\core\AudioHandler.h" />
     <ClInclude Include="source\core\FontHandler.h" />
     <ClInclude Include="source\core\SDLHandler.h" />
@@ -173,7 +174,10 @@
     <ClInclude Include="source\entities\Board.h" />
     <ClInclude Include="source\entities\Computer.h" />
     <ClInclude Include="source\entities\Object.h" />
-    <ClInclude Include="source\entities\PaddleComponents\PaddleMovement.h" />
+    <ClInclude Include="source\entities\Paddle.h" />
+    <ClInclude Include="source\entities\PaddleComponents\PaddleComputerStrategy.h" />
+    <ClInclude Include="source\entities\PaddleComponents\PaddlePlayerStrategy.h" />
+    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy.h" />
     <ClInclude Include="source\entities\Player.h" />
     <ClInclude Include="source\entities\ScoreBar.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h" />

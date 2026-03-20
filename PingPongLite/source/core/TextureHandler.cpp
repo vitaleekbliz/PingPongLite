@@ -26,12 +26,12 @@ void TextureHandler::close()
 }
 
 void TextureHandler::onDrawRequestTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-										  bool isRectCentered)
+										  bool isDestinationCentered)
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
 
 	// center picture
-	if (isRectCentered)
+	if (isDestinationCentered)
 	{
 		destination.x -= destination.w / 2;
 		destination.y -= destination.h / 2;

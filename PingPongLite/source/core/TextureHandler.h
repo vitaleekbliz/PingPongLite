@@ -12,7 +12,7 @@ class TextureHandler : public TextureSubscriber
 	void close();
 
 	virtual void onDrawRequestTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-									  bool isRectCentered = true) override;
+									  bool isDestinationCentered = true) override;
 
   private:
 	SDL_Texture* load(std::string fileName, SDL_Renderer* renderer);

@@ -8,8 +8,9 @@ void ScoreBar::update()
 
 void ScoreBar::render()
 {
-	requestDrawTexture(TEXTURE::SCORE_BAR, ui.leftBar, SDL_FLIP_NONE);
-	requestDrawTexture(TEXTURE::SCORE_BAR, ui.rightBar, SDL_FLIP_HORIZONTAL);
+	// Draw bars
+	// requestDrawTexture(TEXTURE::SCORE_BAR, ui.leftBar, SDL_FLIP_NONE);
+	// requestDrawTexture(TEXTURE::SCORE_BAR, ui.rightBar, SDL_FLIP_HORIZONTAL);
 
 	// Draw time START
 	int minutes = roundDurationSeconds / 60;
@@ -20,9 +21,12 @@ void ScoreBar::render()
 	requestDrawText(FONT::CALIBRI, current_time.c_str(), &ui.time, 32, color);
 	// END
 
+	// Draw Score
+	color = SDL_Color(82, 124, 215);
 	std::string score_text = std::to_string(computerScore);
 	requestDrawText(FONT::CALIBRI, score_text.c_str(), &ui.scoreLeft, 32, color);
 
+	color = SDL_Color(215, 121, 82);
 	score_text = std::to_string(playerScore);
 	requestDrawText(FONT::CALIBRI, score_text.c_str(), &ui.scoreRight, 32, color);
 }
