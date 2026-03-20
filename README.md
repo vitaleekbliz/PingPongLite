@@ -136,8 +136,11 @@ while (mainScene.isRunning())
 
 * *Observer* :  
   * ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
-($(ProjectDir)/source/interfaces/BallObserver)  
-  * ✅ TextureObserver - handles draw requests (✅ drawTexture, ❌ drawText)  
+    *($(ProjectDir)/source/interfaces/BallObserver)  
+  * ✅ TextureObserver - handles draw requests   
+    * ($(ProjectDir)/source/interfaces/TextureObserver)
+  * ✅ FontObserver - handles draw requests  
+    * ($(ProjectDir)/source/interfaces/FontObserver)
 
 * *Abstract Factory* :  
   * [✅/❌] MainScene is abstract factory - handles creation/linking of game Objects (ones that are placed on Scene)  
