@@ -145,13 +145,11 @@
     <ClCompile Include="source\entities\BallComponents\BallCollisionDecorator.cpp" />
     <ClCompile Include="source\entities\BallComponents\BallMovementDecorator.cpp" />
     <ClCompile Include="source\entities\Board.cpp" />
-    <ClCompile Include="source\entities\Computer.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
     <ClCompile Include="source\entities\Paddle.cpp" />
     <ClCompile Include="source\entities\PaddleComponents\PaddleComputerStrategy.cpp" />
     <ClCompile Include="source\entities\PaddleComponents\PaddlePlayerStrategy.cpp" />
     <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy.cpp" />
-    <ClCompile Include="source\entities\Player.cpp" />
     <ClCompile Include="source\entities\ScoreBar.cpp" />
     <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp" />
     <ClCompile Include="source\interfaces\fontObserver\FontPublisher.cpp" />
@@ -172,13 +170,11 @@
     <ClInclude Include="source\entities\BallComponents\BallCollisionDecorator.h" />
     <ClInclude Include="source\entities\BallComponents\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board.h" />
-    <ClInclude Include="source\entities\Computer.h" />
     <ClInclude Include="source\entities\Object.h" />
     <ClInclude Include="source\entities\Paddle.h" />
     <ClInclude Include="source\entities\PaddleComponents\PaddleComputerStrategy.h" />
     <ClInclude Include="source\entities\PaddleComponents\PaddlePlayerStrategy.h" />
     <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy.h" />
-    <ClInclude Include="source\entities\Player.h" />
     <ClInclude Include="source\entities\ScoreBar.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h" />

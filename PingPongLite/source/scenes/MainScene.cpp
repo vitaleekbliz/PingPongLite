@@ -53,8 +53,6 @@ void MainScene::init()
 
 	spawnObject(ObjectID::BALL);
 	spawnObject(ObjectID::BOARD);
-	spawnObject(ObjectID::COMPUTER);
-	spawnObject(ObjectID::PLAYER);
 	spawnObject(ObjectID::SCORE_BAR);
 
 #pragma region Testing paddle strategy

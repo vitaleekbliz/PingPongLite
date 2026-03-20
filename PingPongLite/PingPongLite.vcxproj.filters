@@ -104,13 +104,7 @@
     <ClCompile Include="source\entities\Board.cpp">
       <Filter>Source Files\source\entities</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\Computer.cpp">
-      <Filter>Source Files\source\entities</Filter>
-    </ClCompile>
     <ClCompile Include="source\entities\Object.cpp">
-      <Filter>Source Files\source\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\Player.cpp">
       <Filter>Source Files\source\entities</Filter>
     </ClCompile>
     <ClCompile Include="source\entities\ScoreBar.cpp">
@@ -178,13 +172,7 @@
     <ClInclude Include="source\entities\Board.h">
       <Filter>Header Files\entities</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\Computer.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
     <ClInclude Include="source\entities\Object.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\Player.h">
       <Filter>Header Files\entities</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\ScoreBar.h">

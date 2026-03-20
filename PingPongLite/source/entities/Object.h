@@ -8,8 +8,6 @@
 enum class ObjectID : char
 {
 	BALL,
-	COMPUTER,
-	PLAYER,
 	SCORE_BAR,
 	BOARD,
 	PADDLE

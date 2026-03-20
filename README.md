@@ -172,14 +172,10 @@ source
 |   |   Ball.h
 |   |   Board.cpp
 |   |   Board.h
-|   |   Computer.cpp
-|   |   Computer.h
 |   |   Object.cpp
 |   |   Object.h
 |   |   Paddle.cpp
 |   |   Paddle.h
-|   |   Player.cpp
-|   |   Player.h
 |   |   ScoreBar.cpp
 |   |   ScoreBar.h
 |   |   
@@ -218,15 +214,10 @@ source
     |   MainScene.h
     |   Scene.cpp
     |   Scene.h
-    |   
     \---components
         \---objectFactory
                 Creator.cpp
                 Creator.h
-                objectFactory.cpp
-                objectFactory.h
-                Product.cpp
-                Product.h
 ```
 
 
