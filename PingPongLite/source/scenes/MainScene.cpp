@@ -16,33 +16,10 @@ void MainScene::update()
 {
 	board->update();
 	scoreBar->update();
-	// computer->update();
-	// player->update();
 	ball->update();
 
-#pragma region testing Paddle strategy
 	paddles[0]->update();
 	paddles[1]->update();
-
-	static float cooldown = 30.f;
-	static bool original = true;
-	cooldown -= SDLHandler::get().getTick();
-	if (cooldown < 0.f)
-	{
-		cooldown = 30.f;
-		if (original)
-		{
-			paddles[0]->changeStrategy(PADDLE_STRATEGY::COMPUTER);
-			paddles[1]->changeStrategy(PADDLE_STRATEGY::PLAYER);
-		}
-		else
-		{
-			paddles[0]->changeStrategy(PADDLE_STRATEGY::PLAYER);
-			paddles[1]->changeStrategy(PADDLE_STRATEGY::COMPUTER);
-		}
-		original = !original;
-	}
-#pragma endregion
 }
 
 void MainScene::render()
@@ -52,19 +29,12 @@ void MainScene::render()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(renderer);
 
-	// render gameObjects
-	// TODO testing paddle Strategy (removed computer and player from rendering)
-	// START
 	board->render();
 	scoreBar->render();
-	// computer->render();
-	// player->render();
 	ball->render();
 
 	paddles[0]->render();
 	paddles[1]->render();
-
-	// END
 
 	SDL_RenderPresent(renderer);
 }
@@ -88,10 +58,6 @@ void MainScene::init()
 	spawnObject(ObjectID::SCORE_BAR);
 
 #pragma region Testing paddle strategy
-
-	player->setPosition({10000, 0});
-	computer->setPosition({10000, 0});
-
 	spawnObject(ObjectID::PADDLE);
 	spawnObject(ObjectID::PADDLE);
 
@@ -108,14 +74,10 @@ void MainScene::init()
 	linkTextureObserver(textureHandler, ball);
 	linkTextureObserver(textureHandler, board);
 	linkTextureObserver(textureHandler, scoreBar);
-	linkTextureObserver(textureHandler, player);
-	linkTextureObserver(textureHandler, computer);
 
 	linkFontObserver(fontHandler, ball);
 	linkFontObserver(fontHandler, board);
 	linkFontObserver(fontHandler, scoreBar);
-	linkFontObserver(fontHandler, player);
-	linkFontObserver(fontHandler, computer);
 
 #pragma region Testing paddle strategy
 	linkTextureObserver(textureHandler, paddles[0]);
@@ -123,19 +85,10 @@ void MainScene::init()
 
 	linkFontObserver(fontHandler, paddles[0]);
 	linkFontObserver(fontHandler, paddles[1]);
-#pragma endregion
 
-	// Check colisions inside ball
-	ball->setComputerReference(computer);
-	ball->setPlayerReference(player);
-
-#pragma region Testing paddle strategy
 	ball->setComputerReference(paddles[0]);
 	ball->setPlayerReference(paddles[1]);
 #pragma endregion
-
-	// follow ball movement
-	computer->setBallReference(ball);
 
 	isActive = true;
 }
@@ -172,16 +125,6 @@ void MainScene::spawnObject(ObjectID id)
 	case ObjectID::BALL:
 		ball = std::dynamic_pointer_cast<Ball>(newObj);
 		if (!ball)
-			success = false;
-		break;
-	case ObjectID::COMPUTER:
-		computer = std::dynamic_pointer_cast<Computer>(newObj);
-		if (!computer)
-			success = false;
-		break;
-	case ObjectID::PLAYER:
-		player = std::dynamic_pointer_cast<Player>(newObj);
-		if (!player)
 			success = false;
 		break;
 	case ObjectID::SCORE_BAR:

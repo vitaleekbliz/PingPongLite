@@ -32,8 +32,6 @@ class MainScene : public Scene
 	std::shared_ptr<FontHandler> fontHandler;
 
 	std::shared_ptr<Board> board;
-	std::shared_ptr<Computer> computer;
-	std::shared_ptr<Player> player;
 	std::shared_ptr<Ball> ball;
 	std::shared_ptr<ScoreBar> scoreBar;
 
