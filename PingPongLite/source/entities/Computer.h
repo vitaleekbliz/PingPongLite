@@ -19,7 +19,7 @@ class Computer : public Object
 	int currentSpeed = baseSpeed;
 
 	const int topBoundary = 100;
-	int bottomBoundary = 720 - 60;
+	int bottomBoundary = 1200;
 
 	std::weak_ptr<Object> ballReference;
 };

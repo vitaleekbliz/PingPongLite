@@ -82,6 +82,12 @@
     <Filter Include="Header Files\interfaces\fontObserver">
       <UniqueIdentifier>{ede969e9-d333-45ff-b07d-3804b99f7ded}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source\entities\ScoreComponents">
+      <UniqueIdentifier>{78844d2d-4adc-410d-89f6-8179292e1e4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\ScoreComponents">
+      <UniqueIdentifier>{183bb6ed-f555-4ba8-8ddc-a9a5768e30d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">

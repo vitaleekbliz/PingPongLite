@@ -40,8 +40,8 @@ assets
 |       Player.png
 |       ScoreBar.png
 |       
-+---font
-|       font.ttf
++---fonts
+|       calibri.ttf
 |       
 \---sounds
         hit.mp3
@@ -124,7 +124,7 @@ while (mainScene.isRunning())
 
     * ✅ *SDL3_mixer* in AudioHandler   
 ($(ProjectDir)/source/core/).  
-    * ❌ *SDL3_ttf* in TextureHandler   
+    * ✅ *SDL3_ttf* in FontHandler   
 ($(ProjectDir)/source/core/).  
     * ✅ *SDL3_image* in TextureHandler   
 ($(ProjectDir)/source/core/)  
@@ -167,62 +167,73 @@ MainScene is Builder.
 
 ## Architecture
 ``` bash
-source
-|   main.cpp
-|   
-+---core
-|       AudioHandler.cpp
-|       AudioHandler.h
-|       SDLHandler.cpp
-|       SDLHandler.h
-|       TextureHandler.cpp
-|       TextureHandler.h
-|       
-+---entities
-|   |   Ball.cpp
-|   |   Ball.h
-|   |   Board.cpp
-|   |   Board.h
-|   |   Computer.cpp
-|   |   Computer.h
-|   |   Object.cpp
-|   |   Object.h
-|   |   Player.cpp
-|   |   Player.h
-|   |   ScoreBar.cpp
-|   |   ScoreBar.h
++---source
+|   |   main.cpp
 |   |   
-|   \---BallComponents
-|           Collision.cpp
-|           Collision.h
-|           Movement.cpp
-|           Movement.h
-|           
-+---interfaces
-|   +---ballObserver
-|   |       BallPublisher.cpp
-|   |       BallPublisher.h
-|   |       BallSubscriber.h
+|   +---core
+|   |       AudioHandler.cpp
+|   |       AudioHandler.h
+|   |       FontHandler.cpp
+|   |       FontHandler.h
+|   |       SDLHandler.cpp
+|   |       SDLHandler.h
+|   |       TextureHandler.cpp
+|   |       TextureHandler.h
 |   |       
-|   \---textureObserver
-|           TexturePublisher.cpp
-|           TexturePublisher.h
-|           TextureSubscriber.h
-|           
-\---scenes
-    |   MainScene.cpp
-    |   MainScene.h
-    |   Scene.cpp
-    |   Scene.h
-    |   
-    \---components
-        \---objectFactory
-                Creator.cpp
-                Creator.h
-                objectFactory.cpp
-                objectFactory.h
-                Product.cpp
-                Product.h
+|   +---entities
+|   |   |   Ball.cpp
+|   |   |   Ball.h
+|   |   |   Board.cpp
+|   |   |   Board.h
+|   |   |   Computer.cpp
+|   |   |   Computer.h
+|   |   |   Object.cpp
+|   |   |   Object.h
+|   |   |   Player.cpp
+|   |   |   Player.h
+|   |   |   ScoreBar.cpp
+|   |   |   ScoreBar.h
+|   |   |   
+|   |   +---BallComponents
+|   |   |       BallCollision.cpp
+|   |   |       BallCollision.h
+|   |   |       BallMovement.cpp
+|   |   |       BallMovement.h
+|   |   |       
+|   |   \---PaddleComponents
+|   |           PaddleMovement.cpp
+|   |           PaddleMovement.h
+|   |           
+|   +---interfaces
+|   |   +---ballObserver
+|   |   |       BallPublisher.cpp
+|   |   |       BallPublisher.h
+|   |   |       BallSubscriber.h
+|   |   |       
+|   |   +---fontObserver
+|   |   |       FontPublisher.cpp
+|   |   |       FontPublisher.h
+|   |   |       FontSubscriber.h
+|   |   |       
+|   |   \---textureObserver
+|   |           TexturePublisher.cpp
+|   |           TexturePublisher.h
+|   |           TextureSubscriber.h
+|   |           
+|   \---scenes
+|       |   MainScene.cpp
+|       |   MainScene.h
+|       |   Scene.cpp
+|       |   Scene.h
+|       |   
+|       \---components
+|           \---objectFactory
+|                   Creator.cpp
+|                   Creator.h
+|                   objectFactory.cpp
+|                   objectFactory.h
+|                   Product.cpp
+|                   Product.h
 ```
 
 

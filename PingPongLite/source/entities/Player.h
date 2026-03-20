@@ -14,7 +14,7 @@ class Player : public Object
 	void followMouse();
 
 	const int topBoundary = 100;
-	int bottomBoundary = 720 - 60;
+	int bottomBoundary = 1200;
 
 	int baseSpeed = 1000;
 	int currentSpeed = baseSpeed;
