@@ -130,7 +130,8 @@ while (mainScene.isRunning())
 
 * *Strategy* :  
     * ✅ Computer/Player follow same mechanic  
-    * ($(ProjectDir)/source/core/SDLHandler{.h/.cpp}) 
+($(ProjectDir)source\entities\Paddle{.h, .cpp}  
+($(ProjectDir)source\entities\PaddleComponents\..)  
 
 * *Singleton* :  
   * ✅SDLHandler  
