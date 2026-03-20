@@ -125,8 +125,11 @@ while (mainScene.isRunning())
 ($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
+ * *Builder* :  
+    *❌ MainScene is a mess right now after testing stuff, need to clean up  
+
 * *Strategy* :  
-  *✅ Computer/Player follow same mechanic
+    *✅ Computer/Player follow same mechanic  
     *($(ProjectDir)/source/core/SDLHandler{.h/.cpp}) 
 
 * *Singleton* :  
@@ -135,7 +138,7 @@ while (mainScene.isRunning())
 
 * *Observer* :  
   * ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
-    *($(ProjectDir)/source/interfaces/BallObserver)  
+    * ($(ProjectDir)/source/interfaces/BallObserver)  
   * ✅ TextureObserver - handles draw requests   
     * ($(ProjectDir)/source/interfaces/TextureObserver)
   * ✅ FontObserver - handles draw requests  
