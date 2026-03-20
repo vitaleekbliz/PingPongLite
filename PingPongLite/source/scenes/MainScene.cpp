@@ -16,9 +16,9 @@ void MainScene::update()
 {
 	board->update();
 	scoreBar->update();
-	ball->update();
 	computer->update();
 	player->update();
+	ball->update();
 }
 
 void MainScene::render()
@@ -31,9 +31,9 @@ void MainScene::render()
 	// render gameObjects
 	board->render();
 	scoreBar->render();
-	ball->render();
 	computer->render();
 	player->render();
+	ball->render();
 
 	SDL_RenderPresent(renderer);
 }

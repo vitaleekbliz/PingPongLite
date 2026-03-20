@@ -15,7 +15,7 @@ class Computer : public Object
 	void keepInBounds();
 	void followBall();
 
-	const int baseSpeed = 200;
+	const int baseSpeed = 300;
 	int currentSpeed = baseSpeed;
 
 	int topBoundary = 720 - size.y / 2;

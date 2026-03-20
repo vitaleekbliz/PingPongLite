@@ -15,7 +15,7 @@ enum class BOUNDARY : char
 	NONE
 };
 
-class Movement
+class BallMovement
 {
   protected:
 	void setRandomDirection();

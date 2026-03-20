@@ -1,6 +1,6 @@
-#include "Movement.h"
+#include "BallMovement.h"
 
-void Movement::setRandomDirection()
+void BallMovement::setRandomDirection()
 {
 	// TODO use boost libary
 	float& x = direction.x;
@@ -28,7 +28,7 @@ void Movement::setRandomDirection()
 	}
 }
 
-void Movement::applyMovement(SDL_FPoint* pos)
+void BallMovement::applyMovement(SDL_FPoint* pos)
 {
 	float deltaTime = SDLHandler::get().getTick();
 
@@ -36,7 +36,7 @@ void Movement::applyMovement(SDL_FPoint* pos)
 	pos->y += deltaTime * currentSpeed * direction.y;
 }
 
-void Movement::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* paddleRect)
+void BallMovement::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* paddleRect)
 {
 	// push ball from player
 	SDL_FPoint paddleCenter = SDL_FPoint();
@@ -61,12 +61,12 @@ void Movement::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* paddle
 	accelerate();
 }
 
-void Movement::onWallHit()
+void BallMovement::onWallHit()
 {
 	clampVerticalVelocity();
 }
 
-BOUNDARY Movement::checkBoundaries(SDL_FPoint* pos)
+BOUNDARY BallMovement::checkBoundaries(SDL_FPoint* pos)
 {
 	if (pos->y < topBoundary)
 	{
@@ -94,15 +94,21 @@ BOUNDARY Movement::checkBoundaries(SDL_FPoint* pos)
 	return BOUNDARY::NONE;
 }
 
-void Movement::accelerate()
+void BallMovement::accelerate()
 {
 	currentSpeed *= speedMultiplier;
 	if (currentSpeed > maxSpeed)
 		currentSpeed = maxSpeed;
 }
 
-void Movement::clampVerticalVelocity()
+void BallMovement::clampVerticalVelocity()
 {
+	// if any axis velocity is zero ball is stuck on axis infinitely
+	if (!direction.x)
+		direction.x = 0.05f; // Crutch points ball towards right slightly
+	// PS. Paddle pushes the ball from its center, so its hard to hit ball perfectly horizontal
+
+	// change reduce angle to X axis
 	direction.y /= verticalClampingFactor;
 	direction.x *= verticalClampingFactor;
 

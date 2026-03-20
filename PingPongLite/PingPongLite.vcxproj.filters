@@ -70,6 +70,12 @@
     <Filter Include="Source Files\source\entities\BallComponents">
       <UniqueIdentifier>{0aa90723-87c8-4b3a-92b7-f351731b79f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source\entities\PaddleComponents">
+      <UniqueIdentifier>{56929303-62e9-425d-adf8-8820bd764193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\PaddleComponents">
+      <UniqueIdentifier>{ec6c8f08-43ad-4b6d-9280-10a3ac924c72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -134,11 +140,14 @@
     <ClCompile Include="source\scenes\components\objectFactory\Product.cpp">
       <Filter>Source Files\source\scenes\components\objectFactory</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\BallComponents\Collision.cpp">
+    <ClCompile Include="source\entities\BallComponents\BallCollision.cpp">
       <Filter>Source Files\source\entities\BallComponents</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\BallComponents\Movement.cpp">
+    <ClCompile Include="source\entities\BallComponents\BallMovement.cpp">
       <Filter>Source Files\source\entities\BallComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\PaddleComponents\PaddleMovement.cpp">
+      <Filter>Source Files\source\entities\PaddleComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -196,11 +205,14 @@
     <ClInclude Include="source\scenes\components\objectFactory\Product.h">
       <Filter>Header Files\scenes\components\objectFactory</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\BallComponents\Collision.h">
+    <ClInclude Include="source\entities\BallComponents\BallCollision.h">
       <Filter>Header Files\entities\BallComponents</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\BallComponents\Movement.h">
+    <ClInclude Include="source\entities\BallComponents\BallMovement.h">
       <Filter>Header Files\entities\BallComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\PaddleComponents\PaddleMovement.h">
+      <Filter>Header Files\entities\PaddleComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
