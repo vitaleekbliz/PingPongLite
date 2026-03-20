@@ -11,6 +11,6 @@ class FontPublisher
 	void removeListener();
 
   protected:
-	virtual void requestDrawText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color) = 0;
+	virtual void requestDrawText(FONT id,std::string text, SDL_FPoint* position, int size,  SDL_Color color) = 0;
 	std::weak_ptr<FontSubscriber> fontSubscriber;
 };

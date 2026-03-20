@@ -9,7 +9,7 @@ enum class COLLITION : char
 	NONE
 };
 
-class BallCollision
+class BallCollisionDecorator
 {
   public:
 	void setPlayerReference(std::weak_ptr<Object> player);

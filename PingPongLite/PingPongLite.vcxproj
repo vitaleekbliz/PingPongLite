@@ -137,13 +137,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ScoreComponent.cpp" />
     <ClCompile Include="source\core\AudioHandler.cpp" />
     <ClCompile Include="source\core\FontHandler.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
     <ClCompile Include="source\core\TextureHandler.cpp" />
     <ClCompile Include="source\entities\Ball.cpp" />
-    <ClCompile Include="source\entities\BallComponents\BallCollision.cpp" />
-    <ClCompile Include="source\entities\BallComponents\BallMovement.cpp" />
+    <ClCompile Include="source\entities\BallComponents\BallCollisionDecorator.cpp" />
+    <ClCompile Include="source\entities\BallComponents\BallMovementDecorator.cpp" />
     <ClCompile Include="source\entities\Board.cpp" />
     <ClCompile Include="source\entities\Computer.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
@@ -161,13 +162,14 @@
     <ClCompile Include="source\scenes\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ScoreComponent.h" />
     <ClInclude Include="source\core\AudioHandler.h" />
     <ClInclude Include="source\core\FontHandler.h" />
     <ClInclude Include="source\core\SDLHandler.h" />
     <ClInclude Include="source\core\TextureHandler.h" />
     <ClInclude Include="source\entities\Ball.h" />
-    <ClInclude Include="source\entities\BallComponents\BallCollision.h" />
-    <ClInclude Include="source\entities\BallComponents\BallMovement.h" />
+    <ClInclude Include="source\entities\BallComponents\BallCollisionDecorator.h" />
+    <ClInclude Include="source\entities\BallComponents\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board.h" />
     <ClInclude Include="source\entities\Computer.h" />
     <ClInclude Include="source\entities\Object.h" />

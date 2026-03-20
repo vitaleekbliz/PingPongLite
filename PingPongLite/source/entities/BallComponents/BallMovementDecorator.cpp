@@ -1,6 +1,6 @@
-#include "BallMovement.h"
+#include "BallMovementDecorator.h"
 
-void BallMovement::setRandomDirection()
+void BallMovementDecorator::setRandomDirection()
 {
 	// TODO use boost libary
 	float& x = direction.x;
@@ -28,7 +28,7 @@ void BallMovement::setRandomDirection()
 	}
 }
 
-void BallMovement::applyMovement(SDL_FPoint* pos)
+void BallMovementDecorator::applyMovement(SDL_FPoint* pos)
 {
 	float deltaTime = SDLHandler::get().getTick();
 
@@ -36,7 +36,7 @@ void BallMovement::applyMovement(SDL_FPoint* pos)
 	pos->y += deltaTime * currentSpeed * direction.y;
 }
 
-void BallMovement::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* paddleRect)
+void BallMovementDecorator::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* paddleRect)
 {
 	// push ball from player
 	SDL_FPoint paddleCenter = SDL_FPoint();
@@ -61,12 +61,12 @@ void BallMovement::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* pa
 	accelerate();
 }
 
-void BallMovement::onWallHit()
+void BallMovementDecorator::onWallHit()
 {
 	clampVerticalVelocity();
 }
 
-BOUNDARY BallMovement::checkBoundaries(SDL_FPoint* pos)
+BOUNDARY BallMovementDecorator::checkBoundaries(SDL_FPoint* pos)
 {
 	if (pos->y < topBoundary)
 	{
@@ -94,14 +94,14 @@ BOUNDARY BallMovement::checkBoundaries(SDL_FPoint* pos)
 	return BOUNDARY::NONE;
 }
 
-void BallMovement::accelerate()
+void BallMovementDecorator::accelerate()
 {
 	currentSpeed *= speedMultiplier;
 	if (currentSpeed > maxSpeed)
 		currentSpeed = maxSpeed;
 }
 
-void BallMovement::clampVerticalVelocity()
+void BallMovementDecorator::clampVerticalVelocity()
 {
 	// if any axis velocity is zero ball is stuck on axis infinitely
 	if (!direction.x)

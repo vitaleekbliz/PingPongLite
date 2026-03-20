@@ -8,11 +8,11 @@ void Object::requestDrawTexture(TEXTURE texture, SDL_FRect destination, SDL_Flip
 	}
 }
 
-void Object::requestDrawText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color)
+void Object::requestDrawText(FONT id, std::string text, SDL_FPoint* position, int size, SDL_Color color)
 {
 	if (auto sharedSub = fontSubscriber.lock())
 	{
-		sharedSub->onDrawRequestText(position, size, id, text, color);
+		sharedSub->onDrawRequestText(id, text, position, size, color);
 	}
 }
 

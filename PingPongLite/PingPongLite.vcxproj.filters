@@ -152,10 +152,10 @@
     <ClCompile Include="source\scenes\components\objectFactory\Product.cpp">
       <Filter>Source Files\source\scenes\components\objectFactory</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\BallComponents\BallCollision.cpp">
+    <ClCompile Include="source\entities\BallComponents\BallCollisionDecorator.cpp">
       <Filter>Source Files\source\entities\BallComponents</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\BallComponents\BallMovement.cpp">
+    <ClCompile Include="source\entities\BallComponents\BallMovementDecorator.cpp">
       <Filter>Source Files\source\entities\BallComponents</Filter>
     </ClCompile>
     <ClCompile Include="source\entities\PaddleComponents\PaddleMovement.cpp">
@@ -166,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="source\interfaces\fontObserver\FontPublisher.cpp">
       <Filter>Source Files\source\interfaces\fontObserver</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreComponent.cpp">
+      <Filter>Source Files\source\entities\ScoreComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -223,10 +226,10 @@
     <ClInclude Include="source\scenes\components\objectFactory\Product.h">
       <Filter>Header Files\scenes\components\objectFactory</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\BallComponents\BallCollision.h">
+    <ClInclude Include="source\entities\BallComponents\BallCollisionDecorator.h">
       <Filter>Header Files\entities\BallComponents</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\BallComponents\BallMovement.h">
+    <ClInclude Include="source\entities\BallComponents\BallMovementDecorator.h">
       <Filter>Header Files\entities\BallComponents</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\PaddleComponents\PaddleMovement.h">
@@ -240,6 +243,9 @@
     </ClInclude>
     <ClInclude Include="source\interfaces\fontObserver\FontSubscriber.h">
       <Filter>Header Files\interfaces\fontObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreComponent.h">
+      <Filter>Header Files\entities\ScoreComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -156,7 +156,7 @@ MainScene is Builder.
   * ✅ MainScene for object creation  
 
 * *Builder* :  
-  * [✅] MainScene is builder    
+  * ✅ MainScene is builder    
 
 * *Decorator* :  
   * ✅ Ball movement  

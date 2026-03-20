@@ -11,5 +11,5 @@ class FontSubscriber
 {
   public:
 	virtual ~FontSubscriber() = default;
-	virtual void onDrawRequestText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color) = 0;
+	virtual void onDrawRequestText(FONT id,std::string text, SDL_FPoint* position, int size,  SDL_Color color) = 0;
 };

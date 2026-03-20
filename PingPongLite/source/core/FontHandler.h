@@ -8,10 +8,10 @@ class FontHandler : public FontSubscriber
 	FontHandler() = default;
 	~FontHandler() = default;
 
-	virtual void onDrawRequestText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color) override;
+	virtual void onDrawRequestText(FONT id,std::string text, SDL_FPoint* position, int size,  SDL_Color color) override;
 
   private:
-	void drawText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color);
+	void drawText(FONT id,std::string text, SDL_FPoint* position, int size,  SDL_Color color);
 
 	std::string getFontName(FONT id);
 

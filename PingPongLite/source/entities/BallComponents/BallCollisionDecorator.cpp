@@ -1,16 +1,16 @@
-#include "BallCollision.h"
+#include "BallCollisionDecorator.h"
 
-void BallCollision::setPlayerReference(std::weak_ptr<Object> player)
+void BallCollisionDecorator::setPlayerReference(std::weak_ptr<Object> player)
 {
 	playerObject = player;
 }
 
-void BallCollision::setComputerReference(std::weak_ptr<Object> computer)
+void BallCollisionDecorator::setComputerReference(std::weak_ptr<Object> computer)
 {
 	computerObject = computer;
 }
 
-COLLITION BallCollision::checkForCollisions(SDL_FPoint* ballPos, SDL_FPoint* ballSize, SDL_FRect& colidingWith)
+COLLITION BallCollisionDecorator::checkForCollisions(SDL_FPoint* ballPos, SDL_FPoint* ballSize, SDL_FRect& colidingWith)
 {
 	// Player collision
 	bool playerCollision = false;
@@ -59,7 +59,7 @@ COLLITION BallCollision::checkForCollisions(SDL_FPoint* ballPos, SDL_FPoint* bal
 	return COLLITION::NONE;
 }
 
-bool BallCollision::checkCircleInsideBox(SDL_FPoint* pos, SDL_FPoint* size, const SDL_FRect rect)
+bool BallCollisionDecorator::checkCircleInsideBox(SDL_FPoint* pos, SDL_FPoint* size, const SDL_FRect rect)
 {
 	// TODO calculate vector logic using boost qvm library
 

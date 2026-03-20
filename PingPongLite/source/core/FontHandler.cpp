@@ -1,11 +1,11 @@
 #include "FontHandler.h"
 
-void FontHandler::onDrawRequestText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color)
+void FontHandler::onDrawRequestText(FONT id, std::string text, SDL_FPoint* position, int size, SDL_Color color)
 {
-	drawText(position, size, id, text, color);
+	drawText(id, text, position, size, color);
 }
 
-void FontHandler::drawText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color)
+void FontHandler::drawText(FONT id, std::string text, SDL_FPoint* position, int size, SDL_Color color)
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
 

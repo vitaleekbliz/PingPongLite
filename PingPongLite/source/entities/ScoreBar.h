@@ -11,11 +11,6 @@ class ScoreBar : public Object, public BallSubscriber
 	void onBallEvent(BallEvent event) override;
 
   private:
-	void drawScore(int x, int y, int score);
-	void drawTime();
-
-	void changeScore(bool win);
-
 	float roundDurationSeconds = 0;
 	int computerScore = 0;
 	int playerScore = 0;
@@ -25,5 +20,8 @@ class ScoreBar : public Object, public BallSubscriber
 	  public:
 		SDL_FRect leftBar = {0, 0, 600, 40};
 		SDL_FRect rightBar = {680, 2, 600, 40};
-	} UI;
+		SDL_FPoint scoreLeft = {300, 20};
+		SDL_FPoint scoreRight = {1280 - 300, 20};
+		SDL_FPoint time = {1280 / 2, 20};
+	} ui;
 };

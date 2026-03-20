@@ -34,7 +34,7 @@ class Object : public TexturePublisher, public FontPublisher
   protected:
 	virtual void requestDrawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
 									bool isRectCentered = false) override;
-	virtual void requestDrawText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color) override;
+	virtual void requestDrawText(FONT id, std::string text, SDL_FPoint* position, int size, SDL_Color color) override;
 
 	SDL_FPoint size = {0.f, 0.f};
 	SDL_FPoint position = {0.f, 0.f};

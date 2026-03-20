@@ -8,22 +8,23 @@ void ScoreBar::update()
 
 void ScoreBar::render()
 {
-	requestDrawTexture(TEXTURE::SCORE_BAR, UI.leftBar, SDL_FLIP_NONE);
-	requestDrawTexture(TEXTURE::SCORE_BAR, UI.rightBar, SDL_FLIP_HORIZONTAL);
+	requestDrawTexture(TEXTURE::SCORE_BAR, ui.leftBar, SDL_FLIP_NONE);
+	requestDrawTexture(TEXTURE::SCORE_BAR, ui.rightBar, SDL_FLIP_HORIZONTAL);
 
-	drawTime();
+	// Draw time START
+	int minutes = roundDurationSeconds / 60;
+	int seconds = (int)roundDurationSeconds % 60;
+	std::string current_time = std::to_string(minutes) + (seconds > 9 ? " : " : " : 0") + std::to_string(seconds);
 
-	drawScore(300, 20, computerScore);
-	drawScore(SDLHandler::get().WINDOW_WIDTH - 300, 20, playerScore);
+	SDL_Color color = SDL_Color(211, 211, 211);
+	requestDrawText(FONT::CALIBRI, current_time.c_str(), &ui.time, 32, color);
+	// END
 
-	// DEBUG
-	SDL_FPoint pos;
-	pos.x = 640.f;
-	pos.y = 360.f;
-	SDL_Color color = SDL_Color();
-	color.r = 255;
+	std::string score_text = std::to_string(computerScore);
+	requestDrawText(FONT::CALIBRI, score_text.c_str(), &ui.scoreLeft, 32, color);
 
-	requestDrawText(&pos, 64, FONT::CALIBRI, "TEST", color);
+	score_text = std::to_string(playerScore);
+	requestDrawText(FONT::CALIBRI, score_text.c_str(), &ui.scoreRight, 32, color);
 }
 
 void ScoreBar::onBallEvent(BallEvent event)
@@ -31,44 +32,10 @@ void ScoreBar::onBallEvent(BallEvent event)
 	switch (event)
 	{
 	case BallEvent::GOAL_LEFT:
-		changeScore(false);
+		playerScore++;
 		break;
 	case BallEvent::GOAL_RIGHT:
-		changeScore(true);
-		break;
-	default:
+		computerScore++;
 		break;
 	}
-}
-
-void ScoreBar::drawTime()
-{
-	auto renderer = SDLHandler::get().getRenderer();
-	int x = 620;
-	int y = 20;
-	int minutes = roundDurationSeconds / 60;
-	int seconds = (int)roundDurationSeconds % 60;
-
-	std::string current_time = std::to_string(minutes) + (seconds > 9 ? " : " : " : 0") + std::to_string(seconds);
-
-	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-	SDL_RenderDebugText(renderer, x, y, current_time.c_str());
-}
-
-void ScoreBar::drawScore(int x, int y, int score)
-{
-	auto renderer = SDLHandler::get().getRenderer();
-
-	std::string text = std ::to_string(score);
-
-	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-	SDL_RenderDebugText(renderer, x, y, text.c_str());
-}
-
-void ScoreBar::changeScore(bool win)
-{
-	if (win)
-		playerScore++;
-	else
-		computerScore++;
 }
