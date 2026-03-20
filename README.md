@@ -125,12 +125,12 @@ while (mainScene.isRunning())
 ($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
- * *Builder* :  
-    *❌ MainScene is a mess right now after testing stuff, need to clean up  
+* *Builder* :  
+    * ❌ MainScene is a mess right now after testing stuff, need to clean up  
 
 * *Strategy* :  
-    *✅ Computer/Player follow same mechanic  
-    *($(ProjectDir)/source/core/SDLHandler{.h/.cpp}) 
+    * ✅ Computer/Player follow same mechanic  
+    * ($(ProjectDir)/source/core/SDLHandler{.h/.cpp}) 
 
 * *Singleton* :  
   * ✅SDLHandler  
@@ -148,10 +148,8 @@ while (mainScene.isRunning())
   * ✅ Ball movement  
   * ✅ Ball collisionComponent  
 
-
-
 * *State Machine* :  
-❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
+    * ❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
 
 ## Architecture
 ``` bash
