@@ -6,6 +6,7 @@ Computer::Computer()
 	size.y = 120;
 
 	position = {50, 400};
+	bottomBoundary = 720 - size.y / 2;
 }
 
 void Computer::update()
@@ -17,7 +18,7 @@ void Computer::update()
 void Computer::render()
 {
 	SDL_FRect destination = getCollider();
-	requestDraw(TEXTURE::COMPUTER, destination, SDL_FLIP_NONE);
+	requestDrawTexture(TEXTURE::COMPUTER, destination, SDL_FLIP_NONE);
 }
 
 void Computer::setBallReference(std::weak_ptr<Object> ball)
@@ -27,11 +28,11 @@ void Computer::setBallReference(std::weak_ptr<Object> ball)
 
 void Computer::keepInBounds()
 {
-	if (position.y > topBoundary)
+	if (position.y < topBoundary)
 	{
 		position.y = topBoundary;
 	}
-	else if (position.y < bottomBoundary)
+	else if (position.y > bottomBoundary)
 	{
 		position.y = bottomBoundary;
 	}

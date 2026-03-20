@@ -1,5 +1,10 @@
 #include "AudioHandler.h"
 
+AudioHandler::~AudioHandler()
+{
+	close();
+}
+
 void AudioHandler::init()
 {
 	MIX_Audio* musicAudio = NULL;
@@ -40,14 +45,10 @@ void AudioHandler::onBallEvent(BallEvent event)
 
 void AudioHandler::close()
 {
-	if (music)
-		MIX_DestroyTrack(music);
-	if (win)
-		MIX_DestroyTrack(win);
-	if (lose)
-		MIX_DestroyTrack(lose);
-	if (hit)
-		MIX_DestroyTrack(hit);
+	MIX_DestroyTrack(music);
+	MIX_DestroyTrack(win);
+	MIX_DestroyTrack(lose);
+	MIX_DestroyTrack(hit);
 }
 
 void AudioHandler::load(std::string fileName, MIX_Mixer* mixer, MIX_Track** track) const

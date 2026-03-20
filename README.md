@@ -153,8 +153,7 @@ MainScene is Builder.
   * ✅ MainScene for object creation  
 
 * *Builder* :  
-  * [✅] MainScene is builder  
-Ps. Now I am using clean object creation, however hardcoded dependancies setup. I want to make dependencies fucntions for cleaner code and set Position/Size inside Object Creation.  
+  * [✅] MainScene is builder    
 
 * *Decorator* :  
   * ✅ Ball movement  

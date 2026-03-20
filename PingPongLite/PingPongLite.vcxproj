@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\core\AudioHandler.cpp" />
+    <ClCompile Include="source\core\FontHandler.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
     <ClCompile Include="source\core\TextureHandler.cpp" />
     <ClCompile Include="source\entities\Ball.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="source\entities\Player.cpp" />
     <ClCompile Include="source\entities\ScoreBar.cpp" />
     <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp" />
+    <ClCompile Include="source\interfaces\fontObserver\FontPublisher.cpp" />
     <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\scenes\components\objectFactory\Product.cpp" />
@@ -160,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\AudioHandler.h" />
+    <ClInclude Include="source\core\FontHandler.h" />
     <ClInclude Include="source\core\SDLHandler.h" />
     <ClInclude Include="source\core\TextureHandler.h" />
     <ClInclude Include="source\entities\Ball.h" />
@@ -173,6 +176,8 @@
     <ClInclude Include="source\entities\ScoreBar.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h" />
     <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h" />
+    <ClInclude Include="source\interfaces\fontObserver\FontPublisher.h" />
+    <ClInclude Include="source\interfaces\fontObserver\FontSubscriber.h" />
     <ClInclude Include="source\interfaces\textureObserver\TextureSubscriber.h" />
     <ClInclude Include="source\interfaces\textureObserver\TexturePublisher.h" />
     <ClInclude Include="source\scenes\components\objectFactory\Product.h" />

@@ -6,16 +6,16 @@ class TextureHandler : public TextureSubscriber
 {
   public:
 	TextureHandler() = default;
-	~TextureHandler() = default;
+	~TextureHandler();
 
 	void init();
 	void close();
 
-	virtual void onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-							   bool isRectCentered = true) const;
+	virtual void onDrawRequestTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
+									  bool isRectCentered = true) override;
 
   private:
-	SDL_Texture* load(std::string fileName, SDL_Renderer* renderer) const;
+	SDL_Texture* load(std::string fileName, SDL_Renderer* renderer);
 
 	SDL_Texture* board = NULL;
 	SDL_Texture* ball = NULL;

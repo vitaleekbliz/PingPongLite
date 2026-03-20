@@ -46,6 +46,8 @@ void MainScene::init()
 	textureHandler = std::make_shared<TextureHandler>();
 	textureHandler->init();
 
+	fontHandler = std::make_shared<FontHandler>();
+
 	factory = std::make_unique<ObjectCreator>();
 
 	spawnObject(ObjectID::BALL);
@@ -62,6 +64,12 @@ void MainScene::init()
 	linkTextureObserver(textureHandler, scoreBar);
 	linkTextureObserver(textureHandler, player);
 	linkTextureObserver(textureHandler, computer);
+
+	linkFontObserver(fontHandler, ball);
+	linkFontObserver(fontHandler, board);
+	linkFontObserver(fontHandler, scoreBar);
+	linkFontObserver(fontHandler, player);
+	linkFontObserver(fontHandler, computer);
 
 	// Check colisions inside ball
 	ball->setComputerReference(computer);
@@ -80,6 +88,11 @@ void MainScene::linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std
 
 void MainScene::linkTextureObserver(std::shared_ptr<TextureSubscriber> subscriber,
 									std::shared_ptr<TexturePublisher> publisher)
+{
+	publisher->addListener(subscriber);
+}
+
+void MainScene::linkFontObserver(std::shared_ptr<FontSubscriber> subscriber, std::shared_ptr<FontPublisher> publisher)
 {
 	publisher->addListener(subscriber);
 }

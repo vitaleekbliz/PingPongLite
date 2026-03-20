@@ -13,8 +13,8 @@ class Player : public Object
 	void keepInBounds();
 	void followMouse();
 
-	const int bottomBoundary = 1280 - size.y / 2;
-	int topBoundary = 100;
+	const int topBoundary = 100;
+	int bottomBoundary = 720 - 60;
 
 	int baseSpeed = 1000;
 	int currentSpeed = baseSpeed;

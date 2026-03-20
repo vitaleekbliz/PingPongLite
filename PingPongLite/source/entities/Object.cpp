@@ -1,10 +1,18 @@
 #include "Object.h"
 
-void Object::requestDraw(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isRectCentered)
+void Object::requestDrawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isRectCentered)
 {
-	if (auto sharedSub = subscriber.lock())
+	if (auto sharedSub = textureSubscriber.lock())
 	{
-		sharedSub->onDrawRequest(texture, destination, flip, isRectCentered);
+		sharedSub->onDrawRequestTexture(texture, destination, flip, isRectCentered);
+	}
+}
+
+void Object::requestDrawText(SDL_FPoint* position, int size, FONT id, std::string text, SDL_Color color)
+{
+	if (auto sharedSub = fontSubscriber.lock())
+	{
+		sharedSub->onDrawRequestText(position, size, id, text, color);
 	}
 }
 

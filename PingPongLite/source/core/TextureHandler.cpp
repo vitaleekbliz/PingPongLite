@@ -1,5 +1,10 @@
 #include "TextureHandler.h"
 
+TextureHandler::~TextureHandler()
+{
+	close();
+}
+
 void TextureHandler::init()
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
@@ -13,19 +18,15 @@ void TextureHandler::init()
 
 void TextureHandler::close()
 {
-	if (board)
-		SDL_DestroyTexture(board);
-	if (ball)
-		SDL_DestroyTexture(ball);
-	if (computer)
-		SDL_DestroyTexture(computer);
-	if (player)
-		SDL_DestroyTexture(player);
-	if (scoreBar)
-		SDL_DestroyTexture(scoreBar);
+	SDL_DestroyTexture(board);
+	SDL_DestroyTexture(ball);
+	SDL_DestroyTexture(computer);
+	SDL_DestroyTexture(player);
+	SDL_DestroyTexture(scoreBar);
 }
 
-void TextureHandler::onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isRectCentered) const
+void TextureHandler::onDrawRequestTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
+										  bool isRectCentered)
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
 
@@ -58,7 +59,7 @@ void TextureHandler::onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_F
 	}
 }
 
-SDL_Texture* TextureHandler::load(std::string fileName, SDL_Renderer* renderer) const
+SDL_Texture* TextureHandler::load(std::string fileName, SDL_Renderer* renderer)
 {
 	std::string basePath = SDL_GetBasePath();
 	std::string fullPath = basePath + audioAssetFolder + fileName;

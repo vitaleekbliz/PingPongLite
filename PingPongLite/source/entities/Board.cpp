@@ -9,5 +9,5 @@ Board::Board()
 void Board::render()
 {
 	SDL_FRect destination = getCollider();
-	requestDraw(TEXTURE::BOARD, destination, SDL_FLIP_NONE);
+	requestDrawTexture(TEXTURE::BOARD, destination, SDL_FLIP_NONE);
 }

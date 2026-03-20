@@ -68,7 +68,7 @@ void Ball::update()
 void Ball::render()
 {
 	SDL_FRect destination = getCollider();
-	requestDraw(TEXTURE::BALL, destination, SDL_FLIP_NONE);
+	requestDrawTexture(TEXTURE::BALL, destination, SDL_FLIP_NONE);
 }
 
 void Ball::reset()

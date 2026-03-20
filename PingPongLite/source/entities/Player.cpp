@@ -5,6 +5,7 @@ Player::Player()
 	size.x = 17;
 	size.y = 120;
 	position = {1280 - 50, 400};
+	bottomBoundary = 720 - size.y / 2;
 }
 
 void Player::update()
@@ -16,7 +17,7 @@ void Player::update()
 void Player::render()
 {
 	SDL_FRect destination = getCollider();
-	requestDraw(TEXTURE::PLAYER, destination, SDL_FLIP_NONE);
+	requestDrawTexture(TEXTURE::PLAYER, destination, SDL_FLIP_NONE);
 }
 
 void Player::keepInBounds()

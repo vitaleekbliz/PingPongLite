@@ -14,7 +14,7 @@ class AudioHandler : public BallSubscriber
 {
   public:
 	AudioHandler() = default;
-	~AudioHandler() = default;
+	~AudioHandler();
 
 	void init();
 	void onBallEvent(BallEvent event) override;

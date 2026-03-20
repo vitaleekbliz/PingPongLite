@@ -8,13 +8,22 @@ void ScoreBar::update()
 
 void ScoreBar::render()
 {
-	requestDraw(TEXTURE::SCORE_BAR, UI.leftBar, SDL_FLIP_NONE);
-	requestDraw(TEXTURE::SCORE_BAR, UI.rightBar, SDL_FLIP_HORIZONTAL);
+	requestDrawTexture(TEXTURE::SCORE_BAR, UI.leftBar, SDL_FLIP_NONE);
+	requestDrawTexture(TEXTURE::SCORE_BAR, UI.rightBar, SDL_FLIP_HORIZONTAL);
 
 	drawTime();
 
 	drawScore(300, 20, computerScore);
 	drawScore(SDLHandler::get().WINDOW_WIDTH - 300, 20, playerScore);
+
+	// DEBUG
+	SDL_FPoint pos;
+	pos.x = 640.f;
+	pos.y = 360.f;
+	SDL_Color color = SDL_Color();
+	color.r = 255;
+
+	requestDrawText(&pos, 64, FONT::CALIBRI, "TEST", color);
 }
 
 void ScoreBar::onBallEvent(BallEvent event)

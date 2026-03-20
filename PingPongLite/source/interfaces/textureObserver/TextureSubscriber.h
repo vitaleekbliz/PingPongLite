@@ -14,6 +14,6 @@ class TextureSubscriber
 {
   public:
 	virtual ~TextureSubscriber() = default;
-	virtual void onDrawRequest(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-							   bool isRectCentered) const = 0;
+	virtual void onDrawRequestTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
+									  bool isRectCentered) = 0;
 };

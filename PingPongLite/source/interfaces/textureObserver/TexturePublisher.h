@@ -10,7 +10,7 @@ class TexturePublisher
 	void removeListener();
 
   protected:
-	virtual void requestDraw(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-							 bool isRectCentered = false) = 0;
-	std::weak_ptr<TextureSubscriber> subscriber;
+	virtual void requestDrawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
+									bool isRectCentered = false) = 0;
+	std::weak_ptr<TextureSubscriber> textureSubscriber;
 };

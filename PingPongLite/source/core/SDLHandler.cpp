@@ -61,6 +61,12 @@ bool SDLHandler::init()
 		return false;
 	}
 
+	if (!TTF_Init())
+	{
+		SDL_Log("Couldn't init SDL_ttf library: %s", SDL_GetError());
+		return false;
+	}
+
 	mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
 
 	if (mixer == NULL)
@@ -74,14 +80,9 @@ bool SDLHandler::init()
 
 void SDLHandler::close()
 {
-	if (mixer)
-		MIX_DestroyMixer(mixer);
-
-	if (renderer)
-		SDL_DestroyRenderer(renderer);
-
-	if (window)
-		SDL_DestroyWindow(window);
+	MIX_DestroyMixer(mixer);
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
 }
 
 SDL_Renderer* SDLHandler::getRenderer()
