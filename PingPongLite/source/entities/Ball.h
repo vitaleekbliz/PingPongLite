@@ -17,5 +17,8 @@ class Ball : public Object, public BallPublisher, public BallCollisionDecorator,
   private:
 	virtual void notify(BallEvent event) override;
 
+	//Temporary solution to change audio on strategy change
+	bool originalGoal = true;
+
 	void reset();
 };

@@ -26,6 +26,18 @@ void Ball::notify(BallEvent event)
 
 void Ball::update()
 {
+#pragma region TEST DEBUG strategy call request
+	float deltaTime = SDLHandler::get().getTick();
+	static const float cooldown = 15.f;
+	static float timer = cooldown;
+
+	timer -= deltaTime;
+	if (timer < 0.f)
+	{
+		timer = cooldown;
+		originalGoal = !originalGoal;
+	}
+#pragma endregion
 	applyMovement(&position);
 
 	switch (checkBoundaries(&position))
@@ -41,12 +53,12 @@ void Ball::update()
 		break;
 
 	case BOUNDARY::LEFT:
-		notify(BallEvent::GOAL_LEFT);
+		notify((originalGoal ? BallEvent::GOAL_LEFT : BallEvent::GOAL_RIGHT));
 		reset();
 		break;
 
 	case BOUNDARY::RIGHT:
-		notify(BallEvent::GOAL_RIGHT);
+		notify((originalGoal ? BallEvent::GOAL_RIGHT : BallEvent::GOAL_LEFT));
 		reset();
 		break;
 	}

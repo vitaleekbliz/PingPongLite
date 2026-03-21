@@ -25,6 +25,7 @@ void ScoreBar::update()
 	if (timer < 0.f)
 	{
 		timer = cooldown;
+		originalStrategy = !originalStrategy;
 		onStrategyChange();
 	}
 #pragma endregion
@@ -50,16 +51,23 @@ void ScoreBar::onBallEvent(BallEvent event)
 	switch (event)
 	{
 	case BallEvent::GOAL_LEFT:
-		rightScore.score++;
+		if (originalStrategy)
+			rightScore.score++;
+		else
+			leftScore.score++;
 		break;
 	case BallEvent::GOAL_RIGHT:
-		leftScore.score++;
+		if (originalStrategy)
+			leftScore.score++;
+		else
+			rightScore.score++;
 		break;
 	}
 }
 
 void ScoreBar::onStrategyChange()
 {
+	// std::swap(leftScore, rightScore);
 	std::swap(leftScore.color, rightScore.color);
 	std::swap(leftScore.score, rightScore.score);
 }

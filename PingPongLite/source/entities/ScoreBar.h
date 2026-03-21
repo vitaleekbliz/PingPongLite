@@ -2,8 +2,8 @@
 #include "Object.h"
 #include "ScoreComponents/ScoreDecorator.h"
 #include "core/SDLHandler.h";
-#include "interfaces/ballObserver/BallSubscriber.h"
 #include "interfaces/StrategyObserver/StrategySubscriber.h"
+#include "interfaces/ballObserver/BallSubscriber.h"
 
 class ScoreBar : public Object, public BallSubscriber, public StrategySubscriber
 {
@@ -21,6 +21,8 @@ class ScoreBar : public Object, public BallSubscriber, public StrategySubscriber
 
 	ScoreDecorator leftScore;
 	ScoreDecorator rightScore;
+
+	bool originalStrategy = true;
 
 	SDL_FPoint timePos = {1280 / 2, 20};
 };
