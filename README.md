@@ -17,6 +17,9 @@
   * **Upcoming systems**:
     * Animation sytem
     * MainMenu
+    * Buffs system
+    * Collision system
+    * Collectibles
 
 ## 🛠️ Tech Stack
 
