@@ -1,7 +1,7 @@
 #pragma once
 #include "components/objectFactory/Creator.h"
-#include "core/AudioHandler.h"
-#include "core/FontHandler.h"
+#include "core/subsystems/AudioHandler.h"
+#include "core/subsystems/FontHandler.h"
 #include "scenes/Scene.h"
 #include <memory>
 #include <vector>

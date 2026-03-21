@@ -106,6 +106,12 @@
     <Filter Include="Source Files\source\entities\interfaces\StrategyObserver">
       <UniqueIdentifier>{819744ef-49e4-4ebc-aeb8-8ab2d79d9490}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\core\subsystems">
+      <UniqueIdentifier>{f060cf28-d3fc-4a60-9720-5ca75bda4162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\core\subsystems">
+      <UniqueIdentifier>{7f9497e7-b560-4705-9217-23af00a8bdae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -143,14 +149,8 @@
     <ClCompile Include="source\scenes\MainScene.cpp">
       <Filter>Source Files\source\scenes</Filter>
     </ClCompile>
-    <ClCompile Include="source\core\AudioHandler.cpp">
-      <Filter>Source Files\source\core</Filter>
-    </ClCompile>
     <ClCompile Include="source\scenes\Scene.cpp">
       <Filter>Source Files\source\scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="source\core\TextureHandler.cpp">
-      <Filter>Source Files\source\core</Filter>
     </ClCompile>
     <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp">
       <Filter>Source Files\source\interfaces\textureObserver</Filter>
@@ -169,9 +169,6 @@
     </ClCompile>
     <ClCompile Include="source\entities\BallComponents\BallMovementDecorator.cpp">
       <Filter>Source Files\source\entities\BallComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="source\core\FontHandler.cpp">
-      <Filter>Source Files\source\core</Filter>
     </ClCompile>
     <ClCompile Include="source\interfaces\fontObserver\FontPublisher.cpp">
       <Filter>Source Files\source\interfaces\fontObserver</Filter>
@@ -193,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.cpp">
       <Filter>Source Files\source\entities\interfaces\StrategyObserver</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\subsystems\AudioHandler.cpp">
+      <Filter>Source Files\source\core\subsystems</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\subsystems\FontHandler.cpp">
+      <Filter>Source Files\source\core\subsystems</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\subsystems\TextureHandler.cpp">
+      <Filter>Source Files\source\core\subsystems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -220,14 +226,8 @@
     <ClInclude Include="source\scenes\MainScene.h">
       <Filter>Header Files\scenes</Filter>
     </ClInclude>
-    <ClInclude Include="source\core\AudioHandler.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
     <ClInclude Include="source\scenes\Scene.h">
       <Filter>Header Files\scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="source\core\TextureHandler.h">
-      <Filter>Header Files\core</Filter>
     </ClInclude>
     <ClInclude Include="source\interfaces\textureObserver\TextureSubscriber.h">
       <Filter>Header Files\interfaces\textureObserver</Filter>
@@ -249,9 +249,6 @@
     </ClInclude>
     <ClInclude Include="source\entities\BallComponents\BallMovementDecorator.h">
       <Filter>Header Files\entities\BallComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="source\core\FontHandler.h">
-      <Filter>Header Files\core</Filter>
     </ClInclude>
     <ClInclude Include="source\interfaces\fontObserver\FontPublisher.h">
       <Filter>Header Files\interfaces\fontObserver</Filter>
@@ -279,6 +276,15 @@
     </ClInclude>
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategySubscriber.h">
       <Filter>Header Files\entities\interfaces\StrategyObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\subsystems\AudioHandler.h">
+      <Filter>Header Files\core\subsystems</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\subsystems\FontHandler.h">
+      <Filter>Header Files\core\subsystems</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\subsystems\TextureHandler.h">
+      <Filter>Header Files\core\subsystems</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

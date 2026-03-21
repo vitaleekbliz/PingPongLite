@@ -1,5 +1,5 @@
 #pragma once
-#include "SDLHandler.h"
+#include "core/SDLHandler.h"
 #include "interfaces/fontObserver/FontPublisher.h"
 
 class FontHandler : public FontSubscriber
