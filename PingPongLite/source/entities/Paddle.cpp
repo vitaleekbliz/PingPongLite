@@ -22,10 +22,10 @@ void Paddle::render()
 	switch (currentStrategy)
 	{
 	case PADDLE_STRATEGY::PLAYER:
-		requestDrawTexture(TEXTURE::PLAYER, destination, flipMode);
+		TextureHandler::get().drawTexture(TEXTURE::PLAYER, destination, flipMode);
 		break;
 	case PADDLE_STRATEGY::COMPUTER:
-		requestDrawTexture(TEXTURE::COMPUTER, destination, flipMode);
+		TextureHandler::get().drawTexture(TEXTURE::COMPUTER, destination, flipMode);
 		break;
 	}
 }
@@ -81,6 +81,6 @@ void Paddle::DEBUG_printWarning()
 		SDL_FPoint pos = {640, 360};
 		SDL_Color color = SDL_Color();
 		color.r = 255;
-		requestDrawText(FONT::CALIBRI, messeage, &pos, 36, color);
+		FontHandler::get().drawText(FONT::CALIBRI, messeage, &pos, 36, color);
 	}
 }

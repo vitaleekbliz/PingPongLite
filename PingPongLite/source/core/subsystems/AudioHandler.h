@@ -1,27 +1,30 @@
 #pragma once
 #include "core/SDLHandler.h"
-#include "interfaces/ballObserver/BallSubscriber.h"
 
 enum class SOUNDS : char
 {
 	MUSIC,
 	WIN,
 	LOSE,
-	IMPACT
+	HIT
 };
 
-class AudioHandler : public BallSubscriber
+class AudioHandler
 {
   public:
-	AudioHandler() = default;
-	~AudioHandler();
+	AudioHandler(const AudioHandler&) = delete;
+	AudioHandler& operator=(const AudioHandler&) = delete;
+	static AudioHandler& get();
 
 	void init();
-	void onBallEvent(BallEvent event) override;
+	void playAudio(SOUNDS sound);
 	void close();
 
   protected:
   private:
+	AudioHandler() = default;
+	~AudioHandler();
+
 	void load(std::string fileName, MIX_Mixer* mixer, MIX_Track** track) const;
 	void startMusic();
 

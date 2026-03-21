@@ -11,10 +11,8 @@ class ScoreBar : public Object, public BallSubscriber, public StrategySubscriber
 	ScoreBar();
 	void update() override;
 	void render() override;
-	void onBallEvent(BallEvent event) override;
+	virtual void onBallEvent(BallEvent event) override;
 	void onStrategyChange();
-
-	void setScoreDecoratorListeners(std::shared_ptr<TextureSubscriber> texture, std::shared_ptr<FontSubscriber> font);
 
   private:
 	float roundDurationSeconds = 0;

@@ -10,7 +10,7 @@ Ball::Ball()
 
 void Ball::notify(BallEvent event)
 {
-	for (auto it = subscribers.begin(); it != subscribers.end();)
+	for (auto it = ballSubscribers.begin(); it != ballSubscribers.end();)
 	{
 		if (auto observer = it->lock())
 		{
@@ -19,7 +19,7 @@ void Ball::notify(BallEvent event)
 		}
 		else
 		{
-			it = subscribers.erase(it);
+			it = ballSubscribers.erase(it);
 		}
 	}
 }
@@ -43,22 +43,23 @@ void Ball::update()
 	switch (checkBoundaries(&position))
 	{
 	case BOUNDARY::TOP:
-		notify(BallEvent::WALL_HIT);
-		onWallHit();
-		break;
-
 	case BOUNDARY::BOTTOM:
+		AudioHandler::get().playAudio(SOUNDS::HIT);
 		notify(BallEvent::WALL_HIT);
 		onWallHit();
 		break;
 
 	case BOUNDARY::LEFT:
-		notify((originalGoal ? BallEvent::GOAL_LEFT : BallEvent::GOAL_RIGHT));
+		// TEMP correct the way ball decorators behave and add strategy change Observer to them
+		AudioHandler::get().playAudio((originalGoal ? SOUNDS::WIN : SOUNDS::LOSE));
+		notify(BallEvent::GOAL_LEFT);
 		reset();
 		break;
 
 	case BOUNDARY::RIGHT:
-		notify((originalGoal ? BallEvent::GOAL_RIGHT : BallEvent::GOAL_LEFT));
+		// TEMP correct the way ball decorators behave and add strategy change Observer to them
+		AudioHandler::get().playAudio((originalGoal ? SOUNDS::LOSE : SOUNDS::WIN));
+		notify(BallEvent::GOAL_RIGHT);
 		reset();
 		break;
 	}
@@ -67,10 +68,12 @@ void Ball::update()
 	switch (checkForCollisions(&position, &size, collidingWith))
 	{
 	case COLLITION::PLAYER:
+		AudioHandler::get().playAudio(SOUNDS::HIT);
 		notify(BallEvent::PADDLE_HIT);
 		onPaddleHit(true, &position, &collidingWith);
 		break;
 	case COLLITION::COMPUTER:
+		AudioHandler::get().playAudio(SOUNDS::HIT);
 		notify(BallEvent::PADDLE_HIT);
 		onPaddleHit(false, &position, &collidingWith);
 		break;
@@ -80,7 +83,7 @@ void Ball::update()
 void Ball::render()
 {
 	SDL_FRect destination = getCollider();
-	requestDrawTexture(TEXTURE::BALL, destination, SDL_FLIP_NONE);
+	TextureHandler::get().drawTexture(TEXTURE::BALL, destination, SDL_FLIP_NONE);
 }
 
 void Ball::reset()

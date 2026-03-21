@@ -1,4 +1,6 @@
 #pragma once
+#include "core/subsystems/FontHandler.h"
+#include "core/subsystems/TextureHandler.h"
 #include "entities/Object.h"
 #include <SDL3/SDL.h>
 
@@ -12,5 +14,5 @@ class ScoreDecorator : public Object
 	SDL_Color color = SDL_Color(255, 0, 0);
 
   private:
-	SDL_FRect sideBarLocalDestination = {170, 20, 245, 40};
+	SDL_FRect sideBarDestination = {170, 20, 245, 40};
 };

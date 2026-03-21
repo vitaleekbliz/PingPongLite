@@ -42,7 +42,7 @@ void ScoreBar::render()
 	std::string current_time = std::to_string(minutes) + (seconds > 9 ? " : " : " : 0") + std::to_string(seconds);
 
 	SDL_Color color = SDL_Color(211, 211, 211);
-	requestDrawText(FONT::CALIBRI, current_time.c_str(), &timePos, 32, color);
+	FontHandler::get().drawText(FONT::CALIBRI, current_time.c_str(), &timePos, 32, color);
 	// END
 }
 
@@ -51,16 +51,10 @@ void ScoreBar::onBallEvent(BallEvent event)
 	switch (event)
 	{
 	case BallEvent::GOAL_LEFT:
-		if (originalStrategy)
-			rightScore.score++;
-		else
-			leftScore.score++;
+		rightScore.score++;
 		break;
 	case BallEvent::GOAL_RIGHT:
-		if (originalStrategy)
-			leftScore.score++;
-		else
-			rightScore.score++;
+		leftScore.score++;
 		break;
 	}
 }
@@ -70,13 +64,4 @@ void ScoreBar::onStrategyChange()
 	// std::swap(leftScore, rightScore);
 	std::swap(leftScore.color, rightScore.color);
 	std::swap(leftScore.score, rightScore.score);
-}
-
-void ScoreBar::setScoreDecoratorListeners(std::shared_ptr<TextureSubscriber> texture,
-										  std::shared_ptr<FontSubscriber> font)
-{
-	leftScore.addTextureListener(texture);
-	leftScore.addFontListener(font);
-	rightScore.addTextureListener(texture);
-	rightScore.addFontListener(font);
 }

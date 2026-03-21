@@ -59,9 +59,13 @@ COLLITION BallCollisionDecorator::checkForCollisions(SDL_FPoint* ballPos, SDL_FP
 	return COLLITION::NONE;
 }
 
-bool BallCollisionDecorator::checkCircleInsideBox(SDL_FPoint* pos, SDL_FPoint* size, const SDL_FRect rect)
+bool BallCollisionDecorator::checkCircleInsideBox(SDL_FPoint* pos, SDL_FPoint* size, SDL_FRect rect)
 {
 	// TODO calculate vector logic using boost qvm library
+
+	// convert global position to screen position
+	rect.x -= rect.w / 2;
+	rect.y -= rect.h / 2;
 
 	// return true if ball center is inside the rectagle or line is intersecting rectengle
 	if (SDL_PointInRectFloat(pos, &rect))

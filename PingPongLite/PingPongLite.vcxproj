@@ -145,6 +145,7 @@
     <ClCompile Include="source\entities\BallComponents\BallCollisionDecorator.cpp" />
     <ClCompile Include="source\entities\BallComponents\BallMovementDecorator.cpp" />
     <ClCompile Include="source\entities\Board.cpp" />
+    <ClCompile Include="source\entities\interfaces\BallObserver\BallPublisher.cpp" />
     <ClCompile Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
     <ClCompile Include="source\entities\Paddle.cpp" />
@@ -153,9 +154,6 @@
     <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.cpp" />
     <ClCompile Include="source\entities\ScoreBar.cpp" />
     <ClCompile Include="source\entities\ScoreComponents\ScoreDecorator.cpp" />
-    <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp" />
-    <ClCompile Include="source\interfaces\fontObserver\FontPublisher.cpp" />
-    <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\scenes\components\objectFactory\Product.cpp" />
     <ClCompile Include="source\scenes\components\objectFactory\Creator.cpp" />
@@ -172,6 +170,8 @@
     <ClInclude Include="source\entities\BallComponents\BallCollisionDecorator.h" />
     <ClInclude Include="source\entities\BallComponents\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board.h" />
+    <ClInclude Include="source\entities\interfaces\BallObserver\BallPublisher.h" />
+    <ClInclude Include="source\entities\interfaces\BallObserver\BallSubscriber.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategySubscriber.h" />
     <ClInclude Include="source\entities\Object.h" />
@@ -181,12 +181,6 @@
     <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.h" />
     <ClInclude Include="source\entities\ScoreBar.h" />
     <ClInclude Include="source\entities\ScoreComponents\ScoreDecorator.h" />
-    <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h" />
-    <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h" />
-    <ClInclude Include="source\interfaces\fontObserver\FontPublisher.h" />
-    <ClInclude Include="source\interfaces\fontObserver\FontSubscriber.h" />
-    <ClInclude Include="source\interfaces\textureObserver\TextureSubscriber.h" />
-    <ClInclude Include="source\interfaces\textureObserver\TexturePublisher.h" />
     <ClInclude Include="source\scenes\components\objectFactory\Product.h" />
     <ClInclude Include="source\scenes\components\objectFactory\Creator.h" />
     <ClInclude Include="source\scenes\components\objectFactory\objectFactory.h" />

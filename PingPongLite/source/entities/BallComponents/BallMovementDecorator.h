@@ -1,7 +1,6 @@
 #pragma once
 #include "core/SDLHandler.h";
 #include "entities/Object.h";
-#include "interfaces/ballObserver/BallPublisher.h"
 #include <cmath>
 #include <memory>
 #include <numbers>

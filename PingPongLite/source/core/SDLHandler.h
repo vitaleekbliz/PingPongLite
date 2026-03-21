@@ -29,7 +29,7 @@ class SDLHandler
 
   private:
 	SDLHandler();
-	~SDLHandler() = default;
+	~SDLHandler();
 
 	Uint64 lastTick;
 	float deltaTime;

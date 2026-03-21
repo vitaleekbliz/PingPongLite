@@ -100,3 +100,8 @@ SDLHandler::SDLHandler()
 	lastTick = SDL_GetTicks();
 	deltaTime = 0;
 }
+
+SDLHandler::~SDLHandler()
+{
+	close();
+}

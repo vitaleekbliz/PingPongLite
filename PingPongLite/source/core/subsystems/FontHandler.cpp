@@ -1,8 +1,17 @@
 #include "FontHandler.h"
 
-void FontHandler::onDrawRequestText(FONT id, std::string text, SDL_FPoint* position, int size, SDL_Color color)
+FontHandler& FontHandler::get()
 {
-	drawText(id, text, position, size, color);
+	static FontHandler instance;
+	return instance;
+}
+
+void FontHandler::init()
+{
+}
+
+void FontHandler::close()
+{
 }
 
 void FontHandler::drawText(FONT id, std::string text, SDL_FPoint* position, int size, SDL_Color color)
@@ -50,6 +59,11 @@ void FontHandler::drawText(FONT id, std::string text, SDL_FPoint* position, int 
 	SDL_RenderTexture(renderer, texture, NULL, &destination);
 
 	SDL_DestroyTexture(texture);
+}
+
+FontHandler::~FontHandler()
+{
+	close();
 }
 
 std::string FontHandler::getFontName(FONT id)

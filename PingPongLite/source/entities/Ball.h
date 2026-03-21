@@ -2,6 +2,7 @@
 #include "BallComponents/BallCollisionDecorator.h"
 #include "BallComponents/BallMovementDecorator.h"
 #include "Object.h"
+#include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/Texturehandler.h"
 #include "interfaces/ballObserver/BallPublisher.h"
 #include <algorithm>

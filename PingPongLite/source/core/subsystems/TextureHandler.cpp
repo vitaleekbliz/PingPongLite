@@ -5,6 +5,12 @@ TextureHandler::~TextureHandler()
 	close();
 }
 
+TextureHandler& TextureHandler::get()
+{
+	static TextureHandler instance;
+	return instance;
+}
+
 void TextureHandler::init()
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
@@ -25,13 +31,11 @@ void TextureHandler::close()
 	SDL_DestroyTexture(scoreBar);
 }
 
-void TextureHandler::onDrawRequestTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-										  bool isDestinationCentered)
+void TextureHandler::drawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isWorldPosition)
 {
 	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
 
-	// center picture
-	if (isDestinationCentered)
+	if (isWorldPosition)
 	{
 		destination.x -= destination.w / 2;
 		destination.y -= destination.h / 2;

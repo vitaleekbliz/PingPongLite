@@ -2,6 +2,8 @@
 #include "components/objectFactory/Creator.h"
 #include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/FontHandler.h"
+#include "core/subsystems/TextureHandler.h"
+#include "entities/interfaces/ballObserver/BallPublisher.h"
 #include "scenes/Scene.h"
 #include <memory>
 #include <vector>
@@ -22,14 +24,8 @@ class MainScene : public Scene
 	void spawnObject(ObjectID id);
 
 	void linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std::shared_ptr<BallPublisher> publisher);
-	void linkTextureObserver(std::shared_ptr<TextureSubscriber> subscriber,
-							 std::shared_ptr<TexturePublisher> publisher);
-	void linkFontObserver(std::shared_ptr<FontSubscriber> subscriber, std::shared_ptr<FontPublisher> publisher);
 
 	std::unique_ptr<ObjectCreator> factory;
-	std::shared_ptr<AudioHandler> audioHandler;
-	std::shared_ptr<TextureHandler> textureHandler;
-	std::shared_ptr<FontHandler> fontHandler;
 
 	std::shared_ptr<Board> board;
 	std::shared_ptr<Ball> ball;

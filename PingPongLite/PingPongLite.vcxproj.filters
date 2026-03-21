@@ -28,29 +28,11 @@
     <Filter Include="Source Files\source\core">
       <UniqueIdentifier>{cd1e70e1-d377-41e5-94e8-9f7caeb6e74f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\source\interfaces">
-      <UniqueIdentifier>{8f4176d4-07c7-4692-9252-fc31d8075272}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\interfaces\ballObserver">
-      <UniqueIdentifier>{ab4b82e0-dab1-4341-a767-43ff37f19ba3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\interfaces">
-      <UniqueIdentifier>{c9e4cdf5-0462-47e2-9c5e-1593fd419f97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\interfaces\ballObserver">
-      <UniqueIdentifier>{a2f1b5af-3d0b-4763-95a3-e9fd32713ffc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\scenes">
       <UniqueIdentifier>{4735be72-5bfd-4d27-a481-d5e2878eec1e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\source\scenes">
       <UniqueIdentifier>{b2f36d9f-4815-425a-b5db-4f33a4f6e0cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\interfaces\textureObserver">
-      <UniqueIdentifier>{891ef262-06d8-4ce6-92c7-5ef5234190dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\interfaces\textureObserver">
-      <UniqueIdentifier>{3ac7f5aa-050a-42a5-b3c7-8b5b0dbf526c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\entities\BallComponents">
       <UniqueIdentifier>{1310e2b6-7350-4d50-984b-cc26c9d559b6}</UniqueIdentifier>
@@ -75,12 +57,6 @@
     </Filter>
     <Filter Include="Header Files\entities\PaddleComponents">
       <UniqueIdentifier>{ec6c8f08-43ad-4b6d-9280-10a3ac924c72}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\interfaces\fontObserver">
-      <UniqueIdentifier>{b5609f36-d98a-4344-93a5-d21dfb6c5806}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\interfaces\fontObserver">
-      <UniqueIdentifier>{ede969e9-d333-45ff-b07d-3804b99f7ded}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\source\entities\ScoreComponents">
       <UniqueIdentifier>{76a7d4b0-ebda-4bbc-92b7-e07244afde27}</UniqueIdentifier>
@@ -112,6 +88,12 @@
     <Filter Include="Source Files\source\core\subsystems">
       <UniqueIdentifier>{7f9497e7-b560-4705-9217-23af00a8bdae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\entities\interfaces\BallObserver">
+      <UniqueIdentifier>{1f2c1e75-b863-42c6-aa54-d415e11bb3c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\interfaces\BallObserver">
+      <UniqueIdentifier>{20941a45-7008-46b2-9a7c-a8245611bbe2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -140,20 +122,11 @@
     <ClCompile Include="source\entities\ScoreBar.cpp">
       <Filter>Source Files\source\entities</Filter>
     </ClCompile>
-    <ClCompile Include="source\core\SDLHandler.cpp">
-      <Filter>Source Files\source\core</Filter>
-    </ClCompile>
-    <ClCompile Include="source\interfaces\ballObserver\BallPublisher.cpp">
-      <Filter>Source Files\source\interfaces\ballObserver</Filter>
-    </ClCompile>
     <ClCompile Include="source\scenes\MainScene.cpp">
       <Filter>Source Files\source\scenes</Filter>
     </ClCompile>
     <ClCompile Include="source\scenes\Scene.cpp">
       <Filter>Source Files\source\scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="source\interfaces\textureObserver\TexturePublisher.cpp">
-      <Filter>Source Files\source\interfaces\textureObserver</Filter>
     </ClCompile>
     <ClCompile Include="source\scenes\components\objectFactory\Creator.cpp">
       <Filter>Source Files\source\scenes\components\objectFactory</Filter>
@@ -169,9 +142,6 @@
     </ClCompile>
     <ClCompile Include="source\entities\BallComponents\BallMovementDecorator.cpp">
       <Filter>Source Files\source\entities\BallComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="source\interfaces\fontObserver\FontPublisher.cpp">
-      <Filter>Source Files\source\interfaces\fontObserver</Filter>
     </ClCompile>
     <ClCompile Include="source\entities\Paddle.cpp">
       <Filter>Source Files\source\entities</Filter>
@@ -200,6 +170,12 @@
     <ClCompile Include="source\core\subsystems\TextureHandler.cpp">
       <Filter>Source Files\source\core\subsystems</Filter>
     </ClCompile>
+    <ClCompile Include="source\core\SDLHandler.cpp">
+      <Filter>Source Files\source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\interfaces\BallObserver\BallPublisher.cpp">
+      <Filter>Source Files\source\entities\interfaces\BallObserver</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\entities\Ball.h">
@@ -217,23 +193,11 @@
     <ClInclude Include="source\core\SDLHandler.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
-    <ClInclude Include="source\interfaces\ballObserver\BallPublisher.h">
-      <Filter>Header Files\interfaces\ballObserver</Filter>
-    </ClInclude>
-    <ClInclude Include="source\interfaces\ballObserver\BallSubscriber.h">
-      <Filter>Header Files\interfaces\ballObserver</Filter>
-    </ClInclude>
     <ClInclude Include="source\scenes\MainScene.h">
       <Filter>Header Files\scenes</Filter>
     </ClInclude>
     <ClInclude Include="source\scenes\Scene.h">
       <Filter>Header Files\scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="source\interfaces\textureObserver\TextureSubscriber.h">
-      <Filter>Header Files\interfaces\textureObserver</Filter>
-    </ClInclude>
-    <ClInclude Include="source\interfaces\textureObserver\TexturePublisher.h">
-      <Filter>Header Files\interfaces\textureObserver</Filter>
     </ClInclude>
     <ClInclude Include="source\scenes\components\objectFactory\Creator.h">
       <Filter>Header Files\scenes\components\objectFactory</Filter>
@@ -249,12 +213,6 @@
     </ClInclude>
     <ClInclude Include="source\entities\BallComponents\BallMovementDecorator.h">
       <Filter>Header Files\entities\BallComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="source\interfaces\fontObserver\FontPublisher.h">
-      <Filter>Header Files\interfaces\fontObserver</Filter>
-    </ClInclude>
-    <ClInclude Include="source\interfaces\fontObserver\FontSubscriber.h">
-      <Filter>Header Files\interfaces\fontObserver</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\Paddle.h">
       <Filter>Header Files\entities</Filter>
@@ -285,6 +243,12 @@
     </ClInclude>
     <ClInclude Include="source\core\subsystems\TextureHandler.h">
       <Filter>Header Files\core\subsystems</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\BallObserver\BallPublisher.h">
+      <Filter>Header Files\entities\interfaces\BallObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\BallObserver\BallSubscriber.h">
+      <Filter>Header Files\entities\interfaces\BallObserver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

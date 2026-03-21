@@ -2,12 +2,16 @@
 
 Board::Board()
 {
-	position = {640, 380};
-	size = {1280, 680};
+	setPosition({640, 380});
+	setSize({1280, 680});
+}
+
+void Board::update()
+{
 }
 
 void Board::render()
 {
 	SDL_FRect destination = getCollider();
-	requestDrawTexture(TEXTURE::BOARD, destination, SDL_FLIP_NONE);
+	TextureHandler::get().drawTexture(TEXTURE::BOARD, destination, SDL_FLIP_NONE);
 }

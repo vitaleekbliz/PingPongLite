@@ -13,5 +13,5 @@ class BallPublisher
   protected:
 	virtual void notify(BallEvent event) = 0;
 
-	std::vector<std::weak_ptr<BallSubscriber>> subscribers;
+	std::vector<std::weak_ptr<BallSubscriber>> ballSubscribers;
 };

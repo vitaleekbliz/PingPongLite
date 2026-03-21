@@ -7,8 +7,9 @@ MainScene::~MainScene()
 
 void MainScene::close()
 {
-	audioHandler->close();
-	textureHandler->close();
+	AudioHandler::get().close();
+	TextureHandler::get().close();
+	FontHandler::get().close();
 	isActive = false;
 }
 
@@ -41,13 +42,9 @@ void MainScene::render()
 
 void MainScene::init()
 {
-	audioHandler = std::make_shared<AudioHandler>();
-	audioHandler->init();
-
-	textureHandler = std::make_shared<TextureHandler>();
-	textureHandler->init();
-
-	fontHandler = std::make_shared<FontHandler>();
+	AudioHandler::get().init();
+	TextureHandler::get().init();
+	FontHandler::get().init();
 
 	factory = std::make_unique<ObjectCreator>();
 
@@ -64,9 +61,6 @@ void MainScene::init()
 	paddles[0]->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball->getPosition());
 	paddles[1]->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball->getPosition());
 
-	scoreBar->setScoreDecoratorListeners(textureHandler, fontHandler);
-
-	linkBallObserver(audioHandler, ball);
 	linkBallObserver(scoreBar, ball);
 
 	ball->setComputerReference(paddles[0]);
@@ -80,17 +74,6 @@ void MainScene::linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std
 	publisher->addBallListener(subscriber);
 }
 
-void MainScene::linkTextureObserver(std::shared_ptr<TextureSubscriber> subscriber,
-									std::shared_ptr<TexturePublisher> publisher)
-{
-	publisher->addTextureListener(subscriber);
-}
-
-void MainScene::linkFontObserver(std::shared_ptr<FontSubscriber> subscriber, std::shared_ptr<FontPublisher> publisher)
-{
-	publisher->addFontListener(subscriber);
-}
-
 void MainScene::spawnObject(ObjectID id)
 {
 	std::shared_ptr<Object> newObj = factory->create(id);
@@ -99,10 +82,6 @@ void MainScene::spawnObject(ObjectID id)
 		SDL_Log("Scene::populateScene - Failed to create game Objects.");
 		return;
 	}
-
-	// Setup Object Observers
-	linkTextureObserver(textureHandler, newObj);
-	linkFontObserver(fontHandler, newObj);
 
 	bool success = true;
 

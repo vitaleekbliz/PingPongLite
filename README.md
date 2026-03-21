@@ -7,8 +7,8 @@
   * **Currently working on** :
     * changing Texture drawing and Audio playing back to being singletons
     * adding Font caching
-    * restructering core/* folder
     * delegating mainScene logic to directors - Add directors for handling subsystem : Buffs/Debuffs, Collectibles, Collition unity-like, Paddle director
+    * correcting Ball decorators and Paddle Strategy Observer
   * **Ready Features** :
     * Paddle strategy switch
     * Score switch 
@@ -151,6 +151,14 @@ while (mainScene.isRunning())
 * *Singleton* :  
   * ✅SDLHandler  
 ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
+  * ✅TextureHandler  
+($(ProjectDir)/source/core/subsystems/)  
+  * ✅AudioHandler  
+($(ProjectDir)/source/core/subsystems/)  
+  * ✅TextHandler  
+($(ProjectDir)/source/core/subsystems/)  
+  * ❌AnimationsHandler  
+($(ProjectDir)/source/core/subsystems/)  
 
 * *Observer* :  
   * ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
@@ -161,11 +169,12 @@ while (mainScene.isRunning())
     * ($(ProjectDir)/source/interfaces/FontObserver)
 
 * *Decorator* :  
-  * ✅ Ball movement  
-  * ✅ Ball collisionComponent  
+  * [✅/❌] ScoreDecorator  
+  * [✅/❌] Ball movement  
+  * [✅/❌] Ball collisionComponent  
 
 * *State Machine* :  
-    * ❌ BallState - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
+    * [✅/❌] BallState (collisionComponent) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
 
 ## Architecture
 ``` bash
@@ -173,15 +182,17 @@ source
 |   main.cpp
 |   
 +---core
-|       AudioHandler.cpp
-|       AudioHandler.h
-|       FontHandler.cpp
-|       FontHandler.h
-|       SDLHandler.cpp
-|       SDLHandler.h
-|       TextureHandler.cpp
-|       TextureHandler.h
-|       
+|   |   SDLHandler.cpp
+|   |   SDLHandler.h
+|   |   
+|   \---subsystems
+|           AudioHandler.cpp
+|           AudioHandler.h
+|           FontHandler.cpp
+|           FontHandler.h
+|           TextureHandler.cpp
+|           TextureHandler.h
+|           
 +---entities
 |   |   Ball.cpp
 |   |   Ball.h
@@ -200,35 +211,36 @@ source
 |   |       BallMovementDecorator.cpp
 |   |       BallMovementDecorator.h
 |   |       
-|   \---PaddleComponents
-|           PaddleComputerStrategy.cpp
-|           PaddleComputerStrategy.h
-|           PaddlePlayerStrategy.cpp
-|           PaddlePlayerStrategy.h
-|           PaddleStrategy.cpp
-|           PaddleStrategy.h
-|           
-+---interfaces
-|   +---ballObserver
-|   |       BallPublisher.cpp
-|   |       BallPublisher.h
-|   |       BallSubscriber.h
-|   |       
-|   +---fontObserver
-|   |       FontPublisher.cpp
-|   |       FontPublisher.h
-|   |       FontSubscriber.h
-|   |       
-|   \---textureObserver
-|           TexturePublisher.cpp
-|           TexturePublisher.h
-|           TextureSubscriber.h
+|   +---interfaces
+|   |   +---BallObserver
+|   |   |       BallPublisher.cpp
+|   |   |       BallPublisher.h
+|   |   |       BallSubscriber.h
+|   |   |       
+|   |   \---StrategyObserver
+|   |           StrategyPublisher.cpp
+|   |           StrategyPublisher.h
+|   |           StrategySubscriber.h
+|   |           
+|   +---PaddleComponents
+|   |   \---PaddleStrategy
+|   |           PaddleComputerStrategy.cpp
+|   |           PaddleComputerStrategy.h
+|   |           PaddlePlayerStrategy.cpp
+|   |           PaddlePlayerStrategy.h
+|   |           PaddleStrategy.cpp
+|   |           PaddleStrategy.h
+|   |           
+|   \---ScoreComponents
+|           ScoreDecorator.cpp
+|           ScoreDecorator.h
 |           
 \---scenes
     |   MainScene.cpp
     |   MainScene.h
     |   Scene.cpp
     |   Scene.h
+    |   
     \---components
         \---objectFactory
                 Creator.cpp

@@ -1,20 +1,32 @@
 #pragma once
 #include "core/SDLHandler.h"
-#include "interfaces/textureObserver/TextureSubscriber.h"
+#include <string>
 
-class TextureHandler : public TextureSubscriber
+enum class TEXTURE : char
+{
+	BALL,
+	BOARD,
+	COMPUTER,
+	PLAYER,
+	SCORE_BAR
+};
+
+class TextureHandler
 {
   public:
-	TextureHandler() = default;
-	~TextureHandler();
+	TextureHandler(const TextureHandler&) = delete;
+	TextureHandler& operator=(const TextureHandler&) = delete;
+	static TextureHandler& get();
 
 	void init();
 	void close();
 
-	virtual void onDrawRequestTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,
-									  bool isDestinationCentered = true) override;
+	void drawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isWorldPosition = true);
 
   private:
+	TextureHandler() = default;
+	~TextureHandler();
+
 	SDL_Texture* load(std::string fileName, SDL_Renderer* renderer);
 
 	SDL_Texture* board = NULL;

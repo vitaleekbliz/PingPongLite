@@ -2,7 +2,8 @@
 #include "Object.h"
 #include "PaddleComponents/PaddleStrategy/PaddleComputerStrategy.h"
 #include "PaddleComponents/PaddleStrategy/PaddlePlayerStrategy.h"
-#include "core/SDLHandler.h"
+#include "core/subsystems/FontHandler.h"
+#include "core/subsystems/TextureHandler.h"
 #include <memory>
 
 class Paddle : public Object

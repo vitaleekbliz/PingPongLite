@@ -5,6 +5,12 @@ AudioHandler::~AudioHandler()
 	close();
 }
 
+AudioHandler& AudioHandler::get()
+{
+	static AudioHandler instance;
+	return instance;
+}
+
 void AudioHandler::init()
 {
 	MIX_Audio* musicAudio = NULL;
@@ -22,20 +28,19 @@ void AudioHandler::init()
 	startMusic();
 }
 
-void AudioHandler::onBallEvent(BallEvent event)
+void AudioHandler::playAudio(SOUNDS sound)
 {
-	switch (event)
+	switch (sound)
 	{
-	case BallEvent::GOAL_LEFT:
+	case SOUNDS::WIN:
 		MIX_PlayTrack(win, 0);
 		break;
 
-	case BallEvent::GOAL_RIGHT:
+	case SOUNDS::LOSE:
 		MIX_PlayTrack(lose, 0);
 		break;
 
-	case BallEvent::WALL_HIT:
-	case BallEvent::PADDLE_HIT:
+	case SOUNDS::HIT:
 		MIX_PlayTrack(hit, 0);
 		break;
 	default:
