@@ -151,11 +151,8 @@ while (mainScene.isRunning())
   * ✅SDLHandler  
 ($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
   * ✅TextureHandler  
-($(ProjectDir)/source/core/subsystems/)  
   * ✅AudioHandler  
-($(ProjectDir)/source/core/subsystems/)  
   * ✅TextHandler  
-($(ProjectDir)/source/core/subsystems/)  
   * ❌AnimationsHandler  
 ($(ProjectDir)/source/core/subsystems/)  
 
@@ -168,7 +165,7 @@ while (mainScene.isRunning())
     * ($(ProjectDir)/source/interfaces/FontObserver)
 
 * *Decorator* :  
-  * [✅/❌] ScoreDecorator  
+  * [✅] ScoreDecorator  
   * [✅/❌] Ball movement  
   * [✅/❌] Ball collisionComponent  
 
