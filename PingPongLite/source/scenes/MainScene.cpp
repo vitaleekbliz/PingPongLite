@@ -63,8 +63,7 @@ void MainScene::init()
 
 	linkBallObserver(scoreBar, ball);
 
-	ball->setComputerReference(paddles[0]);
-	ball->setPlayerReference(paddles[1]);
+	ball->setPaddleReferences(paddles[1], paddles[0]);
 
 	isActive = true;
 }

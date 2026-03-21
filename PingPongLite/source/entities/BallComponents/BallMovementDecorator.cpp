@@ -36,18 +36,15 @@ void BallMovementDecorator::applyMovement(SDL_FPoint* pos)
 	pos->y += deltaTime * currentSpeed * direction.y;
 }
 
-void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FRect* paddleRect)
+void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FRect paddleRect)
 {
 	// push ball from player
-	SDL_FPoint paddleCenter = SDL_FPoint();
-	paddleCenter.x = paddleRect->x;
-	paddleCenter.y = paddleRect->y;
 
 	// TODO use qvm library for vector rotation
 	//---segment start
 	SDL_FPoint newDirection = SDL_FPoint();
-	newDirection.x = ballPos->x - paddleCenter.x;
-	newDirection.y = ballPos->y - paddleCenter.y;
+	newDirection.x = ballPos->x - paddleRect.x;
+	newDirection.y = ballPos->y - paddleRect.y;
 
 	// normilize vector
 	float length = std::sqrt(newDirection.x * newDirection.x + newDirection.y * newDirection.y);

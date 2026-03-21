@@ -16,11 +16,11 @@ enum class BOUNDARY : char
 
 class BallMovementDecorator
 {
-  protected:
+  public:
 	void setRandomDirection();
 	void applyMovement(SDL_FPoint* pos);
 
-	void onPaddleHit(SDL_FPoint* ballPos, SDL_FRect* paddleRect);
+	void onPaddleHit(SDL_FPoint* ballPos, SDL_FRect paddleRect);
 	void onWallHit();
 
 	BOUNDARY checkBoundaries(SDL_FPoint* pos);

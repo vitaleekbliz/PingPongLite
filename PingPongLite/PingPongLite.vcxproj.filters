@@ -94,6 +94,12 @@
     <Filter Include="Source Files\source\entities\interfaces\BallObserver">
       <UniqueIdentifier>{20941a45-7008-46b2-9a7c-a8245611bbe2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\entities\BallComponents\interfaces">
+      <UniqueIdentifier>{6968b963-0994-4061-80b4-263984e9a10d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\BallComponents\intefaces">
+      <UniqueIdentifier>{4d9a8368-0e89-48e6-b811-faee2e30dfa7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">

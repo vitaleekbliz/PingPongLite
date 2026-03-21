@@ -2,7 +2,7 @@
 
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
 **Base game**: This game had cleaner architecture when it looked like retro ping pong  
-**Enchansing**: Project became testing playground for game design patterns  
+**Enchansing**: Accumulated some programmer debt. Project became testing playground for game design patterns  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
     * adding Font caching

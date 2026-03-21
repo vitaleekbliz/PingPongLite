@@ -38,15 +38,15 @@ void Ball::update()
 		originalGoal = !originalGoal;
 	}
 #pragma endregion
-	applyMovement(&position);
+	movement.applyMovement(&position);
 
-	switch (checkBoundaries(&position))
+	switch (movement.checkBoundaries(&position))
 	{
 	case BOUNDARY::TOP:
 	case BOUNDARY::BOTTOM:
 		AudioHandler::get().playAudio(SOUNDS::HIT);
 		notify(BallEvent::WALL_HIT);
-		onWallHit();
+		movement.onWallHit();
 		break;
 
 	case BOUNDARY::LEFT:
@@ -64,19 +64,32 @@ void Ball::update()
 		break;
 	}
 
-	SDL_FRect collidingWith = SDL_FRect();
-	switch (checkForCollisions(&position, &size, collidingWith))
+	bool playerCollision = player.checkForCollisions(&position, &size);
+	bool computerCollision = computer.checkForCollisions(&position, &size);
+
+	// if not colliding with both exited collision zone
+	if (!playerCollision && !computerCollision)
 	{
-	case COLLITION::PLAYER:
+		isCollidingPaddle = false;
+	}
+
+	// if touching any paddle
+	else if ((playerCollision || computerCollision) && !isCollidingPaddle)
+	{
+
+		// blocks logic untill exiting collision zone
+		isCollidingPaddle = true;
+
 		AudioHandler::get().playAudio(SOUNDS::HIT);
 		notify(BallEvent::PADDLE_HIT);
-		onPaddleHit(&position, &collidingWith);
-		break;
-	case COLLITION::COMPUTER:
-		AudioHandler::get().playAudio(SOUNDS::HIT);
-		notify(BallEvent::PADDLE_HIT);
-		onPaddleHit(&position, &collidingWith);
-		break;
+		if (playerCollision)
+		{
+			movement.onPaddleHit(&position, player.getPaddleCollider());
+		}
+		else
+		{
+			movement.onPaddleHit(&position, computer.getPaddleCollider());
+		}
 	}
 }
 
@@ -86,10 +99,16 @@ void Ball::render()
 	TextureHandler::get().drawTexture(TEXTURE::BALL, destination, SDL_FLIP_NONE);
 }
 
+void Ball::setPaddleReferences(std::shared_ptr<Object> player, std::shared_ptr<Object> computer)
+{
+	this->player.setPaddleReference(player);
+	this->computer.setPaddleReference(computer);
+}
+
 void Ball::reset()
 {
-	position = basePosition;
-	setRandomDirection();
-	currentSpeed = baseSpeed;
+	position = movement.basePosition;
+	movement.setRandomDirection();
+	movement.currentSpeed = movement.baseSpeed;
 	isCollidingPaddle = false;
 }
