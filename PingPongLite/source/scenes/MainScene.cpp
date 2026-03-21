@@ -58,8 +58,8 @@ void MainScene::init()
 	paddles[0]->setPosition({50, 400});
 	paddles[1]->setPosition({1230, 400});
 
-	paddles[0]->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball->getPosition());
-	paddles[1]->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball->getPosition());
+	paddles[0]->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball);
+	paddles[1]->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball);
 
 	linkBallObserver(scoreBar, ball);
 

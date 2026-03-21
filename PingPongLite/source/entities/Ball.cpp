@@ -70,12 +70,12 @@ void Ball::update()
 	case COLLITION::PLAYER:
 		AudioHandler::get().playAudio(SOUNDS::HIT);
 		notify(BallEvent::PADDLE_HIT);
-		onPaddleHit(true, &position, &collidingWith);
+		onPaddleHit(&position, &collidingWith);
 		break;
 	case COLLITION::COMPUTER:
 		AudioHandler::get().playAudio(SOUNDS::HIT);
 		notify(BallEvent::PADDLE_HIT);
-		onPaddleHit(false, &position, &collidingWith);
+		onPaddleHit(&position, &collidingWith);
 		break;
 	}
 }

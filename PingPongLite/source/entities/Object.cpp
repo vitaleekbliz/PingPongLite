@@ -5,9 +5,9 @@ void Object::setPosition(SDL_FPoint pos)
 	position = pos;
 }
 
-const SDL_FPoint* Object::getPosition()
+SDL_FPoint Object::getPosition()
 {
-	return &position;
+	return position;
 }
 
 void Object::setSize(SDL_FPoint size)
@@ -15,9 +15,9 @@ void Object::setSize(SDL_FPoint size)
 	this->size = size;
 }
 
-const SDL_FPoint* Object::getSize()
+SDL_FPoint Object::getSize()
 {
-	return &size;
+	return size;
 }
 
 SDL_FRect Object::getCollider() const

@@ -20,7 +20,7 @@ class BallMovementDecorator
 	void setRandomDirection();
 	void applyMovement(SDL_FPoint* pos);
 
-	void onPaddleHit(bool player, SDL_FPoint* ballPos, SDL_FRect* paddleRect);
+	void onPaddleHit(SDL_FPoint* ballPos, SDL_FRect* paddleRect);
 	void onWallHit();
 
 	BOUNDARY checkBoundaries(SDL_FPoint* pos);

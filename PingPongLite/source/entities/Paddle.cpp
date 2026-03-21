@@ -30,9 +30,9 @@ void Paddle::render()
 	}
 }
 
-void Paddle::setOriginalStrategy(PADDLE_STRATEGY id, const SDL_FPoint* ballPos)
+void Paddle::setOriginalStrategy(PADDLE_STRATEGY id, std::shared_ptr<Object> ball)
 {
-	this->ballPos = ballPos;
+	this->trackingObject = ball;
 
 	originalStrategy = id;
 	changeStrategy(id);
@@ -52,7 +52,7 @@ void Paddle::changeStrategy(PADDLE_STRATEGY id)
 		break;
 	}
 
-	strategy->setTarget(ballPos);
+	strategy->setTarget(trackingObject.lock());
 }
 
 void Paddle::DEBUG_handleControllerSwitch()

@@ -13,7 +13,7 @@ class Paddle : public Object
 	void update() override;
 	void render() override;
 
-	void setOriginalStrategy(PADDLE_STRATEGY id, const SDL_FPoint* ballPos);
+	void setOriginalStrategy(PADDLE_STRATEGY id, std::shared_ptr<Object> ball);
 	void changeStrategy(PADDLE_STRATEGY id);
 
   private:
@@ -24,7 +24,7 @@ class Paddle : public Object
 	void DEBUG_printWarning();
 #pragma endregion
 
-	const SDL_FPoint* ballPos = nullptr;
+	std::weak_ptr<Object> trackingObject;
 	PADDLE_STRATEGY currentStrategy;
 	PADDLE_STRATEGY originalStrategy;
 

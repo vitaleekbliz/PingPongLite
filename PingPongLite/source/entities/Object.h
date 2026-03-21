@@ -21,10 +21,10 @@ class Object
 	virtual void render() = 0;
 
 	void setPosition(SDL_FPoint pos);
-	const SDL_FPoint* getPosition();
+	SDL_FPoint getPosition();
 
 	void setSize(SDL_FPoint size);
-	const SDL_FPoint* getSize();
+	SDL_FPoint getSize();
 
 	SDL_FRect getCollider() const;
 

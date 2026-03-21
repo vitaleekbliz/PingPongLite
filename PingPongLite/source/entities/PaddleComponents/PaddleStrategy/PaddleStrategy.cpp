@@ -1,8 +1,8 @@
 #include "PaddleStrategy.h"
 
-void PaddleStrategy::setTarget(const SDL_FPoint* ballPos)
+void PaddleStrategy::setTarget(std::shared_ptr<Object> trackedObject)
 {
-	this->ballPos = ballPos;
+	this->trackedObject = trackedObject;
 }
 
 void PaddleStrategy::keepInBounds(SDL_FPoint* ownerPos)

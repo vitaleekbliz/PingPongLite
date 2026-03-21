@@ -19,6 +19,7 @@
     * Buffs system
     * Collision system
     * Collectibles
+    * Input handling 
 
 ## 🛠️ Tech Stack
 

@@ -2,12 +2,15 @@
 
 void PaddleComputerStrategy::track(SDL_FPoint* ownerPos)
 {
-	if (!ballPos)
+	auto objectLock = trackedObject.lock();
+	if (!objectLock)
 		return;
+
+	SDL_FPoint objPosition = objectLock->getPosition();
 
 	float deltaTime = SDLHandler::get().getTick();
 
-	float ballY = ballPos->y;
+	float ballY = objPosition.y;
 
 	float deltaY = ballY - ownerPos->y;
 
@@ -15,7 +18,7 @@ void PaddleComputerStrategy::track(SDL_FPoint* ownerPos)
 
 	if (moveAmount > std::abs(deltaY))
 	{
-		ownerPos->y = ballPos->y;
+		ownerPos->y = objPosition.y;
 	}
 	else
 	{

@@ -1,5 +1,7 @@
 #pragma once
 #include "core/SDLHandler.h"
+#include "entities/Object.h"
+#include <memory>
 
 enum class PADDLE_STRATEGY : char
 {
@@ -11,11 +13,11 @@ class PaddleStrategy
 {
   public:
 	virtual void track(SDL_FPoint* ownerPos) = 0;
-	void setTarget(const SDL_FPoint* ballPos);
+	void setTarget(std::shared_ptr<Object> trackedObject);
 
   protected:
 	void keepInBounds(SDL_FPoint* ownerPos);
-	const SDL_FPoint* ballPos;
+	std::weak_ptr<Object> trackedObject;
 
 	int baseSpeed = 500;
 	int currentSpeed = baseSpeed;

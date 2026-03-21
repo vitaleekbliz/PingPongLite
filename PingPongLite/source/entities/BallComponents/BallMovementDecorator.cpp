@@ -36,12 +36,12 @@ void BallMovementDecorator::applyMovement(SDL_FPoint* pos)
 	pos->y += deltaTime * currentSpeed * direction.y;
 }
 
-void BallMovementDecorator::onPaddleHit(bool isPlayer, SDL_FPoint* ballPos, SDL_FRect* paddleRect)
+void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FRect* paddleRect)
 {
 	// push ball from player
 	SDL_FPoint paddleCenter = SDL_FPoint();
-	paddleCenter.x = paddleRect->x + paddleRect->w / 2;
-	paddleCenter.y = paddleRect->y + paddleRect->h / 2;
+	paddleCenter.x = paddleRect->x;
+	paddleCenter.y = paddleRect->y;
 
 	// TODO use qvm library for vector rotation
 	//---segment start
@@ -105,7 +105,7 @@ void BallMovementDecorator::clampVerticalVelocity()
 {
 	// if any axis velocity is zero ball is stuck on axis infinitely
 	if (!direction.x)
-		direction.x = 0.05f; // Crutch points ball towards right slightly
+		direction.x = 0.05; // Crutch points ball towards right slightly
 	// PS. Paddle pushes the ball from its center, so its hard to hit ball perfectly horizontal
 
 	// change reduce angle to X axis
