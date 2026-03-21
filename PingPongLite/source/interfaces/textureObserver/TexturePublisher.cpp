@@ -1,6 +1,6 @@
 #include "TexturePublisher.h"
 
-void TexturePublisher::addListener(std::weak_ptr<TextureSubscriber> listener)
+void TexturePublisher::addTextureListener(std::weak_ptr<TextureSubscriber> listener)
 {
 	if (textureSubscriber.lock())
 	{
@@ -10,7 +10,7 @@ void TexturePublisher::addListener(std::weak_ptr<TextureSubscriber> listener)
 	textureSubscriber = listener;
 }
 
-void TexturePublisher::removeListener()
+void TexturePublisher::removeTextureListener()
 {
 	textureSubscriber.reset();
 }

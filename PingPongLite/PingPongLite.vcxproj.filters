@@ -82,6 +82,30 @@
     <Filter Include="Header Files\interfaces\fontObserver">
       <UniqueIdentifier>{ede969e9-d333-45ff-b07d-3804b99f7ded}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source\entities\ScoreComponents">
+      <UniqueIdentifier>{76a7d4b0-ebda-4bbc-92b7-e07244afde27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\ScoreComponents">
+      <UniqueIdentifier>{1a51c34e-7001-455d-824b-3455fc41e1cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\PaddleComponents\PaddleStrategy">
+      <UniqueIdentifier>{a1c64fd6-5f4f-4781-9952-18061cd80771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\PaddleComponents\PaddleStrategy">
+      <UniqueIdentifier>{5115d423-3c62-4c9d-bc2d-2a51e4513063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\interfaces">
+      <UniqueIdentifier>{9e8c4d47-aacb-4043-9f0a-ef1a5461d13a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\interfaces\StrategyObserver">
+      <UniqueIdentifier>{20845714-bc29-4b50-a841-17dc86cee288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\interfaces">
+      <UniqueIdentifier>{805ddeed-7045-4122-b816-89a4d5f0def4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\interfaces\StrategyObserver">
+      <UniqueIdentifier>{819744ef-49e4-4ebc-aeb8-8ab2d79d9490}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -155,14 +179,20 @@
     <ClCompile Include="source\entities\Paddle.cpp">
       <Filter>Source Files\source\entities</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\PaddleComponents\PaddleComputerStrategy.cpp">
-      <Filter>Source Files\source\entities\PaddleComponents</Filter>
+    <ClCompile Include="source\entities\ScoreComponents\ScoreDecorator.cpp">
+      <Filter>Source Files\source\entities\ScoreComponents</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy.cpp">
-      <Filter>Source Files\source\entities\PaddleComponents</Filter>
+    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddleComputerStrategy.cpp">
+      <Filter>Source Files\source\entities\PaddleComponents\PaddleStrategy</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\PaddleComponents\PaddlePlayerStrategy.cpp">
-      <Filter>Source Files\source\entities\PaddleComponents</Filter>
+    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddlePlayerStrategy.cpp">
+      <Filter>Source Files\source\entities\PaddleComponents\PaddleStrategy</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.cpp">
+      <Filter>Source Files\source\entities\PaddleComponents\PaddleStrategy</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.cpp">
+      <Filter>Source Files\source\entities\interfaces\StrategyObserver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -232,14 +262,23 @@
     <ClInclude Include="source\entities\Paddle.h">
       <Filter>Header Files\entities</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy.h">
-      <Filter>Header Files\entities\PaddleComponents</Filter>
+    <ClInclude Include="source\entities\ScoreComponents\ScoreDecorator.h">
+      <Filter>Header Files\entities\ScoreComponents</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\PaddleComponents\PaddleComputerStrategy.h">
-      <Filter>Header Files\entities\PaddleComponents</Filter>
+    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddleComputerStrategy.h">
+      <Filter>Header Files\entities\PaddleComponents\PaddleStrategy</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\PaddleComponents\PaddlePlayerStrategy.h">
-      <Filter>Header Files\entities\PaddleComponents</Filter>
+    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddlePlayerStrategy.h">
+      <Filter>Header Files\entities\PaddleComponents\PaddleStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.h">
+      <Filter>Header Files\entities\PaddleComponents\PaddleStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.h">
+      <Filter>Header Files\entities\interfaces\StrategyObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategySubscriber.h">
+      <Filter>Header Files\entities\interfaces\StrategyObserver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

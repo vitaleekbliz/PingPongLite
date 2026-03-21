@@ -7,8 +7,8 @@
 class BallPublisher
 {
   public:
-	void addListener(std::shared_ptr<BallSubscriber> listener);
-	void removeListener(std::shared_ptr<BallSubscriber> listener);
+	void addBallListener(std::shared_ptr<BallSubscriber> listener);
+	void removeBallListener(std::shared_ptr<BallSubscriber> listener);
 
   protected:
 	virtual void notify(BallEvent event) = 0;

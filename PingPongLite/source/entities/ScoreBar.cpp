@@ -1,16 +1,39 @@
 #include "ScoreBar.h"
 
+ScoreBar::ScoreBar()
+{
+	leftScore = ScoreDecorator();
+	rightScore = ScoreDecorator();
+
+	leftScore.setPosition({280, 20});
+	rightScore.setPosition({1280 - 280, 20});
+
+	leftScore.color = SDL_Color(82, 124, 215);
+	rightScore.color = SDL_Color(215, 121, 82);
+}
+
 void ScoreBar::update()
 {
 	float deltaTime = SDLHandler::get().getTick();
 	roundDurationSeconds += deltaTime;
+
+#pragma region TEST DEBUG strategy call request
+	static const float cooldown = 15.f;
+	static float timer = cooldown;
+
+	timer -= deltaTime;
+	if (timer < 0.f)
+	{
+		timer = cooldown;
+		onStrategyChange();
+	}
+#pragma endregion
 }
 
 void ScoreBar::render()
 {
-	// Draw bars
-	// requestDrawTexture(TEXTURE::SCORE_BAR, ui.leftBar, SDL_FLIP_NONE);
-	// requestDrawTexture(TEXTURE::SCORE_BAR, ui.rightBar, SDL_FLIP_HORIZONTAL);
+	leftScore.render();
+	rightScore.render();
 
 	// Draw time START
 	int minutes = roundDurationSeconds / 60;
@@ -18,17 +41,8 @@ void ScoreBar::render()
 	std::string current_time = std::to_string(minutes) + (seconds > 9 ? " : " : " : 0") + std::to_string(seconds);
 
 	SDL_Color color = SDL_Color(211, 211, 211);
-	requestDrawText(FONT::CALIBRI, current_time.c_str(), &ui.time, 32, color);
+	requestDrawText(FONT::CALIBRI, current_time.c_str(), &timePos, 32, color);
 	// END
-
-	// Draw Score
-	color = SDL_Color(82, 124, 215);
-	std::string score_text = std::to_string(computerScore);
-	requestDrawText(FONT::CALIBRI, score_text.c_str(), &ui.scoreLeft, 32, color);
-
-	color = SDL_Color(215, 121, 82);
-	score_text = std::to_string(playerScore);
-	requestDrawText(FONT::CALIBRI, score_text.c_str(), &ui.scoreRight, 32, color);
 }
 
 void ScoreBar::onBallEvent(BallEvent event)
@@ -36,10 +50,25 @@ void ScoreBar::onBallEvent(BallEvent event)
 	switch (event)
 	{
 	case BallEvent::GOAL_LEFT:
-		playerScore++;
+		rightScore.score++;
 		break;
 	case BallEvent::GOAL_RIGHT:
-		computerScore++;
+		leftScore.score++;
 		break;
 	}
+}
+
+void ScoreBar::onStrategyChange()
+{
+	std::swap(leftScore.color, rightScore.color);
+	std::swap(leftScore.score, rightScore.score);
+}
+
+void ScoreBar::setScoreDecoratorListeners(std::shared_ptr<TextureSubscriber> texture,
+										  std::shared_ptr<FontSubscriber> font)
+{
+	leftScore.addTextureListener(texture);
+	leftScore.addFontListener(font);
+	rightScore.addTextureListener(texture);
+	rightScore.addFontListener(font);
 }

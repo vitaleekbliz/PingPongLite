@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
-#include "PaddleComponents/PaddleComputerStrategy.h"
-#include "PaddleComponents/PaddlePlayerStrategy.h"
+#include "PaddleComponents/PaddleStrategy/PaddleComputerStrategy.h"
+#include "PaddleComponents/PaddleStrategy/PaddlePlayerStrategy.h"
 #include "core/SDLHandler.h"
 #include <memory>
 

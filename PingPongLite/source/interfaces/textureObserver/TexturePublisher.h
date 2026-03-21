@@ -6,8 +6,8 @@
 class TexturePublisher
 {
   public:
-	void addListener(std::weak_ptr<TextureSubscriber> listener);
-	void removeListener();
+	void addTextureListener(std::weak_ptr<TextureSubscriber> listener);
+	void removeTextureListener();
 
   protected:
 	virtual void requestDrawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip,

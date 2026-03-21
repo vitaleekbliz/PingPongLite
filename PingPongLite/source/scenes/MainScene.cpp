@@ -55,56 +55,40 @@ void MainScene::init()
 	spawnObject(ObjectID::BOARD);
 	spawnObject(ObjectID::SCORE_BAR);
 
-#pragma region Testing paddle strategy
 	spawnObject(ObjectID::PADDLE);
 	spawnObject(ObjectID::PADDLE);
 
 	paddles[0]->setPosition({50, 400});
-	paddles[1]->setPosition({1280 - 50, 400});
+	paddles[1]->setPosition({1230, 400});
 
 	paddles[0]->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball->getPosition());
 	paddles[1]->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball->getPosition());
-#pragma endregion
+
+	scoreBar->setScoreDecoratorListeners(textureHandler, fontHandler);
 
 	linkBallObserver(audioHandler, ball);
 	linkBallObserver(scoreBar, ball);
 
-	linkTextureObserver(textureHandler, ball);
-	linkTextureObserver(textureHandler, board);
-	linkTextureObserver(textureHandler, scoreBar);
-
-	linkFontObserver(fontHandler, ball);
-	linkFontObserver(fontHandler, board);
-	linkFontObserver(fontHandler, scoreBar);
-
-#pragma region Testing paddle strategy
-	linkTextureObserver(textureHandler, paddles[0]);
-	linkTextureObserver(textureHandler, paddles[1]);
-
-	linkFontObserver(fontHandler, paddles[0]);
-	linkFontObserver(fontHandler, paddles[1]);
-
 	ball->setComputerReference(paddles[0]);
 	ball->setPlayerReference(paddles[1]);
-#pragma endregion
 
 	isActive = true;
 }
 
 void MainScene::linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std::shared_ptr<BallPublisher> publisher)
 {
-	publisher->addListener(subscriber);
+	publisher->addBallListener(subscriber);
 }
 
 void MainScene::linkTextureObserver(std::shared_ptr<TextureSubscriber> subscriber,
 									std::shared_ptr<TexturePublisher> publisher)
 {
-	publisher->addListener(subscriber);
+	publisher->addTextureListener(subscriber);
 }
 
 void MainScene::linkFontObserver(std::shared_ptr<FontSubscriber> subscriber, std::shared_ptr<FontPublisher> publisher)
 {
-	publisher->addListener(subscriber);
+	publisher->addFontListener(subscriber);
 }
 
 void MainScene::spawnObject(ObjectID id)
@@ -115,6 +99,10 @@ void MainScene::spawnObject(ObjectID id)
 		SDL_Log("Scene::populateScene - Failed to create game Objects.");
 		return;
 	}
+
+	// Setup Object Observers
+	linkTextureObserver(textureHandler, newObj);
+	linkFontObserver(fontHandler, newObj);
 
 	bool success = true;
 

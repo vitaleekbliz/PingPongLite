@@ -1,6 +1,6 @@
 #include "FontPublisher.h"
 
-void FontPublisher::addListener(std::weak_ptr<FontSubscriber> listener)
+void FontPublisher::addFontListener(std::weak_ptr<FontSubscriber> listener)
 {
 	if (fontSubscriber.lock())
 	{
@@ -10,7 +10,7 @@ void FontPublisher::addListener(std::weak_ptr<FontSubscriber> listener)
 	fontSubscriber = listener;
 }
 
-void FontPublisher::removeListener()
+void FontPublisher::removeFontListener()
 {
 	fontSubscriber.reset();
 }
