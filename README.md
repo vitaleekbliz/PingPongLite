@@ -1,11 +1,10 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
-**Base game**: This game had clean architecture when it looked like retro ping pong  
+**Base game**: This game had cleaner architecture when it looked like retro ping pong  
 **Enchansing**: Project became testing playground for game design patterns  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
-    * changing Texture drawing and Audio playing back to being singletons
     * adding Font caching
     * delegating mainScene logic to directors - Add directors for handling subsystem : Buffs/Debuffs, Collectibles, Collition unity-like, Paddle director
     * correcting Ball decorators and Paddle Strategy Observer
@@ -15,7 +14,7 @@
     * BallEvent Observer
     * BallDecorators
   * **Upcoming systems**:
-    * Animation sytem
+    * Animation system
     * MainMenu
     * Buffs system
     * Collision system
