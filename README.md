@@ -1,8 +1,6 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
-**Base game**: This game had cleaner architecture when it looked like retro ping pong  
-**Enchansing**: Accumulated some programmer debt. Project became testing playground for game design patterns  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
     * adding Font caching
@@ -161,7 +159,7 @@ while (mainScene.isRunning())
 
 * *State Machine* :  
     * [✅/❌] BallState (collision) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
-    * ($(ProjectDir)source\entities\Ball{.h, .cpp}  
+($(ProjectDir)source\entities\Ball{.h, .cpp}  
 
 ## Architecture
 ``` bash
@@ -248,7 +246,6 @@ The ball would occasionally enter infinite horizontal or vertical loops due to p
 * **Solution:** 
   * Vertically : clamping velocity Y axes
   * Horizontally : pushing ball away from paddle center
-  * 
 
 **Challenge: Collision Overlap**  
 https://youtu.be/brq7M2zOXg4
