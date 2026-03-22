@@ -160,7 +160,7 @@ while (mainScene.isRunning())
     * ($(ProjectDir)source\entities\BallComponents\..)  
 
 * *State Machine* :  
-    * [✅/❌] BallState (collision) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
+  * [✅/❌] BallState (collision) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
     * ($(ProjectDir)source\entities\Ball{.h, .cpp}  
 
 ## Architecture

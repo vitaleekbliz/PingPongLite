@@ -18,9 +18,8 @@ void MainScene::update()
 	board->update();
 	scoreBar->update();
 	ball->update();
-
-	paddles[0]->update();
-	paddles[1]->update();
+	computer->update();
+	player->update();
 }
 
 void MainScene::render()
@@ -33,9 +32,8 @@ void MainScene::render()
 	board->render();
 	scoreBar->render();
 	ball->render();
-
-	paddles[0]->render();
-	paddles[1]->render();
+	computer->render();
+	player->render();
 
 	SDL_RenderPresent(renderer);
 }
@@ -46,70 +44,21 @@ void MainScene::init()
 	TextureHandler::get().init();
 	FontHandler::get().init();
 
-	factory = std::make_unique<ObjectCreator>();
+	ball = std::make_shared<Ball>();
+	board = std::make_shared<Board>();
+	scoreBar = std::make_shared<ScoreBar>();
+	computer = std::make_shared<Paddle>();
+	player = std::make_shared<Paddle>();
 
-	spawnObject(ObjectID::BALL);
-	spawnObject(ObjectID::BOARD);
-	spawnObject(ObjectID::SCORE_BAR);
+	computer->setPosition({50, 400});
+	player->setPosition({1230, 400});
 
-	spawnObject(ObjectID::PADDLE);
-	spawnObject(ObjectID::PADDLE);
+	computer->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball);
+	player->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball);
 
-	paddles[0]->setPosition({50, 400});
-	paddles[1]->setPosition({1230, 400});
-
-	paddles[0]->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball);
-	paddles[1]->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball);
-
-	paddles[0]->addStrategyListener(scoreBar);
-
+	computer->addStrategyListener(scoreBar);
 	ball->addBallListener(scoreBar);
-
-	ball->setPaddleReferences(paddles[1], paddles[0]);
+	ball->setPaddleReferences(player, computer);
 
 	isActive = true;
-}
-
-void MainScene::spawnObject(ObjectID id)
-{
-	std::shared_ptr<Object> newObj = factory->create(id);
-	if (!newObj)
-	{
-		SDL_Log("Scene::populateScene - Failed to create game Objects.");
-		return;
-	}
-
-	bool success = true;
-
-	switch (id)
-	{
-	case ObjectID::BALL:
-		ball = std::dynamic_pointer_cast<Ball>(newObj);
-		if (!ball)
-			success = false;
-		break;
-	case ObjectID::SCORE_BAR:
-		scoreBar = std::dynamic_pointer_cast<ScoreBar>(newObj);
-		if (!scoreBar)
-			success = false;
-		break;
-	case ObjectID::BOARD:
-		board = std::dynamic_pointer_cast<Board>(newObj);
-		if (!board)
-			success = false;
-		break;
-	case ObjectID::PADDLE:
-		paddles.push_back(std::dynamic_pointer_cast<Paddle>(newObj));
-		if (!paddles.back())
-			success = false;
-		break;
-	default:
-		break;
-	}
-
-	if (!success)
-	{
-		SDL_Log("Scene::populateScene - Failed to cast Objects to their class.");
-		return;
-	}
 }
