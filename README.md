@@ -7,17 +7,15 @@
   * **Currently working on** :
     * adding Font caching
     * centralized collision system
-    * delegating mainScene logic to decorators
-    * correcting Ball decorators and implementing Paddle Strategy Observer
+    * correcting Ball decorators
+    * Animation system
   * **Ready Features** :
     * Paddle strategy switch
     * Score switch 
     * Ball movement decorator
   * **Upcoming systems**:
-    * Animation system
     * MainMenu
     * Buffs system
-    * Collision system
     * Collectibles
     * Input handling 
 
@@ -84,7 +82,9 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 
 ### 🤩 Main Tasks
 1. ❗**Demonstrate C++ knowledge**❗. Look inside any code file XD. 7 years of C++ code writing, actually started 11 years ago   
-2. ❗**OOP**❗ :  "source\entities\PaddleComponents\." and "source\entities\Paddle{.h, .cpp}"
+2. ❗**OOP**❗ :  
+    * "source\entities\PaddleComponents\." and "source\entities\Paddle{.h, .cpp}"  
+    * "source\entities\ScoreComponents\." and "source\entities\ScoreBar{.h, .cpp}"  
 
 3. ❗**STL**❗
 * containers:
