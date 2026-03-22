@@ -51,14 +51,14 @@ void Ball::update()
 
 	case BOUNDARY::LEFT:
 		// TEMP correct the way ball decorators behave and add strategy change Observer to them
-		AudioHandler::get().playAudio((originalGoal ? SOUNDS::WIN : SOUNDS::LOSE));
+		// AudioHandler::get().playAudio((originalGoal ? SOUNDS::WIN : SOUNDS::LOSE));
 		notify(BallEvent::GOAL_LEFT);
 		reset();
 		break;
 
 	case BOUNDARY::RIGHT:
 		// TEMP correct the way ball decorators behave and add strategy change Observer to them
-		AudioHandler::get().playAudio((originalGoal ? SOUNDS::LOSE : SOUNDS::WIN));
+		// AudioHandler::get().playAudio((originalGoal ? SOUNDS::LOSE : SOUNDS::WIN));
 		notify(BallEvent::GOAL_RIGHT);
 		reset();
 		break;

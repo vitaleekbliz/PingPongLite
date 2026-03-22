@@ -12,7 +12,7 @@ class ScoreBar : public Object, public BallSubscriber, public StrategySubscriber
 	void update() override;
 	void render() override;
 	virtual void onBallEvent(BallEvent event) override;
-	void onStrategyChange();
+	virtual void onStrategyChange() override;
 
   private:
 	float roundDurationSeconds = 0;

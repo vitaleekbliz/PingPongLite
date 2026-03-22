@@ -61,16 +61,11 @@ void MainScene::init()
 	paddles[0]->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball);
 	paddles[1]->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball);
 
-	linkBallObserver(scoreBar, ball);
+	ball->addBallListener(scoreBar);
 
 	ball->setPaddleReferences(paddles[1], paddles[0]);
 
 	isActive = true;
-}
-
-void MainScene::linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std::shared_ptr<BallPublisher> publisher)
-{
-	publisher->addBallListener(subscriber);
 }
 
 void MainScene::spawnObject(ObjectID id)

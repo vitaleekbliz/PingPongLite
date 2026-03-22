@@ -23,8 +23,6 @@ class MainScene : public Scene
   private:
 	void spawnObject(ObjectID id);
 
-	void linkBallObserver(std::shared_ptr<BallSubscriber> subscriber, std::shared_ptr<BallPublisher> publisher);
-
 	std::unique_ptr<ObjectCreator> factory;
 
 	std::shared_ptr<Board> board;

@@ -4,6 +4,7 @@
 #include "PaddleComponents/PaddleStrategy/PaddlePlayerStrategy.h"
 #include "core/subsystems/FontHandler.h"
 #include "core/subsystems/TextureHandler.h"
+#include "interfaces/StrategyObserver/StrategyPublisher.h"
 #include <memory>
 
 class Paddle : public Object

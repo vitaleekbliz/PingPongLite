@@ -10,6 +10,9 @@ ScoreBar::ScoreBar()
 
 	leftScore.color = SDL_Color(82, 124, 215);
 	rightScore.color = SDL_Color(215, 121, 82);
+
+	leftScore.tag = "computer";
+	rightScore.tag = "player";
 }
 
 void ScoreBar::update()
@@ -51,17 +54,17 @@ void ScoreBar::onBallEvent(BallEvent event)
 	switch (event)
 	{
 	case BallEvent::GOAL_LEFT:
-		rightScore.score++;
+		rightScore.increment();
 		break;
 	case BallEvent::GOAL_RIGHT:
-		leftScore.score++;
+		leftScore.increment();
 		break;
 	}
 }
 
 void ScoreBar::onStrategyChange()
 {
-	// std::swap(leftScore, rightScore);
 	std::swap(leftScore.color, rightScore.color);
 	std::swap(leftScore.score, rightScore.score);
+	std::swap(leftScore.tag, rightScore.tag);
 }
