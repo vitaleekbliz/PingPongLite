@@ -163,75 +163,79 @@ while (mainScene.isRunning())
 
 ## Architecture
 ``` bash
-+---source
-|   |   main.cpp
+source
+|   main.cpp
+|   
++---core
+|   |   SDLHandler.cpp
+|   |   SDLHandler.h
 |   |   
-|   +---core
-|   |   |   SDLHandler.cpp
-|   |   |   SDLHandler.h
-|   |   |   
-|   |   \---subsystems
-|   |           AudioHandler.cpp
-|   |           AudioHandler.h
-|   |           FontHandler.cpp
-|   |           FontHandler.h
-|   |           TextureHandler.cpp
-|   |           TextureHandler.h
-|   |           
-|   +---entities
+|   \---subsystems
+|           AudioHandler.cpp
+|           AudioHandler.h
+|           FontHandler.cpp
+|           FontHandler.h
+|           TextureHandler.cpp
+|           TextureHandler.h
+|           
++---entities
+|   |   Object.cpp
+|   |   Object.h
+|   |   
+|   +---Ball
 |   |   |   Ball.cpp
 |   |   |   Ball.h
+|   |   |   
+|   |   \---components
+|   |           BallCollisionDecorator.cpp
+|   |           BallCollisionDecorator.h
+|   |           BallMovementDecorator.cpp
+|   |           BallMovementDecorator.h
+|   |           
+|   +---Board
 |   |   |   Board.cpp
 |   |   |   Board.h
-|   |   |   Object.cpp
-|   |   |   Object.h
+|   |   |   
+|   |   \---components
+|   +---interfaces
+|   |   +---BallObserver
+|   |   |       BallPublisher.cpp
+|   |   |       BallPublisher.h
+|   |   |       BallSubscriber.h
+|   |   |       
+|   |   \---StrategyObserver
+|   |           StrategyPublisher.cpp
+|   |           StrategyPublisher.h
+|   |           StrategySubscriber.h
+|   |           
+|   +---Paddle
 |   |   |   Paddle.cpp
 |   |   |   Paddle.h
-|   |   |   ScoreBar.cpp
-|   |   |   ScoreBar.h
 |   |   |   
-|   |   +---BallComponents
-|   |   |       BallCollisionDecorator.cpp
-|   |   |       BallCollisionDecorator.h
-|   |   |       BallMovementDecorator.cpp
-|   |   |       BallMovementDecorator.h
-|   |   |       
-|   |   +---interfaces
-|   |   |   +---BallObserver
-|   |   |   |       BallPublisher.cpp
-|   |   |   |       BallPublisher.h
-|   |   |   |       BallSubscriber.h
-|   |   |   |       
-|   |   |   \---StrategyObserver
-|   |   |           StrategyPublisher.cpp
-|   |   |           StrategyPublisher.h
-|   |   |           StrategySubscriber.h
-|   |   |           
-|   |   +---PaddleComponents
-|   |   |   \---PaddleStrategy
-|   |   |           PaddleComputerStrategy.cpp
-|   |   |           PaddleComputerStrategy.h
-|   |   |           PaddlePlayerStrategy.cpp
-|   |   |           PaddlePlayerStrategy.h
-|   |   |           PaddleStrategy.cpp
-|   |   |           PaddleStrategy.h
-|   |   |           
-|   |   \---ScoreComponents
-|   |           ScoreDecorator.cpp
-|   |           ScoreDecorator.h
-|   |           TimeDecorator.cpp
-|   |           TimeDecorator.h
-|   |           
-|   \---scenes
-|       |   MainScene.cpp
-|       |   MainScene.h
-|       |   Scene.cpp
-|       |   Scene.h
+|   |   \---components
+|   |       \---PaddleStrategy
+|   |               PaddleComputerStrategy.cpp
+|   |               PaddleComputerStrategy.h
+|   |               PaddlePlayerStrategy.cpp
+|   |               PaddlePlayerStrategy.h
+|   |               PaddleStrategy.cpp
+|   |               PaddleStrategy.h
+|   |               
+|   \---Score
+|       |   ScoreBar.cpp
+|       |   ScoreBar.h
 |       |   
 |       \---components
-|           \---objectFactory
-|                   Creator.cpp
-|                   Creator.h
+|               ScoreDecorator.cpp
+|               ScoreDecorator.h
+|               TimeDecorator.cpp
+|               TimeDecorator.h
+|               
+\---scenes
+        MainScene.cpp
+        MainScene.h
+        Scene.cpp
+        Scene.h
 ```
 
 
