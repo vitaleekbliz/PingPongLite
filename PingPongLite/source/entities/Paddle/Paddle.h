@@ -1,10 +1,10 @@
 #pragma once
-#include "Object.h"
-#include "PaddleComponents/PaddleStrategy/PaddleComputerStrategy.h"
-#include "PaddleComponents/PaddleStrategy/PaddlePlayerStrategy.h"
+#include "components/PaddleStrategy/PaddleComputerStrategy.h"
+#include "components/PaddleStrategy/PaddlePlayerStrategy.h"
 #include "core/subsystems/FontHandler.h"
 #include "core/subsystems/TextureHandler.h"
-#include "interfaces/StrategyObserver/StrategyPublisher.h"
+#include "entities/Object.h"
+#include "entities/interfaces/StrategyObserver/StrategyPublisher.h"
 #include <memory>
 
 class Paddle : public Object, public StrategyPublisher

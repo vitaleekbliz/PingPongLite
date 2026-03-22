@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "entities/Object.h"
 
 void Object::setPosition(SDL_FPoint pos)
 {

@@ -1,10 +1,10 @@
 #pragma once
-#include "Object.h"
-#include "ScoreComponents/ScoreDecorator.h"
-#include "ScoreComponents/TimeDecorator.h"
+#include "components/ScoreDecorator.h"
+#include "components/TimeDecorator.h"
 #include "core/SDLHandler.h";
-#include "interfaces/StrategyObserver/StrategySubscriber.h"
-#include "interfaces/ballObserver/BallSubscriber.h"
+#include "entities/Object.h"
+#include "entities/interfaces/StrategyObserver/StrategySubscriber.h"
+#include "entities/interfaces/ballObserver/BallSubscriber.h"
 
 class ScoreBar : public Object, public BallSubscriber, public StrategySubscriber
 {

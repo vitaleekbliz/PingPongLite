@@ -1,10 +1,10 @@
 #pragma once
-#include "BallComponents/BallCollisionDecorator.h"
-#include "BallComponents/BallMovementDecorator.h"
-#include "Object.h"
+#include "components/BallCollisionDecorator.h"
+#include "components/BallMovementDecorator.h"
 #include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/Texturehandler.h"
-#include "interfaces/ballObserver/BallPublisher.h"
+#include "entities/Object.h"
+#include "entities/interfaces/ballObserver/BallPublisher.h"
 #include <algorithm>
 #include <random>
 

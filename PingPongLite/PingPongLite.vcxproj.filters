@@ -34,30 +34,6 @@
     <Filter Include="Source Files\source\scenes">
       <UniqueIdentifier>{b2f36d9f-4815-425a-b5db-4f33a4f6e0cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\entities\BallComponents">
-      <UniqueIdentifier>{1310e2b6-7350-4d50-984b-cc26c9d559b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\entities\BallComponents">
-      <UniqueIdentifier>{0aa90723-87c8-4b3a-92b7-f351731b79f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\entities\PaddleComponents">
-      <UniqueIdentifier>{56929303-62e9-425d-adf8-8820bd764193}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\entities\PaddleComponents">
-      <UniqueIdentifier>{ec6c8f08-43ad-4b6d-9280-10a3ac924c72}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\entities\ScoreComponents">
-      <UniqueIdentifier>{76a7d4b0-ebda-4bbc-92b7-e07244afde27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\entities\ScoreComponents">
-      <UniqueIdentifier>{1a51c34e-7001-455d-824b-3455fc41e1cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\entities\PaddleComponents\PaddleStrategy">
-      <UniqueIdentifier>{a1c64fd6-5f4f-4781-9952-18061cd80771}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\entities\PaddleComponents\PaddleStrategy">
-      <UniqueIdentifier>{5115d423-3c62-4c9d-bc2d-2a51e4513063}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\entities\interfaces">
       <UniqueIdentifier>{9e8c4d47-aacb-4043-9f0a-ef1a5461d13a}</UniqueIdentifier>
     </Filter>
@@ -82,8 +58,59 @@
     <Filter Include="Source Files\source\entities\interfaces\BallObserver">
       <UniqueIdentifier>{20941a45-7008-46b2-9a7c-a8245611bbe2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\entities\BallComponents\interfaces">
-      <UniqueIdentifier>{6968b963-0994-4061-80b4-263984e9a10d}</UniqueIdentifier>
+    <Filter Include="Header Files\entities\Board">
+      <UniqueIdentifier>{56fbded0-b179-42aa-ae62-d1365443833a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\ScoreBar">
+      <UniqueIdentifier>{3ce020f1-809c-4184-bcdd-da6a9a2b1f84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\Ball">
+      <UniqueIdentifier>{7eeb1302-6be5-46b2-87e5-e5aa8ee32441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\Paddle">
+      <UniqueIdentifier>{97c985b9-af8e-476a-b644-2e6680e76e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Board">
+      <UniqueIdentifier>{3df5754d-03b5-4c61-a090-9c67b780cd87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Ball">
+      <UniqueIdentifier>{b3f14b87-240f-4bc1-8957-515fce1a6027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Paddle">
+      <UniqueIdentifier>{b4e1b24c-dd53-4982-9635-1604c59aace5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\ScoreBar">
+      <UniqueIdentifier>{7e3cfac7-3277-48d1-ab0e-ecad6a1ec74e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\ScoreBar\components">
+      <UniqueIdentifier>{2ecf6f9f-1bb6-480f-90c6-d308869a1824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\Ball\components">
+      <UniqueIdentifier>{974a8d88-a6b9-48d2-9bc5-d5d0ea8f510e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\Paddle\components">
+      <UniqueIdentifier>{092d5918-e784-4aef-a6e7-de01a7d1dd14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\Board\components">
+      <UniqueIdentifier>{dc7d67b0-1b60-4b5f-a12e-2ddfc66ae84c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\Paddle\components\Strategy">
+      <UniqueIdentifier>{e9cc4df0-f516-48f4-be6a-9613a38c3be6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Ball\components">
+      <UniqueIdentifier>{3eae68f6-9932-4f9b-ab67-dc9a567283b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Board\components">
+      <UniqueIdentifier>{ef2673c2-f4de-4339-9838-b46a85a506b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Paddle\componenets">
+      <UniqueIdentifier>{d7e4b0d9-52f0-4ce2-8ffa-301b55f29539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Paddle\componenets\strategy">
+      <UniqueIdentifier>{3d8b2cd0-b963-4a6e-bdf2-3d7d88479470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\ScoreBar\componenets">
+      <UniqueIdentifier>{3dcd9c00-2511-4d20-a248-54661820188b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -101,16 +128,7 @@
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\Ball.cpp">
-      <Filter>Source Files\source\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\Board.cpp">
-      <Filter>Source Files\source\entities</Filter>
-    </ClCompile>
     <ClCompile Include="source\entities\Object.cpp">
-      <Filter>Source Files\source\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\ScoreBar.cpp">
       <Filter>Source Files\source\entities</Filter>
     </ClCompile>
     <ClCompile Include="source\scenes\MainScene.cpp">
@@ -118,27 +136,6 @@
     </ClCompile>
     <ClCompile Include="source\scenes\Scene.cpp">
       <Filter>Source Files\source\scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\BallComponents\BallCollisionDecorator.cpp">
-      <Filter>Source Files\source\entities\BallComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\BallComponents\BallMovementDecorator.cpp">
-      <Filter>Source Files\source\entities\BallComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\Paddle.cpp">
-      <Filter>Source Files\source\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\ScoreComponents\ScoreDecorator.cpp">
-      <Filter>Source Files\source\entities\ScoreComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddleComputerStrategy.cpp">
-      <Filter>Source Files\source\entities\PaddleComponents\PaddleStrategy</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddlePlayerStrategy.cpp">
-      <Filter>Source Files\source\entities\PaddleComponents\PaddleStrategy</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.cpp">
-      <Filter>Source Files\source\entities\PaddleComponents\PaddleStrategy</Filter>
     </ClCompile>
     <ClCompile Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.cpp">
       <Filter>Source Files\source\entities\interfaces\StrategyObserver</Filter>
@@ -158,23 +155,41 @@
     <ClCompile Include="source\entities\interfaces\BallObserver\BallPublisher.cpp">
       <Filter>Source Files\source\entities\interfaces\BallObserver</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\ScoreComponents\TimeDecorator.cpp">
-      <Filter>Source Files\source\entities\ScoreComponents</Filter>
+    <ClCompile Include="source\entities\Ball\Ball.cpp">
+      <Filter>Source Files\source\entities\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Paddle\Paddle.cpp">
+      <Filter>Source Files\source\entities\Paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Paddle\components\PaddleStrategy\PaddleComputerStrategy.cpp">
+      <Filter>Source Files\source\entities\Paddle\componenets\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Paddle\components\PaddleStrategy\PaddlePlayerStrategy.cpp">
+      <Filter>Source Files\source\entities\Paddle\componenets\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Paddle\components\PaddleStrategy\PaddleStrategy.cpp">
+      <Filter>Source Files\source\entities\Paddle\componenets\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Board\Board.cpp">
+      <Filter>Source Files\source\entities\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Ball\components\BallCollisionDecorator.cpp">
+      <Filter>Source Files\source\entities\Board\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp">
+      <Filter>Source Files\source\entities\Board\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Score\ScoreBar.cpp">
+      <Filter>Source Files\source\entities\ScoreBar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Score\components\ScoreDecorator.cpp">
+      <Filter>Source Files\source\entities\ScoreBar\componenets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Score\components\TimeDecorator.cpp">
+      <Filter>Source Files\source\entities\ScoreBar\componenets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\entities\Ball.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\Board.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\Object.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\ScoreBar.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
     <ClInclude Include="source\core\SDLHandler.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
@@ -183,27 +198,6 @@
     </ClInclude>
     <ClInclude Include="source\scenes\Scene.h">
       <Filter>Header Files\scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\BallComponents\BallCollisionDecorator.h">
-      <Filter>Header Files\entities\BallComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\BallComponents\BallMovementDecorator.h">
-      <Filter>Header Files\entities\BallComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\Paddle.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\ScoreComponents\ScoreDecorator.h">
-      <Filter>Header Files\entities\ScoreComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddleComputerStrategy.h">
-      <Filter>Header Files\entities\PaddleComponents\PaddleStrategy</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddlePlayerStrategy.h">
-      <Filter>Header Files\entities\PaddleComponents\PaddleStrategy</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.h">
-      <Filter>Header Files\entities\PaddleComponents\PaddleStrategy</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.h">
       <Filter>Header Files\entities\interfaces\StrategyObserver</Filter>
@@ -226,8 +220,41 @@
     <ClInclude Include="source\entities\interfaces\BallObserver\BallSubscriber.h">
       <Filter>Header Files\entities\interfaces\BallObserver</Filter>
     </ClInclude>
-    <ClInclude Include="source\entities\ScoreComponents\TimeDecorator.h">
-      <Filter>Header Files\entities\ScoreComponents</Filter>
+    <ClInclude Include="source\entities\Object.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Ball\Ball.h">
+      <Filter>Header Files\entities\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Ball\components\BallCollisionDecorator.h">
+      <Filter>Header Files\entities\Ball\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Ball\components\BallMovementDecorator.h">
+      <Filter>Header Files\entities\Ball\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Board\Board.h">
+      <Filter>Header Files\entities\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Paddle\Paddle.h">
+      <Filter>Header Files\entities\Paddle</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Paddle\components\PaddleStrategy\PaddleComputerStrategy.h">
+      <Filter>Header Files\entities\Paddle\components\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Paddle\components\PaddleStrategy\PaddlePlayerStrategy.h">
+      <Filter>Header Files\entities\Paddle\components\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Paddle\components\PaddleStrategy\PaddleStrategy.h">
+      <Filter>Header Files\entities\Paddle\components\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Score\ScoreBar.h">
+      <Filter>Header Files\entities\ScoreBar</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Score\components\ScoreDecorator.h">
+      <Filter>Header Files\entities\ScoreBar\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Score\components\TimeDecorator.h">
+      <Filter>Header Files\entities\ScoreBar\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

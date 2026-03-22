@@ -1,5 +1,5 @@
 #pragma once
-#include "Object.h"
+#include "entities/Object.h"
 #include "core/subsystems/TextureHandler.h"
 
 class Board : public Object
