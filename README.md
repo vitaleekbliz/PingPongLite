@@ -12,8 +12,7 @@
   * **Ready Features** :
     * Paddle strategy switch
     * Score switch 
-    * BallEvent Observer
-    * BallDecorators
+    * Ball movement decorator
   * **Upcoming systems**:
     * Animation system
     * MainMenu
@@ -152,81 +151,89 @@ while (mainScene.isRunning())
 
 * *Decorator* :  
   * [✅] ScoreDecorator  
+  * [✅] TimeDecorator  
+    * ($(ProjectDir)source\entities\ScoreBar{.h, .cpp}  
+    * ($(ProjectDir)source\entities\ScoreComponents\..)  
   * [✅/❌] Ball movement  
   * [✅/❌] Ball collision  
+    * ($(ProjectDir)source\entities\Ball{.h, .cpp}  
+    * ($(ProjectDir)source\entities\BallComponents\..)  
 
 * *State Machine* :  
     * [✅/❌] BallState (collision) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
+    * ($(ProjectDir)source\entities\Ball{.h, .cpp}  
 
 ## Architecture
 ``` bash
-source
-|   main.cpp
-|   
-+---core
-|   |   SDLHandler.cpp
-|   |   SDLHandler.h
++---source
+|   |   main.cpp
 |   |   
-|   \---subsystems
-|           AudioHandler.cpp
-|           AudioHandler.h
-|           FontHandler.cpp
-|           FontHandler.h
-|           TextureHandler.cpp
-|           TextureHandler.h
-|           
-+---entities
-|   |   Ball.cpp
-|   |   Ball.h
-|   |   Board.cpp
-|   |   Board.h
-|   |   Object.cpp
-|   |   Object.h
-|   |   Paddle.cpp
-|   |   Paddle.h
-|   |   ScoreBar.cpp
-|   |   ScoreBar.h
-|   |   
-|   +---BallComponents
-|   |       BallCollisionDecorator.cpp
-|   |       BallCollisionDecorator.h
-|   |       BallMovementDecorator.cpp
-|   |       BallMovementDecorator.h
-|   |       
-|   +---interfaces
-|   |   +---BallObserver
-|   |   |       BallPublisher.cpp
-|   |   |       BallPublisher.h
-|   |   |       BallSubscriber.h
+|   +---core
+|   |   |   SDLHandler.cpp
+|   |   |   SDLHandler.h
+|   |   |   
+|   |   \---subsystems
+|   |           AudioHandler.cpp
+|   |           AudioHandler.h
+|   |           FontHandler.cpp
+|   |           FontHandler.h
+|   |           TextureHandler.cpp
+|   |           TextureHandler.h
+|   |           
+|   +---entities
+|   |   |   Ball.cpp
+|   |   |   Ball.h
+|   |   |   Board.cpp
+|   |   |   Board.h
+|   |   |   Object.cpp
+|   |   |   Object.h
+|   |   |   Paddle.cpp
+|   |   |   Paddle.h
+|   |   |   ScoreBar.cpp
+|   |   |   ScoreBar.h
+|   |   |   
+|   |   +---BallComponents
+|   |   |       BallCollisionDecorator.cpp
+|   |   |       BallCollisionDecorator.h
+|   |   |       BallMovementDecorator.cpp
+|   |   |       BallMovementDecorator.h
 |   |   |       
-|   |   \---StrategyObserver
-|   |           StrategyPublisher.cpp
-|   |           StrategyPublisher.h
-|   |           StrategySubscriber.h
+|   |   +---interfaces
+|   |   |   +---BallObserver
+|   |   |   |       BallPublisher.cpp
+|   |   |   |       BallPublisher.h
+|   |   |   |       BallSubscriber.h
+|   |   |   |       
+|   |   |   \---StrategyObserver
+|   |   |           StrategyPublisher.cpp
+|   |   |           StrategyPublisher.h
+|   |   |           StrategySubscriber.h
+|   |   |           
+|   |   +---PaddleComponents
+|   |   |   \---PaddleStrategy
+|   |   |           PaddleComputerStrategy.cpp
+|   |   |           PaddleComputerStrategy.h
+|   |   |           PaddlePlayerStrategy.cpp
+|   |   |           PaddlePlayerStrategy.h
+|   |   |           PaddleStrategy.cpp
+|   |   |           PaddleStrategy.h
+|   |   |           
+|   |   \---ScoreComponents
+|   |           ScoreDecorator.cpp
+|   |           ScoreDecorator.h
+|   |           TimeDecorator.cpp
+|   |           TimeDecorator.h
 |   |           
-|   +---PaddleComponents
-|   |   \---PaddleStrategy
-|   |           PaddleComputerStrategy.cpp
-|   |           PaddleComputerStrategy.h
-|   |           PaddlePlayerStrategy.cpp
-|   |           PaddlePlayerStrategy.h
-|   |           PaddleStrategy.cpp
-|   |           PaddleStrategy.h
-|   |           
-|   \---ScoreComponents
-|           ScoreDecorator.cpp
-|           ScoreDecorator.h
-|           
-\---scenes
-    |   MainScene.cpp
-    |   MainScene.h
-    |   Scene.cpp
-    |   Scene.h
-    |   
-    \---components
-        \---objectFactory
-                Creator.cpp
-                Creator.h
+|   \---scenes
+|       |   MainScene.cpp
+|       |   MainScene.h
+|       |   Scene.cpp
+|       |   Scene.h
+|       |   
+|       \---components
+|           \---objectFactory
+|                   Creator.cpp
+|                   Creator.h
 ```
 
 
