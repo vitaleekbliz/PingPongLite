@@ -2,9 +2,7 @@
 
 Ball::Ball()
 {
-	size.x = 30;
-	size.y = 30;
-
+	setSize({30, 30});
 	reset();
 }
 
@@ -26,18 +24,6 @@ void Ball::notify(BallEvent event)
 
 void Ball::update()
 {
-#pragma region TEST DEBUG strategy call request
-	float deltaTime = SDLHandler::get().getTick();
-	static const float cooldown = 15.f;
-	static float timer = cooldown;
-
-	timer -= deltaTime;
-	if (timer < 0.f)
-	{
-		timer = cooldown;
-		originalGoal = !originalGoal;
-	}
-#pragma endregion
 	movement.applyMovement(&position);
 
 	switch (movement.checkBoundaries(&position))
@@ -50,15 +36,11 @@ void Ball::update()
 		break;
 
 	case BOUNDARY::LEFT:
-		// TEMP correct the way ball decorators behave and add strategy change Observer to them
-		// AudioHandler::get().playAudio((originalGoal ? SOUNDS::WIN : SOUNDS::LOSE));
 		notify(BallEvent::GOAL_LEFT);
 		reset();
 		break;
 
 	case BOUNDARY::RIGHT:
-		// TEMP correct the way ball decorators behave and add strategy change Observer to them
-		// AudioHandler::get().playAudio((originalGoal ? SOUNDS::LOSE : SOUNDS::WIN));
 		notify(BallEvent::GOAL_RIGHT);
 		reset();
 		break;

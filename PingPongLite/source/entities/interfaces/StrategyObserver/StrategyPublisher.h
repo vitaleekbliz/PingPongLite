@@ -11,7 +11,7 @@ class StrategyPublisher
 	void removeStrategyListener(std::shared_ptr<StrategySubscriber> strategyListener);
 
   protected:
-	virtual void notify() = 0;
+	virtual void notifyStrategyChange() = 0;
 
 	std::vector<std::weak_ptr<StrategySubscriber>> strategySubscribers;
 };

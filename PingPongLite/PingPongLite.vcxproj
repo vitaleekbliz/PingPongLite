@@ -154,6 +154,7 @@
     <ClCompile Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.cpp" />
     <ClCompile Include="source\entities\ScoreBar.cpp" />
     <ClCompile Include="source\entities\ScoreComponents\ScoreDecorator.cpp" />
+    <ClCompile Include="source\entities\ScoreComponents\TimeDecorator.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\scenes\components\objectFactory\Product.cpp" />
     <ClCompile Include="source\scenes\components\objectFactory\Creator.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="source\entities\PaddleComponents\PaddleStrategy\PaddleStrategy.h" />
     <ClInclude Include="source\entities\ScoreBar.h" />
     <ClInclude Include="source\entities\ScoreComponents\ScoreDecorator.h" />
+    <ClInclude Include="source\entities\ScoreComponents\TimeDecorator.h" />
     <ClInclude Include="source\scenes\components\objectFactory\Product.h" />
     <ClInclude Include="source\scenes\components\objectFactory\Creator.h" />
     <ClInclude Include="source\scenes\components\objectFactory\objectFactory.h" />

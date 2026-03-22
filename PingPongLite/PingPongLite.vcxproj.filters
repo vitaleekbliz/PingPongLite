@@ -179,6 +179,9 @@
     <ClCompile Include="source\entities\interfaces\BallObserver\BallPublisher.cpp">
       <Filter>Source Files\source\entities\interfaces\BallObserver</Filter>
     </ClCompile>
+    <ClCompile Include="source\entities\ScoreComponents\TimeDecorator.cpp">
+      <Filter>Source Files\source\entities\ScoreComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\entities\Ball.h">
@@ -252,6 +255,9 @@
     </ClInclude>
     <ClInclude Include="source\entities\interfaces\BallObserver\BallSubscriber.h">
       <Filter>Header Files\entities\interfaces\BallObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\ScoreComponents\TimeDecorator.h">
+      <Filter>Header Files\entities\ScoreComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

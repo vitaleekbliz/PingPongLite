@@ -25,7 +25,4 @@ class Ball : public Object, public BallPublisher
 	BallMovementDecorator movement;
 
 	bool isCollidingPaddle = false;
-
-	// Temporary solution to change audio on strategy change
-	bool originalGoal = true;
 };

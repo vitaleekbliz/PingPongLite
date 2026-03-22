@@ -61,6 +61,8 @@ void MainScene::init()
 	paddles[0]->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball);
 	paddles[1]->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball);
 
+	paddles[0]->addStrategyListener(scoreBar);
+
 	ball->addBallListener(scoreBar);
 
 	ball->setPaddleReferences(paddles[1], paddles[0]);

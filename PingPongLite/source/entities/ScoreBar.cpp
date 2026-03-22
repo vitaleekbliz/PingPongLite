@@ -13,25 +13,13 @@ ScoreBar::ScoreBar()
 
 	leftScore.tag = "computer";
 	rightScore.tag = "player";
+
+	time.setPosition({1280 / 2, 20});
 }
 
 void ScoreBar::update()
 {
-	float deltaTime = SDLHandler::get().getTick();
-	roundDurationSeconds += deltaTime;
-
-#pragma region TEST DEBUG strategy call request
-	static const float cooldown = 15.f;
-	static float timer = cooldown;
-
-	timer -= deltaTime;
-	if (timer < 0.f)
-	{
-		timer = cooldown;
-		originalStrategy = !originalStrategy;
-		onStrategyChange();
-	}
-#pragma endregion
+	time.update();
 }
 
 void ScoreBar::render()
@@ -39,14 +27,7 @@ void ScoreBar::render()
 	leftScore.render();
 	rightScore.render();
 
-	// Draw time START
-	int minutes = roundDurationSeconds / 60;
-	int seconds = (int)roundDurationSeconds % 60;
-	std::string current_time = std::to_string(minutes) + (seconds > 9 ? " : " : " : 0") + std::to_string(seconds);
-
-	SDL_Color color = SDL_Color(211, 211, 211);
-	FontHandler::get().drawText(FONT::CALIBRI, current_time.c_str(), &timePos, 32, color);
-	// END
+	time.render();
 }
 
 void ScoreBar::onBallEvent(BallEvent event)

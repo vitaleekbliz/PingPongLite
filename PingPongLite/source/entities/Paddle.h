@@ -7,7 +7,7 @@
 #include "interfaces/StrategyObserver/StrategyPublisher.h"
 #include <memory>
 
-class Paddle : public Object
+class Paddle : public Object, public StrategyPublisher
 {
   public:
 	Paddle();
@@ -16,6 +16,8 @@ class Paddle : public Object
 
 	void setOriginalStrategy(PADDLE_STRATEGY id, std::shared_ptr<Object> ball);
 	void changeStrategy(PADDLE_STRATEGY id);
+
+	virtual void notifyStrategyChange() override;
 
   private:
 #pragma region Temp debug notification strategy swap

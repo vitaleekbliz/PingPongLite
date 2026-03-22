@@ -40,6 +40,8 @@ void Paddle::setOriginalStrategy(PADDLE_STRATEGY id, std::shared_ptr<Object> bal
 
 void Paddle::changeStrategy(PADDLE_STRATEGY id)
 {
+	notifyStrategyChange();
+
 	currentStrategy = id;
 
 	switch (id)
@@ -53,6 +55,22 @@ void Paddle::changeStrategy(PADDLE_STRATEGY id)
 	}
 
 	strategy->setTarget(trackingObject.lock());
+}
+
+void Paddle::notifyStrategyChange()
+{
+	for (auto it = strategySubscribers.begin(); it != strategySubscribers.end();)
+	{
+		if (auto subscriber = it->lock())
+		{
+			subscriber->onStrategyChange();
+			it++;
+		}
+		else
+		{
+			it = strategySubscribers.erase(it);
+		}
+	}
 }
 
 void Paddle::DEBUG_handleControllerSwitch()
