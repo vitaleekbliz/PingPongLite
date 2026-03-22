@@ -6,8 +6,9 @@
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
     * adding Font caching
-    * delegating mainScene logic to directors - Add directors for handling subsystem : Buffs/Debuffs, Collectibles, Collition unity-like, Paddle director
-    * correcting Ball decorators and Paddle Strategy Observer
+    * centralized collision system
+    * delegating mainScene logic to decorators
+    * correcting Ball decorators and implementing Paddle Strategy Observer
   * **Ready Features** :
     * Paddle strategy switch
     * Score switch 
@@ -90,21 +91,6 @@ Place build exe file into $(SolutionDir)/app folder and run the program
 * containers:
 Din't really use much, however I am active leetcode user (1200+ solved problems) https://leetcode.com/u/BiTaJIb41K/  
 
-* Use weak_ptr for weak dependancies:
-
-computer and player referencies :
-```cpp
-    std::weak_ptr<Object> playerObject;
-    std::weak_ptr<Object> computerObject;
-```
-MainScene
-```cpp
-	std::unique_ptr<ObjectCreator> factory;
-	std::shared_ptr<AudioHandler> audioHandler;
-	std::shared_ptr<TextureHandler> textureHandler;
-    ...
-```
-
 4. ❗**clang-format**❗: using Format on save plugin
 5. ❗**external librarires**❗: details in Tech Stack segment
 6. ❗**Game architecture**❗
@@ -112,17 +98,18 @@ MainScene
 using temporery solution, cause I have only 1 Scene, however Ready to deploy. Each game object that is on scene also has update and render methods. To get tickRate use SDLHandler Singleton.
 ```cpp
 while (mainScene.isRunning())
+{
+	sdlHandler.handleTickRate();
+
+	if (!sdlHandler.handleEvents())
 	{
-		if (!sdlHandler.handleEvents())
-		{
-			mainScene.close();
-		}
-
-		sdlHandler.handleTickRate();
-
-		mainScene.update();
-		mainScene.render();
+		mainScene.close();
 	}
+
+	mainScene.update();
+
+	mainScene.render();
+}
 ```
 7. ❗**Design Patterns**❗ : details in Bonus Task section
 8. ❗**Compile code**❗ : tested running on several devices. Check Usage section for more details
@@ -133,9 +120,7 @@ while (mainScene.isRunning())
 2. ✅ **External libraries**:  
 
     * ✅ *SDL3_mixer* in AudioHandler   
-($(ProjectDir)/source/core/).  
     * ✅ *SDL3_ttf* in FontHandler   
-($(ProjectDir)/source/core/).  
     * ✅ *SDL3_image* in TextureHandler   
 ($(ProjectDir)/source/core/)  
 
@@ -168,10 +153,10 @@ while (mainScene.isRunning())
 * *Decorator* :  
   * [✅] ScoreDecorator  
   * [✅/❌] Ball movement  
-  * [✅/❌] Ball collisionComponent  
+  * [✅/❌] Ball collision  
 
 * *State Machine* :  
-    * [✅/❌] BallState (collisionComponent) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
+    * [✅/❌] BallState (collision) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
 
 ## Architecture
 ``` bash

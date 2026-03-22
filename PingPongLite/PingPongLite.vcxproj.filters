@@ -97,9 +97,6 @@
     <Filter Include="Header Files\entities\BallComponents\interfaces">
       <UniqueIdentifier>{6968b963-0994-4061-80b4-263984e9a10d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\source\entities\BallComponents\intefaces">
-      <UniqueIdentifier>{4d9a8368-0e89-48e6-b811-faee2e30dfa7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">

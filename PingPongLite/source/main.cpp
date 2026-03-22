@@ -11,12 +11,12 @@ int main()
 
 	while (mainScene.isRunning())
 	{
+		sdlHandler.handleTickRate();
+
 		if (!sdlHandler.handleEvents())
 		{
 			mainScene.close();
 		}
-
-		sdlHandler.handleTickRate();
 
 		mainScene.update();
 

@@ -101,7 +101,7 @@ void BallMovementDecorator::accelerate()
 void BallMovementDecorator::clampVerticalVelocity()
 {
 	// if any axis velocity is zero ball is stuck on axis infinitely
-	if (!direction.x)
+	if (std::abs(direction.x) < 0.05)
 		direction.x = 0.05; // Crutch points ball towards right slightly
 	// PS. Paddle pushes the ball from its center, so its hard to hit ball perfectly horizontal
 

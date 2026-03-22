@@ -64,6 +64,7 @@ void Ball::update()
 		break;
 	}
 
+#pragma region Add state machine after completing collision system
 	bool playerCollision = player.checkForCollisions(&position, &size);
 	bool computerCollision = computer.checkForCollisions(&position, &size);
 
@@ -91,6 +92,7 @@ void Ball::update()
 			movement.onPaddleHit(&position, computer.getPaddleCollider());
 		}
 	}
+#pragma endregion
 }
 
 void Ball::render()
@@ -107,6 +109,7 @@ void Ball::setPaddleReferences(std::shared_ptr<Object> player, std::shared_ptr<O
 
 void Ball::reset()
 {
+	// move back to movement decorator after adding collision system
 	position = movement.basePosition;
 	movement.setRandomDirection();
 	movement.currentSpeed = movement.baseSpeed;
