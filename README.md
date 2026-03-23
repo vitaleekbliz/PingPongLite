@@ -3,14 +3,15 @@
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
-    * adding Font caching
+    * Adding factory to MainScene
+    * delegating some Ball logic to Board Class
     * centralized collision system
     * correcting Ball decorators
     * Animation system
   * **Ready Features** :
     * Paddle strategy switch
     * Score switch 
-    * Ball movement decorator
+    * Ball movement decorator (under upgrading)
   * **Upcoming systems**:
     * MainMenu
     * Buffs system
@@ -122,8 +123,8 @@ while (mainScene.isRunning())
 ($(ProjectDir)/source/core/)  
 
 3. ✅ **Design Patterns**:  
-* *Builder* :  
-    * ❌ MainScene is a mess right now after testing stuff, need to clean up  
+* *Abstract Factory* :  
+    * ❌ MainScene is a mess right now after testing stuff, need to clean up using factory  
 
 * *Strategy* :  
     * ✅ Computer/Player follow same mechanic  

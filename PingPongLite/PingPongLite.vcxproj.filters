@@ -173,12 +173,6 @@
     <ClCompile Include="source\entities\Board\Board.cpp">
       <Filter>Source Files\source\entities\Board</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\Ball\components\BallCollisionDecorator.cpp">
-      <Filter>Source Files\source\entities\Board\components</Filter>
-    </ClCompile>
-    <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp">
-      <Filter>Source Files\source\entities\Board\components</Filter>
-    </ClCompile>
     <ClCompile Include="source\entities\Score\ScoreBar.cpp">
       <Filter>Source Files\source\entities\ScoreBar</Filter>
     </ClCompile>
@@ -187,6 +181,12 @@
     </ClCompile>
     <ClCompile Include="source\entities\Score\components\TimeDecorator.cpp">
       <Filter>Source Files\source\entities\ScoreBar\componenets</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Ball\components\BallCollisionDecorator.cpp">
+      <Filter>Source Files\source\entities\Ball\components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp">
+      <Filter>Source Files\source\entities\Ball\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
