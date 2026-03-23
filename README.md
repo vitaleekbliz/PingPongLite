@@ -33,7 +33,7 @@ Visual Studio: 2026
 MSVC Version: 1950  
 Compiler: C/C++ Optimizing Compiler Version 19.50.35727  
 
-## Usage 📖 
+## 📖 Usage  
 
 1. Dynamic library depencies. They should be included in app directory.:
   - SDL3.dll
@@ -72,7 +72,7 @@ assets
 
 ### 🚀 Launch
 
-1.Go to x64/Release/ dir  
+1.Go to app/  
 2.Run program and enjoy
 
 ### ⚙️ Debug/Development
@@ -166,8 +166,8 @@ while (mainScene.isRunning())
     * ($(ProjectDir)source\entities\BallComponents\..)  
 
 * *State Machine* :  
-    * ✅EffectHandler  
-($(ProjectDir)/source/core/subsystems/)  
+    * ✅EffectComponent  
+($(ProjectDir)/source/components/effects/)  
 
 ## Architecture
 ``` bash
