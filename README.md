@@ -141,8 +141,8 @@ while (mainScene.isRunning())
 ($(ProjectDir)/source/core/subsystems/)  
 
 * *Observer* :  
-  * ✅ BallObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
-    * ($(ProjectDir)/source/interfaces/BallObserver)  
+  * ✅ BoundaryObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
+    * ($(ProjectDir)/source/interfaces/BoundaryObserver)  
   * ✅ TextureObserver - handles draw requests   
     * ($(ProjectDir)/source/interfaces/TextureObserver)
   * ✅ FontObserver - handles draw requests  
@@ -199,10 +199,10 @@ source
 |   |   |   
 |   |   \---components
 |   +---interfaces
-|   |   +---BallObserver
-|   |   |       BallPublisher.cpp
-|   |   |       BallPublisher.h
-|   |   |       BallSubscriber.h
+|   |   +---BoundaryObserver
+|   |   |       BoundaryPublisher.cpp
+|   |   |       BoundaryPublisher.h
+|   |   |       BoundarySubscriber.h
 |   |   |       
 |   |   \---StrategyObserver
 |   |           StrategyPublisher.cpp

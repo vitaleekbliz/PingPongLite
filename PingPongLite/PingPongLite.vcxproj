@@ -145,7 +145,7 @@
     <ClCompile Include="source\entities\Ball\components\BallCollisionDecorator.cpp" />
     <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp" />
     <ClCompile Include="source\entities\Board\Board.cpp" />
-    <ClCompile Include="source\entities\interfaces\BallObserver\BallPublisher.cpp" />
+    <ClCompile Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.cpp" />
     <ClCompile Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
     <ClCompile Include="source\entities\Paddle\components\PaddleStrategy\PaddleComputerStrategy.cpp" />
@@ -168,8 +168,8 @@
     <ClInclude Include="source\entities\Ball\components\BallCollisionDecorator.h" />
     <ClInclude Include="source\entities\Ball\components\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board\Board.h" />
-    <ClInclude Include="source\entities\interfaces\BallObserver\BallPublisher.h" />
-    <ClInclude Include="source\entities\interfaces\BallObserver\BallSubscriber.h" />
+    <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.h" />
+    <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundarySubscriber.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategySubscriber.h" />
     <ClInclude Include="source\entities\Object.h" />

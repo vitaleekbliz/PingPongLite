@@ -7,7 +7,7 @@
 #include "entities/Object.h"
 #include "entities/Paddle/Paddle.h"
 #include "entities/Score/ScoreBar.h"
-#include "entities/interfaces/ballObserver/BallPublisher.h"
+#include "entities/interfaces/BoundaryObserver/BoundaryPublisher.h"
 #include "scenes/Scene.h"
 #include <memory>
 #include <vector>

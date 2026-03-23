@@ -60,35 +60,8 @@ void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FRect paddleRec
 
 void BallMovementDecorator::onWallHit()
 {
+	direction.y = (direction.y > 0.f ? -std::abs(direction.y) : std::abs(direction.y));
 	clampVerticalVelocity();
-}
-
-BOUNDARY BallMovementDecorator::checkBoundaries(SDL_FPoint* pos)
-{
-	if (pos->y < topBoundary)
-	{
-		// push ball back to screen
-		pos->y = topBoundary;
-		direction.y *= -1.0f;
-		return BOUNDARY::TOP;
-	}
-	else if (pos->y > bottomBoundary)
-	{
-		// push ball back to screen
-		pos->y = bottomBoundary;
-		direction.y *= -1.0f;
-		return BOUNDARY::BOTTOM;
-	}
-	else if (pos->x <= leftBoundary)
-	{
-		return BOUNDARY::LEFT;
-	}
-	else if (pos->x >= rightBoundary)
-	{
-		return BOUNDARY::RIGHT;
-	}
-
-	return BOUNDARY::NONE;
 }
 
 void BallMovementDecorator::accelerate()

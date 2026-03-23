@@ -57,8 +57,11 @@ void MainScene::init()
 	player->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball);
 
 	computer->addStrategyListener(scoreBar);
-	ball->addBallListener(scoreBar);
 	ball->setPaddleReferences(player, computer);
+
+	board->setReference(ball);
+	board->addBoundaryListener(scoreBar);
+	board->addBoundaryListener(ball);
 
 	isActive = true;
 }

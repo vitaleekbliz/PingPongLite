@@ -52,12 +52,6 @@
     <Filter Include="Source Files\source\core\subsystems">
       <UniqueIdentifier>{7f9497e7-b560-4705-9217-23af00a8bdae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\entities\interfaces\BallObserver">
-      <UniqueIdentifier>{1f2c1e75-b863-42c6-aa54-d415e11bb3c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\source\entities\interfaces\BallObserver">
-      <UniqueIdentifier>{20941a45-7008-46b2-9a7c-a8245611bbe2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\entities\Board">
       <UniqueIdentifier>{56fbded0-b179-42aa-ae62-d1365443833a}</UniqueIdentifier>
     </Filter>
@@ -112,6 +106,12 @@
     <Filter Include="Source Files\source\entities\ScoreBar\componenets">
       <UniqueIdentifier>{3dcd9c00-2511-4d20-a248-54661820188b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source\entities\interfaces\BoundaryObserver">
+      <UniqueIdentifier>{20941a45-7008-46b2-9a7c-a8245611bbe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\interfaces\BoundaryObserver">
+      <UniqueIdentifier>{1f2c1e75-b863-42c6-aa54-d415e11bb3c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -152,9 +152,6 @@
     <ClCompile Include="source\core\SDLHandler.cpp">
       <Filter>Source Files\source\core</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\interfaces\BallObserver\BallPublisher.cpp">
-      <Filter>Source Files\source\entities\interfaces\BallObserver</Filter>
-    </ClCompile>
     <ClCompile Include="source\entities\Ball\Ball.cpp">
       <Filter>Source Files\source\entities\Ball</Filter>
     </ClCompile>
@@ -188,6 +185,9 @@
     <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp">
       <Filter>Source Files\source\entities\Ball\components</Filter>
     </ClCompile>
+    <ClCompile Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.cpp">
+      <Filter>Source Files\source\entities\interfaces\BoundaryObserver</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\SDLHandler.h">
@@ -213,12 +213,6 @@
     </ClInclude>
     <ClInclude Include="source\core\subsystems\TextureHandler.h">
       <Filter>Header Files\core\subsystems</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\interfaces\BallObserver\BallPublisher.h">
-      <Filter>Header Files\entities\interfaces\BallObserver</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\interfaces\BallObserver\BallSubscriber.h">
-      <Filter>Header Files\entities\interfaces\BallObserver</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\Object.h">
       <Filter>Header Files\entities</Filter>
@@ -255,6 +249,12 @@
     </ClInclude>
     <ClInclude Include="source\entities\Score\components\TimeDecorator.h">
       <Filter>Header Files\entities\ScoreBar\components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundarySubscriber.h">
+      <Filter>Header Files\entities\interfaces\BoundaryObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.h">
+      <Filter>Header Files\entities\interfaces\BoundaryObserver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

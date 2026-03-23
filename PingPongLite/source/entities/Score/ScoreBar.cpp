@@ -30,14 +30,14 @@ void ScoreBar::render()
 	time.render();
 }
 
-void ScoreBar::onBallEvent(BallEvent event)
+void ScoreBar::onBoundaryEvent(BOUNDARY event)
 {
 	switch (event)
 	{
-	case BallEvent::GOAL_LEFT:
+	case BOUNDARY::LEFT:
 		rightScore.increment();
 		break;
-	case BallEvent::GOAL_RIGHT:
+	case BOUNDARY::RIGHT:
 		leftScore.increment();
 		break;
 	}

@@ -4,11 +4,11 @@
 #include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/Texturehandler.h"
 #include "entities/Object.h"
-#include "entities/interfaces/ballObserver/BallPublisher.h"
+#include "entities/interfaces/BoundaryObserver/BoundaryPublisher.h"
 #include <algorithm>
 #include <random>
 
-class Ball : public Object, public BallPublisher
+class Ball : public Object, public BoundarySubscriber
 {
   public:
 	Ball();
@@ -18,7 +18,7 @@ class Ball : public Object, public BallPublisher
 	void setPaddleReferences(std::shared_ptr<Object> player, std::shared_ptr<Object> computer);
 
   private:
-	virtual void notify(BallEvent event) override;
+	virtual void onBoundaryEvent(BOUNDARY event) override;
 	void reset();
 
 	BallCollisionDecorator player, computer;

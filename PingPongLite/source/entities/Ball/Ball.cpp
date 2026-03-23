@@ -6,45 +6,9 @@ Ball::Ball()
 	reset();
 }
 
-void Ball::notify(BallEvent event)
-{
-	for (auto it = ballSubscribers.begin(); it != ballSubscribers.end();)
-	{
-		if (auto observer = it->lock())
-		{
-			observer->onBallEvent(event);
-			it++;
-		}
-		else
-		{
-			it = ballSubscribers.erase(it);
-		}
-	}
-}
-
 void Ball::update()
 {
 	movement.applyMovement(&position);
-
-	switch (movement.checkBoundaries(&position))
-	{
-	case BOUNDARY::TOP:
-	case BOUNDARY::BOTTOM:
-		AudioHandler::get().playAudio(SOUNDS::HIT);
-		notify(BallEvent::WALL_HIT);
-		movement.onWallHit();
-		break;
-
-	case BOUNDARY::LEFT:
-		notify(BallEvent::GOAL_LEFT);
-		reset();
-		break;
-
-	case BOUNDARY::RIGHT:
-		notify(BallEvent::GOAL_RIGHT);
-		reset();
-		break;
-	}
 
 #pragma region Add state machine after completing collision system
 	bool playerCollision = player.checkForCollisions(&position, &size);
@@ -64,7 +28,6 @@ void Ball::update()
 		isCollidingPaddle = true;
 
 		AudioHandler::get().playAudio(SOUNDS::HIT);
-		notify(BallEvent::PADDLE_HIT);
 		if (playerCollision)
 		{
 			movement.onPaddleHit(&position, player.getPaddleCollider());
@@ -87,6 +50,24 @@ void Ball::setPaddleReferences(std::shared_ptr<Object> player, std::shared_ptr<O
 {
 	this->player.setPaddleReference(player);
 	this->computer.setPaddleReference(computer);
+}
+
+void Ball::onBoundaryEvent(BOUNDARY event)
+{
+	switch (event)
+	{
+	case BOUNDARY::LEFT:
+	case BOUNDARY::RIGHT:
+		reset();
+		break;
+	case BOUNDARY::TOP:
+	case BOUNDARY::BOTTOM:
+		AudioHandler::get().playAudio(SOUNDS::HIT);
+		movement.onWallHit();
+		break;
+	default:
+		break;
+	}
 }
 
 void Ball::reset()
