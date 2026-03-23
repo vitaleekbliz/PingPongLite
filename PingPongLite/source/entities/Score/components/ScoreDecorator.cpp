@@ -53,8 +53,8 @@ void ScoreDecorator::increment()
 
 	// if (score % 5 == 0)
 	{
-		leftEffect->start(tag == "player", (float)score);
-		rightEffect->start(tag == "player", (float)score);
+		leftEffect->start(tag == "player", (float)std::sqrt(score));
+		rightEffect->start(tag == "player", (float)std::sqrt(score));
 	}
 }
 

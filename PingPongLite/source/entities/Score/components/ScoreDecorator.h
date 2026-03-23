@@ -5,6 +5,7 @@
 #include "core/subsystems/TextureHandler.h"
 #include "entities/Object.h"
 #include <SDL3/SDL.h>
+#include <cmath>
 
 class ScoreDecorator : public Object
 {
