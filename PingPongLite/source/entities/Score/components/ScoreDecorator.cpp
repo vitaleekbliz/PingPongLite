@@ -2,19 +2,16 @@
 
 ScoreDecorator::ScoreDecorator()
 {
-	SDL_FPoint pos = SDL_FPoint();
-
-	pos.x = position.x - effectOffset;
-	leftEffect.setPosition(pos);
-
-	pos.x = position.x + effectOffset;
-	rightEffect.setPosition(pos);
+	leftEffect = std::make_shared<EffectComponent>();
+	rightEffect = std::make_shared<EffectComponent>();
 }
 
 void ScoreDecorator::update()
 {
-	leftEffect.update();
-	rightEffect.update();
+	upgradeEffectPosition();
+
+	leftEffect->update();
+	rightEffect->update();
 }
 
 void ScoreDecorator::render()
@@ -25,8 +22,21 @@ void ScoreDecorator::render()
 	drawSideBar(true);
 	drawSideBar(false);
 
-	leftEffect.render();
-	rightEffect.render();
+	leftEffect->render();
+	rightEffect->render();
+}
+
+void ScoreDecorator::upgradeEffectPosition()
+{
+	SDL_FPoint pos = getPosition();
+
+	pos.x = position.x - effectOffset;
+	pos.y = position.y - effectOffset / 5;
+	leftEffect->setPosition(pos);
+
+	pos.x = position.x + effectOffset;
+	pos.y = position.y - effectOffset / 5;
+	rightEffect->setPosition(pos);
 }
 
 void ScoreDecorator::increment()
@@ -43,9 +53,15 @@ void ScoreDecorator::increment()
 
 	// if (score % 5 == 0)
 	{
-		leftEffect.start(tag == "player", effectDuration);
-		rightEffect.start(tag == "player", effectDuration);
+		leftEffect->start(tag == "player", (float)score);
+		rightEffect->start(tag == "player", (float)score);
 	}
+}
+
+void ScoreDecorator::upgradeColor()
+{
+	leftEffect->upgradeColor(tag == "player");
+	rightEffect->upgradeColor(tag == "player");
 }
 
 void ScoreDecorator::drawSideBar(bool left)

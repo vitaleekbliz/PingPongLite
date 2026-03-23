@@ -36,34 +36,6 @@ void MainScene::render()
 	computer->render();
 	player->render();
 
-#pragma region TEMP DEBUG TEST
-	/*static float playBack = 1.f;
-	static int frame = 0;
-	playBack -= SDLHandler::get().getTick();
-	if (playBack < 0.f)
-	{
-		playBack = 1.f;
-		frame++;
-		if (frame > 8)
-		{
-			frame = 0;
-		}
-	}
-
-	SDL_FRect destination = SDL_FRect();
-	destination.x = 1280 / 2;
-	destination.y = 720 / 2;
-	destination.w = 128;
-	destination.h = 128;
-	SDL_FRect source = SDL_FRect();
-	source.x = frame * 32;
-	source.y = 0;
-	source.w = 32;
-	source.h = 32;
-
-	EffectHandler::get().drawEffect(EFFECT::RED_LOOP, source, destination, SDL_FLIP_NONE);*/
-#pragma endregion
-
 	SDL_RenderPresent(renderer);
 }
 

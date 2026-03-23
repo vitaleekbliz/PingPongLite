@@ -32,10 +32,6 @@ class EffectHandler
 	SDL_Texture* loadTexture(std::string fileName);
 	SDL_Texture* getLoadedTexture(EFFECT effect);
 
-	// TEMP DEBUG REMOVE
-	//---
-  public:
-	//---
 	SDL_Texture* redStart = NULL;
 	SDL_Texture* redLoop = NULL;
 	SDL_Texture* redEnd = NULL;

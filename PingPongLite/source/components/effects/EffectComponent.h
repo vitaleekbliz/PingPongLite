@@ -11,14 +11,14 @@ class EffectComponent : public Object
 	virtual void render() override;
 
 	void start(bool color, float duration);
+	void upgradeColor(bool color);
 
   private:
 	void draw();
 	EFFECT getSprite();
 	void switchFrame();
 
-	const float playSpeed = 1.f;
-	const float frameThreshold = 1.f;
+	const float frameThreshold = 0.1;
 	float frameTime = 0.f;
 
 	float currentDuration = 0.f;

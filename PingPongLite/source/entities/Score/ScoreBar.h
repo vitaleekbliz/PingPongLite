@@ -16,8 +16,8 @@ class ScoreBar : public Object, public BoundarySubscriber, public StrategySubscr
 	virtual void onStrategyChange() override;
 
   private:
-	ScoreDecorator leftScore;
-	ScoreDecorator rightScore;
+	std::shared_ptr<ScoreDecorator> leftScore;
+	std::shared_ptr<ScoreDecorator> rightScore;
 
 	TimeDecorator time;
 };

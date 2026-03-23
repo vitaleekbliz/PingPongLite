@@ -15,15 +15,20 @@ class ScoreDecorator : public Object
 
 	void increment();
 
+	void upgradeColor();
+
 	int score = 0;
 	SDL_Color color = SDL_Color(255, 0, 0);
 	std::string tag = "None";
 
   private:
+	void upgradeEffectPosition();
+
 	void drawSideBar(bool right);
+
 	SDL_FRect sideBarDestination = {170, 20, 245, 40};
 
-	const float effectOffset = 15.f;
+	const float effectOffset = 30.f;
 	float effectDuration = 10.f;
-	EffectComponent leftEffect, rightEffect;
+	std::shared_ptr<EffectComponent> leftEffect, rightEffect;
 };

@@ -6,8 +6,8 @@
     * Adding abstract factory to MainScene
     * centralized collision system
     * [50%]correcting Ball decorators
-    * [50%]Animation system
   * **Ready Features** :
+    * Effect system
     * Paddle strategy switch
     * Score switch 
     * Ball movement decorator (under upgrading)
@@ -50,6 +50,14 @@ assets
 |       Computer.png
 |       Player.png
 |       ScoreBar.png
+|       
++---effects
+|       blue_end.png
+|       blue_loop.png
+|       blue_start.png
+|       red_end.png
+|       red_loop.png
+|       red_start.png
 |       
 +---fonts
 |       calibri.ttf
@@ -112,7 +120,7 @@ while (mainScene.isRunning())
 8. ❗**Compile code**❗ : tested running on several devices. Check Usage section for more details
 
 ### 😱 Bonus Tasks
-1. [✅/❌] **Animations** - not yet😔  
+1. ✅ **Animations**  
 
 2. ✅ **External libraries**:  
 
@@ -136,7 +144,7 @@ while (mainScene.isRunning())
   * ✅TextureHandler  
   * ✅AudioHandler  
   * ✅TextHandler  
-  * [✅/❌]AnimationsHandler  
+  * ✅EffectHandler  
 ($(ProjectDir)/source/core/subsystems/)  
 
 * *Observer* :  
@@ -158,14 +166,19 @@ while (mainScene.isRunning())
     * ($(ProjectDir)source\entities\BallComponents\..)  
 
 * *State Machine* :  
-    * [✅/❌] BallState (collision) - colision detection with state (onTrigger enter Unity analogy). Decides when ball is ready for next collision.  
-($(ProjectDir)source\entities\Ball{.h, .cpp}  
+    * ✅EffectHandler  
+($(ProjectDir)/source/core/subsystems/)  
 
 ## Architecture
 ``` bash
 source
 |   main.cpp
 |   
++---components
+|   \---effects
+|           EffectComponent.cpp
+|           EffectComponent.h
+|           
 +---core
 |   |   SDLHandler.cpp
 |   |   SDLHandler.h
@@ -173,6 +186,8 @@ source
 |   \---subsystems
 |           AudioHandler.cpp
 |           AudioHandler.h
+|           EffectHandler.cpp
+|           EffectHandler.h
 |           FontHandler.cpp
 |           FontHandler.h
 |           TextureHandler.cpp

@@ -2,7 +2,7 @@
 
 EffectComponent::EffectComponent()
 {
-	setSize({32, 32});
+	setSize({36, 48});
 	state = OFF;
 }
 
@@ -12,21 +12,34 @@ void EffectComponent::update()
 		return;
 
 	if (currentDuration > maxDuration)
+	{
+		currentDuration = 0.f;
+		currentFrame = 0;
 		state = END;
+	}
 
 	switchFrame();
 }
 
 void EffectComponent::render()
 {
-	// draw();
+	if (state != OFF)
+		draw();
 }
 
 void EffectComponent::start(bool color, float duration)
 {
-	state = START;
+	if (state == OFF || state == END)
+		state = START;
 	this->color = color;
 	maxDuration = duration;
+	currentDuration = 0.f;
+	currentFrame = 0;
+}
+
+void EffectComponent::upgradeColor(bool color)
+{
+	this->color = color;
 }
 
 void EffectComponent::draw()
@@ -34,9 +47,9 @@ void EffectComponent::draw()
 	EFFECT sprite = getSprite();
 
 	SDL_FRect source = SDL_FRect();
-	source.x = size.x * currentFrame;
-	source.w = size.x;
-	source.h = size.y;
+	source.x = 24 * currentFrame;
+	source.w = 24;
+	source.h = 32;
 
 	EffectHandler::get().drawEffect(sprite, source, getCollider(), SDL_FLIP_NONE);
 }
@@ -71,8 +84,8 @@ void EffectComponent::switchFrame()
 {
 	float deltaTime = SDLHandler::get().getTick();
 
-	frameTime += deltaTime * playSpeed;
-	currentDuration += deltaTime * playSpeed;
+	frameTime += deltaTime;
+	currentDuration += deltaTime;
 
 	if (frameTime < frameThreshold)
 	{
@@ -83,16 +96,16 @@ void EffectComponent::switchFrame()
 	frameTime = 0.f;
 	currentFrame++;
 
-	if (state == START && currentFrame > startFrames)
+	if (state == START && currentFrame >= startFrames)
 	{
 		state = LOOP;
 		currentFrame = 0;
 	}
-	else if (state == LOOP && currentFrame > loopFrames)
+	else if (state == LOOP && currentFrame >= loopFrames)
 	{
 		currentFrame = 0;
 	}
-	else if (state == END && currentFrame > endFrames)
+	else if (state == END && currentFrame >= endFrames)
 	{
 		state = OFF;
 	}
