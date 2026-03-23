@@ -137,7 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\components\effects\EffectComponent.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
+    <ClCompile Include="source\core\subsystems\EffectHandler.cpp" />
     <ClCompile Include="source\core\subsystems\AudioHandler.cpp" />
     <ClCompile Include="source\core\subsystems\FontHandler.cpp" />
     <ClCompile Include="source\core\subsystems\TextureHandler.cpp" />
@@ -160,7 +162,9 @@
     <ClCompile Include="source\scenes\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\components\effects\EffectComponent.h" />
     <ClInclude Include="source\core\SDLHandler.h" />
+    <ClInclude Include="source\core\subsystems\EffectHandler.h" />
     <ClInclude Include="source\core\subsystems\AudioHandler.h" />
     <ClInclude Include="source\core\subsystems\FontHandler.h" />
     <ClInclude Include="source\core\subsystems\TextureHandler.h" />

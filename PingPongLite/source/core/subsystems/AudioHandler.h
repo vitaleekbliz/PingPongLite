@@ -25,7 +25,7 @@ class AudioHandler
 	AudioHandler() = default;
 	~AudioHandler();
 
-	void load(std::string fileName, MIX_Mixer* mixer, MIX_Track** track) const;
+	void load(std::string fileName, MIX_Track** track) const;
 	void startMusic();
 
 	MIX_Track* music = NULL;

@@ -1,4 +1,5 @@
 #pragma once
+#include "components/effects/EffectComponent.h"
 #include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/FontHandler.h"
 #include "core/subsystems/TextureHandler.h"
@@ -8,6 +9,7 @@
 class ScoreDecorator : public Object
 {
   public:
+	ScoreDecorator();
 	virtual void update() override;
 	virtual void render() override;
 
@@ -20,4 +22,8 @@ class ScoreDecorator : public Object
   private:
 	void drawSideBar(bool right);
 	SDL_FRect sideBarDestination = {170, 20, 245, 40};
+
+	const float effectOffset = 15.f;
+	float effectDuration = 10.f;
+	EffectComponent leftEffect, rightEffect;
 };

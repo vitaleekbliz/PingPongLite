@@ -13,17 +13,10 @@ AudioHandler& AudioHandler::get()
 
 void AudioHandler::init()
 {
-	MIX_Audio* musicAudio = NULL;
-	MIX_Audio* winAudio = NULL;
-	MIX_Audio* loseAudio = NULL;
-	MIX_Audio* hitAudio = NULL;
-
-	MIX_Mixer* mixer = SDLHandler::get().getMixer();
-
-	load("music.mp3", mixer, &music);
-	load("win.mp3", mixer, &win);
-	load("lose.mp3", mixer, &lose);
-	load("hit.mp3", mixer, &hit);
+	load("music.mp3", &music);
+	load("win.mp3", &win);
+	load("lose.mp3", &lose);
+	load("hit.mp3", &hit);
 
 	startMusic();
 }
@@ -56,8 +49,10 @@ void AudioHandler::close()
 	MIX_DestroyTrack(hit);
 }
 
-void AudioHandler::load(std::string fileName, MIX_Mixer* mixer, MIX_Track** track) const
+void AudioHandler::load(std::string fileName, MIX_Track** track) const
 {
+	MIX_Mixer* mixer = SDLHandler::get().getMixer();
+
 	std::string basePath = SDL_GetBasePath();
 	std::string fullPath = basePath + audioAssetFolder + fileName;
 

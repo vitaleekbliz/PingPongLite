@@ -2,9 +2,6 @@
 
 ScoreBar::ScoreBar()
 {
-	leftScore = ScoreDecorator();
-	rightScore = ScoreDecorator();
-
 	leftScore.setPosition({280, 20});
 	rightScore.setPosition({1280 - 280, 20});
 

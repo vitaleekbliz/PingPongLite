@@ -13,13 +13,11 @@ TextureHandler& TextureHandler::get()
 
 void TextureHandler::init()
 {
-	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
-
-	board = load("Board.png", renderer);
-	ball = load("Ball.png", renderer);
-	computer = load("Computer.png", renderer);
-	player = load("Player.png", renderer);
-	scoreBar = load("ScoreBar.png", renderer);
+	board = loadTexture("Board.png");
+	ball = loadTexture("Ball.png");
+	computer = loadTexture("Computer.png");
+	player = loadTexture("Player.png");
+	scoreBar = loadTexture("ScoreBar.png");
 }
 
 void TextureHandler::close()
@@ -41,30 +39,13 @@ void TextureHandler::drawTexture(TEXTURE texture, SDL_FRect destination, SDL_Fli
 		destination.y -= destination.h / 2;
 	}
 
-	switch (texture)
-	{
-	case TEXTURE::BOARD:
-		SDL_RenderTextureRotated(renderer, board, NULL, &destination, 0, NULL, flip);
-		break;
-	case TEXTURE::BALL:
-		SDL_RenderTextureRotated(renderer, ball, NULL, &destination, 0, NULL, flip);
-		break;
-	case TEXTURE::COMPUTER:
-		SDL_RenderTextureRotated(renderer, computer, NULL, &destination, 0, NULL, flip);
-		break;
-	case TEXTURE::PLAYER:
-		SDL_RenderTextureRotated(renderer, player, NULL, &destination, 0, NULL, flip);
-		break;
-	case TEXTURE::SCORE_BAR:
-		SDL_RenderTextureRotated(renderer, scoreBar, NULL, &destination, 0, NULL, flip);
-		break;
-	default:
-		break;
-	}
+	SDL_RenderTextureRotated(renderer, getLoadedTexture(texture), NULL, &destination, 0, NULL, flip);
 }
 
-SDL_Texture* TextureHandler::load(std::string fileName, SDL_Renderer* renderer)
+SDL_Texture* TextureHandler::loadTexture(std::string fileName)
 {
+	SDL_Renderer* renderer = SDLHandler::get().getRenderer();
+
 	std::string basePath = SDL_GetBasePath();
 	std::string fullPath = basePath + audioAssetFolder + fileName;
 
@@ -86,4 +67,28 @@ SDL_Texture* TextureHandler::load(std::string fileName, SDL_Renderer* renderer)
 	}
 
 	return texture;
+}
+
+SDL_Texture* TextureHandler::getLoadedTexture(TEXTURE texture)
+{
+	switch (texture)
+	{
+	case TEXTURE::BOARD:
+		return board;
+		break;
+	case TEXTURE::BALL:
+		return ball;
+		break;
+	case TEXTURE::COMPUTER:
+		return computer;
+		break;
+	case TEXTURE::PLAYER:
+		return player;
+		break;
+	case TEXTURE::SCORE_BAR:
+		return scoreBar;
+		break;
+	default:
+		break;
+	}
 }

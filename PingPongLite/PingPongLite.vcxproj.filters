@@ -112,6 +112,18 @@
     <Filter Include="Header Files\entities\interfaces\BoundaryObserver">
       <UniqueIdentifier>{1f2c1e75-b863-42c6-aa54-d415e11bb3c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{b318c189-164c-48fa-976b-89451bbb4ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\components">
+      <UniqueIdentifier>{6eb4da21-6e7e-47e7-8d97-92d2833b2625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\components\effects">
+      <UniqueIdentifier>{ac163306-b28f-4c7d-960e-6475595b2a03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components\effects">
+      <UniqueIdentifier>{bf140b60-3cc4-4bd0-9995-6e5d758327ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -188,6 +200,12 @@
     <ClCompile Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.cpp">
       <Filter>Source Files\source\entities\interfaces\BoundaryObserver</Filter>
     </ClCompile>
+    <ClCompile Include="source\core\subsystems\EffectHandler.cpp">
+      <Filter>Source Files\source\core\subsystems</Filter>
+    </ClCompile>
+    <ClCompile Include="source\components\effects\EffectComponent.cpp">
+      <Filter>Source Files\source\components\effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\SDLHandler.h">
@@ -255,6 +273,12 @@
     </ClInclude>
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.h">
       <Filter>Header Files\entities\interfaces\BoundaryObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\subsystems\EffectHandler.h">
+      <Filter>Header Files\core\subsystems</Filter>
+    </ClInclude>
+    <ClInclude Include="source\components\effects\EffectComponent.h">
+      <Filter>Header Files\components\effects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

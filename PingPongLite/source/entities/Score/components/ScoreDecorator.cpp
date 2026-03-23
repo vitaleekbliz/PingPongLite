@@ -1,7 +1,20 @@
 #include "ScoreDecorator.h"
 
+ScoreDecorator::ScoreDecorator()
+{
+	SDL_FPoint pos = SDL_FPoint();
+
+	pos.x = position.x - effectOffset;
+	leftEffect.setPosition(pos);
+
+	pos.x = position.x + effectOffset;
+	rightEffect.setPosition(pos);
+}
+
 void ScoreDecorator::update()
 {
+	leftEffect.update();
+	rightEffect.update();
 }
 
 void ScoreDecorator::render()
@@ -11,6 +24,9 @@ void ScoreDecorator::render()
 
 	drawSideBar(true);
 	drawSideBar(false);
+
+	leftEffect.render();
+	rightEffect.render();
 }
 
 void ScoreDecorator::increment()
@@ -23,6 +39,12 @@ void ScoreDecorator::increment()
 	else if (tag == "computer")
 	{
 		AudioHandler::get().playAudio(SOUNDS::LOSE);
+	}
+
+	// if (score % 5 == 0)
+	{
+		leftEffect.start(tag == "player", effectDuration);
+		rightEffect.start(tag == "player", effectDuration);
 	}
 }
 

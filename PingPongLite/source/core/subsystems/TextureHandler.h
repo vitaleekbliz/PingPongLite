@@ -27,7 +27,8 @@ class TextureHandler
 	TextureHandler() = default;
 	~TextureHandler();
 
-	SDL_Texture* load(std::string fileName, SDL_Renderer* renderer);
+	SDL_Texture* loadTexture(std::string fileName);
+	SDL_Texture* getLoadedTexture(TEXTURE texture);
 
 	SDL_Texture* board = NULL;
 	SDL_Texture* ball = NULL;

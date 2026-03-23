@@ -1,5 +1,6 @@
 #pragma once
 #include "core/subsystems/AudioHandler.h"
+#include "core/subsystems/EffectHandler.h"
 #include "core/subsystems/FontHandler.h"
 #include "core/subsystems/TextureHandler.h"
 #include "entities/Ball/Ball.h"
