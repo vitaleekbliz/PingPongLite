@@ -22,7 +22,7 @@ class EffectHandler
 	void init();
 	void close();
 
-	void drawEffect(EFFECT texture, SDL_FRect source, SDL_FRect destination, SDL_FlipMode flip,
+	void drawEffect(EFFECT effect, SDL_FRect source, SDL_FRect destination, SDL_FlipMode flip,
 					bool isWorldPosition = true);
 
   private:
@@ -30,8 +30,12 @@ class EffectHandler
 	~EffectHandler();
 
 	SDL_Texture* loadTexture(std::string fileName);
-	SDL_Texture* getTexture(EFFECT effect);
+	SDL_Texture* getLoadedTexture(EFFECT effect);
 
+	// TEMP DEBUG REMOVE
+	//---
+  public:
+	//---
 	SDL_Texture* redStart = NULL;
 	SDL_Texture* redLoop = NULL;
 	SDL_Texture* redEnd = NULL;

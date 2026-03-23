@@ -60,6 +60,7 @@ void MainScene::render()
 	source.y = 0;
 	source.w = 32;
 	source.h = 32;
+
 	EffectHandler::get().drawEffect(EFFECT::RED_LOOP, source, destination, SDL_FLIP_NONE);*/
 #pragma endregion
 

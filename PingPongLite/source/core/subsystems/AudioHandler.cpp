@@ -43,10 +43,10 @@ void AudioHandler::playAudio(SOUNDS sound)
 
 void AudioHandler::close()
 {
-	MIX_DestroyTrack(music);
-	MIX_DestroyTrack(win);
-	MIX_DestroyTrack(lose);
-	MIX_DestroyTrack(hit);
+	// MIX_DestroyTrack(music);
+	// MIX_DestroyTrack(win);
+	// MIX_DestroyTrack(lose);
+	// MIX_DestroyTrack(hit);
 }
 
 void AudioHandler::load(std::string fileName, MIX_Track** track) const

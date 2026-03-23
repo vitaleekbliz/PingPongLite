@@ -3,11 +3,10 @@
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
-    * Adding factory to MainScene
-    * delegating some Ball logic to Board Class
+    * Adding abstract factory to MainScene
     * centralized collision system
-    * correcting Ball decorators
-    * Animation system
+    * [50%]correcting Ball decorators
+    * [50%]Animation system
   * **Ready Features** :
     * Paddle strategy switch
     * Score switch 
@@ -113,7 +112,7 @@ while (mainScene.isRunning())
 8. ❗**Compile code**❗ : tested running on several devices. Check Usage section for more details
 
 ### 😱 Bonus Tasks
-1. ❌ **Animations** - not yet😔  
+1. [✅/❌] **Animations** - not yet😔  
 
 2. ✅ **External libraries**:  
 
@@ -137,7 +136,7 @@ while (mainScene.isRunning())
   * ✅TextureHandler  
   * ✅AudioHandler  
   * ✅TextHandler  
-  * ❌AnimationsHandler  
+  * [✅/❌]AnimationsHandler  
 ($(ProjectDir)/source/core/subsystems/)  
 
 * *Observer* :  

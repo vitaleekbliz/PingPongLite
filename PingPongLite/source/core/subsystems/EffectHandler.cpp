@@ -5,7 +5,7 @@ EffectHandler::~EffectHandler()
 	close();
 }
 
-SDL_Texture* EffectHandler::getTexture(EFFECT effect)
+SDL_Texture* EffectHandler::getLoadedTexture(EFFECT effect)
 {
 	switch (effect)
 	{
@@ -64,7 +64,7 @@ void EffectHandler::drawEffect(EFFECT effect, SDL_FRect source, SDL_FRect destin
 		destination.y -= destination.h / 2;
 	}
 
-	SDL_RenderTextureRotated(renderer, getTexture(effect), &source, &destination, 0, NULL, flip);
+	SDL_RenderTextureRotated(renderer, getLoadedTexture(effect), &source, &destination, 0, NULL, flip);
 }
 
 SDL_Texture* EffectHandler::loadTexture(std::string fileName)

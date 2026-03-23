@@ -80,9 +80,9 @@ bool SDLHandler::init()
 
 void SDLHandler::close()
 {
-	MIX_DestroyMixer(mixer);
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
+	// MIX_DestroyMixer(mixer);
+	// SDL_DestroyRenderer(renderer);
+	// SDL_DestroyWindow(window);
 }
 
 SDL_Renderer* SDLHandler::getRenderer()
