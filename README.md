@@ -1,5 +1,7 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
+
+**DEVELPMENT PAUSED FOR TECH REVIEW**  
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
@@ -149,11 +151,9 @@ while (mainScene.isRunning())
 
 * *Observer* :  
   * ✅ BoundaryObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
-    * ($(ProjectDir)/source/interfaces/BoundaryObserver)  
-  * ✅ TextureObserver - handles draw requests   
-    * ($(ProjectDir)/source/interfaces/TextureObserver)
-  * ✅ FontObserver - handles draw requests  
-    * ($(ProjectDir)/source/interfaces/FontObserver)
+    * ($(ProjectDir)/source/entites/interfaces/BoundaryObserver)  
+  * ✅ StrategyObserver  
+    * ($(ProjectDir)/source/entites/interfaces/StrategyObserver/)
 
 * *Decorator* :  
   * [✅] ScoreDecorator  
