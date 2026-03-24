@@ -1,7 +1,7 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
 
-**DEVELPMENT PAUSED FOR TECH REVIEW**  
+⏸️⏸️⏸️**DEVELPMENT PAUSED FOR TECH REVIEW**⏸️⏸️⏸️  
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
