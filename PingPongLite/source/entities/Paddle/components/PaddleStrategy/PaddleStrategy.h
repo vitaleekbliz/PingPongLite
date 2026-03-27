@@ -12,6 +12,7 @@ enum class PADDLE_STRATEGY : char
 class PaddleStrategy
 {
   public:
+	virtual ~PaddleStrategy();
 	virtual void track(SDL_FPoint* ownerPos) = 0;
 	void setTarget(std::shared_ptr<Object> trackedObject);
 
