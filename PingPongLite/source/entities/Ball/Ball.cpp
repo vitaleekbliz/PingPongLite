@@ -9,35 +9,6 @@ Ball::Ball()
 void Ball::update()
 {
 	movement.applyMovement(&position);
-
-#pragma region Add state machine after completing collision system
-	bool playerCollision = player.checkForCollisions(&position, &size);
-	bool computerCollision = computer.checkForCollisions(&position, &size);
-
-	// if not colliding with both exited collision zone
-	if (!playerCollision && !computerCollision)
-	{
-		isCollidingPaddle = false;
-	}
-
-	// if touching any paddle
-	else if ((playerCollision || computerCollision) && !isCollidingPaddle)
-	{
-
-		// blocks logic untill exiting collision zone
-		isCollidingPaddle = true;
-
-		AudioHandler::get().playAudio(SOUNDS::HIT);
-		if (playerCollision)
-		{
-			movement.onPaddleHit(&position, player.getPaddleCollider());
-		}
-		else
-		{
-			movement.onPaddleHit(&position, computer.getPaddleCollider());
-		}
-	}
-#pragma endregion
 }
 
 void Ball::render()
@@ -46,10 +17,10 @@ void Ball::render()
 	TextureHandler::get().drawTexture(TEXTURE::BALL, destination, SDL_FLIP_NONE);
 }
 
-void Ball::setPaddleReferences(std::shared_ptr<Object> player, std::shared_ptr<Object> computer)
+void Ball::onPaddleHit(const SDL_FRect& paddleCollider)
 {
-	this->player.setPaddleReference(player);
-	this->computer.setPaddleReference(computer);
+	AudioHandler::get().playAudio(SOUNDS::HIT);
+	movement.onPaddleHit(&position, paddleCollider);
 }
 
 void Ball::onBoundaryEvent(BOUNDARY event)
@@ -76,5 +47,4 @@ void Ball::reset()
 	position = movement.basePosition;
 	movement.setRandomDirection();
 	movement.currentSpeed = movement.baseSpeed;
-	isCollidingPaddle = false;
 }

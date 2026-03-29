@@ -124,6 +124,12 @@
     <Filter Include="Header Files\components\effects">
       <UniqueIdentifier>{bf140b60-3cc4-4bd0-9995-6e5d758327ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scenes\components">
+      <UniqueIdentifier>{87272229-8af7-476a-863b-a9b94cf31adb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes\components">
+      <UniqueIdentifier>{272bb460-7275-4178-a66e-8e04b3c8466b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -191,9 +197,6 @@
     <ClCompile Include="source\entities\Score\components\TimeDecorator.cpp">
       <Filter>Source Files\source\entities\ScoreBar\componenets</Filter>
     </ClCompile>
-    <ClCompile Include="source\entities\Ball\components\BallCollisionDecorator.cpp">
-      <Filter>Source Files\source\entities\Ball\components</Filter>
-    </ClCompile>
     <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp">
       <Filter>Source Files\source\entities\Ball\components</Filter>
     </ClCompile>
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="source\components\effects\EffectComponent.cpp">
       <Filter>Source Files\source\components\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\CollisionDetection.cpp">
+      <Filter>Source Files\source\scenes\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,9 +243,6 @@
     </ClInclude>
     <ClInclude Include="source\entities\Ball\Ball.h">
       <Filter>Header Files\entities\Ball</Filter>
-    </ClInclude>
-    <ClInclude Include="source\entities\Ball\components\BallCollisionDecorator.h">
-      <Filter>Header Files\entities\Ball\components</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\Ball\components\BallMovementDecorator.h">
       <Filter>Header Files\entities\Ball\components</Filter>
@@ -279,6 +282,9 @@
     </ClInclude>
     <ClInclude Include="source\components\effects\EffectComponent.h">
       <Filter>Header Files\components\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\CollisionDetection.h">
+      <Filter>Header Files\scenes\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

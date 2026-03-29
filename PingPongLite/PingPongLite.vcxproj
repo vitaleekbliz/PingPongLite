@@ -144,7 +144,6 @@
     <ClCompile Include="source\core\subsystems\FontHandler.cpp" />
     <ClCompile Include="source\core\subsystems\TextureHandler.cpp" />
     <ClCompile Include="source\entities\Ball\Ball.cpp" />
-    <ClCompile Include="source\entities\Ball\components\BallCollisionDecorator.cpp" />
     <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp" />
     <ClCompile Include="source\entities\Board\Board.cpp" />
     <ClCompile Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.cpp" />
@@ -158,6 +157,7 @@
     <ClCompile Include="source\entities\Score\components\TimeDecorator.cpp" />
     <ClCompile Include="source\entities\Score\ScoreBar.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\scenes\components\CollisionDetection.cpp" />
     <ClCompile Include="source\scenes\MainScene.cpp" />
     <ClCompile Include="source\scenes\Scene.cpp" />
   </ItemGroup>
@@ -169,7 +169,6 @@
     <ClInclude Include="source\core\subsystems\FontHandler.h" />
     <ClInclude Include="source\core\subsystems\TextureHandler.h" />
     <ClInclude Include="source\entities\Ball\Ball.h" />
-    <ClInclude Include="source\entities\Ball\components\BallCollisionDecorator.h" />
     <ClInclude Include="source\entities\Ball\components\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board\Board.h" />
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.h" />
@@ -184,6 +183,7 @@
     <ClInclude Include="source\entities\Score\components\ScoreDecorator.h" />
     <ClInclude Include="source\entities\Score\components\TimeDecorator.h" />
     <ClInclude Include="source\entities\Score\ScoreBar.h" />
+    <ClInclude Include="source\scenes\components\CollisionDetection.h" />
     <ClInclude Include="source\scenes\MainScene.h" />
     <ClInclude Include="source\scenes\Scene.h" />
   </ItemGroup>

@@ -1,5 +1,4 @@
 #pragma once
-#include "components/BallCollisionDecorator.h"
 #include "components/BallMovementDecorator.h"
 #include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/Texturehandler.h"
@@ -15,14 +14,11 @@ class Ball : public Object, public BoundarySubscriber
 	void update() override;
 	void render() override;
 
-	void setPaddleReferences(std::shared_ptr<Object> player, std::shared_ptr<Object> computer);
+	void onPaddleHit(const SDL_FRect& paddleCollider);
 
   private:
 	virtual void onBoundaryEvent(BOUNDARY event) override;
 	void reset();
 
-	BallCollisionDecorator player, computer;
 	BallMovementDecorator movement;
-
-	bool isCollidingPaddle = false;
 };

@@ -3,14 +3,6 @@
 #include <memory>
 #include <utility>
 
-enum class ObjectID : char
-{
-	BALL,
-	SCORE_BAR,
-	BOARD,
-	PADDLE
-};
-
 class Object
 {
   public:

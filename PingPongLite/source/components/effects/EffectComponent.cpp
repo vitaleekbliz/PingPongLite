@@ -30,11 +30,13 @@ void EffectComponent::render()
 void EffectComponent::start(bool color, float duration)
 {
 	if (state == OFF || state == END)
+	{
 		state = START;
+		currentFrame = 0;
+	}
 	this->color = color;
 	maxDuration = duration;
 	currentDuration = 0.f;
-	currentFrame = 0;
 }
 
 void EffectComponent::upgradeColor(bool color)
@@ -92,7 +94,7 @@ void EffectComponent::switchFrame()
 		return;
 	}
 
-	// Switch to next frame
+	// Switch to the next frame
 	frameTime = 0.f;
 	currentFrame++;
 
