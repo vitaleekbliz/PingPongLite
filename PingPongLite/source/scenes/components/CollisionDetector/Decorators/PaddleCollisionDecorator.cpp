@@ -1,47 +1,12 @@
-#include "CollisionDetection.h"
+#include "PaddleCollisionDecorator.h"
 
-void CollisionDetection::update()
-{
-	if (auto ballLock = ball.lock())
-	{
-		SDL_FRect ballCollider = ballLock->getCollider();
-		resolvePaddleCollisions(ballCollider);
-	}
-}
-
-void CollisionDetection::setBallRef(std::weak_ptr<Object> ball)
-{
-	this->ball = ball;
-}
-
-void CollisionDetection::addPaddles(std::weak_ptr<Object> paddleLeft, std::weak_ptr<Object> paddleRight)
+void PaddleCollisionDecorator::addPaddles(std::weak_ptr<Object> paddleLeft, std::weak_ptr<Object> paddleRight)
 {
 	this->paddleLeft = paddleLeft;
 	this->paddleRight = paddleRight;
 }
 
-void CollisionDetection::addCollectable(std::weak_ptr<Object> item)
-{
-	collectibles.push_back(item);
-}
-
-void CollisionDetection::notifyPaddleHit(const SDL_FRect& paddleCollider)
-{
-	for (auto it = paddleHitSubscribers.begin(); it != paddleHitSubscribers.end();)
-	{
-		if (auto lock = it->lock())
-		{
-			lock->onPaddleHit(paddleCollider);
-			it++;
-		}
-		else
-		{
-			it = paddleHitSubscribers.erase(it);
-		}
-	}
-}
-
-void CollisionDetection::resolvePaddleCollisions(const SDL_FRect& ballCollider)
+std::optional<SDL_FRect> PaddleCollisionDecorator::resolvePaddleCollisions(const SDL_FRect& ballCollider)
 {
 
 	bool leftPaddleCollision = checkForPaddleCollision(ballCollider, paddleLeft);
@@ -63,11 +28,13 @@ void CollisionDetection::resolvePaddleCollisions(const SDL_FRect& ballCollider)
 		SDL_FRect collider =
 			(leftPaddleCollision ? paddleLeft.lock()->getCollider() : paddleRight.lock()->getCollider());
 
-		notifyPaddleHit(collider);
+		return std::make_optional<SDL_FRect>(collider);
 	}
+
+	return {};
 }
 
-bool CollisionDetection::checkForPaddleCollision(const SDL_FRect& ballCollider, std::weak_ptr<Object> paddle)
+bool PaddleCollisionDecorator::checkForPaddleCollision(const SDL_FRect& ballCollider, std::weak_ptr<Object> paddle)
 {
 	if (auto paddleLock = paddle.lock())
 	{
@@ -78,7 +45,7 @@ bool CollisionDetection::checkForPaddleCollision(const SDL_FRect& ballCollider, 
 	return false;
 }
 
-bool CollisionDetection::checkCircleInsideBox(const SDL_FRect& ball, const SDL_FRect& rect)
+bool PaddleCollisionDecorator::checkCircleInsideBox(const SDL_FRect& ball, const SDL_FRect& rect)
 {
 	// TODO calculate vector logic using boost qvm library
 	SDL_FPoint circle = SDL_FPoint(ball.x, ball.y);

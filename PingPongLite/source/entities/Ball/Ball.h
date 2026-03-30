@@ -4,7 +4,7 @@
 #include "core/subsystems/Texturehandler.h"
 #include "entities/Object.h"
 #include "entities/interfaces/BoundaryObserver/BoundaryPublisher.h"
-#include "scenes/components/PaddleHitObserver/PaddleHitSubscriber.h"
+#include "scenes/components/CollisionDetector/PaddleHitObserver/PaddleHitSubscriber.h"
 #include <algorithm>
 #include <random>
 

@@ -5,16 +5,10 @@
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
     * [50%]centralized collision system
-    * [75%]correcting Ball decorators
-  * **Ready Features** :
-    * Effect system
-    * Paddle strategy switch
-    * Score switch 
-    * Ball movement decorator (under upgrading)
+    * Collectibles
+    * Animations
   * **Upcoming systems**:
     * MainMenu
-    * Collectibles
-    * Input handling 
 
 ## 🛠️ Tech Stack
 
@@ -157,8 +151,8 @@ while (mainScene.isRunning())
   * [✅] TimeDecorator  
     * ($(ProjectDir)source\entities\ScoreBar{.h, .cpp}  
     * ($(ProjectDir)source\entities\ScoreComponents\..)  
-  * [✅/❌] Ball movement  
-  * [✅/❌] Ball collision  
+  * [✅] Ball movement  
+  * [✅] Ball collision  
     * ($(ProjectDir)source\entities\Ball{.h, .cpp}  
     * ($(ProjectDir)source\entities\BallComponents\..)  
 

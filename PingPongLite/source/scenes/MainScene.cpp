@@ -49,7 +49,7 @@ void MainScene::init()
 	paddleLeft = std::make_shared<Paddle>();
 	paddleRight = std::make_shared<Paddle>();
 
-	collisionDetector = std::make_shared<CollisionDetection>();
+	collisionDetector = std::make_shared<CollisionDetector>();
 
 	collisionDetector->addPaddles(paddleLeft, paddleRight);
 	collisionDetector->setBallRef(ball);

@@ -1,5 +1,5 @@
 #pragma once
-#include "components/CollisionDetection.h"
+#include "components/CollisionDetector/CollisionDetector.h"
 #include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/EffectHandler.h"
 #include "core/subsystems/FontHandler.h"
@@ -30,5 +30,5 @@ class MainScene : public Scene
 	std::shared_ptr<Paddle> paddleLeft;
 	std::shared_ptr<Paddle> paddleRight;
 
-	std::shared_ptr<CollisionDetection> collisionDetector;
+	std::shared_ptr<CollisionDetector> collisionDetector;
 };
