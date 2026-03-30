@@ -1,10 +1,5 @@
 #include "MainScene.h"
 
-MainScene::~MainScene()
-{
-	close();
-}
-
 void MainScene::close()
 {
 	AudioHandler::get().close();
@@ -58,6 +53,7 @@ void MainScene::init()
 
 	collisionDetector->addPaddles(paddleLeft, paddleRight);
 	collisionDetector->setBallRef(ball);
+	collisionDetector->addPaddleHitListener(ball);
 
 	paddleLeft->setPosition({50, 400});
 	paddleRight->setPosition({1230, 400});

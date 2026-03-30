@@ -17,9 +17,6 @@
 class MainScene : public Scene
 {
   public:
-	MainScene() = default;
-	~MainScene();
-
 	virtual void update() override;
 	virtual void render() override;
 

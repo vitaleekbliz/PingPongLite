@@ -7,6 +7,7 @@
 class BoundaryPublisher
 {
   public:
+	virtual ~BoundaryPublisher() = default;
 	void addBoundaryListener(std::shared_ptr<BoundarySubscriber> listener);
 	void removeBoundaryListener(std::shared_ptr<BoundarySubscriber> listener);
 

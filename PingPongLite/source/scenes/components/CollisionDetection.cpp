@@ -25,6 +25,22 @@ void CollisionDetection::addCollectable(std::weak_ptr<Object> item)
 	collectibles.push_back(item);
 }
 
+void CollisionDetection::notifyPaddleHit(const SDL_FRect& paddleCollider)
+{
+	for (auto it = paddleHitSubscribers.begin(); it != paddleHitSubscribers.end();)
+	{
+		if (auto lock = it->lock())
+		{
+			lock->onPaddleHit(paddleCollider);
+			it++;
+		}
+		else
+		{
+			it = paddleHitSubscribers.erase(it);
+		}
+	}
+}
+
 void CollisionDetection::resolvePaddleCollisions(const SDL_FRect& ballCollider)
 {
 
@@ -44,23 +60,10 @@ void CollisionDetection::resolvePaddleCollisions(const SDL_FRect& ballCollider)
 		// blocks logic untill exiting collision zone
 		isCollidingPaddle = true;
 
-		// DEBUG temp remove
-#pragma region Add Ball Collision Observer
-		std::shared_ptr<Ball> ballClass = std::dynamic_pointer_cast<Ball>(ball.lock());
+		SDL_FRect collider =
+			(leftPaddleCollision ? paddleLeft.lock()->getCollider() : paddleRight.lock()->getCollider());
 
-		if (leftPaddleCollision)
-		{
-			auto collider = paddleLeft.lock()->getCollider();
-			ballClass->onPaddleHit(collider);
-			printf("colliding left\n");
-		}
-		else
-		{
-			auto collider = paddleRight.lock()->getCollider();
-			ballClass->onPaddleHit(collider);
-			printf("colliding right\n");
-		}
-#pragma endregion
+		notifyPaddleHit(collider);
 	}
 }
 

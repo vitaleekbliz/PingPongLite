@@ -7,6 +7,8 @@
 class StrategyPublisher
 {
   public:
+	virtual ~StrategyPublisher() = default;
+
 	void addStrategyListener(std::shared_ptr<StrategySubscriber> strategyListener);
 	void removeStrategyListener(std::shared_ptr<StrategySubscriber> strategyListener);
 

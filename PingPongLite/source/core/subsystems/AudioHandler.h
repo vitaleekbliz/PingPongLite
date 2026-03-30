@@ -23,7 +23,7 @@ class AudioHandler
   protected:
   private:
 	AudioHandler() = default;
-	~AudioHandler();
+	~AudioHandler() = default;
 
 	void load(std::string fileName, MIX_Track** track) const;
 	void startMusic();

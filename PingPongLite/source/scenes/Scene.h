@@ -3,11 +3,11 @@ class Scene
 {
   public:
 	virtual ~Scene() = default;
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void update() {};
+	virtual void render() {};
 
-	virtual void init() = 0;
-	virtual void close() = 0;
+	virtual void init() {};
+	virtual void close() {};
 
 	bool isRunning() const;
 

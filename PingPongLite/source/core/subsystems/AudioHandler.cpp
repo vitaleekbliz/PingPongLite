@@ -1,10 +1,5 @@
 #include "AudioHandler.h"
 
-AudioHandler::~AudioHandler()
-{
-	close();
-}
-
 AudioHandler& AudioHandler::get()
 {
 	static AudioHandler instance;
@@ -43,10 +38,11 @@ void AudioHandler::playAudio(SOUNDS sound)
 
 void AudioHandler::close()
 {
-	// MIX_DestroyTrack(music);
-	// MIX_DestroyTrack(win);
-	// MIX_DestroyTrack(lose);
-	// MIX_DestroyTrack(hit);
+	MIX_StopAllTracks(SDLHandler::get().getMixer(), 0);
+	MIX_DestroyTrack(music);
+	MIX_DestroyTrack(win);
+	MIX_DestroyTrack(lose);
+	MIX_DestroyTrack(hit);
 }
 
 void AudioHandler::load(std::string fileName, MIX_Track** track) const

@@ -12,21 +12,21 @@ int main()
 	SDLHandler& sdlHandler = SDLHandler::get();
 	sdlHandler.init();
 
-	MainScene mainScene = MainScene();
-	mainScene.init();
+	std::shared_ptr<Scene> activeScene = std::make_shared<MainScene>();
+	activeScene->init();
 
-	while (mainScene.isRunning())
+	while (activeScene->isRunning())
 	{
 		sdlHandler.handleTickRate();
 
 		if (!sdlHandler.handleEvents())
 		{
-			mainScene.close();
+			return 0;
 		}
 
-		mainScene.update();
+		activeScene->update();
 
-		mainScene.render();
+		activeScene->render();
 	}
 
 	sdlHandler.close();

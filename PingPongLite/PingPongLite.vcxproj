@@ -158,6 +158,7 @@
     <ClCompile Include="source\entities\Score\ScoreBar.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\scenes\components\CollisionDetection.cpp" />
+    <ClCompile Include="source\scenes\components\PaddleHItObserver\PaddleHitPublisher.cpp" />
     <ClCompile Include="source\scenes\MainScene.cpp" />
     <ClCompile Include="source\scenes\Scene.cpp" />
   </ItemGroup>
@@ -184,6 +185,8 @@
     <ClInclude Include="source\entities\Score\components\TimeDecorator.h" />
     <ClInclude Include="source\entities\Score\ScoreBar.h" />
     <ClInclude Include="source\scenes\components\CollisionDetection.h" />
+    <ClInclude Include="source\scenes\components\PaddleHItObserver\PaddleHitPublisher.h" />
+    <ClInclude Include="source\scenes\components\PaddleHItObserver\PaddleHitSubscriber.h" />
     <ClInclude Include="source\scenes\MainScene.h" />
     <ClInclude Include="source\scenes\Scene.h" />
   </ItemGroup>
