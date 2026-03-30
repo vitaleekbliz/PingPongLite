@@ -18,7 +18,6 @@ class Ball : public Object, public BoundarySubscriber
 
   private:
 	virtual void onBoundaryEvent(BOUNDARY event) override;
-	void reset();
 
 	BallMovementDecorator movement;
 };

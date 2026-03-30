@@ -1,8 +1,14 @@
 #include "core/SDLHandler.h"
 #include "scenes/MainScene.h"
+#include <Windows.h>
 
 int main()
 {
+#ifndef _DEBUG
+	HWND hwnd = GetConsoleWindow();
+	ShowWindow(hwnd, SW_HIDE);
+#endif
+
 	SDLHandler& sdlHandler = SDLHandler::get();
 	sdlHandler.init();
 

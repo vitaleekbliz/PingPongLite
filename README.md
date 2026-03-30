@@ -4,7 +4,6 @@
 ⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
   * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
   * **Currently working on** :
-    * Adding abstract factory to MainScene
     * [50%]centralized collision system
     * [75%]correcting Ball decorators
   * **Ready Features** :
@@ -14,7 +13,6 @@
     * Ball movement decorator (under upgrading)
   * **Upcoming systems**:
     * MainMenu
-    * Buffs system
     * Collectibles
     * Input handling 
 

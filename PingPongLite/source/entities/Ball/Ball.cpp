@@ -3,7 +3,7 @@
 Ball::Ball()
 {
 	setSize({30, 30});
-	reset();
+	movement.reset(&position);
 }
 
 void Ball::update()
@@ -20,7 +20,7 @@ void Ball::render()
 void Ball::onPaddleHit(const SDL_FRect& paddleCollider)
 {
 	AudioHandler::get().playAudio(SOUNDS::HIT);
-	movement.onPaddleHit(&position, paddleCollider);
+	movement.onPaddleHit(&position, size, paddleCollider);
 }
 
 void Ball::onBoundaryEvent(BOUNDARY event)
@@ -29,7 +29,7 @@ void Ball::onBoundaryEvent(BOUNDARY event)
 	{
 	case BOUNDARY::LEFT:
 	case BOUNDARY::RIGHT:
-		reset();
+		movement.reset(&position);
 		break;
 	case BOUNDARY::TOP:
 	case BOUNDARY::BOTTOM:
@@ -39,12 +39,4 @@ void Ball::onBoundaryEvent(BOUNDARY event)
 	default:
 		break;
 	}
-}
-
-void Ball::reset()
-{
-	// move back to movement decorator after adding collision system
-	position = movement.basePosition;
-	movement.setRandomDirection();
-	movement.currentSpeed = movement.baseSpeed;
 }

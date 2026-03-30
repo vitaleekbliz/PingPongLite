@@ -2,7 +2,7 @@
 
 void BallMovementDecorator::setRandomDirection()
 {
-	// TODO use boost libary
+	// TODO use boost libary to generate random angle
 	float& x = direction.x;
 	float& y = direction.y;
 	x = ((std::rand() % 100) - 50.f) / 50.f;
@@ -36,12 +36,15 @@ void BallMovementDecorator::applyMovement(SDL_FPoint* pos)
 	pos->y += deltaTime * currentSpeed * direction.y;
 }
 
-void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FRect paddleRect)
+void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FPoint ballSize, const SDL_FRect& paddleRect)
 {
-	// push ball from player
+	// 1. force push ball outside the player collider
+	float offset = paddleRect.w / 2 + ballSize.x / 2;
+	offset *= (ballPos->x > paddleRect.x ? 1.f : -1.f);
 
-	// TODO use qvm library for vector rotation
-	//---segment start
+	ballPos->x = paddleRect.x + offset;
+	// 2. push ball from player center
+
 	SDL_FPoint newDirection = SDL_FPoint();
 	newDirection.x = ballPos->x - paddleRect.x;
 	newDirection.y = ballPos->y - paddleRect.y;
@@ -50,7 +53,6 @@ void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FRect paddleRec
 	float length = std::sqrt(newDirection.x * newDirection.x + newDirection.y * newDirection.y);
 	newDirection.x /= length;
 	newDirection.y /= length;
-	//---segment end
 
 	// Points to direction it should be moving
 	direction = newDirection;
@@ -60,7 +62,7 @@ void BallMovementDecorator::onPaddleHit(SDL_FPoint* ballPos, SDL_FRect paddleRec
 
 void BallMovementDecorator::onWallHit()
 {
-	direction.y = (direction.y > 0.f ? -std::abs(direction.y) : std::abs(direction.y));
+	direction.y *= -1.f;
 	clampVerticalVelocity();
 }
 
@@ -78,7 +80,7 @@ void BallMovementDecorator::clampVerticalVelocity()
 		direction.x = 0.05; // Crutch points ball towards right slightly
 	// PS. Paddle pushes the ball from its center, so its hard to hit ball perfectly horizontal
 
-	// change reduce angle to X axis
+	// reduce angle to X axis
 	direction.y /= verticalClampingFactor;
 	direction.x *= verticalClampingFactor;
 
@@ -86,4 +88,12 @@ void BallMovementDecorator::clampVerticalVelocity()
 	float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction.x /= length;
 	direction.y /= length;
+}
+
+void BallMovementDecorator::reset(SDL_FPoint* position)
+{
+	// move back to movement decorator after adding collision system
+	*position = basePosition;
+	setRandomDirection();
+	currentSpeed = baseSpeed;
 }

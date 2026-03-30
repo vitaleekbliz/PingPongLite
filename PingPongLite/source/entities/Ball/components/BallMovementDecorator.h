@@ -8,10 +8,11 @@
 class BallMovementDecorator
 {
   public:
+	void reset(SDL_FPoint* position);
 	void setRandomDirection();
 	void applyMovement(SDL_FPoint* pos);
 
-	void onPaddleHit(SDL_FPoint* ballPos, SDL_FRect paddleRect);
+	void onPaddleHit(SDL_FPoint* ballPos, SDL_FPoint ballSize, const SDL_FRect& paddleRect);
 	void onWallHit();
 
 	const float baseSpeed = 500.f;
