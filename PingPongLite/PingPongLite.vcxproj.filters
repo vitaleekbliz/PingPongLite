@@ -144,6 +144,24 @@
     <Filter Include="Source Files\source\scenes\components\CollisionDetector\Decorators">
       <UniqueIdentifier>{3c95b8ce-f9fd-4e73-b05b-9bb96b75db81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\entities\Collectibles">
+      <UniqueIdentifier>{ccac50ad-9e37-41cb-9c1a-b8e57d69307e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Collectibles">
+      <UniqueIdentifier>{29db11f1-384a-40fe-8106-8303cad4705c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\Collectibles\subclasses">
+      <UniqueIdentifier>{24820b73-c9b0-4ac6-89ce-80ae390c1074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\entities\Collectibles\subclasses">
+      <UniqueIdentifier>{f3e6b86d-f0de-41b0-a84e-5ed54a60d33c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scenes\components\CollectiblesSpawner">
+      <UniqueIdentifier>{e51c5db7-e5b5-479a-8c34-54f87eb23c07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes\components\CollectibleSpawner">
+      <UniqueIdentifier>{a5c5958a-ea54-4fee-b803-55a0343b3b5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -233,6 +251,30 @@
       <Filter>Source Files\source\scenes\components\CollisionDetector\PaddleHitObserver</Filter>
     </ClCompile>
     <ClCompile Include="source\entities\Collectibles\Collectible.cpp">
+      <Filter>Source Files\source\entities\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Collectibles\subclasses\BlueStar.cpp">
+      <Filter>Source Files\source\entities\Collectibles\subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Collectibles\subclasses\Potion.cpp">
+      <Filter>Source Files\source\entities\Collectibles\subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Collectibles\subclasses\RedStar.cpp">
+      <Filter>Source Files\source\entities\Collectibles\subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\CollectiblesSpawner\CollectibleSpawner.cpp">
+      <Filter>Source Files\source\scenes\components\CollectibleSpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\interfaces\CollectibleSpawnObserver\CollectibleSpawnedPublisher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\CollisionDetector\Decorators\CollectiblesCollisionDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\CollisionDetector\Decorators\CollisionDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedPublisher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -319,6 +361,36 @@
       <Filter>Header Files\scenes\components\CollisionDetector\Decorators</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\Collectibles\Collectible.h">
+      <Filter>Header Files\entities\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Collectibles\subclasses\BlueStar.h">
+      <Filter>Header Files\entities\Collectibles\subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Collectibles\subclasses\Potion.h">
+      <Filter>Header Files\entities\Collectibles\subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Collectibles\subclasses\RedStar.h">
+      <Filter>Header Files\entities\Collectibles\subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\CollectiblesSpawner\CollectibleSpawner.h">
+      <Filter>Header Files\scenes\components\CollectiblesSpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\interfaces\CollectibleSpawnObserver\CollectibleSpawnedPublisher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\interfaces\CollectibleSpawnObserver\CollectibleSpawnSubscriber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\CollisionDetector\Decorators\CollectiblesCollisionDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\CollisionDetector\Decorators\CollisionDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedPublisher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedSubscriber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

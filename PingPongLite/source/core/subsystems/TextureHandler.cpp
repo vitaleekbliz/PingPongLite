@@ -18,6 +18,9 @@ void TextureHandler::init()
 	computer = loadTexture("Computer.png");
 	player = loadTexture("Player.png");
 	scoreBar = loadTexture("ScoreBar.png");
+	starBlue = loadTexture("star_blue.png");
+	starRed = loadTexture("star_red.png");
+	potion = loadTexture("potion.png");
 }
 
 void TextureHandler::close()
@@ -27,6 +30,9 @@ void TextureHandler::close()
 	SDL_DestroyTexture(computer);
 	SDL_DestroyTexture(player);
 	SDL_DestroyTexture(scoreBar);
+	SDL_DestroyTexture(starBlue);
+	SDL_DestroyTexture(starRed);
+	SDL_DestroyTexture(potion);
 }
 
 void TextureHandler::drawTexture(TEXTURE texture, SDL_FRect destination, SDL_FlipMode flip, bool isWorldPosition)
@@ -87,6 +93,15 @@ SDL_Texture* TextureHandler::getLoadedTexture(TEXTURE texture)
 		break;
 	case TEXTURE::SCORE_BAR:
 		return scoreBar;
+		break;
+	case TEXTURE::STAR_BLUE:
+		return starBlue;
+		break;
+	case TEXTURE::STAR_RED:
+		return starRed;
+		break;
+	case TEXTURE::POTION:
+		return potion;
 		break;
 	default:
 		break;
