@@ -18,6 +18,7 @@ void MainScene::update()
 	paddleRight->update();
 
 	collisionDetector->update();
+	collectibleSpawner->update();
 }
 
 void MainScene::render()
@@ -32,6 +33,8 @@ void MainScene::render()
 	ball->render();
 	paddleLeft->render();
 	paddleRight->render();
+
+	collectibleSpawner->render();
 
 	SDL_RenderPresent(renderer);
 }
@@ -50,10 +53,14 @@ void MainScene::init()
 	paddleRight = std::make_shared<Paddle>();
 
 	collisionDetector = std::make_shared<CollisionDetector>();
+	collectibleSpawner = std::make_shared<CollectibleSpawner>();
+	collectibleSpawner->setPosition({1280 / 2, 720 / 2});
 
 	collisionDetector->addPaddles(paddleLeft, paddleRight);
 	collisionDetector->setBallRef(ball);
 	collisionDetector->addPaddleHitListener(ball);
+
+	collectibleSpawner->addCollectibleSpawnListener(collisionDetector);
 
 	paddleLeft->setPosition({50, 400});
 	paddleRight->setPosition({1230, 400});

@@ -1,11 +1,7 @@
 #pragma once
-#include "entities/Object.h"
-#include <SDL3/SDL.h>
-#include <memory>
-#include <optional>
-#include <vector>
+#include "CollisionDecorator.h"
 
-class PaddleCollisionDecorator
+class PaddleCollisionDecorator : public CollisionDecorator
 {
   public:
 	void addPaddles(std::weak_ptr<Object> paddleLeft, std::weak_ptr<Object> paddleRight);
@@ -13,9 +9,6 @@ class PaddleCollisionDecorator
 	std::optional<SDL_FRect> resolvePaddleCollisions(const SDL_FRect& ballCollider);
 
   private:
-	bool checkForPaddleCollision(const SDL_FRect& ballCollider, std::weak_ptr<Object> paddle);
-	bool checkCircleInsideBox(const SDL_FRect& ball, const SDL_FRect& rect);
-
 	std::weak_ptr<Object> paddleLeft;
 	std::weak_ptr<Object> paddleRight;
 

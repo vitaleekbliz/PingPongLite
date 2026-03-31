@@ -1,4 +1,5 @@
 #pragma once
+#include "components/CollectiblesSpawner/CollectibleSpawner.h"
 #include "components/CollisionDetector/CollisionDetector.h"
 #include "core/subsystems/AudioHandler.h"
 #include "core/subsystems/EffectHandler.h"
@@ -31,4 +32,5 @@ class MainScene : public Scene
 	std::shared_ptr<Paddle> paddleRight;
 
 	std::shared_ptr<CollisionDetector> collisionDetector;
+	std::shared_ptr<CollectibleSpawner> collectibleSpawner;
 };

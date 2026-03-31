@@ -8,7 +8,10 @@ enum class TEXTURE : char
 	BOARD,
 	COMPUTER,
 	PLAYER,
-	SCORE_BAR
+	SCORE_BAR,
+	STAR_BLUE,
+	STAR_RED,
+	POTION
 };
 
 class TextureHandler
@@ -35,6 +38,9 @@ class TextureHandler
 	SDL_Texture* computer = NULL;
 	SDL_Texture* player = NULL;
 	SDL_Texture* scoreBar = NULL;
+	SDL_Texture* potion = NULL;
+	SDL_Texture* starBlue = NULL;
+	SDL_Texture* starRed = NULL;
 
 	std::string audioAssetFolder = "assets\\arts\\";
 };

@@ -152,6 +152,9 @@
     <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp" />
     <ClCompile Include="source\entities\Board\Board.cpp" />
     <ClCompile Include="source\entities\Collectibles\Collectible.cpp" />
+    <ClCompile Include="source\entities\Collectibles\subclasses\BlueStar.cpp" />
+    <ClCompile Include="source\entities\Collectibles\subclasses\Potion.cpp" />
+    <ClCompile Include="source\entities\Collectibles\subclasses\RedStar.cpp" />
     <ClCompile Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.cpp" />
     <ClCompile Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
@@ -163,7 +166,12 @@
     <ClCompile Include="source\entities\Score\components\TimeDecorator.cpp" />
     <ClCompile Include="source\entities\Score\ScoreBar.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\scenes\components\CollectiblesSpawner\CollectibleSpawner.cpp" />
+    <ClCompile Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedPublisher.cpp" />
+    <ClCompile Include="source\scenes\components\interfaces\CollectibleSpawnObserver\CollectibleSpawnedPublisher.cpp" />
     <ClCompile Include="source\scenes\components\CollisionDetector\CollisionDetector.cpp" />
+    <ClCompile Include="source\scenes\components\CollisionDetector\Decorators\CollectiblesCollisionDecorator.cpp" />
+    <ClCompile Include="source\scenes\components\CollisionDetector\Decorators\CollisionDecorator.cpp" />
     <ClCompile Include="source\scenes\components\CollisionDetector\Decorators\PaddleCollisionDecorator.cpp" />
     <ClCompile Include="source\scenes\components\CollisionDetector\PaddleHItObserver\PaddleHitPublisher.cpp" />
     <ClCompile Include="source\scenes\MainScene.cpp" />
@@ -180,6 +188,9 @@
     <ClInclude Include="source\entities\Ball\components\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board\Board.h" />
     <ClInclude Include="source\entities\Collectibles\Collectible.h" />
+    <ClInclude Include="source\entities\Collectibles\subclasses\BlueStar.h" />
+    <ClInclude Include="source\entities\Collectibles\subclasses\Potion.h" />
+    <ClInclude Include="source\entities\Collectibles\subclasses\RedStar.h" />
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.h" />
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundarySubscriber.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.h" />
@@ -192,7 +203,14 @@
     <ClInclude Include="source\entities\Score\components\ScoreDecorator.h" />
     <ClInclude Include="source\entities\Score\components\TimeDecorator.h" />
     <ClInclude Include="source\entities\Score\ScoreBar.h" />
+    <ClInclude Include="source\scenes\components\CollectiblesSpawner\CollectibleSpawner.h" />
+    <ClInclude Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedPublisher.h" />
+    <ClInclude Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedSubscriber.h" />
+    <ClInclude Include="source\scenes\components\interfaces\CollectibleSpawnObserver\CollectibleSpawnedPublisher.h" />
+    <ClInclude Include="source\scenes\components\interfaces\CollectibleSpawnObserver\CollectibleSpawnSubscriber.h" />
     <ClInclude Include="source\scenes\components\CollisionDetector\CollisionDetector.h" />
+    <ClInclude Include="source\scenes\components\CollisionDetector\Decorators\CollectiblesCollisionDecorator.h" />
+    <ClInclude Include="source\scenes\components\CollisionDetector\Decorators\CollisionDecorator.h" />
     <ClInclude Include="source\scenes\components\CollisionDetector\Decorators\PaddleCollisionDecorator.h" />
     <ClInclude Include="source\scenes\components\CollisionDetector\PaddleHItObserver\PaddleHitPublisher.h" />
     <ClInclude Include="source\scenes\components\CollisionDetector\PaddleHItObserver\PaddleHitSubscriber.h" />
