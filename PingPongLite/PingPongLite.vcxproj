@@ -73,10 +73,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(SolutionDir)\dep\SDL3_ttf-3.2.2\include;$(SolutionDir)\dep\SDL3_mixer-3.2.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3_ttf-3.2.2\lib\x64;$(SolutionDir)\dep\SDL3_mixer-3.2.0\lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\</IntDir>
+    <TargetName>$(ProjectName)DEBUG</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)\dep\SDL3_image-3.4.0\include;$(SolutionDir)\dep\SDL3-3.4.0\include;$(ProjectDir)\source;$(SolutionDir)\dep\SDL3_ttf-3.2.2\include;$(SolutionDir)\dep\SDL3_mixer-3.2.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\dep\SDL3_image-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3-3.4.0\lib\x64;$(SolutionDir)\dep\SDL3_ttf-3.2.2\lib\x64;$(SolutionDir)\dep\SDL3_mixer-3.2.0\lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,6 +151,7 @@
     <ClCompile Include="source\entities\Ball\Ball.cpp" />
     <ClCompile Include="source\entities\Ball\components\BallMovementDecorator.cpp" />
     <ClCompile Include="source\entities\Board\Board.cpp" />
+    <ClCompile Include="source\entities\Collectibles\Collectible.cpp" />
     <ClCompile Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.cpp" />
     <ClCompile Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.cpp" />
     <ClCompile Include="source\entities\Object.cpp" />
@@ -173,6 +179,7 @@
     <ClInclude Include="source\entities\Ball\Ball.h" />
     <ClInclude Include="source\entities\Ball\components\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board\Board.h" />
+    <ClInclude Include="source\entities\Collectibles\Collectible.h" />
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.h" />
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundarySubscriber.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.h" />

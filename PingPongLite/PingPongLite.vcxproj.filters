@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Source Files\source">
       <UniqueIdentifier>{b20d15d2-3d26-4bda-9946-47bdc7e8218f}</UniqueIdentifier>
     </Filter>
@@ -130,6 +126,24 @@
     <Filter Include="Source Files\source\scenes\components">
       <UniqueIdentifier>{272bb460-7275-4178-a66e-8e04b3c8466b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scenes\components\CollisionDetector">
+      <UniqueIdentifier>{8bc6fcd7-04b8-4332-b93f-1ba9264a9b12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scenes\components\CollisionDetector\Decorators">
+      <UniqueIdentifier>{e5d60714-8337-4b75-899f-14e91eda06fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scenes\components\CollisionDetector\PaddleHitObserver">
+      <UniqueIdentifier>{32669ee7-2185-48d7-a5c1-5fa4ad7cbeb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes\components\CollisionDetector">
+      <UniqueIdentifier>{fbcbab1e-d927-43da-8e08-59f39e977d6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes\components\CollisionDetector\PaddleHitObserver">
+      <UniqueIdentifier>{33799ed4-761c-437d-b575-94c66e1c6ce1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source\scenes\components\CollisionDetector\Decorators">
+      <UniqueIdentifier>{3c95b8ce-f9fd-4e73-b05b-9bb96b75db81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -209,8 +223,17 @@
     <ClCompile Include="source\components\effects\EffectComponent.cpp">
       <Filter>Source Files\source\components\effects</Filter>
     </ClCompile>
-    <ClCompile Include="source\scenes\components\CollisionDetection.cpp">
-      <Filter>Source Files\source\scenes\components</Filter>
+    <ClCompile Include="source\scenes\components\CollisionDetector\CollisionDetector.cpp">
+      <Filter>Source Files\source\scenes\components\CollisionDetector</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\CollisionDetector\Decorators\PaddleCollisionDecorator.cpp">
+      <Filter>Source Files\source\scenes\components\CollisionDetector\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="source\scenes\components\CollisionDetector\PaddleHItObserver\PaddleHitPublisher.cpp">
+      <Filter>Source Files\source\scenes\components\CollisionDetector\PaddleHitObserver</Filter>
+    </ClCompile>
+    <ClCompile Include="source\entities\Collectibles\Collectible.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -283,8 +306,20 @@
     <ClInclude Include="source\components\effects\EffectComponent.h">
       <Filter>Header Files\components\effects</Filter>
     </ClInclude>
-    <ClInclude Include="source\scenes\components\CollisionDetection.h">
-      <Filter>Header Files\scenes\components</Filter>
+    <ClInclude Include="source\scenes\components\CollisionDetector\CollisionDetector.h">
+      <Filter>Header Files\scenes\components\CollisionDetector</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\CollisionDetector\PaddleHItObserver\PaddleHitPublisher.h">
+      <Filter>Header Files\scenes\components\CollisionDetector\PaddleHitObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\CollisionDetector\PaddleHItObserver\PaddleHitSubscriber.h">
+      <Filter>Header Files\scenes\components\CollisionDetector\PaddleHitObserver</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\components\CollisionDetector\Decorators\PaddleCollisionDecorator.h">
+      <Filter>Header Files\scenes\components\CollisionDetector\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\Collectibles\Collectible.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

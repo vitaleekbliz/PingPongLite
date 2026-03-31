@@ -1,9 +1,5 @@
 .vs
-/PingPongLite/x64/
-/x64/Debug/PingPongLite.exe
-/x64/Debug/PingPongLite.pdb
-
-/x64/Release/PingPongLite.pdb
+bin/intermediates/
 
 file_structure.txt
 getFileStructure.bat
