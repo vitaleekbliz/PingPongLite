@@ -4,6 +4,8 @@
 #include "entities/Collectibles/subclasses/Potion.h"
 #include "entities/Collectibles/subclasses/RedStar.h"
 #include "entities/Object.h"
+#include "entities/interfaces/ChangeScoreObserver/ChangeScorePublisher.h"
+#include "entities/interfaces/StrategyObserver/StrategyPublisher.h"
 #include "scenes/components/interfaces/CollectiblePickedObserver/CollectiblePickedSubscriber.h"
 #include "scenes/components/interfaces/CollectibleSpawnObserver/CollectibleSpawnedPublisher.h"
 #include <map>
@@ -11,7 +13,11 @@
 #include <random>
 #include <vector>
 
-class CollectibleSpawner : public Object, public CollectibleSpawnedPublisher, public CollectiblePickedSubscriber
+class CollectibleSpawner : public Object,
+						   public CollectibleSpawnedPublisher,
+						   public CollectiblePickedSubscriber,
+						   public ChangeScorePublisher,
+						   public StrategyPublisher
 {
   public:
 	virtual void render() override;
@@ -21,13 +27,17 @@ class CollectibleSpawner : public Object, public CollectibleSpawnedPublisher, pu
 
   private:
 	virtual void notifyCollectibleSpawned(std::weak_ptr<Object> collectible) override;
+	virtual void notifyAddScore(int value, bool computer) override;
+	virtual void notifyStrategyChange() override;
+
+	void activateCollectible(COLLECTIBLE type);
 
 	void spawnNewCollectible();
 	COLLECTIBLE getRandomCollectable();
 
 	std::vector<std::shared_ptr<Collectible>> collectibles;
 
-	const float cooldown = 0.01;
+	const float cooldown = 10.f;
 	float timer = cooldown;
 
 	const float spawnOffsetX = 300.f;

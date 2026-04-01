@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\entities\interfaces\ChangeScoreObserver\ChangeScorePublisher.cpp" />
     <ClCompile Include="source\components\effects\EffectComponent.cpp" />
     <ClCompile Include="source\core\SDLHandler.cpp" />
     <ClCompile Include="source\core\subsystems\EffectHandler.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="source\scenes\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\entities\interfaces\ChangeScoreObserver\ChangeScorePublisher.h" />
     <ClInclude Include="source\components\effects\EffectComponent.h" />
     <ClInclude Include="source\core\SDLHandler.h" />
     <ClInclude Include="source\core\subsystems\EffectHandler.h" />
@@ -194,6 +196,7 @@
     <ClInclude Include="source\entities\Collectibles\subclasses\RedStar.h" />
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundaryPublisher.h" />
     <ClInclude Include="source\entities\interfaces\BoundaryObserver\BoundarySubscriber.h" />
+    <ClInclude Include="source\entities\interfaces\ChangeScoreObserver\ChangeScoreSubscriber.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategyPublisher.h" />
     <ClInclude Include="source\entities\interfaces\StrategyObserver\StrategySubscriber.h" />
     <ClInclude Include="source\entities\Object.h" />

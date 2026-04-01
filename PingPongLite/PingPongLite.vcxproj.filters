@@ -277,6 +277,9 @@
     <ClCompile Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedPublisher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\entities\interfaces\ChangeScoreObserver\ChangeScorePublisher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\SDLHandler.h">
@@ -394,6 +397,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\Collectibles\enum\CollectibleType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\ChangeScoreObserver\ChangeScorePublisher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\entities\interfaces\ChangeScoreObserver\ChangeScoreSubscriber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -59,17 +59,19 @@ void MainScene::init()
 	collisionDetector->addPaddles(paddleLeft, paddleRight);
 	collisionDetector->setBallRef(ball);
 	collisionDetector->addPaddleHitListener(ball);
+	collisionDetector->addCollectiblePickedListener(collectibleSpawner);
 
 	collectibleSpawner->addCollectibleSpawnListener(collisionDetector);
-	collisionDetector->addCollectiblePickedListener(collectibleSpawner);
+	collectibleSpawner->addChangeScoreListener(scoreBar);
+	collectibleSpawner->addStrategyListener(paddleLeft);
+	collectibleSpawner->addStrategyListener(paddleRight);
+	collectibleSpawner->addStrategyListener(scoreBar);
 
 	paddleLeft->setPosition({50, 400});
 	paddleRight->setPosition({1230, 400});
 
 	paddleLeft->setOriginalStrategy(PADDLE_STRATEGY::COMPUTER, ball);
 	paddleRight->setOriginalStrategy(PADDLE_STRATEGY::PLAYER, ball);
-
-	paddleLeft->addStrategyListener(scoreBar);
 
 	board->setReference(ball);
 	board->addBoundaryListener(scoreBar);

@@ -2,33 +2,33 @@
 
 ScoreBar::ScoreBar()
 {
-	leftScore = std::make_shared<ScoreDecorator>();
-	rightScore = std::make_shared<ScoreDecorator>();
+	computerScore = std::make_shared<ScoreDecorator>();
+	playerScore = std::make_shared<ScoreDecorator>();
 
-	leftScore->setPosition({280, 20});
-	rightScore->setPosition({1280 - 280, 20});
+	computerScore->setPosition({280, 20});
+	playerScore->setPosition({1280 - 280, 20});
 
-	leftScore->color = SDL_Color(82, 124, 215);
-	rightScore->color = SDL_Color(215, 121, 82);
+	computerScore->color = SDL_Color(82, 124, 215);
+	playerScore->color = SDL_Color(215, 121, 82);
 
-	leftScore->tag = "computer";
-	rightScore->tag = "player";
+	computerScore->isPlayerScore = false;
+	playerScore->isPlayerScore = true;
 
 	time.setPosition({1280 / 2, 20});
 }
 
 void ScoreBar::update()
 {
-	leftScore->update();
-	rightScore->update();
+	computerScore->update();
+	playerScore->update();
 
 	time.update();
 }
 
 void ScoreBar::render()
 {
-	leftScore->render();
-	rightScore->render();
+	computerScore->render();
+	playerScore->render();
 
 	time.render();
 }
@@ -38,19 +38,24 @@ void ScoreBar::onBoundaryEvent(BOUNDARY event)
 	switch (event)
 	{
 	case BOUNDARY::LEFT:
-		rightScore->increment();
+		(scoreSwapped ? computerScore : playerScore)->add(1);
 		break;
 	case BOUNDARY::RIGHT:
-		leftScore->increment();
+		(scoreSwapped ? playerScore : computerScore)->add(1);
 		break;
 	}
 }
 
 void ScoreBar::onStrategyChange()
 {
-	SDL_FPoint temp = rightScore->getPosition();
-	rightScore->setPosition(leftScore->getPosition());
-	leftScore->setPosition(temp);
+	SDL_FPoint temp = playerScore->getPosition();
+	playerScore->setPosition(computerScore->getPosition());
+	computerScore->setPosition(temp);
 
-	std::swap(rightScore, leftScore);
+	scoreSwapped = !scoreSwapped;
+}
+
+void ScoreBar::onAddScore(int value, bool computer)
+{
+	(computer ? computerScore : playerScore)->add(value);
 }

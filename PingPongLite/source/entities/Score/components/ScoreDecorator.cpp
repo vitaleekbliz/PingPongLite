@@ -30,38 +30,38 @@ void ScoreDecorator::upgradeEffectPosition()
 {
 	SDL_FPoint pos = getPosition();
 
-	pos.x = position.x - effectOffset;
-	pos.y = position.y - effectOffset / 5;
+	pos.x = position.x - effectOffsetX;
+	pos.y = position.y + effectOffsetY;
 	leftEffect->setPosition(pos);
 
-	pos.x = position.x + effectOffset;
-	pos.y = position.y - effectOffset / 5;
+	pos.x = position.x + effectOffsetX;
+	pos.y = position.y + effectOffsetY;
 	rightEffect->setPosition(pos);
 }
 
-void ScoreDecorator::increment()
+void ScoreDecorator::add(int value)
 {
-	score++;
-	if (tag == "player")
+	score += value;
+	if (isPlayerScore)
 	{
 		AudioHandler::get().playAudio(SOUNDS::WIN);
 	}
-	else if (tag == "computer")
+	else
 	{
 		AudioHandler::get().playAudio(SOUNDS::LOSE);
 	}
 
 	// if (score % 5 == 0)
 	{
-		leftEffect->start(tag == "player", (float)std::sqrt(score));
-		rightEffect->start(tag == "player", (float)std::sqrt(score));
+		leftEffect->start(isPlayerScore, (float)std::sqrt(score));
+		rightEffect->start(isPlayerScore, (float)std::sqrt(score));
 	}
 }
 
 void ScoreDecorator::upgradeColor()
 {
-	leftEffect->upgradeColor(tag == "player");
-	rightEffect->upgradeColor(tag == "player");
+	leftEffect->upgradeColor(isPlayerScore);
+	rightEffect->upgradeColor(isPlayerScore);
 }
 
 void ScoreDecorator::drawSideBar(bool left)

@@ -14,22 +14,23 @@ class ScoreDecorator : public Object
 	virtual void update() override;
 	virtual void render() override;
 
-	void increment();
+	void add(int value);
 
 	void upgradeColor();
 
 	int score = 0;
 	SDL_Color color = SDL_Color(255, 0, 0);
-	std::string tag = "None";
+	bool isPlayerScore = false;
 
   private:
 	void upgradeEffectPosition();
 
 	void drawSideBar(bool right);
 
-	SDL_FRect sideBarDestination = {170, 20, 245, 40};
+	SDL_FRect sideBarDestination = {190, 20, 205, 40};
 
-	const float effectOffset = 30.f;
+	const float effectOffsetX = 40.f;
+	const float effectOffsetY = -4.f;
 	float effectDuration = 10.f;
 	std::shared_ptr<EffectComponent> leftEffect, rightEffect;
 };
