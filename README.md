@@ -1,15 +1,5 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
-
-⚠️⚠️⚠️**Disclaimer**: *PROJECT IS IN ACTIVE DEVELOPMENT, SOME README PROPS CAN BE OUTDATED*.⚠️⚠️⚠️  
-  * **Trello**: https://trello.com/b/YYHZVy0R/pingpong  
-  * **Currently working on** :
-    * [50%]centralized collision system
-    * Collectibles
-    * Animations
-  * **Upcoming systems**:
-    * MainMenu
-
 ## 🛠️ Tech Stack
 
 Language: C++20  
@@ -36,58 +26,11 @@ Compiler: C/C++ Optimizing Compiler Version 19.50.35727
 ### ⚙️ Debug/Development
 
 1. Clone repositry and open solution in VS
-2. If encountered any asset loading or dll errors - copy $(SolutionDir)/app/{latest version}/ to x64/Debug/
+2. If encountered any asset loading or dll errors - copy $(SolutionDir)/app/{latest version}/ to bin/$(Platform)/
 
 ### 🛠️ Linking dependencies
 
 Place build exe file into $(SolutionDir)/app/{latest version} folder and run the program
-
-## 😱 Technical Highlights
-1. ✅ **Animations**  
-
-2. ✅ **External libraries**:  
-
-    * ✅ *SDL3_mixer* in AudioHandler   
-    * ✅ *SDL3_ttf* in FontHandler   
-    * ✅ *SDL3_image* in TextureHandler   
-
-3. ✅ **Design Patterns**:  
-* *Abstract Factory* :  
-    * ❌ MainScene is a mess right now after testing stuff, need to clean up using factory  
-
-* *Strategy* :  
-    * ✅ Computer/Player follow same mechanic  
-($(ProjectDir)source\entities\Paddle{.h, .cpp}  
-($(ProjectDir)source\entities\PaddleComponents\..)  
-
-* *Singleton* :  
-  * ✅SDLHandler  
-($(ProjectDir)/source/core/SDLHandler{.h/.cpp})  
-  * ✅TextureHandler  
-  * ✅AudioHandler  
-  * ✅TextHandler  
-  * ✅EffectHandler  
-($(ProjectDir)/source/core/subsystems/)  
-
-* *Observer* :  
-  * ✅ BoundaryObserver - handles Ball Events : Wall/Paddle hit, Win/Lose goal  
-    * ($(ProjectDir)/source/entites/interfaces/BoundaryObserver)  
-  * ✅ StrategyObserver  
-    * ($(ProjectDir)/source/entites/interfaces/StrategyObserver/)
-  * And others
-
-* *Decorator* :  
-  * [✅] ScoreDecorator  
-  * [✅] TimeDecorator  
-    * ($(ProjectDir)source\entities\ScoreBar{.h, .cpp}  
-    * ($(ProjectDir)source\entities\ScoreComponents\..)  
-  * [✅] Ball movement  
-    * ($(ProjectDir)source\entities\Ball{.h, .cpp}  
-    * ($(ProjectDir)source\entities\BallComponents\..)  
-
-* *State Machine* :  
-    * ✅EffectComponent  
-($(ProjectDir)/source/components/effects/)  
 
 ## Architecture
 ``` bash
@@ -122,21 +65,38 @@ source
 |   |   |   Ball.h
 |   |   |   
 |   |   \---components
-|   |           BallCollisionDecorator.cpp
-|   |           BallCollisionDecorator.h
 |   |           BallMovementDecorator.cpp
 |   |           BallMovementDecorator.h
 |   |           
 |   +---Board
-|   |   |   Board.cpp
-|   |   |   Board.h
+|   |       Board.cpp
+|   |       Board.h
+|   |       
+|   +---Collectibles
+|   |   |   Collectible.cpp
+|   |   |   Collectible.h
 |   |   |   
-|   |   \---components
+|   |   +---enum
+|   |   |       CollectibleType.h
+|   |   |       
+|   |   \---subclasses
+|   |           BlueStar.cpp
+|   |           BlueStar.h
+|   |           Potion.cpp
+|   |           Potion.h
+|   |           RedStar.cpp
+|   |           RedStar.h
+|   |           
 |   +---interfaces
 |   |   +---BoundaryObserver
 |   |   |       BoundaryPublisher.cpp
 |   |   |       BoundaryPublisher.h
 |   |   |       BoundarySubscriber.h
+|   |   |       
+|   |   +---ChangeScoreObserver
+|   |   |       ChangeScorePublisher.cpp
+|   |   |       ChangeScorePublisher.h
+|   |   |       ChangeScoreSubscriber.h
 |   |   |       
 |   |   \---StrategyObserver
 |   |           StrategyPublisher.cpp
@@ -167,31 +127,41 @@ source
 |               TimeDecorator.h
 |               
 \---scenes
-        MainScene.cpp
-        MainScene.h
-        Scene.cpp
-        Scene.h
+    |   MainScene.cpp
+    |   MainScene.h
+    |   Scene.cpp
+    |   Scene.h
+    |   
+    \---components
+        +---CollectiblesSpawner
+        |       CollectibleSpawner.cpp
+        |       CollectibleSpawner.h
+        |       
+        +---CollisionDetector
+        |   |   CollisionDetector.cpp
+        |   |   CollisionDetector.h
+        |   |   
+        |   +---Decorators
+        |   |       CollectiblesCollisionDecorator.cpp
+        |   |       CollectiblesCollisionDecorator.h
+        |   |       CollisionDecorator.cpp
+        |   |       CollisionDecorator.h
+        |   |       PaddleCollisionDecorator.cpp
+        |   |       PaddleCollisionDecorator.h
+        |   |       
+        |   \---PaddleHItObserver
+        |           PaddleHitPublisher.cpp
+        |           PaddleHitPublisher.h
+        |           PaddleHitSubscriber.h
+        |           
+        \---interfaces
+            +---CollectiblePickedObserver
+            |       CollectiblePickedPublisher.cpp
+            |       CollectiblePickedPublisher.h
+            |       CollectiblePickedSubscriber.h
+            |       
+            \---CollectibleSpawnObserver
+                    CollectibleSpawnedPublisher.cpp
+                    CollectibleSpawnedPublisher.h
+                    CollectibleSpawnSubscriber.h
 ```
-
-
-## 🏆 Challenges
-
-### 🧩 Key Challenges & Solutions
-
-**Challenge: Eliminating Deterministic Physics Traps**  
-https://youtu.be/fDKUqmMbjVc
-* Problem: Deterministic Physics Traps  
-The ball would occasionally enter infinite horizontal or vertical loops due to perfect reflection math, stalling gameplay.
-* **Solution:** 
-  * Vertically : clamping velocity Y axes
-  * Horizontally : pushing ball away from paddle center
-
-**Challenge: Collision Overlap**  
-https://youtu.be/brq7M2zOXg4
-* Problem: Deterministic Physics Traps  
-If the ball didn't exit the paddle's collision volume in a single frame, the physics engine would re-trigger the bounce, causing the ball to jitter or become "glued" inside the paddle.
-* **Solution:** 
-    * Implemented a isReadyForCollision flag. This state-gate prevents the physics solver from processing a new hit until the ball has safely exited the current interaction zone  
-    * Also pushing ball out of bounds of paddle for editional safety
-
-## 🎮 Gameplay Features
