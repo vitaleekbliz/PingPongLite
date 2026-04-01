@@ -5,14 +5,15 @@ void CollectiblesCollisionDecorator::addCollectable(std::weak_ptr<Object> item)
 	collectibles.push_back(item);
 }
 
-std::optional<std::weak_ptr<Object>> CollectiblesCollisionDecorator::resolveCollisions(const SDL_FRect& ballCollider)
+std::vector<std::weak_ptr<Object>> CollectiblesCollisionDecorator::resolveCollisions(const SDL_FRect& ballCollider)
 {
+	std::vector<std::weak_ptr<Object>> pickedCollectibles;
 	for (auto it = collectibles.begin(); it != collectibles.end();)
 	{
 		if (auto shared = it->lock())
 		{
 			if (checkForObjectCollision(ballCollider, shared))
-				return std::make_optional<std::weak_ptr<Object>>(shared);
+				pickedCollectibles.push_back(shared);
 			it++;
 		}
 		else
@@ -21,5 +22,5 @@ std::optional<std::weak_ptr<Object>> CollectiblesCollisionDecorator::resolveColl
 		}
 	}
 
-	return {};
+	return pickedCollectibles;
 }

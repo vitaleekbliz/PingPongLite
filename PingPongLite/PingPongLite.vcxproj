@@ -188,6 +188,7 @@
     <ClInclude Include="source\entities\Ball\components\BallMovementDecorator.h" />
     <ClInclude Include="source\entities\Board\Board.h" />
     <ClInclude Include="source\entities\Collectibles\Collectible.h" />
+    <ClInclude Include="source\entities\Collectibles\enum\CollectibleType.h" />
     <ClInclude Include="source\entities\Collectibles\subclasses\BlueStar.h" />
     <ClInclude Include="source\entities\Collectibles\subclasses\Potion.h" />
     <ClInclude Include="source\entities\Collectibles\subclasses\RedStar.h" />

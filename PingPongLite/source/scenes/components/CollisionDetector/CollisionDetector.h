@@ -2,9 +2,12 @@
 #include "Decorators/CollectiblesCollisionDecorator.h"
 #include "Decorators/PaddleCollisionDecorator.h"
 #include "PaddleHitObserver/PaddleHitPublisher.h"
+#include "scenes/components/interfaces/CollectiblePickedObserver/CollectiblePickedPublisher.h"
 #include "scenes/components/interfaces/CollectibleSpawnObserver/CollectibleSpawnSubscriber.h"
 
-class CollisionDetector : public PaddleHitPublisher, public CollectibleSpawnSubscriber
+class CollisionDetector : public PaddleHitPublisher,
+						  public CollectibleSpawnSubscriber,
+						  public CollectiblePickedPublisher
 {
   public:
 	CollisionDetector();
@@ -14,6 +17,7 @@ class CollisionDetector : public PaddleHitPublisher, public CollectibleSpawnSubs
 	void addPaddles(std::weak_ptr<Object> paddleLeft, std::weak_ptr<Object> paddleRight);
 
 	virtual void onCollectibleSpawned(std::weak_ptr<Object> collectable) override;
+	virtual void notifyCollectiblePicked(std::weak_ptr<Object> collectible) override;
 
   private:
 	virtual void notifyPaddleHit(const SDL_FRect& paddleCollider) override;

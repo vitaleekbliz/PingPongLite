@@ -20,12 +20,10 @@ void CollisionDetector::update()
 
 		// 2. Collectibles collisions
 
-		std::optional<std::weak_ptr<Object>> touchingCollectible =
-			collectiblesCollisions->resolveCollisions(ballCollider);
-		if (touchingCollectible.has_value())
+		std::vector<std::weak_ptr<Object>> pickedCollectibles = collectiblesCollisions->resolveCollisions(ballCollider);
+		for (auto it = pickedCollectibles.begin(); it != pickedCollectibles.end(); it++)
 		{
-			// TODO notify collectible is touched by the ball
-			printf("TOUCHING\n");
+			notifyCollectiblePicked(*it);
 		}
 	}
 }
@@ -43,6 +41,22 @@ void CollisionDetector::addPaddles(std::weak_ptr<Object> paddleLeft, std::weak_p
 void CollisionDetector::onCollectibleSpawned(std::weak_ptr<Object> collectable)
 {
 	collectiblesCollisions->addCollectable(collectable);
+}
+
+void CollisionDetector::notifyCollectiblePicked(std::weak_ptr<Object> collectible)
+{
+	for (auto it = collectiblePickedSubscribers.begin(); it != collectiblePickedSubscribers.end();)
+	{
+		if (auto shared = it->lock())
+		{
+			shared->onCollectiblePicked(collectible);
+			it++;
+		}
+		else
+		{
+			it = collectiblePickedSubscribers.erase(it);
+		}
+	}
 }
 
 void CollisionDetector::notifyPaddleHit(const SDL_FRect& paddleCollider)

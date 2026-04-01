@@ -22,6 +22,7 @@ void FontHandler::drawText(FONT id, std::string text, SDL_FPoint* position, int 
 	std::string basePath = SDL_GetBasePath();
 	std::string assetPath = basePath + fontAssetFolder;
 	std::string fullPath = assetPath + getFontName(id);
+
 	TTF_Font* font = TTF_OpenFont(fullPath.c_str(), size);
 
 	if (!font)

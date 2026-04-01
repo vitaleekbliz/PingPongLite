@@ -61,6 +61,7 @@ void MainScene::init()
 	collisionDetector->addPaddleHitListener(ball);
 
 	collectibleSpawner->addCollectibleSpawnListener(collisionDetector);
+	collisionDetector->addCollectiblePickedListener(collectibleSpawner);
 
 	paddleLeft->setPosition({50, 400});
 	paddleRight->setPosition({1230, 400});

@@ -393,5 +393,8 @@
     <ClInclude Include="source\scenes\components\interfaces\CollectiblePickedObserver\CollectiblePickedSubscriber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\entities\Collectibles\enum\CollectibleType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

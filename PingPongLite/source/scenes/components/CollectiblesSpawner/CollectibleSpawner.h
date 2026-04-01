@@ -4,17 +4,20 @@
 #include "entities/Collectibles/subclasses/Potion.h"
 #include "entities/Collectibles/subclasses/RedStar.h"
 #include "entities/Object.h"
+#include "scenes/components/interfaces/CollectiblePickedObserver/CollectiblePickedSubscriber.h"
 #include "scenes/components/interfaces/CollectibleSpawnObserver/CollectibleSpawnedPublisher.h"
 #include <map>
 #include <memory>
 #include <random>
 #include <vector>
 
-class CollectibleSpawner : public Object, public CollectibleSpawnedPublisher
+class CollectibleSpawner : public Object, public CollectibleSpawnedPublisher, public CollectiblePickedSubscriber
 {
   public:
 	virtual void render() override;
 	virtual void update() override;
+
+	virtual void onCollectiblePicked(std::weak_ptr<Object> collectible) override;
 
   private:
 	virtual void notifyCollectibleSpawned(std::weak_ptr<Object> collectible) override;

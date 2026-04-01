@@ -19,6 +19,24 @@ void CollectibleSpawner::update()
 	}
 }
 
+void CollectibleSpawner::onCollectiblePicked(std::weak_ptr<Object> collectible)
+{
+	auto pickedObject = collectible.lock();
+	if (!pickedObject)
+	{
+		SDL_Log("Colletible spawner received invalid picked collectible!\n");
+		return;
+	}
+	for (auto it = collectibles.begin(); it != collectibles.end(); it++)
+	{
+		if (*it == pickedObject)
+		{
+			collectibles.erase(it);
+			break;
+		}
+	}
+}
+
 void CollectibleSpawner::notifyCollectibleSpawned(std::weak_ptr<Object> collectible)
 {
 	for (auto it = collectibleSpawnSubscribers.begin(); it != collectibleSpawnSubscribers.end();)

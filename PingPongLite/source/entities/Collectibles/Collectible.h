@@ -1,13 +1,7 @@
 #pragma once
 #include "core/subsystems/TextureHandler.h"
 #include "entities/Object.h"
-
-enum class COLLECTIBLE : char
-{
-	BLUE_STAR,
-	RED_STAR,
-	POTION
-};
+#include "enum/CollectibleType.h"
 
 class Collectible : public Object
 {

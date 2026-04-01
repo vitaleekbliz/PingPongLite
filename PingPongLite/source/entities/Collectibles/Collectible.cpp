@@ -2,7 +2,7 @@
 
 Collectible::Collectible()
 {
-	setSize({32, 32});
+	setSize({48, 48});
 }
 
 COLLECTIBLE Collectible::getType() const
