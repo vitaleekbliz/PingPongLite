@@ -24,7 +24,7 @@ void CollectibleSpawner::onCollectiblePicked(std::weak_ptr<Object> collectible)
 	auto pickedObject = collectible.lock();
 	if (!pickedObject)
 	{
-		SDL_Log("Colletible spawner received invalid picked collectible!\n");
+		SDL_Log("Collectible spawner received invalid picked collectible!\n");
 		return;
 	}
 	auto it = std::find(collectibles.begin(), collectibles.end(), pickedObject);

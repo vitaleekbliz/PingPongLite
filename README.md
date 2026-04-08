@@ -1,5 +1,16 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
+Pong clone using custom game engine. Known issues  
+* FontHandler is currently openening font file every time it is called, need to implement caching system for future development
+* Most files are located in own folders that makes restructuring, refactoring and reading code harder  
+* tryed to avoid hard coded values using structs inside classes (source/scenes/IntroScene.h), although some values are hardcoded (which is fine for this scale)  
+* Can't load serveral scenes at the same time (will cause critical subsystems memory)  
+Features I am proud of :  
+* Observer make dependencies between objects much more managable.  
+* Inheritance and polymorphism  
+* Scene loading and cleaning its seperate subsystems like Font/Audio/Texture if needed  
+* External collision system
+
 ## 🛠️ Tech Stack
 
 Language: C++20  
@@ -20,13 +31,13 @@ Compiler: C/C++ Optimizing Compiler Version 19.50.35727
 
 ### 🚀 Launch
 
-1.Go to app/{version}/  
+1.Go to builds/{version}/  
 2.Run program and enjoy
 
 ### ⚙️ Debug/Development
 
 1. Clone repositry and open solution in VS
-2. If encountered any asset loading or dll errors - copy $(SolutionDir)/app/{latest version}/ to bin/$(Platform)/
+2. If encountered any asset loading or dll errors - copy $(SolutionDir)/builds/{latest version}/. to bin/$(Configuration)/.
 
 ### 🛠️ Linking dependencies
 
@@ -35,6 +46,7 @@ Place build exe file into $(SolutionDir)/app/{latest version} folder and run the
 ## Architecture
 ``` bash
 source
+|   Game.h
 |   main.cpp
 |   
 +---components
@@ -69,9 +81,10 @@ source
 |   |           BallMovementDecorator.h
 |   |           
 |   +---Board
-|   |       Board.cpp
-|   |       Board.h
-|   |       
+|   |   |   Board.cpp
+|   |   |   Board.h
+|   |   |   
+|   |   \---components
 |   +---Collectibles
 |   |   |   Collectible.cpp
 |   |   |   Collectible.h
@@ -127,6 +140,8 @@ source
 |               TimeDecorator.h
 |               
 \---scenes
+    |   IntroScene.cpp
+    |   IntroScene.h
     |   MainScene.cpp
     |   MainScene.h
     |   Scene.cpp

@@ -1,10 +1,5 @@
 #include "TextureHandler.h"
 
-TextureHandler::~TextureHandler()
-{
-	close();
-}
-
 TextureHandler& TextureHandler::get()
 {
 	static TextureHandler instance;

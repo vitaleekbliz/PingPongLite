@@ -1,10 +1,5 @@
 #include "EffectHandler.h"
 
-EffectHandler::~EffectHandler()
-{
-	close();
-}
-
 SDL_Texture* EffectHandler::getLoadedTexture(EFFECT effect)
 {
 	switch (effect)

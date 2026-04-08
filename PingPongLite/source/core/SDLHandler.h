@@ -6,6 +6,7 @@
 #include <SDL3_mixer/SDL_mixer.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <string>
+#include <windows.h>
 
 class SDLHandler
 {
@@ -15,10 +16,12 @@ class SDLHandler
 	static SDLHandler& get();
 
 	bool init();
-	bool handleEvents();
-	void handleTickRate();
 	void close();
 
+	void handleEvents();
+
+	void handleTickRate();
+	void resetTicks();
 	float getTick() const;
 
 	SDL_Renderer* getRenderer();
@@ -29,7 +32,7 @@ class SDLHandler
 
   private:
 	SDLHandler();
-	~SDLHandler();
+	~SDLHandler() = default;
 
 	Uint64 lastTick;
 	float deltaTime;

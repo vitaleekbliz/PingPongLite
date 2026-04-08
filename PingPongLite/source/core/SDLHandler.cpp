@@ -6,7 +6,7 @@ SDLHandler& SDLHandler::get()
 	return instance;
 }
 
-bool SDLHandler::handleEvents()
+void SDLHandler::handleEvents()
 {
 	// returns false if exit game
 	SDL_Event event;
@@ -16,13 +16,16 @@ bool SDLHandler::handleEvents()
 		{
 		case SDL_EVENT_QUIT:
 		case SDL_EVENT_WINDOW_CLOSE_REQUESTED:
-			return false;
+			exit(0);
 			break;
 		}
 	}
-	return true;
 }
 
+//************************************
+// Remember to reset ticks before starting the scene, otherwise first tick duration can be extremely immense
+// "SDLHandler::get().resetTicks()"
+//************************************
 void SDLHandler::handleTickRate()
 {
 	Uint64 nowTick = SDL_GetTicks();
@@ -37,6 +40,12 @@ float SDLHandler::getTick() const
 
 bool SDLHandler::init()
 {
+	// Close console if this is release mode
+#ifndef _DEBUG
+	HWND hwnd = GetConsoleWindow();
+	ShowWindow(hwnd, SW_HIDE);
+#endif
+
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 	{
 		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
@@ -97,11 +106,11 @@ MIX_Mixer* SDLHandler::getMixer()
 
 SDLHandler::SDLHandler()
 {
-	lastTick = SDL_GetTicks();
-	deltaTime = 0;
+	resetTicks();
 }
 
-SDLHandler::~SDLHandler()
+void SDLHandler::resetTicks()
 {
-	close();
+	lastTick = SDL_GetTicks();
+	deltaTime = 0;
 }

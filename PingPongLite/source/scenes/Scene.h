@@ -3,6 +3,9 @@ class Scene
 {
   public:
 	virtual ~Scene() = default;
+	virtual void run() {};
+
+  protected:
 	virtual void update() {};
 	virtual void render() {};
 
@@ -11,6 +14,5 @@ class Scene
 
 	bool isRunning() const;
 
-  protected:
 	bool isActive = true;
 };

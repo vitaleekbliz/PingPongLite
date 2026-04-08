@@ -18,13 +18,15 @@
 class MainScene : public Scene
 {
   public:
+	virtual void run() override;
+
+  private:
 	virtual void update() override;
 	virtual void render() override;
 
 	virtual void init() override;
 	virtual void close() override;
 
-  private:
 	std::shared_ptr<Board> board;
 	std::shared_ptr<Ball> ball;
 	std::shared_ptr<ScoreBar> scoreBar;

@@ -27,7 +27,7 @@ class EffectHandler
 
   private:
 	EffectHandler() = default;
-	~EffectHandler();
+	~EffectHandler() = default;
 
 	SDL_Texture* loadTexture(std::string fileName);
 	SDL_Texture* getLoadedTexture(EFFECT effect);

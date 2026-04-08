@@ -46,5 +46,5 @@ class CollectibleSpawner : public Object,
 	std::mt19937 generator{std::random_device{}()};
 
 	std::map<COLLECTIBLE, int> weights = {
-		{COLLECTIBLE::RED_STAR, 50}, {COLLECTIBLE::BLUE_STAR, 50}, {COLLECTIBLE::POTION, 10}};
+		{COLLECTIBLE::RED_STAR, 50}, {COLLECTIBLE::BLUE_STAR, 50}, {COLLECTIBLE::POTION, 30}};
 };

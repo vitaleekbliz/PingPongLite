@@ -9,6 +9,27 @@ void MainScene::close()
 	isActive = false;
 }
 
+void MainScene::run()
+{
+	init();
+
+	SDLHandler::get().resetTicks();
+
+	// its infinite scene no exits so far
+	while (isActive)
+	{
+		SDLHandler::get().handleTickRate();
+
+		SDLHandler::get().handleEvents();
+
+		update();
+
+		render();
+	}
+
+	close();
+}
+
 void MainScene::update()
 {
 	board->update();

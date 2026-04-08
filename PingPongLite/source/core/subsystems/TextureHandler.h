@@ -28,7 +28,7 @@ class TextureHandler
 
   private:
 	TextureHandler() = default;
-	~TextureHandler();
+	~TextureHandler() = default;
 
 	SDL_Texture* loadTexture(std::string fileName);
 	SDL_Texture* getLoadedTexture(TEXTURE texture);

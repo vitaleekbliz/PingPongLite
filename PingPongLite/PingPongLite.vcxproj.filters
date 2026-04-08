@@ -280,6 +280,9 @@
     <ClCompile Include="source\entities\interfaces\ChangeScoreObserver\ChangeScorePublisher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\scenes\IntroScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\SDLHandler.h">
@@ -403,6 +406,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\entities\interfaces\ChangeScoreObserver\ChangeScoreSubscriber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\scenes\IntroScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
