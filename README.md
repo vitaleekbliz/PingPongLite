@@ -1,22 +1,32 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
+Pong clone using custom game engine. 
 
-Demo : https://youtu.be/AcxncfVBUCg  
-Pictures :  
+## 👀 Demo 
+
+Youtube : https://youtu.be/AcxncfVBUCg  
+
+## 📝 Rules 
 ![Intro scene](readmePictures/Intro.png)
+
+## 🕹️ GamePlay 
 ![Gameplay](readmePictures/Gameplay.png)
 
-Pong clone using custom game engine.  
-* Known issues:  
-    * FontHandler is currently openening font file every time it is called, need to implement caching system for future development
-    * Most files are located in own folders that makes restructuring, refactoring and reading code harder  
-    * tryed to avoid hard coded values using structs inside classes (source/scenes/IntroScene.h), although some values are hardcoded (which is fine for this scale)  
-    * Can't load serveral scenes at the same time (will cause critical subsystems memory)  
-* Features I am proud of :  
-    * Observer make dependencies between objects much more managable.  
-    * Inheritance and polymorphism  
-    * Scene loading and cleaning its seperate subsystems like Font/Audio/Texture if needed  
-    * External collision system
+## ℹ️ info
+
+Features I am proud of :  
+* Observer make dependencies between objects much more managable.  
+* Inheritance and polymorphism  
+* Scene loading and cleaning its seperate subsystems like Font/Audio/Texture if needed  
+* External collision system
+* clean structure, although could unite files into one header for readability 
+* edge cases handling:
+  * ✔️ Collision triggering multiple times unless ball left boarders (state for ball/paddle collisions)  
+  * ✔️ Pushing ball out of bounds on collisions/boundaries checks  
+  * ✔️ Ball movement enchansing (changing angles and clamping Y velocity when stuck up/down motion)  
+  * ❌ Ball skipps paddle if FPS is too low :
+    * **Problem** :(deltaTime * speed) makes ball move too much in one frame.  
+    * **Solutions** : 1. move ball multiple times during one frame. 2. Just implement maximum delta time(if game freezes, delta time will be max value despite of freeze duration)
 
 ## 🛠️ Tech Stack
 
