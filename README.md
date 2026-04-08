@@ -6,16 +6,17 @@ Pictures :
 ![Intro scene](readmePictures/Intro.png)
 ![Gameplay](readmePictures/Gameplay.png)
 
-Pong clone using custom game engine. Known issues  
-* FontHandler is currently openening font file every time it is called, need to implement caching system for future development
-* Most files are located in own folders that makes restructuring, refactoring and reading code harder  
-* tryed to avoid hard coded values using structs inside classes (source/scenes/IntroScene.h), although some values are hardcoded (which is fine for this scale)  
-* Can't load serveral scenes at the same time (will cause critical subsystems memory)  
-Features I am proud of :  
-* Observer make dependencies between objects much more managable.  
-* Inheritance and polymorphism  
-* Scene loading and cleaning its seperate subsystems like Font/Audio/Texture if needed  
-* External collision system
+Pong clone using custom game engine.  
+* Known issues:  
+    * FontHandler is currently openening font file every time it is called, need to implement caching system for future development
+    * Most files are located in own folders that makes restructuring, refactoring and reading code harder  
+    * tryed to avoid hard coded values using structs inside classes (source/scenes/IntroScene.h), although some values are hardcoded (which is fine for this scale)  
+    * Can't load serveral scenes at the same time (will cause critical subsystems memory)  
+* Features I am proud of :  
+    * Observer make dependencies between objects much more managable.  
+    * Inheritance and polymorphism  
+    * Scene loading and cleaning its seperate subsystems like Font/Audio/Texture if needed  
+    * External collision system
 
 ## 🛠️ Tech Stack
 
