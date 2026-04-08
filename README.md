@@ -1,5 +1,11 @@
 # 🏓 PingPongLite: A Custom C++ 2D Game Engine
 
+
+Demo : https://youtu.be/AcxncfVBUCg  
+Pictures :  
+![Intro scene](readmePictures/Intro.png)
+![Gameplay](readmePictures/Gameplay.png)
+
 Pong clone using custom game engine. Known issues  
 * FontHandler is currently openening font file every time it is called, need to implement caching system for future development
 * Most files are located in own folders that makes restructuring, refactoring and reading code harder  
