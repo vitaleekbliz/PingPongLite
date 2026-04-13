@@ -35,15 +35,12 @@ Graphics/Input: SDL3-3.4.0 (Simple DirectMedia Layer)
 Font Rendering: SDL3_ttf-3.2.2  
 Texture Rendering: SDL3_image-3.4.0  
 Audio: SDL3_mixer-3.2.0  
-
-## 💻 System Specifications
-
-Platform: Windows 10 / 11 (x64-based PC)  
-Architecture: x64 (64-bit)  
+Premake : 5.0.0 beta8
 
 ## 📖 Usage  
 
-1. Go to Scripts/$(Platform) and generate solution files.
+1. Go to Scripts/$(Platform) and generate solution files.  
+If you want to change VS version change Scripts\\**Setup-Windows.bat**. "Vendor\Binaries\Premake\Windows\premake5.exe --file=Build.lua **vs2026**" to ur version. Check premake docs for versions "https://premake.github.io/docs/Using-Premake/"
 
 ### ⚙️ Debug/Development
 
