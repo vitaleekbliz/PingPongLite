@@ -8,6 +8,8 @@ AudioHandler& AudioHandler::get()
 
 void AudioHandler::init()
 {
+	MIX_SetMixerGain(SDLHandler::get().getMixer(), 0.3f);
+
 	load("music.mp3", &music);
 	load("win.mp3", &win);
 	load("lose.mp3", &lose);

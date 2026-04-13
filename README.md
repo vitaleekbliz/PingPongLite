@@ -7,10 +7,10 @@ Pong clone using custom game engine.
 Youtube : https://youtu.be/AcxncfVBUCg  
 
 ## 📝 Rules 
-![Intro scene](readmePictures/Intro.png)
+![Intro scene](ReadmePictures/Intro.png)
 
 ## 🕹️ GamePlay 
-![Gameplay](readmePictures/Gameplay.png)
+![Gameplay](ReadmePictures/Gameplay.png)
 
 ## ℹ️ info
 
@@ -40,25 +40,18 @@ Audio: SDL3_mixer-3.2.0
 
 Platform: Windows 10 / 11 (x64-based PC)  
 Architecture: x64 (64-bit)  
-Visual Studio: 2026  
-MSVC Version: 1950  
-Compiler: C/C++ Optimizing Compiler Version 19.50.35727  
 
 ## 📖 Usage  
 
-### 🚀 Launch
-
-1.Go to builds/{version}/  
-2.Run program and enjoy
+1. Go to Scripts/$(Platform) and generate solution files.
 
 ### ⚙️ Debug/Development
 
-1. Clone repositry and open solution in VS
-2. If encountered any asset loading or dll errors - copy $(SolutionDir)/builds/{latest version}/. to bin/$(Configuration)/.
+Building project should copy assets and dependencies automatically.
 
 ### 🛠️ Linking dependencies
 
-Place build exe file into $(SolutionDir)/app/{latest version} folder and run the program
+Automatic
 
 ## Architecture
 ``` bash
