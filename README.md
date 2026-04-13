@@ -7,10 +7,10 @@ Pong clone using custom game engine.
 Youtube : https://youtu.be/AcxncfVBUCg  
 
 ## 📝 Rules 
-![Intro scene](ReadmePictures/Intro.png)
+![Intro scene](./ReadmePictures/Intro.png)
 
 ## 🕹️ GamePlay 
-![Gameplay](ReadmePictures/Gameplay.png)
+![Gameplay](./ReadmePictures/Gameplay.png)
 
 ## ℹ️ info
 
