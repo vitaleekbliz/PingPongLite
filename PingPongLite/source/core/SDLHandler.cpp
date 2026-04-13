@@ -40,12 +40,6 @@ float SDLHandler::getTick() const
 
 bool SDLHandler::init()
 {
-	// Close console if this is release mode
-#ifndef _DEBUG
-	HWND hwnd = GetConsoleWindow();
-	ShowWindow(hwnd, SW_HIDE);
-#endif
-
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 	{
 		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
